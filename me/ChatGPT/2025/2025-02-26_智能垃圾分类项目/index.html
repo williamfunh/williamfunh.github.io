@@ -1651,7 +1651,7 @@ model.save(<span class="hljs-string">&quot;classification_model.keras&quot;</spa
 </li>
 </ol>
 <p>我会将完整的代码写在 Canvas 里，并确保代码清晰、可运行，适合写入你的报告。稍等片刻，我会生成完整的代码。</p>
-<h2 id="ChatGPT-24"><a href="#ChatGPT-24" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> {“name”: “waste_classification_system”, “type”: “code&#x2F;python”, “content”: “import os\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers, models, regularizers\nfrom tensorflow.keras.preprocessing import image_dataset_from_directory\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom flask import Flask, request, jsonify\nfrom werkzeug.utils import secure_filename\nimport cv2\nimport time\nimport shutil\n\n# Define constants\nBATCH_SIZE &#x3D; 32\nIMG_SIZE &#x3D; (224, 224)\nDATASET_PATH &#x3D; &quot;..&#x2F;dataset&#x2F;Garbage classification&#x2F;Garbage classification&quot;\nMODEL_PATH &#x3D; &quot;classification_model.keras&quot;\nUPLOAD_FOLDER &#x3D; &quot;uploads&#x2F;&quot;\nALLOWED_EXTENSIONS &#x3D; {&quot;png&quot;, &quot;jpg&quot;, &quot;jpeg&quot;}\n\n# Create Flask app\napp &#x3D; Flask(<strong>name</strong>)\napp.config[‘UPLOAD_FOLDER’] &#x3D; UPLOAD_FOLDER\n\n# Load dataset with train&#x2F;validation&#x2F;test split\ntrain_dataset &#x3D; image_dataset_from_directory(\n    DATASET_PATH, validation_split&#x3D;0.2, subset&#x3D;&quot;training&quot;, seed&#x3D;123,\n    image_size&#x3D;IMG_SIZE, batch_size&#x3D;BATCH_SIZE)\nval_dataset &#x3D; image_dataset_from_directory(\n    DATASET_PATH, validation_split&#x3D;0.2, subset&#x3D;&quot;validation&quot;, seed&#x3D;123,\n    image_size&#x3D;IMG_SIZE, batch_size&#x3D;BATCH_SIZE)\n\n# Split validation set further to create a test set\nval_batches &#x3D; len(val_dataset)\ntest_size &#x3D; val_batches &#x2F;&#x2F; 2\ntest_dataset &#x3D; val_dataset.take(test_size)\nval_dataset &#x3D; val_dataset.skip(test_size)\n\nclass_names &#x3D; train_dataset.class_names\nprint(&quot;Class mapping:&quot;, class_names)\n\n# Data augmentation\ndata_augmentation &#x3D; keras.Sequential([\n    layers.RandomFlip(&quot;horizontal_and_vertical&quot;),\n    layers.RandomRotation(0.3),\n    layers.RandomZoom(0.3),\n    layers.RandomContrast(0.3),\n    layers.RandomBrightness(0.2),\n])\n\n# Load pre-trained model\nbase_model &#x3D; keras.applications.MobileNetV2(input_shape&#x3D;(224, 224, 3), include_top&#x3D;False, weights&#x3D;&quot;imagenet&quot;)\nbase_model.trainable &#x3D; False\n\n# Build classification model\ninputs &#x3D; keras.Input(shape&#x3D;(224, 224, 3))\nx &#x3D; data_augmentation(inputs)\nx &#x3D; keras.applications.mobilenet_v2.preprocess_input(x)\nx &#x3D; base_model(x, training&#x3D;False)\nx &#x3D; layers.GlobalAveragePooling2D()(x)\nx &#x3D; layers.Dropout(0.3)(x)\nx &#x3D; layers.Dense(128, activation&#x3D;&quot;relu&quot;, kernel_regularizer&#x3D;regularizers.l2(0.001))(x)\nx &#x3D; layers.Dropout(0.3)(x)\noutputs &#x3D; layers.Dense(len(class_names), activation&#x3D;&quot;softmax&quot;)(x)\nmodel &#x3D; keras.Model(inputs, outputs)\n\n# Compile and train model\nmodel.compile(optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.0005),\n              loss&#x3D;&quot;sparse_categorical_crossentropy&quot;, metrics&#x3D;[&quot;accuracy&quot;])\nepochs &#x3D; 20\nmodel.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;epochs)\n\n# Fine-tune model by unfreezing some layers\nbase_model.trainable &#x3D; True\nfor layer in base_model.layers[:100]:\n    layer.trainable &#x3D; False\n\nmodel.compile(optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.00001),\n              loss&#x3D;&quot;sparse_categorical_crossentropy&quot;, metrics&#x3D;[&quot;accuracy&quot;])\nfine_tune_epochs &#x3D; 10\nmodel.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;fine_tune_epochs)\n\n# Save trained model\nmodel.save(MODEL_PATH)\nprint(&quot;Model saved successfully!&quot;)\n\n# Load trained model for inference\nmodel &#x3D; keras.models.load_model(MODEL_PATH)\n\ndef allowed_file(filename):\n    return ‘.’ in filename and filename.rsplit(‘.’, 1)[1].lower() in ALLOWED_EXTENSIONS\n\<a href="mailto:&#110;&#64;&#x61;&#112;&#x70;&#x2e;&#114;&#111;&#117;&#x74;&#x65;">n@app.route</a>(‘&#x2F;predict’, methods&#x3D;[‘POST’])\ndef predict():\n    if ‘file’ not in request.files:\n        return jsonify({&quot;error&quot;: &quot;No file uploaded&quot;})\n    file &#x3D; request.files[‘file’]\n    if file.filename &#x3D;&#x3D; ‘’ or not allowed_file(file.filename):\n        return jsonify({&quot;error&quot;: &quot;Invalid file format&quot;})\n    \n    filename &#x3D; secure_filename(file.filename)\n    file_path &#x3D; os.path.join(app.config[‘UPLOAD_FOLDER’], filename)\n    file.save(file_path)\n    \n    # Preprocess image\n    img &#x3D; cv2.imread(file_path)\n    img &#x3D; cv2.resize(img, IMG_SIZE)\n    img &#x3D; np.expand_dims(img, axis&#x3D;0) &#x2F; 255.0\n    \n    # Perform prediction\n    start_time &#x3D; time.time()\n    predictions &#x3D; model.predict(img)\n    end_time &#x3D; time.time()\n    predicted_class &#x3D; class_names[np.argmax(predictions)]\n    confidence &#x3D; np.max(predictions)\n    inference_time &#x3D; end_time - start_time\n    \n    # Cleanup uploaded file\n    os.remove(file_path)\n    \n    return jsonify({&quot;class&quot;: predicted_class, &quot;confidence&quot;: float(confidence), &quot;inference_time&quot;: inference_time})\n\nif <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:\n    if not os.path.exists(UPLOAD_FOLDER):\n        os.makedirs(UPLOAD_FOLDER)\n    app.run(host&#x3D;’0.0.0.0’, port&#x3D;5000, debug&#x3D;True)”}</p>
+<h2 id="ChatGPT-24"><a href="#ChatGPT-24" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> {“name”: “waste_classification_system”, “type”: “code&#x2F;python”, “content”: “import os\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers, models, regularizers\nfrom tensorflow.keras.preprocessing import image_dataset_from_directory\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom flask import Flask, request, jsonify\nfrom werkzeug.utils import secure_filename\nimport cv2\nimport time\nimport shutil\n\n# Define constants\nBATCH_SIZE &#x3D; 32\nIMG_SIZE &#x3D; (224, 224)\nDATASET_PATH &#x3D; &quot;..&#x2F;dataset&#x2F;Garbage classification&#x2F;Garbage classification&quot;\nMODEL_PATH &#x3D; &quot;classification_model.keras&quot;\nUPLOAD_FOLDER &#x3D; &quot;uploads&#x2F;&quot;\nALLOWED_EXTENSIONS &#x3D; {&quot;png&quot;, &quot;jpg&quot;, &quot;jpeg&quot;}\n\n# Create Flask app\napp &#x3D; Flask(<strong>name</strong>)\napp.config[‘UPLOAD_FOLDER’] &#x3D; UPLOAD_FOLDER\n\n# Load dataset with train&#x2F;validation&#x2F;test split\ntrain_dataset &#x3D; image_dataset_from_directory(\n    DATASET_PATH, validation_split&#x3D;0.2, subset&#x3D;&quot;training&quot;, seed&#x3D;123,\n    image_size&#x3D;IMG_SIZE, batch_size&#x3D;BATCH_SIZE)\nval_dataset &#x3D; image_dataset_from_directory(\n    DATASET_PATH, validation_split&#x3D;0.2, subset&#x3D;&quot;validation&quot;, seed&#x3D;123,\n    image_size&#x3D;IMG_SIZE, batch_size&#x3D;BATCH_SIZE)\n\n# Split validation set further to create a test set\nval_batches &#x3D; len(val_dataset)\ntest_size &#x3D; val_batches &#x2F;&#x2F; 2\ntest_dataset &#x3D; val_dataset.take(test_size)\nval_dataset &#x3D; val_dataset.skip(test_size)\n\nclass_names &#x3D; train_dataset.class_names\nprint(&quot;Class mapping:&quot;, class_names)\n\n# Data augmentation\ndata_augmentation &#x3D; keras.Sequential([\n    layers.RandomFlip(&quot;horizontal_and_vertical&quot;),\n    layers.RandomRotation(0.3),\n    layers.RandomZoom(0.3),\n    layers.RandomContrast(0.3),\n    layers.RandomBrightness(0.2),\n])\n\n# Load pre-trained model\nbase_model &#x3D; keras.applications.MobileNetV2(input_shape&#x3D;(224, 224, 3), include_top&#x3D;False, weights&#x3D;&quot;imagenet&quot;)\nbase_model.trainable &#x3D; False\n\n# Build classification model\ninputs &#x3D; keras.Input(shape&#x3D;(224, 224, 3))\nx &#x3D; data_augmentation(inputs)\nx &#x3D; keras.applications.mobilenet_v2.preprocess_input(x)\nx &#x3D; base_model(x, training&#x3D;False)\nx &#x3D; layers.GlobalAveragePooling2D()(x)\nx &#x3D; layers.Dropout(0.3)(x)\nx &#x3D; layers.Dense(128, activation&#x3D;&quot;relu&quot;, kernel_regularizer&#x3D;regularizers.l2(0.001))(x)\nx &#x3D; layers.Dropout(0.3)(x)\noutputs &#x3D; layers.Dense(len(class_names), activation&#x3D;&quot;softmax&quot;)(x)\nmodel &#x3D; keras.Model(inputs, outputs)\n\n# Compile and train model\nmodel.compile(optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.0005),\n              loss&#x3D;&quot;sparse_categorical_crossentropy&quot;, metrics&#x3D;[&quot;accuracy&quot;])\nepochs &#x3D; 20\nmodel.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;epochs)\n\n# Fine-tune model by unfreezing some layers\nbase_model.trainable &#x3D; True\nfor layer in base_model.layers[:100]:\n    layer.trainable &#x3D; False\n\nmodel.compile(optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.00001),\n              loss&#x3D;&quot;sparse_categorical_crossentropy&quot;, metrics&#x3D;[&quot;accuracy&quot;])\nfine_tune_epochs &#x3D; 10\nmodel.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;fine_tune_epochs)\n\n# Save trained model\nmodel.save(MODEL_PATH)\nprint(&quot;Model saved successfully!&quot;)\n\n# Load trained model for inference\nmodel &#x3D; keras.models.load_model(MODEL_PATH)\n\ndef allowed_file(filename):\n    return ‘.’ in filename and filename.rsplit(‘.’, 1)[1].lower() in ALLOWED_EXTENSIONS\n\<a href="mailto:&#x6e;&#x40;&#97;&#112;&#x70;&#x2e;&#x72;&#x6f;&#117;&#116;&#x65;">n@app.route</a>(‘&#x2F;predict’, methods&#x3D;[‘POST’])\ndef predict():\n    if ‘file’ not in request.files:\n        return jsonify({&quot;error&quot;: &quot;No file uploaded&quot;})\n    file &#x3D; request.files[‘file’]\n    if file.filename &#x3D;&#x3D; ‘’ or not allowed_file(file.filename):\n        return jsonify({&quot;error&quot;: &quot;Invalid file format&quot;})\n    \n    filename &#x3D; secure_filename(file.filename)\n    file_path &#x3D; os.path.join(app.config[‘UPLOAD_FOLDER’], filename)\n    file.save(file_path)\n    \n    # Preprocess image\n    img &#x3D; cv2.imread(file_path)\n    img &#x3D; cv2.resize(img, IMG_SIZE)\n    img &#x3D; np.expand_dims(img, axis&#x3D;0) &#x2F; 255.0\n    \n    # Perform prediction\n    start_time &#x3D; time.time()\n    predictions &#x3D; model.predict(img)\n    end_time &#x3D; time.time()\n    predicted_class &#x3D; class_names[np.argmax(predictions)]\n    confidence &#x3D; np.max(predictions)\n    inference_time &#x3D; end_time - start_time\n    \n    # Cleanup uploaded file\n    os.remove(file_path)\n    \n    return jsonify({&quot;class&quot;: predicted_class, &quot;confidence&quot;: float(confidence), &quot;inference_time&quot;: inference_time})\n\nif <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:\n    if not os.path.exists(UPLOAD_FOLDER):\n        os.makedirs(UPLOAD_FOLDER)\n    app.run(host&#x3D;’0.0.0.0’, port&#x3D;5000, debug&#x3D;True)”}</p>
 <h2 id="ChatGPT-25"><a href="#ChatGPT-25" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 完整代码已经写在 Canvas 里，包含以下部分：</p>
 <ul>
 <li><strong>数据预处理</strong>：拆分数据集，确保训练、验证和测试集正确划分。</li>
@@ -1670,7 +1670,7 @@ model.save(<span class="hljs-string">&quot;classification_model.keras&quot;</spa
 </ol>
 <p>这样你就可以先运行 <code>train_model.py</code> 训练模型并保存，然后 <code>app.py</code> 只负责推理，不会重复训练，提高效率。  </p>
 <p>我现在来调整代码，稍等。</p>
-<h2 id="ChatGPT-28"><a href="#ChatGPT-28" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> {“name”: “train_and_flask”, “type”: “code&#x2F;python”, “content”: “# train_model.py\nimport os\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers, models, regularizers\nfrom tensorflow.keras.preprocessing import image_dataset_from_directory\nimport matplotlib.pyplot as plt\nfrom collections import Counter\n\n# 数据加载\nbatch_size &#x3D; 32\nimg_size &#x3D; (224, 224)\ndataset_path &#x3D; &quot;..&#x2F;dataset&#x2F;Garbage classification&#x2F;Garbage classification&quot;\n\ntrain_dataset &#x3D; image_dataset_from_directory(\n    dataset_path,\n    validation_split&#x3D;0.2,\n    subset&#x3D;&quot;training&quot;,\n    seed&#x3D;123,\n    image_size&#x3D;img_size,\n    batch_size&#x3D;batch_size\n)\n\nval_dataset &#x3D; image_dataset_from_directory(\n    dataset_path,\n    validation_split&#x3D;0.2,\n    subset&#x3D;&quot;validation&quot;,\n    seed&#x3D;123,\n    image_size&#x3D;img_size,\n    batch_size&#x3D;batch_size\n)\n\nclass_names &#x3D; train_dataset.class_names\nprint(f&quot;类别索引映射: {class_names}&quot;)\n\n# 数据增强\ndata_augmentation &#x3D; keras.Sequential([\n    layers.RandomFlip(&quot;horizontal_and_vertical&quot;),\n    layers.RandomRotation(0.3),\n    layers.RandomZoom(0.3),\n    layers.RandomContrast(0.3),\n    layers.RandomBrightness(0.2),\n])\n\n# 加载预训练模型\nbase_model &#x3D; keras.applications.MobileNetV2(\n    input_shape&#x3D;(224, 224, 3),\n    include_top&#x3D;False,\n    weights&#x3D;&quot;imagenet&quot;\n)\nbase_model.trainable &#x3D; False\n\ninputs &#x3D; keras.Input(shape&#x3D;(224, 224, 3))\nx &#x3D; data_augmentation(inputs)\nx &#x3D; keras.applications.mobilenet_v2.preprocess_input(x)\nx &#x3D; base_model(x, training&#x3D;False)\nx &#x3D; layers.GlobalAveragePooling2D()(x)\nx &#x3D; layers.Dropout(0.3)(x)\nx &#x3D; layers.Dense(128, activation&#x3D;&quot;relu&quot;, kernel_regularizer&#x3D;regularizers.l2(0.001))(x)\nx &#x3D; layers.Dropout(0.3)(x)\noutputs &#x3D; layers.Dense(len(class_names), activation&#x3D;&quot;softmax&quot;)(x)\nmodel &#x3D; keras.Model(inputs, outputs)\n\nmodel.compile(\n    optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.0005),\n    loss&#x3D;&quot;sparse_categorical_crossentropy&quot;,\n    metrics&#x3D;[&quot;accuracy&quot;]\n)\n\nepochs &#x3D; 20\nhistory &#x3D; model.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;epochs)\n\n# 解冻部分层进行微调\nbase_model.trainable &#x3D; True\nfor layer in base_model.layers[:50]:\n    layer.trainable &#x3D; False\n\nmodel.compile(\n    optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.00001),\n    loss&#x3D;&quot;sparse_categorical_crossentropy&quot;,\n    metrics&#x3D;[&quot;accuracy&quot;]\n)\n\nfine_tune_epochs &#x3D; 10\nhistory_fine &#x3D; model.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;fine_tune_epochs)\n\n# 保存模型\nmodel.save(&quot;classification_model.keras&quot;)\nprint(&quot;模型已保存！&quot;)\n\n# app.py\nfrom flask import Flask, request, jsonify\nimport tensorflow as tf\nfrom tensorflow import keras\nimport numpy as np\nfrom PIL import Image\nimport io\n\n# 加载模型\nmodel &#x3D; keras.models.load_model(&quot;classification_model.keras&quot;)\nclass_names &#x3D; [‘cardboard’, ‘glass’, ‘metal’, ‘paper’, ‘plastic’, ‘trash’]\n\napp &#x3D; Flask(<strong>name</strong>)\n\<a href="mailto:&#x6e;&#64;&#97;&#x70;&#x70;&#x2e;&#114;&#x6f;&#x75;&#116;&#x65;">n@app.route</a>(&quot;&#x2F;predict&quot;, methods&#x3D;[&quot;POST&quot;])\ndef predict():\n    if &quot;file&quot; not in request.files:\n        return jsonify({&quot;error&quot;: &quot;No file uploaded&quot;}), 400\n    file &#x3D; request.files[&quot;file&quot;]\n    img &#x3D; Image.open(io.BytesIO(file.read())).resize((224, 224))\n    img_array &#x3D; np.array(img) &#x2F; 255.0  # 归一化\n    img_array &#x3D; np.expand_dims(img_array, axis&#x3D;0)\n    \n    predictions &#x3D; model.predict(img_array)\n    class_idx &#x3D; np.argmax(predictions[0])\n    confidence &#x3D; float(predictions[0][class_idx])\n    \n    return jsonify({&quot;class&quot;: class_names[class_idx], &quot;confidence&quot;: confidence})\n\nif <strong>name</strong> &#x3D;&#x3D; &quot;<strong>main</strong>&quot;:\n    app.run(host&#x3D;&quot;0.0.0.0&quot;, port&#x3D;5000)”}</p>
+<h2 id="ChatGPT-28"><a href="#ChatGPT-28" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> {“name”: “train_and_flask”, “type”: “code&#x2F;python”, “content”: “# train_model.py\nimport os\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras import layers, models, regularizers\nfrom tensorflow.keras.preprocessing import image_dataset_from_directory\nimport matplotlib.pyplot as plt\nfrom collections import Counter\n\n# 数据加载\nbatch_size &#x3D; 32\nimg_size &#x3D; (224, 224)\ndataset_path &#x3D; &quot;..&#x2F;dataset&#x2F;Garbage classification&#x2F;Garbage classification&quot;\n\ntrain_dataset &#x3D; image_dataset_from_directory(\n    dataset_path,\n    validation_split&#x3D;0.2,\n    subset&#x3D;&quot;training&quot;,\n    seed&#x3D;123,\n    image_size&#x3D;img_size,\n    batch_size&#x3D;batch_size\n)\n\nval_dataset &#x3D; image_dataset_from_directory(\n    dataset_path,\n    validation_split&#x3D;0.2,\n    subset&#x3D;&quot;validation&quot;,\n    seed&#x3D;123,\n    image_size&#x3D;img_size,\n    batch_size&#x3D;batch_size\n)\n\nclass_names &#x3D; train_dataset.class_names\nprint(f&quot;类别索引映射: {class_names}&quot;)\n\n# 数据增强\ndata_augmentation &#x3D; keras.Sequential([\n    layers.RandomFlip(&quot;horizontal_and_vertical&quot;),\n    layers.RandomRotation(0.3),\n    layers.RandomZoom(0.3),\n    layers.RandomContrast(0.3),\n    layers.RandomBrightness(0.2),\n])\n\n# 加载预训练模型\nbase_model &#x3D; keras.applications.MobileNetV2(\n    input_shape&#x3D;(224, 224, 3),\n    include_top&#x3D;False,\n    weights&#x3D;&quot;imagenet&quot;\n)\nbase_model.trainable &#x3D; False\n\ninputs &#x3D; keras.Input(shape&#x3D;(224, 224, 3))\nx &#x3D; data_augmentation(inputs)\nx &#x3D; keras.applications.mobilenet_v2.preprocess_input(x)\nx &#x3D; base_model(x, training&#x3D;False)\nx &#x3D; layers.GlobalAveragePooling2D()(x)\nx &#x3D; layers.Dropout(0.3)(x)\nx &#x3D; layers.Dense(128, activation&#x3D;&quot;relu&quot;, kernel_regularizer&#x3D;regularizers.l2(0.001))(x)\nx &#x3D; layers.Dropout(0.3)(x)\noutputs &#x3D; layers.Dense(len(class_names), activation&#x3D;&quot;softmax&quot;)(x)\nmodel &#x3D; keras.Model(inputs, outputs)\n\nmodel.compile(\n    optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.0005),\n    loss&#x3D;&quot;sparse_categorical_crossentropy&quot;,\n    metrics&#x3D;[&quot;accuracy&quot;]\n)\n\nepochs &#x3D; 20\nhistory &#x3D; model.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;epochs)\n\n# 解冻部分层进行微调\nbase_model.trainable &#x3D; True\nfor layer in base_model.layers[:50]:\n    layer.trainable &#x3D; False\n\nmodel.compile(\n    optimizer&#x3D;keras.optimizers.Adam(learning_rate&#x3D;0.00001),\n    loss&#x3D;&quot;sparse_categorical_crossentropy&quot;,\n    metrics&#x3D;[&quot;accuracy&quot;]\n)\n\nfine_tune_epochs &#x3D; 10\nhistory_fine &#x3D; model.fit(train_dataset, validation_data&#x3D;val_dataset, epochs&#x3D;fine_tune_epochs)\n\n# 保存模型\nmodel.save(&quot;classification_model.keras&quot;)\nprint(&quot;模型已保存！&quot;)\n\n# app.py\nfrom flask import Flask, request, jsonify\nimport tensorflow as tf\nfrom tensorflow import keras\nimport numpy as np\nfrom PIL import Image\nimport io\n\n# 加载模型\nmodel &#x3D; keras.models.load_model(&quot;classification_model.keras&quot;)\nclass_names &#x3D; [‘cardboard’, ‘glass’, ‘metal’, ‘paper’, ‘plastic’, ‘trash’]\n\napp &#x3D; Flask(<strong>name</strong>)\n\<a href="mailto:&#110;&#x40;&#97;&#x70;&#x70;&#x2e;&#114;&#111;&#117;&#x74;&#101;">n@app.route</a>(&quot;&#x2F;predict&quot;, methods&#x3D;[&quot;POST&quot;])\ndef predict():\n    if &quot;file&quot; not in request.files:\n        return jsonify({&quot;error&quot;: &quot;No file uploaded&quot;}), 400\n    file &#x3D; request.files[&quot;file&quot;]\n    img &#x3D; Image.open(io.BytesIO(file.read())).resize((224, 224))\n    img_array &#x3D; np.array(img) &#x2F; 255.0  # 归一化\n    img_array &#x3D; np.expand_dims(img_array, axis&#x3D;0)\n    \n    predictions &#x3D; model.predict(img_array)\n    class_idx &#x3D; np.argmax(predictions[0])\n    confidence &#x3D; float(predictions[0][class_idx])\n    \n    return jsonify({&quot;class&quot;: class_names[class_idx], &quot;confidence&quot;: confidence})\n\nif <strong>name</strong> &#x3D;&#x3D; &quot;<strong>main</strong>&quot;:\n    app.run(host&#x3D;&quot;0.0.0.0&quot;, port&#x3D;5000)”}</p>
 <h2 id="ChatGPT-29"><a href="#ChatGPT-29" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 我已经将代码拆分为两个文件：</p>
 <ol>
 <li><code>train_model.py</code>：用于模型训练、微调和保存。</li>
@@ -2803,6 +2803,15 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
+        <a href="../2025-06-21_module_tempfile/" title="module tempfile"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module tempfile</span>
+        </a>
+      
+    
+      
+      
         <a href="../2025-06-21_Typst%20%E4%BC%98%E5%8A%BF%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="Typst 优势与改进"
            class="list-group-item list-group-item-action
            ">
@@ -2816,15 +2825,6 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">关键词提取方法总结</span>
-        </a>
-      
-    
-      
-      
-        <a href="../2025-06-21_module_tempfile/" title="module tempfile"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">module tempfile</span>
         </a>
       
     
@@ -2884,6 +2884,15 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
+        <a href="../2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fe提问关系确认心理解析</span>
+        </a>
+      
+    
+      
+      
         <a href="../2025-06-11_pleasure%E7%9A%84%E5%BC%82%E5%90%8C/" title="pleasure的异同"
            class="list-group-item list-group-item-action
            ">
@@ -2897,15 +2906,6 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">quickly detached</span>
-        </a>
-      
-    
-      
-      
-        <a href="../2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Fe提问关系确认心理解析</span>
         </a>
       
     
@@ -2929,19 +2929,19 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
-        <a href="../2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
+        <a href="../2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">日本摩托车旅游推荐</span>
+          <span class="category-post">西藏1959年起义失败分析</span>
         </a>
       
     
       
       
-        <a href="../2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
+        <a href="../2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">西藏1959年起义失败分析</span>
+          <span class="category-post">日本摩托车旅游推荐</span>
         </a>
       
     
@@ -3172,19 +3172,19 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
-        <a href="../2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
+        <a href="../2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Bore词义解释</span>
+          <span class="category-post">Selfish Gene Markdown Options</span>
         </a>
       
     
       
       
-        <a href="../2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
+        <a href="../2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Selfish Gene Markdown Options</span>
+          <span class="category-post">Bore词义解释</span>
         </a>
       
     
@@ -3505,19 +3505,19 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
-        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%9C%AC%E7%A7%91%E7%8E%87/" title="中共国本科率"
+        <a href="../2025-02-04_HTTP_vs_HTTPS%E5%8C%BA%E5%88%AB/" title="HTTP vs HTTPS区别"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">中共国本科率</span>
+          <span class="category-post">HTTP vs HTTPS区别</span>
         </a>
       
     
       
       
-        <a href="../2025-02-04_HTTP_vs_HTTPS%E5%8C%BA%E5%88%AB/" title="HTTP vs HTTPS区别"
+        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%9C%AC%E7%A7%91%E7%8E%87/" title="中共国本科率"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">HTTP vs HTTPS区别</span>
+          <span class="category-post">中共国本科率</span>
         </a>
       
     
@@ -3532,19 +3532,19 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
-        <a href="../2025-02-04_%E5%8F%B0%E6%B9%BE%E6%B0%91%E4%B8%BB%E5%8C%96%E5%8E%86%E7%A8%8B/" title="台湾民主化历程"
+        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E9%AB%98%E5%B1%82%E7%BA%A2%E4%BA%8C%E4%BB%A3/" title="中共高层红二代"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">台湾民主化历程</span>
+          <span class="category-post">中共高层红二代</span>
         </a>
       
     
       
       
-        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E9%AB%98%E5%B1%82%E7%BA%A2%E4%BA%8C%E4%BB%A3/" title="中共高层红二代"
+        <a href="../2025-02-04_%E5%8F%B0%E6%B9%BE%E6%B0%91%E4%B8%BB%E5%8C%96%E5%8E%86%E7%A8%8B/" title="台湾民主化历程"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">中共高层红二代</span>
+          <span class="category-post">台湾民主化历程</span>
         </a>
       
     
@@ -3586,19 +3586,19 @@ class_names = [<span class="hljs-string">&#x27;cardboard&#x27;</span>, <span cla
     
       
       
-        <a href="../2025-01-21_%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" title="网页设计技术分析"
+        <a href="../2025-01-21_Unconditional_vs_Conditional_Surrender/" title="Unconditional vs Conditional Surrender"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">网页设计技术分析</span>
+          <span class="category-post">Unconditional vs Conditional Surrender</span>
         </a>
       
     
       
       
-        <a href="../2025-01-21_Unconditional_vs_Conditional_Surrender/" title="Unconditional vs Conditional Surrender"
+        <a href="../2025-01-21_%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" title="网页设计技术分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Unconditional vs Conditional Surrender</span>
+          <span class="category-post">网页设计技术分析</span>
         </a>
       
     
