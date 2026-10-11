@@ -783,7 +783,7 @@ hexo deploy</code></pre></div>
 <h2 id="ChatGPT-17"><a href="#ChatGPT-17" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>[未知消息类型: reasoning_recap]</p>
 <h2 id="Will-4"><a href="#Will-4" class="headerlink" title="Will:"></a>Will:</h2><p>social:</p>
 <p>  fab fa-github: <a target="_blank" rel="noopener" href="https://github.com/fangwilliam9">https://github.com/fangwilliam9</a> || Github || ‘#24292e’</p>
-<p>  fas fa-envelope: mailto:<a href="mailto:&#x66;&#x61;&#x6e;&#103;&#x77;&#105;&#x6c;&#x6c;&#105;&#x61;&#x6d;&#57;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109;">fangwilliam9@gmail.com</a> || Email me || ‘#4a7dbe’我点击mail按钮，异常about:blank，这是为什么</p>
+<p>  fas fa-envelope: mailto:<a href="mailto:&#x66;&#97;&#x6e;&#x67;&#x77;&#105;&#x6c;&#x6c;&#105;&#x61;&#109;&#57;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;">fangwilliam9@gmail.com</a> || Email me || ‘#4a7dbe’我点击mail按钮，异常about:blank，这是为什么</p>
 <h2 id="ChatGPT-18"><a href="#ChatGPT-18" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>你的 <code>mailto:</code> 链接跑到 <code>about:blank</code>，原因不是 Hexo 的 bug，而是你的 YAML 写法被解析错了——冒号（<code>:</code>）后面直接跟字符串，YAML 会把后面的当成 mapping 而不是一个整体的 URL，导致前端实际上拿到的是空链接。</p>
 <hr>
 <h3 id="正确写法"><a href="#正确写法" class="headerlink" title="正确写法"></a>正确写法</h3><h4 id="方式一：给-mailto-字符串加引号"><a href="#方式一：给-mailto-字符串加引号" class="headerlink" title="方式一：给 mailto: 字符串加引号"></a>方式一：给 <code>mailto:</code> 字符串加引号</h4><div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">social:</span>
@@ -1111,7 +1111,7 @@ social:
 <h2 id="ChatGPT-21"><a href="#ChatGPT-21" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>[未知消息类型: reasoning_recap]</p>
 <h2 id="Will-5"><a href="#Will-5" class="headerlink" title="Will:"></a>Will:</h2><p>social:</p>
 <p>  fab fa-github: ‘<a target="_blank" rel="noopener" href="https://github.com/fangwilliam9">https://github.com/fangwilliam9</a> || Github || #24292e’</p>
-<p>  fas fa-envelope: ‘mailto:<a href="mailto:&#102;&#97;&#x6e;&#103;&#x77;&#105;&#x6c;&#108;&#x69;&#x61;&#109;&#57;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">fangwilliam9@gmail.com</a> || Email me || #4a7dbe’还是邮箱异常 </p>
+<p>  fas fa-envelope: ‘mailto:<a href="mailto:&#102;&#x61;&#110;&#x67;&#x77;&#x69;&#x6c;&#x6c;&#x69;&#97;&#109;&#x39;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;">fangwilliam9@gmail.com</a> || Email me || #4a7dbe’还是邮箱异常 </p>
 <h2 id="ChatGPT-22"><a href="#ChatGPT-22" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>你之所以点了还是 <code>about:blank</code>，是因为 Butterfly 主题里它把所有链接都过了一遍 <code>url_for()</code>，而 Hexo 的 <code>url_for</code> 根本不认识 <code>mailto:</code> 协议，就会返回空。光改 <code>_config.yml</code> 是没用的——需要动手改一下主题的 Pug 源码，让 <code>mailto:</code> 不走 <code>url_for</code>。</p>
 <hr>
 <h3 id="步骤：修改-social-pug，绕过-url-for-对-mailto-的处理"><a href="#步骤：修改-social-pug，绕过-url-for-对-mailto-的处理" class="headerlink" title="步骤：修改 social.pug，绕过 url_for 对 mailto 的处理"></a>步骤：修改 <code>social.pug</code>，绕过 <code>url_for</code> 对 mailto 的处理</h3><ol>
@@ -1134,7 +1134,7 @@ social:
 <p>这样既不影响你 GitHub 的链接，也专门为 <code>mailto:</code> 做了豁免。之后如果还想支持其它协议（如 <code>tel:</code>），也可以把正则再扩展一下就行。</p>
 <h2 id="ChatGPT-23"><a href="#ChatGPT-23" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>[未知消息类型: thoughts]</p>
 <h2 id="ChatGPT-24"><a href="#ChatGPT-24" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>[未知消息类型: reasoning_recap]</p>
-<h2 id="Will-6"><a href="#Will-6" class="headerlink" title="Will:"></a>Will:</h2><p>  fas fa-envelope: ‘mailto:<a href="mailto:&#102;&#x61;&#110;&#103;&#x77;&#105;&#x6c;&#108;&#105;&#x61;&#x6d;&#57;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;">fangwilliam9@gmail.com</a> || Email me || #4a7dbe’ 可以改个协议什么的吗？</p>
+<h2 id="Will-6"><a href="#Will-6" class="headerlink" title="Will:"></a>Will:</h2><p>  fas fa-envelope: ‘mailto:<a href="mailto:&#102;&#97;&#x6e;&#x67;&#119;&#105;&#108;&#108;&#105;&#97;&#x6d;&#x39;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">fangwilliam9@gmail.com</a> || Email me || #4a7dbe’ 可以改个协议什么的吗？</p>
 <h2 id="ChatGPT-25"><a href="#ChatGPT-25" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>当然可以，任何浏览器识别的 URI 协议都行，不光限于 <code>mailto:</code>。下面给你几个常见示例，以及如何配合刚才改过的正则一并支持。</p>
 <hr>
 <h2 id="常见协议举例"><a href="#常见协议举例" class="headerlink" title="常见协议举例"></a>常见协议举例</h2><table>
@@ -3123,15 +3123,6 @@ hexo d        <span class="hljs-comment"># 部署到远程服务器（可选）<
     
       
       
-        <a href="../2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Fe提问关系确认心理解析</span>
-        </a>
-      
-    
-      
-      
         <a href="../2025-06-11_pleasure%E7%9A%84%E5%BC%82%E5%90%8C/" title="pleasure的异同"
            class="list-group-item list-group-item-action
            ">
@@ -3145,6 +3136,15 @@ hexo d        <span class="hljs-comment"># 部署到远程服务器（可选）<
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">quickly detached</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fe提问关系确认心理解析</span>
         </a>
       
     
@@ -3168,19 +3168,19 @@ hexo d        <span class="hljs-comment"># 部署到远程服务器（可选）<
     
       
       
-        <a href="../2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
+        <a href="../2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">西藏1959年起义失败分析</span>
+          <span class="category-post">日本摩托车旅游推荐</span>
         </a>
       
     
       
       
-        <a href="../2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
+        <a href="../2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">日本摩托车旅游推荐</span>
+          <span class="category-post">西藏1959年起义失败分析</span>
         </a>
       
     
@@ -3384,19 +3384,19 @@ hexo d        <span class="hljs-comment"># 部署到远程服务器（可选）<
     
       
       
-        <a href="../2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格"
+        <a href="../2025-05-03_Gmail%E6%B3%A8%E5%86%8CMeeff%E8%A2%AB%E5%B0%81%E7%A6%81/" title="Gmail注册Meeff被封禁"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Tiergarten 天际线与建筑风格</span>
+          <span class="category-post">Gmail注册Meeff被封禁</span>
         </a>
       
     
       
       
-        <a href="../2025-05-03_Gmail%E6%B3%A8%E5%86%8CMeeff%E8%A2%AB%E5%B0%81%E7%A6%81/" title="Gmail注册Meeff被封禁"
+        <a href="../2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Gmail注册Meeff被封禁</span>
+          <span class="category-post">Tiergarten 天际线与建筑风格</span>
         </a>
       
     
@@ -3411,19 +3411,19 @@ hexo d        <span class="hljs-comment"># 部署到远程服务器（可选）<
     
       
       
-        <a href="../2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
+        <a href="../2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Selfish Gene Markdown Options</span>
+          <span class="category-post">Bore词义解释</span>
         </a>
       
     
       
       
-        <a href="../2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
+        <a href="../2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">Bore词义解释</span>
+          <span class="category-post">Selfish Gene Markdown Options</span>
         </a>
       
     
