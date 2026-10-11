@@ -1,0 +1,2963 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/will.jpg">
+  <link rel="icon" href="../../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Will: 1、 简述类与对象之间的关系及关联与链之间的关系。 2、 简述类的属性描述和操作描述有哪些成分？ 3、 举例说明什么是静态属性和静态操作。 ChatGPT: 类与对象之间的关系及关联与链之间的关系：   类与对象的关系：类是对一类对象的抽象描述，是对象的蓝图或者模板；对象是类的实例。类定义了对象的属性（状态）和行为（方法），而对象则是类的具体实例，具有类所定义的属性和行为。换句话说，类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类与对象静态操作">
+<meta property="og:url" content="https://williamfunh.github.io/me/ChatGPT/2024/2024-12-04_%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E9%9D%99%E6%80%81%E6%93%8D%E4%BD%9C/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Will: 1、 简述类与对象之间的关系及关联与链之间的关系。 2、 简述类的属性描述和操作描述有哪些成分？ 3、 举例说明什么是静态属性和静态操作。 ChatGPT: 类与对象之间的关系及关联与链之间的关系：   类与对象的关系：类是对一类对象的抽象描述，是对象的蓝图或者模板；对象是类的实例。类定义了对象的属性（状态）和行为（方法），而对象则是类的具体实例，具有类所定义的属性和行为。换句话说，类">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-03T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-03T12:33:38.071Z">
+<meta property="article:author" content="William Fang">
+<meta property="article:tag" content="CS basics">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>类与对象静态操作 | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="类与对象静态操作"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-04 00:00" pubdate>
+          2024年12月4日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">类与对象静态操作</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Will"><a href="#Will" class="headerlink" title="Will:"></a>Will:</h2><p> 1、 简述类与对象之间的关系及关联与链之间的关系。</p>
+<p>2、 简述类的属性描述和操作描述有哪些成分？</p>
+<p>3、 举例说明什么是静态属性和静态操作。</p>
+<h2 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><ol>
+<li><strong>类与对象之间的关系及关联与链之间的关系</strong>：</li>
+</ol>
+<ul>
+<li><strong>类与对象的关系</strong>：类是对一类对象的抽象描述，是对象的蓝图或者模板；对象是类的实例。类定义了对象的属性（状态）和行为（方法），而对象则是类的具体实例，具有类所定义的属性和行为。换句话说，类是概念层面上的定义，而对象是实际的实体。</li>
+<li><strong>关联与链的关系</strong>：关联表示对象之间的关系，例如一个对象与另一个对象之间可能有联系（如一对一、一对多、多对多的关系）。链则是关联的一种特殊形式，它通常表示一个对象持有另一个对象的引用，并且对象之间通过这种引用形成连锁的关系。例如，链式调用允许一个对象的方法返回另一个对象，使得多个方法可以在同一条语句中依次调用。</li>
+</ul>
+<ol start="2">
+<li><p><strong>类的属性描述和操作描述的成分</strong>：</p>
+<ul>
+<li><strong>属性描述</strong>：属性是类的特征，用来表示对象的状态。属性的描述一般包括属性的名称、类型、访问权限（如 public、private 等）以及默认值等。</li>
+<li><strong>操作描述</strong>：操作（方法）是类的行为，用来定义对象能够执行的功能。操作的描述包括操作的名称、返回类型、参数列表、访问权限、方法体等。方法描述了对象如何响应外部请求并执行某些动作。</li>
+</ul>
+</li>
+<li><p><strong>静态属性和静态操作的举例说明</strong>：</p>
+<ul>
+<li><p><strong>静态属性</strong>：静态属性属于类本身，而不是类的实例。静态属性在类的所有对象之间共享，通常用于存储类的全局信息或共享数据。例如：</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> &#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">wheels</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;  <span class="hljs-comment">// 静态属性，表示所有汽车都有4个轮子</span>
+&#125;</code></pre></div>
+<p>在这个例子中，<code>wheels</code> 是一个静态属性，所有 <code>Car</code> 对象共享这个属性。</p>
+</li>
+<li><p><strong>静态操作</strong>：静态操作是属于类本身的操作，可以通过类名直接调用，而不需要创建类的实例。静态方法无法访问实例属性，通常用于执行与类的实例无关的功能。例如：</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> &#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">displayInfo</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;All cars have 4 wheels.&quot;</span>);
+    &#125;
+&#125;</code></pre></div>
+<p>在这个例子中，<code>displayInfo()</code> 是一个静态方法，可以通过 <code>Car.displayInfo()</code> 直接调用，而不需要创建 <code>Car</code> 的实例。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Will-1"><a href="#Will-1" class="headerlink" title="Will:"></a>Will:</h2><p> 假设要开发一个简化的图书借阅系统，试根据需求描述，设计能反映该系统功能及实现的类图模型，并予以简单说明。</p>
+<p>需求描述：</p>
+<ul>
+<li><p>读者通过图书借阅系统查询可以借阅的图书。</p>
+</li>
+<li><p>读者在书架上找到相应的书籍后，到柜台通过图书管理员办理借阅手续。想还书的读者在柜台通过图书管理员办理归还手续。</p>
+</li>
+<li><p>还书时，必须检查借阅日期是否超期；若超期，则进行相应罚款。</p>
+</li>
+<li><p>图书借阅系统不进行书籍的入库操作（即新书登记、旧书下架）。</p>
+</li>
+</ul>
+<h2 id="ChatGPT-1"><a href="#ChatGPT-1" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 为了设计一个简化的图书借阅系统类图，我们需要定义几个关键的类及其之间的关系。这些类主要包括 <strong>读者（Reader）</strong>、<strong>图书（Book）</strong>、<strong>图书管理员（Librarian）</strong>、<strong>借阅记录（BorrowRecord）</strong> 和 <strong>图书借阅系统（LibrarySystem）</strong>。</p>
+<h3 id="类图模型设计"><a href="#类图模型设计" class="headerlink" title="类图模型设计"></a>类图模型设计</h3><div class="code-wrapper"><pre><code class="hljs plaintext">+----------------+      +--------------------+      +--------------------+
+|     Reader     |      |        Book        |      |    Librarian       |
++----------------+      +--------------------+      +--------------------+
+| - readerId     |      | - bookId           |      | - librarianId      |
+| - name         |      | - title            |      | - name             |
+| - borrowedBooks|      | - author           |      |                    |
++----------------+      | - availableCopies  |      |                    |
+        |               +--------------------+      |                    |
+        |                        ^                    |                    |
+        |                        |                    |                    |
++-----------------+         +---------------------+    |    +---------------------+
+| BorrowRecord    |         | LibrarySystem       |    |    |    FineManager       |
++-----------------+         +---------------------+    |    +---------------------+
+| - borrowDate    |         | - availableBooks    |    |    | - calculateFine()    |
+| - dueDate       |         | - issuedBooks       |    |    |                     |
+| - returnDate    |         | - librarians        |    |    +---------------------+
+| - isOverdue     |         | + searchBooks()     |    |
+| - fineAmount    |         | + borrowBook()      |    |
++-----------------+         | + returnBook()      |    |
+                            +---------------------+    |</code></pre></div>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
+<li><p><strong>Reader（读者）类</strong>：  </p>
+<ul>
+<li><code>readerId</code>：读者的唯一标识。</li>
+<li><code>name</code>：读者的姓名。</li>
+<li><code>borrowedBooks</code>：一个集合，记录读者借阅的图书列表。</li>
+</ul>
+</li>
+<li><p><strong>Book（图书）类</strong>：  </p>
+<ul>
+<li><code>bookId</code>：书籍的唯一标识。</li>
+<li><code>title</code>：书籍标题。</li>
+<li><code>author</code>：书籍作者。</li>
+<li><code>availableCopies</code>：该书籍的可借阅副本数量。</li>
+</ul>
+</li>
+<li><p><strong>Librarian（图书管理员）类</strong>：  </p>
+<ul>
+<li><code>librarianId</code>：图书管理员的唯一标识。</li>
+<li><code>name</code>：管理员的姓名。</li>
+</ul>
+</li>
+<li><p><strong>BorrowRecord（借阅记录）类</strong>：  </p>
+<ul>
+<li><code>borrowDate</code>：借书日期。</li>
+<li><code>dueDate</code>：归还日期。</li>
+<li><code>returnDate</code>：实际归还日期。</li>
+<li><code>isOverdue</code>：标记是否超期。</li>
+<li><code>fineAmount</code>：如果超期，则记录罚款金额。</li>
+</ul>
+</li>
+<li><p><strong>LibrarySystem（图书借阅系统）类</strong>：  </p>
+<ul>
+<li><code>availableBooks</code>：一个集合，记录系统中所有可借阅的图书。</li>
+<li><code>issuedBooks</code>：记录已被借出的图书。</li>
+<li><code>librarians</code>：系统中所有管理员的列表。</li>
+<li><code>searchBooks()</code>：搜索图书的方法。</li>
+<li><code>borrowBook()</code>：借书操作方法，管理图书借阅。</li>
+<li><code>returnBook()</code>：还书操作方法，管理图书归还。</li>
+</ul>
+</li>
+<li><p><strong>FineManager（罚款管理）类</strong>：</p>
+<ul>
+<li><code>calculateFine()</code>：计算超期罚款的方法。</li>
+</ul>
+</li>
+</ol>
+<h3 id="类与类之间的关系"><a href="#类与类之间的关系" class="headerlink" title="类与类之间的关系"></a>类与类之间的关系</h3><ul>
+<li><strong>Reader</strong> 和 <strong>BorrowRecord</strong> 之间存在一对多的关系，一个读者可以有多个借阅记录。</li>
+<li><strong>Book</strong> 和 <strong>BorrowRecord</strong> 之间也存在一对多的关系，一本书可能被多个读者借阅，但在任意时刻只能借给一个读者。</li>
+<li><strong>LibrarySystem</strong> 与 <strong>Reader</strong>、<strong>Book</strong> 和 <strong>Librarian</strong> 之间存在聚合关系，表示图书借阅系统包含图书、读者和管理员。</li>
+<li><strong>FineManager</strong> 类和 <strong>BorrowRecord</strong> 类通过超期检查与罚款相关联，负责计算超期罚款。</li>
+</ul>
+<h3 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h3><ol>
+<li><strong>查询图书</strong>：读者可以通过 <code>LibrarySystem</code> 提供的 <code>searchBooks()</code> 方法查询图书。</li>
+<li><strong>借阅图书</strong>：读者通过找到想借的书籍后，调用 <code>borrowBook()</code> 方法，由图书管理员处理借书操作，更新 <code>BorrowRecord</code>。</li>
+<li><strong>归还图书</strong>：当读者还书时，通过 <code>returnBook()</code> 方法由图书管理员处理。系统检查图书是否超期，并在超期时调用 <code>FineManager</code> 计算罚款。</li>
+<li><strong>罚款管理</strong>：当图书超期时，<code>FineManager</code> 计算并更新 <code>BorrowRecord</code> 中的罚款金额。</li>
+</ol>
+<p>这个类图模型及其设计反映了图书借阅系统的基本功能，同时考虑到图书借阅、归还及罚款管理等需求。</p>
+<h2 id="Will-2"><a href="#Will-2" class="headerlink" title="Will:"></a>Will:</h2><p> 顺序图是什么，这里的这个图书管理系统的顺序图如何画</p>
+<h2 id="ChatGPT-2"><a href="#ChatGPT-2" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> <strong>顺序图（Sequence Diagram）</strong> 是一种 UML（统一建模语言）图，用于描述对象之间在某一特定时间内的交互顺序。它展示了对象之间如何通过消息传递来完成一个特定的功能或任务，强调了时间顺序和消息的传递过程。</p>
+<p>顺序图的基本组成部分：</p>
+<ol>
+<li><strong>对象</strong>：在图上通过水平的条形表示，每个对象的生命周期通过一条垂直的虚线表示。</li>
+<li><strong>消息</strong>：对象间传递的消息用箭头表示，箭头的方向表示消息的流动方向，箭头的标签描述消息的内容。</li>
+<li><strong>激活框</strong>：当对象在执行某个操作时，激活框表示对象的活动状态。</li>
+<li><strong>时间轴</strong>：图从上到下表示时间的流动。</li>
+</ol>
+<h3 id="图书管理系统顺序图设计"><a href="#图书管理系统顺序图设计" class="headerlink" title="图书管理系统顺序图设计"></a>图书管理系统顺序图设计</h3><p>假设我们画一个简单的顺序图，描述一个读者借书和还书的流程。具体包括以下步骤：</p>
+<ol>
+<li>读者通过图书借阅系统查询可借图书。</li>
+<li>读者选择一本图书并向图书管理员提出借阅请求。</li>
+<li>图书管理员检查图书的可借状态，并办理借书手续。</li>
+<li>如果超期归还，管理员计算罚款。</li>
+</ol>
+<h4 id="顺序图示例"><a href="#顺序图示例" class="headerlink" title="顺序图示例"></a>顺序图示例</h4><div class="code-wrapper"><pre><code class="hljs plaintext">+----------------+        +-------------------+        +-------------------+        +-----------------+
+|     Reader     |        |    LibrarySystem  |        |    Librarian      |        |     FineManager |
++----------------+        +-------------------+        +-------------------+        +-----------------+
+        |                         |                         |                         |
+        |        searchBooks()     |                         |                         |
+        |------------------------&gt;|                         |                         |
+        |                         |                         |                         |
+        |                         |    searchBooks()        |                         |
+        |                         |------------------------&gt;|                         |
+        |                         |                         |                         |
+        |                         |    returnBooks()        |                         |
+        |                         |------------------------&gt;|                         |
+        |                         |                         |                         |
+        |                         |                         |     borrowBook()      |
+        |                         |                         |----------------------&gt;|
+        |                         |                         |                         |
+        |                         |                         |     checkOverdue()    |
+        |                         |                         |&lt;----------------------|
+        |                         |                         |                         |
+        |                         |                         |       calculateFine() |
+        |                         |                         |----------------------&gt;|
+        |                         |                         |                         |
+        |                         |                         |       updateRecord()  |
+        |                         |                         |----------------------&gt;|
+        |                         |                         |                         |</code></pre></div>
+
+<h4 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h4><ol>
+<li><strong>查询图书</strong>：读者向 <code>LibrarySystem</code> 发出 <code>searchBooks()</code> 消息，<code>LibrarySystem</code> 调用 <code>searchBooks()</code> 方法从数据库中查找图书。</li>
+<li><strong>借书请求</strong>：读者选择图书后，向 <code>Librarian</code> 发出 <code>borrowBook()</code> 请求，管理员检查图书的借阅状态。</li>
+<li><strong>超期检查</strong>：如果图书已经借出，管理员调用 <code>checkOverdue()</code> 方法检查是否超期。若超期，管理员还会调用 <code>calculateFine()</code> 计算罚款。</li>
+<li><strong>归还处理</strong>：归还图书后，管理员更新借阅记录。</li>
+</ol>
+<h3 id="顺序图的功能描述"><a href="#顺序图的功能描述" class="headerlink" title="顺序图的功能描述"></a>顺序图的功能描述</h3><ul>
+<li><strong>读者</strong>：通过 <code>searchBooks()</code> 查询图书列表，选择一本图书后向管理员请求借书。</li>
+<li><strong>图书借阅系统</strong>：负责提供查询功能，查找书籍并返回结果。</li>
+<li><strong>图书管理员</strong>：负责办理借书和还书手续，检查图书是否超期，并根据需要计算罚款。</li>
+<li><strong>罚款管理</strong>：当图书超期时，管理员调用罚款管理模块计算罚款。</li>
+</ul>
+<p>通过顺序图，可以清晰地看到每个角色之间如何互动，及其间的消息传递顺序。</p>
+<h2 id="Will-3"><a href="#Will-3" class="headerlink" title="Will:"></a>Will:</h2><p> sql语言我都会，为什么我看关系代数会很吃力</p>
+<h2 id="ChatGPT-3"><a href="#ChatGPT-3" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> SQL 和关系代数虽然密切相关，但它们的表达方式和抽象层次不同，这可能是你感到关系代数困难的原因。以下是可能导致你觉得关系代数难的原因以及对应的解决办法：</p>
+<hr>
+<h3 id="1-表达方式不同"><a href="#1-表达方式不同" class="headerlink" title="1. 表达方式不同"></a><strong>1. 表达方式不同</strong></h3><ul>
+<li><p><strong>SQL</strong>：是一种基于英语语法的<strong>声明式语言</strong>，你只需告诉数据库你想要什么，而无需描述具体的实现细节。</p>
+<ul>
+<li>示例：<code>SELECT name FROM students WHERE age &gt; 18;</code></li>
+<li>它关注的是<strong>结果</strong>，而不是如何获得结果。</li>
+</ul>
+</li>
+<li><p><strong>关系代数</strong>：是一种<strong>数学模型</strong>，它通过操作符（如选择、投影、并集、交集、差集、笛卡尔积等）来描述查询。</p>
+<ul>
+<li>示例：<code>π_name(σ_age&gt;18(students))</code></li>
+<li>它关注的是<strong>过程</strong>（如何一步步从输入数据获得结果）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>将 SQL 查询和关系代数表达式对比着学习，从熟悉的 SQL 表达式入手，逐步理解关系代数的操作。</li>
+<li>试将 SQL 的每一步转化为关系代数中的一步，熟悉关系代数的符号和流程。</li>
+</ul>
+<hr>
+<h3 id="2-缺乏直观的例子"><a href="#2-缺乏直观的例子" class="headerlink" title="2. 缺乏直观的例子"></a><strong>2. 缺乏直观的例子</strong></h3><p>关系代数通常是基于数学定义的，而缺乏直观的例子可能让人觉得抽象。</p>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>使用简单的数据表和查询场景来练习。例如：<div class="code-wrapper"><pre><code class="hljs plaintext">表：Students
++----+------+-----+
+| ID | Name | Age |
++----+------+-----+
+| 1  | John | 20  |
+| 2  | Jane | 18  |
+| 3  | Mike | 22  |
++----+------+-----+</code></pre></div>
+对应操作：<ul>
+<li><strong>SQL</strong>: <code>SELECT Name FROM Students WHERE Age &gt; 18;</code></li>
+<li><strong>关系代数</strong>: <code>π_Name(σ_Age&gt;18(Students))</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-缺乏对数学符号的熟悉"><a href="#3-缺乏对数学符号的熟悉" class="headerlink" title="3. 缺乏对数学符号的熟悉"></a><strong>3. 缺乏对数学符号的熟悉</strong></h3><p>关系代数中使用了很多数学符号，如 ∪（并集）、∩（交集）、-（差集）、σ（选择）、π（投影）等，如果不熟悉这些符号会感到陌生。</p>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>熟悉常用的关系代数符号及其含义：<ul>
+<li><strong>选择（σ）</strong>：类似于 SQL 中的 <code>WHERE</code>。</li>
+<li><strong>投影（π）</strong>：类似于 SQL 中的 <code>SELECT</code>。</li>
+<li><strong>笛卡尔积（×）</strong>：类似于 SQL 中的 <code>CROSS JOIN</code>。</li>
+<li><strong>并集（∪）</strong>、<strong>交集（∩）</strong> 和 <strong>差集（-）</strong>：对应 SQL 的 <code>UNION</code>、<code>INTERSECT</code> 和 <code>EXCEPT</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-操作步骤的显性化"><a href="#4-操作步骤的显性化" class="headerlink" title="4. 操作步骤的显性化"></a><strong>4. 操作步骤的显性化</strong></h3><p>SQL 自动优化查询，因此你可能习惯于直接得到结果，而不考虑中间步骤。而关系代数则需要你明确地一步步描述数据的操作流程。</p>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>尝试用分步骤的思维去写关系代数，明确每个操作的作用。例如：<ul>
+<li>原始表：<code>Students</code></li>
+<li>第一步（选择年龄大于 18 的记录）：<code>σ_Age&gt;18(Students)</code></li>
+<li>第二步（选择投影出姓名）：<code>π_Name(σ_Age&gt;18(Students))</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="5-理论和实践的差距"><a href="#5-理论和实践的差距" class="headerlink" title="5. 理论和实践的差距"></a><strong>5. 理论和实践的差距</strong></h3><p>SQL 是面向实际的编程语言，而关系代数是一种理论模型。你在 SQL 中可能不会直接用到关系代数的很多概念，比如交集或差集，因为这些功能可以用其他 SQL 语法实现。</p>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>理解关系代数的主要目的是提供一种<strong>逻辑基础</strong>，而不是实际编程。</li>
+<li>将关系代数看作 SQL 背后的理论支持，而不是编程工具。</li>
+</ul>
+<hr>
+<h3 id="6-缺乏练习"><a href="#6-缺乏练习" class="headerlink" title="6. 缺乏练习"></a><strong>6. 缺乏练习</strong></h3><p>SQL 的学习常伴随着实际数据库操作和反馈，而关系代数的学习可能缺乏这样的实践。</p>
+<p><strong>解决办法</strong>：</p>
+<ul>
+<li>使用 SQL 执行器（如 SQLite）验证你的关系代数操作。</li>
+<li>将关系代数表达式转化为 SQL，然后运行验证结果是否一致。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>关系代数抽象层次高于 SQL，它更关注操作的理论基础，而 SQL 更注重应用。在学习关系代数时，试着将其与 SQL 对应操作联系起来，多做一些简单的例子练习，并逐步熟悉数学符号和操作的逻辑。</p>
+<h2 id="Will-4"><a href="#Will-4" class="headerlink" title="Will:"></a>Will:</h2><p> 那请你将SQL和关系代数结合起来，给我以举例子的方式教我关系代数</p>
+<h2 id="ChatGPT-4"><a href="#ChatGPT-4" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 好的，我们以常见的 <strong>SQL 查询</strong> 和对应的 <strong>关系代数操作</strong> 为例，逐步讲解每种常用查询的关系代数表达形式。</p>
+<hr>
+<h3 id="1-选择操作（Selection）"><a href="#1-选择操作（Selection）" class="headerlink" title="1. 选择操作（Selection）"></a>1. <strong>选择操作（Selection）</strong></h3><p><strong>需求</strong>：从表 <code>Students</code> 中找出年龄大于 18 的学生。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">FROM</span> Students 
+<span class="hljs-keyword">WHERE</span> Age <span class="hljs-operator">&gt;</span> <span class="hljs-number">18</span>;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">σ_Age &gt; <span class="hljs-number">18</span> (Students)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>σ</code> 是选择操作（Selection），用于筛选符合条件的行。</li>
+<li><code>Age &gt; 18</code> 是选择条件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>WHERE</code> 子句相当于关系代数中的选择操作 <code>σ</code>。</li>
+<li><code>Students</code> 是输入关系，<code>σ_Age &gt; 18 (Students)</code> 是结果关系。</li>
+</ul>
+<hr>
+<h3 id="2-投影操作（Projection）"><a href="#2-投影操作（Projection）" class="headerlink" title="2. 投影操作（Projection）"></a>2. <strong>投影操作（Projection）</strong></h3><p><strong>需求</strong>：从表 <code>Students</code> 中只返回学生的 <code>Name</code> 列。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">π_Name (Students)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>π</code> 是投影操作（Projection），用于选择指定的列。</li>
+<li><code>Name</code> 是投影的列名。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>SELECT</code> 子句只返回指定列，等价于关系代数中的投影操作。</li>
+</ul>
+<hr>
+<h3 id="3-结合选择和投影"><a href="#3-结合选择和投影" class="headerlink" title="3. 结合选择和投影"></a>3. <strong>结合选择和投影</strong></h3><p><strong>需求</strong>：从表 <code>Students</code> 中找出年龄大于 18 的学生，并只返回他们的 <code>Name</code>。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students 
+<span class="hljs-keyword">WHERE</span> Age <span class="hljs-operator">&gt;</span> <span class="hljs-number">18</span>;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sqf">π<span class="hljs-variable">_Name</span> (σ<span class="hljs-variable">_Age</span> &gt; <span class="hljs-number">18</span> (Students))</code></pre></div>
+
+<ul>
+<li><strong>流程</strong>：<ol>
+<li>先用 <code>σ_Age &gt; 18 (Students)</code> 筛选出年龄大于 18 的学生。</li>
+<li>然后用 <code>π_Name</code> 投影出 <code>Name</code> 列。</li>
+</ol>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>关系代数将复杂查询分成多个步骤，类似于分解 SQL 查询的逻辑。</li>
+</ul>
+<hr>
+<h3 id="4-笛卡尔积（Cartesian-Product）"><a href="#4-笛卡尔积（Cartesian-Product）" class="headerlink" title="4. 笛卡尔积（Cartesian Product）"></a>4. <strong>笛卡尔积（Cartesian Product）</strong></h3><p><strong>需求</strong>：生成学生和课程的所有可能组合。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">FROM</span> Students, Courses;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">Students</span> × Courses</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>×</code> 是笛卡尔积操作（Cartesian Product），将两个表的每一行组合在一起。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>笛卡尔积操作生成所有可能的组合，SQL 中的 <code>FROM Students, Courses</code> 本质上也是笛卡尔积。</li>
+</ul>
+<hr>
+<h3 id="5-自然连接（Natural-Join）"><a href="#5-自然连接（Natural-Join）" class="headerlink" title="5. 自然连接（Natural Join）"></a>5. <strong>自然连接（Natural Join）</strong></h3><p><strong>需求</strong>：找出所有学生及其选修课程的详细信息（基于 <code>StudentID</code> 匹配）。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">FROM</span> Students 
+<span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> Enrollments;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">Students</span> ⋈ Enrollments</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>⋈</code> 是自然连接操作（Natural Join），基于相同列的值自动匹配两张表的行。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>NATURAL JOIN</code> 自动匹配同名列，等价于关系代数中的自然连接。</li>
+</ul>
+<hr>
+<h3 id="6-并集（Union）"><a href="#6-并集（Union）" class="headerlink" title="6. 并集（Union）"></a>6. <strong>并集（Union）</strong></h3><p><strong>需求</strong>：找出所有在美国或加拿大的学生。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_US 
+<span class="hljs-keyword">UNION</span> 
+<span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_CA;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">π_Name (Students_US) ∪ π_Name (Students_CA)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>∪</code> 是并集操作（Union），合并两张表的结果。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>UNION</code> 去重合并结果集，等价于关系代数中的并集。</li>
+</ul>
+<hr>
+<h3 id="7-差集（Set-Difference）"><a href="#7-差集（Set-Difference）" class="headerlink" title="7. 差集（Set Difference）"></a>7. <strong>差集（Set Difference）</strong></h3><p><strong>需求</strong>：找出只在美国注册的学生，而不是加拿大。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_US 
+<span class="hljs-keyword">EXCEPT</span> 
+<span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_CA;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">π_Name (Students_US) - π_Name (Students_CA)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>-</code> 是差集操作（Set Difference），表示从第一张表中减去第二张表的结果。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>EXCEPT</code> 操作对应于关系代数的差集。</li>
+</ul>
+<hr>
+<h3 id="8-交集（Intersection）"><a href="#8-交集（Intersection）" class="headerlink" title="8. 交集（Intersection）"></a>8. <strong>交集（Intersection）</strong></h3><p><strong>需求</strong>：找出同时在美国和加拿大注册的学生。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_US 
+<span class="hljs-keyword">INTERSECT</span> 
+<span class="hljs-keyword">SELECT</span> Name 
+<span class="hljs-keyword">FROM</span> Students_CA;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">π_Name (Students_US) ∩ π_Name (Students_CA)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>∩</code> 是交集操作（Intersection），返回两张表中共有的结果。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>INTERSECT</code> 对应于关系代数的交集。</li>
+</ul>
+<hr>
+<h3 id="9-分组和聚合（Grouping-and-Aggregation）"><a href="#9-分组和聚合（Grouping-and-Aggregation）" class="headerlink" title="9. 分组和聚合（Grouping and Aggregation）"></a>9. <strong>分组和聚合（Grouping and Aggregation）</strong></h3><p><strong>需求</strong>：统计每门课程的选修人数。</p>
+<p><strong>SQL</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> CourseID, <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> EnrollmentCount 
+<span class="hljs-keyword">FROM</span> Enrollments 
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> CourseID;</code></pre></div>
+
+<p><strong>关系代数</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs scss">γ_CourseID, <span class="hljs-built_in">COUNT</span>(*) → EnrollmentCount (Enrollments)</code></pre></div>
+
+<ul>
+<li><strong>符号解释</strong>：<ul>
+<li><code>γ</code> 是分组和聚合操作（Grouping and Aggregation），表示分组和聚合。</li>
+<li><code>CourseID</code> 是分组键。</li>
+<li><code>COUNT(*) → EnrollmentCount</code> 表示对每组进行计数。</li>
+</ul>
+</li>
+</ul>
+<p><strong>理解</strong>：</p>
+<ul>
+<li>SQL 的 <code>GROUP BY</code> 和聚合函数与关系代数的分组聚合操作等价。</li>
+</ul>
+<hr>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>通过上述示例，你可以看到 <strong>SQL 查询</strong> 和 <strong>关系代数操作</strong> 的一一对应关系：</p>
+<table>
+<thead>
+<tr>
+<th><strong>SQL 关键字</strong></th>
+<th><strong>关系代数操作</strong></th>
+<th><strong>解释</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SELECT</code></td>
+<td><code>π</code> 投影</td>
+<td>提取指定列</td>
+</tr>
+<tr>
+<td><code>WHERE</code></td>
+<td><code>σ</code> 选择</td>
+<td>筛选满足条件的行</td>
+</tr>
+<tr>
+<td><code>FROM</code></td>
+<td>表名</td>
+<td>输入关系</td>
+</tr>
+<tr>
+<td><code>CROSS JOIN</code></td>
+<td><code>×</code> 笛卡尔积</td>
+<td>两表全排列</td>
+</tr>
+<tr>
+<td><code>NATURAL JOIN</code></td>
+<td><code>⋈</code> 自然连接</td>
+<td>按同名列自动匹配</td>
+</tr>
+<tr>
+<td><code>UNION</code></td>
+<td><code>∪</code> 并集</td>
+<td>合并两表结果集</td>
+</tr>
+<tr>
+<td><code>EXCEPT</code></td>
+<td><code>-</code> 差集</td>
+<td>从一表中减去另一表的结果</td>
+</tr>
+<tr>
+<td><code>INTERSECT</code></td>
+<td><code>∩</code> 交集</td>
+<td>返回两表共有的结果</td>
+</tr>
+<tr>
+<td><code>GROUP BY</code></td>
+<td><code>γ</code> 分组和聚合</td>
+<td>按键分组并计算聚合函数</td>
+</tr>
+</tbody></table>
+<p>通过多练习，将 SQL 转化为关系代数表示，你会逐步掌握关系代数的思路和符号。</p>
+<h2 id="Will-5"><a href="#Will-5" class="headerlink" title="Will:"></a>Will:</h2><p> 关系代数的式子不应该是latex的吗</p>
+<h2 id="ChatGPT-5"><a href="#ChatGPT-5" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 确实，关系代数通常用数学表达形式来描述，而 LaTeX 是一个很好的工具来书写这些表达式。以下是刚才举的例子，用 LaTeX 表示关系代数的表达式：</p>
+<hr>
+<h3 id="1-选择操作（Selection）-1"><a href="#1-选择操作（Selection）-1" class="headerlink" title="1. 选择操作（Selection）"></a>1. <strong>选择操作（Selection）</strong></h3><p>从表 <code>Students</code> 中找出年龄大于 18 的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\sigma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Age&#125; &gt; 18&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="2-投影操作（Projection）-1"><a href="#2-投影操作（Projection）-1" class="headerlink" title="2. 投影操作（Projection）"></a>2. <strong>投影操作（Projection）</strong></h3><p>从表 <code>Students</code> 中只返回学生的 <code>Name</code> 列。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="3-结合选择和投影-1"><a href="#3-结合选择和投影-1" class="headerlink" title="3. 结合选择和投影"></a>3. <strong>结合选择和投影</strong></h3><p>从表 <code>Students</code> 中找出年龄大于 18 的学生，并只返回他们的 <code>Name</code>。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\sigma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Age&#125; &gt; 18&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;))</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="4-笛卡尔积（Cartesian-Product）-1"><a href="#4-笛卡尔积（Cartesian-Product）-1" class="headerlink" title="4. 笛卡尔积（Cartesian Product）"></a>4. <strong>笛卡尔积（Cartesian Product）</strong></h3><p>生成学生和课程的所有可能组合。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\text</span>&#123;Students&#125; <span class="hljs-keyword">\times</span> <span class="hljs-keyword">\text</span>&#123;Courses&#125;</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="5-自然连接（Natural-Join）-1"><a href="#5-自然连接（Natural-Join）-1" class="headerlink" title="5. 自然连接（Natural Join）"></a>5. <strong>自然连接（Natural Join）</strong></h3><p>找出所有学生及其选修课程的详细信息（基于 <code>StudentID</code> 匹配）。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\text</span>&#123;Students&#125; <span class="hljs-keyword">\bowtie</span> <span class="hljs-keyword">\text</span>&#123;Enrollments&#125;</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="6-并集（Union）-1"><a href="#6-并集（Union）-1" class="headerlink" title="6. 并集（Union）"></a>6. <strong>并集（Union）</strong></h3><p>找出所有在美国或加拿大的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) <span class="hljs-keyword">\cup</span> <span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="7-差集（Set-Difference）-1"><a href="#7-差集（Set-Difference）-1" class="headerlink" title="7. 差集（Set Difference）"></a>7. <strong>差集（Set Difference）</strong></h3><p>找出只在美国注册的学生，而不是加拿大。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) - <span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="8-交集（Intersection）-1"><a href="#8-交集（Intersection）-1" class="headerlink" title="8. 交集（Intersection）"></a>8. <strong>交集（Intersection）</strong></h3><p>找出同时在美国和加拿大注册的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) <span class="hljs-keyword">\cap</span> <span class="hljs-keyword">\pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="9-分组和聚合（Grouping-and-Aggregation）-1"><a href="#9-分组和聚合（Grouping-and-Aggregation）-1" class="headerlink" title="9. 分组和聚合（Grouping and Aggregation）"></a>9. <strong>分组和聚合（Grouping and Aggregation）</strong></h3><p>统计每门课程的选修人数。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\gamma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;CourseID&#125;, <span class="hljs-keyword">\text</span>&#123;COUNT(*)&#125; <span class="hljs-keyword">\rightarrow</span> <span class="hljs-keyword">\text</span>&#123;EnrollmentCount&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Enrollments&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="如何更好地练习？"><a href="#如何更好地练习？" class="headerlink" title="如何更好地练习？"></a>如何更好地练习？</h3><p>如果你经常使用 LaTeX，可以尝试将这些表达式嵌入到 Markdown 编辑器或 LaTeX 文档中进行学习。你也可以在纸上手写这些表达式来加深理解。LaTeX 的使用会让表达更加清晰，同时也有助于你适应数学化的逻辑表达方式。</p>
+<h2 id="Will-6"><a href="#Will-6" class="headerlink" title="Will:"></a>Will:</h2><p> pi不应该是大写的吗？而且希腊字母后面的选择条件好像都是处在右下角的吗</p>
+<h2 id="ChatGPT-6"><a href="#ChatGPT-6" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 你说得很对，关系代数中的符号确实有特定的规范：  </p>
+<ol>
+<li><strong>投影符号 (\Pi)</strong> 应该用大写的希腊字母。</li>
+<li><strong>选择条件</strong> 通常写在选择符号 (\sigma) 的右下角，表示附加的条件。</li>
+</ol>
+<p>以下是修正后的关系代数表达式，采用更符合规范的 LaTeX 表达形式：</p>
+<hr>
+<h3 id="1-选择操作（Selection）-2"><a href="#1-选择操作（Selection）-2" class="headerlink" title="1. 选择操作（Selection）"></a>1. <strong>选择操作（Selection）</strong></h3><p>从表 <code>Students</code> 中找出年龄大于 18 的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\sigma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Age&#125; &gt; 18&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="2-投影操作（Projection）-2"><a href="#2-投影操作（Projection）-2" class="headerlink" title="2. 投影操作（Projection）"></a>2. <strong>投影操作（Projection）</strong></h3><p>从表 <code>Students</code> 中只返回学生的 <code>Name</code> 列。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="3-结合选择和投影-2"><a href="#3-结合选择和投影-2" class="headerlink" title="3. 结合选择和投影"></a>3. <strong>结合选择和投影</strong></h3><p>从表 <code>Students</code> 中找出年龄大于 18 的学生，并只返回他们的 <code>Name</code>。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\sigma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Age&#125; &gt; 18&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;))</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="4-笛卡尔积（Cartesian-Product）-2"><a href="#4-笛卡尔积（Cartesian-Product）-2" class="headerlink" title="4. 笛卡尔积（Cartesian Product）"></a>4. <strong>笛卡尔积（Cartesian Product）</strong></h3><p>生成学生和课程的所有可能组合。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\text</span>&#123;Students&#125; <span class="hljs-keyword">\times</span> <span class="hljs-keyword">\text</span>&#123;Courses&#125;</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="5-自然连接（Natural-Join）-2"><a href="#5-自然连接（Natural-Join）-2" class="headerlink" title="5. 自然连接（Natural Join）"></a>5. <strong>自然连接（Natural Join）</strong></h3><p>找出所有学生及其选修课程的详细信息（基于 <code>StudentID</code> 匹配）。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\text</span>&#123;Students&#125; <span class="hljs-keyword">\bowtie</span> <span class="hljs-keyword">\text</span>&#123;Enrollments&#125;</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="6-并集（Union）-2"><a href="#6-并集（Union）-2" class="headerlink" title="6. 并集（Union）"></a>6. <strong>并集（Union）</strong></h3><p>找出所有在美国或加拿大的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) <span class="hljs-keyword">\cup</span> <span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="7-差集（Set-Difference）-2"><a href="#7-差集（Set-Difference）-2" class="headerlink" title="7. 差集（Set Difference）"></a>7. <strong>差集（Set Difference）</strong></h3><p>找出只在美国注册的学生，而不是加拿大。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) - <span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="8-交集（Intersection）-2"><a href="#8-交集（Intersection）-2" class="headerlink" title="8. 交集（Intersection）"></a>8. <strong>交集（Intersection）</strong></h3><p>找出同时在美国和加拿大注册的学生。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>US&#125;) <span class="hljs-keyword">\cap</span> <span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students<span class="hljs-keyword">\_</span>CA&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="9-分组和聚合（Grouping-and-Aggregation）-2"><a href="#9-分组和聚合（Grouping-and-Aggregation）-2" class="headerlink" title="9. 分组和聚合（Grouping and Aggregation）"></a>9. <strong>分组和聚合（Grouping and Aggregation）</strong></h3><p>统计每门课程的选修人数。</p>
+<ul>
+<li><strong>关系代数（LaTeX 表达式）</strong>：<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\gamma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;CourseID&#125;, <span class="hljs-keyword">\text</span>&#123;COUNT(*)&#125; <span class="hljs-keyword">\rightarrow</span> <span class="hljs-keyword">\text</span>&#123;EnrollmentCount&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Enrollments&#125;)</code></pre></div></li>
+</ul>
+<hr>
+<h3 id="调整说明"><a href="#调整说明" class="headerlink" title="调整说明"></a>调整说明</h3><ol>
+<li><strong>大写字母 (\Pi)</strong> 用于投影，表示投影操作的重要性。</li>
+<li><strong>右下角条件</strong> 是关系代数的标准表示形式，确保条件与操作符直接关联。</li>
+<li><strong>符号规范</strong> 如 (\cup, \cap, \bowtie) 等都按照集合运算和连接操作的标准表示。</li>
+</ol>
+<p>如果需要将这些表达式转化为更正式的文档，比如用于课程报告或学术论文，可以直接嵌入到 LaTeX 中，例如：</p>
+<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\documentclass</span>&#123;article&#125;
+<span class="hljs-keyword">\usepackage</span>&#123;amsmath&#125;
+
+<span class="hljs-keyword">\begin</span>&#123;document&#125;
+
+选择操作示例：  
+<span class="hljs-keyword">\[</span>
+<span class="hljs-keyword">\sigma</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Age&#125; &gt; 18&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)
+<span class="hljs-keyword">\]</span>
+
+投影操作示例：  
+<span class="hljs-keyword">\[</span>
+<span class="hljs-keyword">\Pi</span><span class="hljs-built_in">_</span>&#123;<span class="hljs-keyword">\text</span>&#123;Name&#125;&#125;(<span class="hljs-keyword">\text</span>&#123;Students&#125;)
+<span class="hljs-keyword">\]</span>
+
+<span class="hljs-keyword">\end</span>&#123;document&#125;</code></pre></div>
+
+<h2 id="Will-7"><a href="#Will-7" class="headerlink" title="Will:"></a>Will:</h2><p> SELECT Name,sno</p>
+<p>FROM Students </p>
+<p>WHERE Age &gt; 18;<br>这段SQL是不是就相当于：<br>$$\Pi _{\text{Name, sno}}<br>(\sigma  _{\text{Age} &gt; 18}      (\text{Students}))<br>$$</p>
+<h2 id="ChatGPT-7"><a href="#ChatGPT-7" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 完全正确！这两者表达的语义是一致的，以下是具体对应关系的说明：</p>
+<hr>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL:"></a><strong>SQL</strong>:</h3><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> Name, sno
+<span class="hljs-keyword">FROM</span> Students
+<span class="hljs-keyword">WHERE</span> Age <span class="hljs-operator">&gt;</span> <span class="hljs-number">18</span>;</code></pre></div>
+
+<hr>
+<h3 id="关系代数表达式"><a href="#关系代数表达式" class="headerlink" title="关系代数表达式:"></a><strong>关系代数表达式</strong>:</h3><p>$$<br>\Pi_{\text{Name, sno}}<br>\big(\sigma_{\text{Age} &gt; 18}(\text{Students})\big)<br>$$</p>
+<hr>
+<h3 id="逐步解析对比"><a href="#逐步解析对比" class="headerlink" title="逐步解析对比:"></a><strong>逐步解析对比</strong>:</h3><ol>
+<li><p><strong>SQL</strong> 中的 <code>WHERE Age &gt; 18</code>：</p>
+<ul>
+<li>在关系代数中对应 <strong>选择操作</strong> ( \sigma_{\text{Age} &gt; 18} )，即筛选出满足条件的元组。</li>
+</ul>
+</li>
+<li><p><strong>SQL</strong> 中的 <code>SELECT Name, sno</code>：</p>
+<ul>
+<li>在关系代数中对应 <strong>投影操作</strong> ( \Pi_{\text{Name, sno}} )，即从结果中只保留指定的列。</li>
+</ul>
+</li>
+<li><p><strong>FROM Students</strong>：</p>
+<ul>
+<li>在关系代数中操作的基本关系是 ( \text{Students} )，表示操作的输入。</li>
+</ul>
+</li>
+<li><p><strong>组合</strong>：</p>
+<ul>
+<li>先执行 <strong>选择操作</strong> 筛选出 <code>Age &gt; 18</code> 的学生元组，然后通过 <strong>投影操作</strong> 只保留 <code>Name</code> 和 <code>sno</code> 列。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>两者等价，SQL 语言是一种声明式查询语言，而关系代数是一种更加抽象的、理论化的数学模型。这种对比可以帮助你更直观地理解关系代数表达式和 SQL 查询的关系。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../../categories/me/" class="category-chain-item">me</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/" class="category-chain-item">ChatGPT</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/2024/" class="category-chain-item">2024</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/CS-basics/" class="print-no-link">#CS basics</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../2024-12-06_Civilization_vs_Barbarism/" title="Civilization vs Barbarism">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Civilization vs Barbarism</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../2024-11-19_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E4%B8%8E%E6%A3%B1%E9%95%9C%E8%AE%A1%E5%88%92/" title="中共宣传与棱镜计划">
+                        <span class="hidden-mobile">中共宣传与棱镜计划</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="me"
+        id="heading-ab86a1e1ef70dff97959067b723c5c24" role="tab" data-toggle="collapse" href="#collapse-ab86a1e1ef70dff97959067b723c5c24"
+        aria-expanded="true"
+      >
+        me
+        <span class="list-group-count">(140)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ab86a1e1ef70dff97959067b723c5c24"
+           role="tabpanel" aria-labelledby="heading-ab86a1e1ef70dff97959067b723c5c24">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ChatGPT"
+        id="heading-62239e6c0f995ae1fdc00d18b7905eac" role="tab" data-toggle="collapse" href="#collapse-62239e6c0f995ae1fdc00d18b7905eac"
+        aria-expanded="true"
+      >
+        ChatGPT
+        <span class="list-group-count">(130)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-62239e6c0f995ae1fdc00d18b7905eac"
+           role="tabpanel" aria-labelledby="heading-62239e6c0f995ae1fdc00d18b7905eac">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2023"
+        id="heading-5531a5834816222280f20d1ef9e95f69" role="tab" data-toggle="collapse" href="#collapse-5531a5834816222280f20d1ef9e95f69"
+        aria-expanded="false"
+      >
+        2023
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5531a5834816222280f20d1ef9e95f69"
+           role="tabpanel" aria-labelledby="heading-5531a5834816222280f20d1ef9e95f69">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2023/2023-12-20_%E8%BF%91%E4%B9%89%E8%A1%A8%E8%BE%BE/" title="近义表达"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">近义表达</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-03_Conflicted_about_Love/" title="Conflicted about Love"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Conflicted about Love</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-01_Tutor/" title="Eng Tutor"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Eng Tutor</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2024"
+        id="heading-07811dc6c422334ce36a09ff5cd6fe71" role="tab" data-toggle="collapse" href="#collapse-07811dc6c422334ce36a09ff5cd6fe71"
+        aria-expanded="true"
+      >
+        2024
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-07811dc6c422334ce36a09ff5cd6fe71"
+           role="tabpanel" aria-labelledby="heading-07811dc6c422334ce36a09ff5cd6fe71">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../2024-12-31_%E5%9B%BD%E5%AE%B6%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86/" title="国家评估标准"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">国家评估标准</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-31_%E4%B8%80%E5%88%87%E7%9A%86%E6%95%B0/" title="一切皆数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一切皆数</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-30_%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8E%A7%E5%88%B6/" title="互联网与信息控制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">互联网与信息控制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-28_Bakit_fluent_ang_Pilipino_sa_Ingles/" title="Bakit fluent ang Pilipino sa Ingles"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bakit fluent ang Pilipino sa Ingles</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-26_%E9%92%B1%E5%AD%A6%E6%A3%AE%E5%9B%9E%E5%9B%BD%E5%8E%9F%E5%9B%A0/" title="钱学森回国原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">钱学森回国原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-24_%E8%A2%81%E4%B8%96%E5%87%AF%E7%A7%B0%E5%B8%9D%E5%8E%9F%E5%9B%A0/" title="袁世凯称帝原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">袁世凯称帝原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-22_%E9%87%8D%E7%94%B7%E8%BD%BB%E5%A5%B3%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="重男轻女的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">重男轻女的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-18_%E7%BA%A6%E7%BF%B0%E9%80%8A%E8%AE%BF%E4%B9%8C%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/" title="约翰逊访乌原因分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">约翰逊访乌原因分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_%E8%B5%84%E4%BA%A7%E8%BD%AC%E7%A7%BB%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/" title="资产转移与风险管理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">资产转移与风险管理</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_Qing_Dynasty_Patriotism_Explained/" title="Qing Dynasty Patriotism Explained"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Qing Dynasty Patriotism Explained</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_China_Real_Estate_Ponzi/" title="China Real Estate Ponzi"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Real Estate Ponzi</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-11_TAFE%E7%95%99%E5%AD%A6%E8%A7%84%E5%88%92%E5%BB%BA%E8%AE%AE/" title="TAFE留学规划建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TAFE留学规划建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-06_Civilization_vs_Barbarism/" title="Civilization vs Barbarism"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Civilization vs Barbarism</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="类与对象静态操作"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">类与对象静态操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-19_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E4%B8%8E%E6%A3%B1%E9%95%9C%E8%AE%A1%E5%88%92/" title="中共宣传与棱镜计划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传与棱镜计划</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-17_%E5%B9%B4%E8%BD%BB%E4%BA%BA%E8%A7%89%E9%86%92%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="年轻人觉醒的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">年轻人觉醒的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-11_%E8%83%A1%E4%BD%9B%E7%A0%94%E7%A9%B6%E6%89%80%E6%A6%82%E8%BF%B0/" title="胡佛研究所概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">胡佛研究所概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-09_%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" title="毕业论文"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">毕业论文</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-05_Java_EE_%E8%A7%A3%E9%87%8A/" title="Java EE 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-10-18_depression/" title="depression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">depression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-27_US_Internet_Freedom_vs_China/" title="US Internet Freedom vs China"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">US Internet Freedom vs China</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_Whats_the_Catch_Meaning/" title="Whats the Catch Meaning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Whats the Catch Meaning</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_%E4%B8%9C%E6%AC%A7%E8%89%B2%E6%83%85%E8%A1%8C%E4%B8%9A%E8%A7%A3%E6%9E%90/" title="东欧色情行业解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">东欧色情行业解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_Shameless_US_Viewership_Stats/" title="Shameless US Viewership Stats"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shameless US Viewership Stats</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-06-18_Fake_News_Detection_Project/" title="Fake News Detection Project"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fake News Detection Project</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-01-24_Wholesaler_and_Related_Terms/" title="Wholesaler and Related Terms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Wholesaler and Related Terms</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2025"
+        id="heading-312351bff07989769097660a56395065" role="tab" data-toggle="collapse" href="#collapse-312351bff07989769097660a56395065"
+        aria-expanded="false"
+      >
+        2025
+        <span class="list-group-count">(101)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-312351bff07989769097660a56395065"
+           role="tabpanel" aria-labelledby="heading-312351bff07989769097660a56395065">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2025/2025-06-27_git_commit_push/" title="git_commit_push"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git_commit_push</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-24_Telegram%20%E6%A0%B8%E5%BF%83%E5%9B%A2%E9%98%9F%E6%95%88%E7%8E%87/" title="Telegram 核心团队效率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Telegram 核心团队效率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-23_%E5%8D%B0%E9%92%B1%E4%B8%8E%E8%B4%A7%E5%B8%81%E4%BB%B7%E5%80%BC/" title="印钱与货币价值"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">印钱与货币价值</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-22_%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E9%87%8D%E5%91%BD%E5%90%8D/" title="批量文件重命名"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">批量文件重命名</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_Typst%20%E4%BC%98%E5%8A%BF%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="Typst 优势与改进"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typst 优势与改进</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="关键词提取方法总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">关键词提取方法总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_module_tempfile/" title="module tempfile"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module tempfile</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E4%B8%8E%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6/" title="文件处理与临时文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">文件处理与临时文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-26_windows_users/" title="windows user accounts"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">windows user accounts</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-20_module_os/" title="module os"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module os</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-19_GitHub%20Pages%20%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF/" title="GitHub Pages 部署错误"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">GitHub Pages 部署错误</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-17_%E5%86%85%E5%AE%B9%E5%AE%A1%E6%9F%A5%E8%A7%84%E9%81%BF%E6%96%B9%E6%A1%88/" title="内容审查规避方案"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">内容审查规避方案</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-13_%E5%BE%AE%E4%BF%A1PDF%E5%AE%A1%E6%9F%A5%E6%9C%BA%E5%88%B6/" title="微信PDF审查机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信PDF审查机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_pleasure%E7%9A%84%E5%BC%82%E5%90%8C/" title="pleasure的异同"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">pleasure的异同</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_quickly%20detached/" title="quickly detached"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">quickly detached</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fe提问关系确认心理解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-08_Hexo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub%20Pages/" title="Hexo部署到GitHub Pages"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo部署到GitHub Pages</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-06_%E6%83%85%E6%84%9F%E6%8C%BD%E5%9B%9E%E5%BB%BA%E8%AE%AE/" title="情感挽回建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">情感挽回建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">日本摩托车旅游推荐</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">西藏1959年起义失败分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-03_%E5%A4%84%E7%94%B7%E5%A4%84%E5%A5%B3%E6%83%85%E7%BB%93%E5%88%86%E6%9E%90/" title="处男处女情结分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">处男处女情结分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-01_%E4%B8%AD%E8%A5%BF%E4%B8%A4%E6%80%A7%E6%96%87%E5%8C%96%E5%B7%AE%E5%BC%82/" title="中西两性文化差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中西两性文化差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-01_%E4%BF%A1%E6%81%AF%E7%9B%91%E6%8E%A7%E4%B8%8E%E9%9A%90%E7%A7%81/" title="信息监控与隐私"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">信息监控与隐私</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-31_%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83/" title="配置Anaconda环境"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">配置Anaconda环境</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-29_Obsidian%20%E5%85%8D%E8%B4%B9%E4%B8%8E%E5%A2%9E%E5%80%BC%E6%9C%8D%E5%8A%A1/" title="Obsidian 免费与增值服务"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Obsidian 免费与增值服务</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-29_Typora%20preferences%20location/" title="Typora preferences location"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typora preferences location</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-27_AI%E8%B0%83%E8%AF%95Java%20Web%E9%A1%B9%E7%9B%AE/" title="AI调试Java Web项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AI调试Java Web项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-26_%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%94%99%E8%AF%AF%E4%BF%AE%E5%A4%8D/" title="用户配置文件错误修复"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">用户配置文件错误修复</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-23_%E4%BD%95%E8%B0%93%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE/" title="何谓均方误差"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">何谓均方误差</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-18_%E4%B8%AD%E5%9B%BD%E9%9A%90%E7%A7%81%E6%B3%84%E9%9C%B2%E7%8E%B0%E7%8A%B6/" title="中国隐私泄露现状"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国隐私泄露现状</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-16_TP%20TN%20FP%20FN%20%E8%A7%A3%E9%87%8A/" title="TP TN FP FN 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TP TN FP FN 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-13_RP%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%9E%90/" title="RP主义解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP主义解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-13_RP%E7%B2%BE%E9%AB%93%E5%88%86%E6%9E%90/" title="RP精髓分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP精髓分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-12_%E7%81%B5%E9%AD%82%E4%BC%B4%E4%BE%A3%E7%A5%9E%E8%AF%9D%E8%A7%A3%E6%9E%90/" title="灵魂伴侣神话解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">灵魂伴侣神话解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-10_Output%20initialization%20summary/" title="Output initialization summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Output initialization summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-10_zhai%E7%9B%B4%E6%92%AD%E6%A6%82%E6%8B%AC/" title="zhai直播概括"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">zhai直播概括</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-09_%E6%96%B0%E6%95%99%E4%BF%A1%E4%BB%B0%E5%9B%BD%E5%AE%B6%E6%A6%82%E8%A7%88/" title="新教信仰国家概览"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">新教信仰国家概览</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-08_Java%20EE%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Java EE 快速入门"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 快速入门</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_Guinea%20pig%20vs%20%E5%87%BA%E5%A4%B4%E9%B8%9F/" title="Guinea pig vs 出头鸟"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Guinea pig vs 出头鸟</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_%E4%B8%AD%E5%9B%BD%E6%B0%91%E8%88%AA%E6%99%AE%E5%8F%8A%E5%8E%86%E7%A8%8B/" title="中国民航普及历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国民航普及历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_baby%E7%9C%8B%E8%84%B8%E5%AE%9E%E9%AA%8C/" title="baby看脸实验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">baby看脸实验</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_%E5%B8%A6%E7%89%88%E6%9C%AC%E5%8F%B7%E7%9A%84%E5%A4%87%E4%BB%BD%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/" title="带版本号的备份机制解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">带版本号的备份机制解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Tiergarten 天际线与建筑风格</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_Gmail%E6%B3%A8%E5%86%8CMeeff%E8%A2%AB%E5%B0%81%E7%A6%81/" title="Gmail注册Meeff被封禁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Gmail注册Meeff被封禁</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_%E4%BA%BA%E7%B1%BB%E5%8F%91%E6%83%85%E6%9C%9F%E8%BF%9B%E5%8C%96%E5%88%86%E6%9E%90/" title="人类发情期进化分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类发情期进化分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bore词义解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Selfish Gene Markdown Options</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_%E6%B1%9F%E8%A5%BF%E5%BD%A9%E7%A4%BC%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="江西彩礼现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">江西彩礼现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_%E6%80%A7%E5%88%AB%E5%A4%B1%E8%A1%A1%E4%B8%8E%E4%B8%A4%E6%80%A7%E5%85%B3%E7%B3%BB/" title="性别失衡与两性关系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">性别失衡与两性关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-01_%E5%90%84%E5%8D%8E%E8%AF%AD%E5%9C%B0%E5%8C%BAon%E5%8A%B3%E5%8A%A8%E8%8A%82_%E5%8A%B3%E5%B7%A5%E8%8A%82/" title="各华语地区on劳动节 劳工节"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">各华语地区on劳动节 劳工节</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-30_Cultural%20Cigarette%20Asking%20Norms/" title="Cultural Cigarette Asking Norms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Cultural Cigarette Asking Norms</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-30_%E8%B7%A8%E6%96%87%E5%8C%96%E7%A4%BE%E4%BA%A4%E9%80%82%E5%BA%94/" title="跨文化社交适应"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">跨文化社交适应</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-22_vague/" title="vague"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vague</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-21_John_Ruwitch/" title="John Ruwitch"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">John Ruwitch</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-12_Python%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E4%BC%98%E5%8C%96/" title="Python 原型与优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python 原型与优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-31_%E8%84%9A%E6%9C%AC%20%E7%A8%8B%E5%BA%8F%20%E8%BD%AF%E4%BB%B6%20%E5%8C%BA%E5%88%AB/" title="脚本 程序 软件 区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">脚本 程序 软件 区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-29_Reconstruction%20of%20Chinese%20Sites/" title="Reconstruction of Chinese Sites"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Reconstruction of Chinese Sites</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-27_Calisthenics%E4%B8%8E%E5%BE%92%E6%89%8B%E5%81%A5%E8%BA%AB/" title="Calisthenics与徒手健身"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Calisthenics与徒手健身</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-27_Shanghai%20Hangout%20Suggestions/" title="Shanghai Hangout Suggestions"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shanghai Hangout Suggestions</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-24_%E5%91%A8%E5%85%AC%E8%A7%A3%E6%A2%A6%E8%A7%A3%E6%9E%90/" title="周公解梦解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">周公解梦解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-24_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%AA%8C%E6%94%B6%E6%A8%A1%E5%9E%8B/" title="自动化数据验收模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">自动化数据验收模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-20_Ubuntu%20vs%20Windows%20for%20Dev/" title="Ubuntu vs Windows for Dev"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Ubuntu vs Windows for Dev</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-16_AW/" title="AW"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AW</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-08_%E6%A2%A6%E5%A2%83%E8%A7%A3%E8%AF%BB%E4%B8%8E%E6%84%9F%E6%83%85%E5%88%86%E6%9E%90/" title="梦境解读与感情分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">梦境解读与感情分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-07_%E4%B8%AD%E5%85%B1%E5%9B%BD%E7%A4%BE%E4%BA%A4%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="中共国社交现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国社交现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-05_all_mind_games/" title="all mind games"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">all mind games</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-05_%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub/" title="上传项目到GitHub"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">上传项目到GitHub</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-27_De-brainwashing_Journey/" title="De-brainwashing Journey"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">De-brainwashing Journey</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-27_Perfectionism_vs_Action/" title="Perfectionism vs Action"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Perfectionism vs Action</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-26_Dagupan_Baguio_Valenzuela_Overview/" title="Dagupan Baguio Valenzuela Overview"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dagupan Baguio Valenzuela Overview</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-26_%E6%99%BA%E8%83%BD%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/" title="智能垃圾分类项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">智能垃圾分类项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-25_%E7%88%B6%E6%AF%8D%E6%8E%A7%E5%88%B6%E6%AC%B2%E8%A7%A3%E6%9E%90/" title="父母控制欲解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">父母控制欲解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-22_SSN%E5%B7%A5%E4%BD%9C%E8%B5%84%E6%A0%BC%E8%A7%A3%E6%9E%90/" title="SSN工作资格解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SSN工作资格解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-22_Trump%E4%B8%8E%E5%BB%BA%E5%9B%BD%E5%85%88%E8%B4%A4/" title="Trump与建国先贤"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Trump与建国先贤</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-21_DeepSeek%E4%B8%8E%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" title="DeepSeek与知识蒸馏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DeepSeek与知识蒸馏</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-21_Improving_Poetic_Expression/" title="Improving Poetic Expression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Improving Poetic Expression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-20_%E6%96%A4%E6%96%A4%E8%AE%A1%E8%BE%83%E4%B8%8E%E7%9D%9A%E7%9C%A6%E5%BF%85%E6%8A%A5%E5%8C%BA%E5%88%AB/" title="斤斤计较与睚眦必报区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">斤斤计较与睚眦必报区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-19_%E5%AE%9E%E4%B9%A0%E7%AE%80%E5%8E%86%E4%B8%8E%E5%AF%BC%E5%B8%88%E6%B2%9F%E9%80%9A/" title="实习简历与导师沟通"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">实习简历与导师沟通</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-10_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%9B%A0/" title="中共国数据泄露原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国数据泄露原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-09_Albert%E6%84%9F%E8%B0%A2%E4%B8%8E%E5%90%AF%E5%8F%91/" title="Albert感谢与启发"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Albert感谢与启发</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-07_%E7%A4%BE%E4%BA%A4%E8%A7%82%E5%BF%B5%E4%B8%8E%E6%80%9D%E7%BB%B4%E5%B7%AE%E5%BC%82/" title="社交观念与思维差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">社交观念与思维差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-05_%E5%B0%8F%E7%B2%89%E7%BA%A2%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E5%BE%81/" title="小粉红定义与特征"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">小粉红定义与特征</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%9C%AC%E7%A7%91%E7%8E%87/" title="中共国本科率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国本科率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_HTTP_vs_HTTPS%E5%8C%BA%E5%88%AB/" title="HTTP vs HTTPS区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTTP vs HTTPS区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E6%B4%97%E8%84%91%E6%9C%BA%E5%88%B6/" title="中共宣传洗脑机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传洗脑机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E5%8F%B0%E6%B9%BE%E6%B0%91%E4%B8%BB%E5%8C%96%E5%8E%86%E7%A8%8B/" title="台湾民主化历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">台湾民主化历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E9%AB%98%E5%B1%82%E7%BA%A2%E4%BA%8C%E4%BB%A3/" title="中共高层红二代"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共高层红二代</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-26_%E7%9C%BC%E8%A7%92%E8%86%9C%E7%A7%BB%E6%A4%8D%E5%8C%B9%E9%85%8D/" title="眼角膜移植匹配"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">眼角膜移植匹配</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-25_%E4%B8%87%E6%9C%89%E5%BC%95%E5%8A%9B%E4%B8%8E%E8%BD%A8%E9%81%93%E7%A8%B3%E5%AE%9A/" title="万有引力与轨道稳定"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">万有引力与轨道稳定</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-22_%E6%88%B7%E7%B1%8D%E5%88%B6%E5%BA%A6%E7%9A%84%E5%85%A8%E7%90%83%E5%B7%AE%E5%BC%82/" title="户籍制度的全球差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">户籍制度的全球差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-22_%E7%94%9F%E9%BA%A6%E4%BA%8B%E4%BB%B6%E6%A6%82%E8%BF%B0/" title="生麦事件概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">生麦事件概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-21_%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" title="网页设计技术分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网页设计技术分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-21_Unconditional_vs_Conditional_Surrender/" title="Unconditional vs Conditional Surrender"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unconditional vs Conditional Surrender</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-20_%E4%BA%BA%E7%B1%BB%E6%98%8E%E6%96%87%E5%8E%86%E5%8F%B2%E5%8F%AA%E6%9C%89%E5%87%A0%E5%8D%83%E5%B9%B4/" title="人类明文历史只有几千年"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类明文历史只有几千年</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-13_Buddhism_and_Meat_Consumption/" title="Buddhism and Meat Consumption"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Buddhism and Meat Consumption</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-10_%E5%9B%9B%E4%B9%A6%E4%BA%94%E7%BB%8F%E6%A6%82%E8%BF%B0/" title="四书五经概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">四书五经概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-09_Flexbox%E5%B8%83%E5%B1%80%E8%A7%A3%E6%9E%90/" title="Flexbox布局解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Flexbox布局解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-08_Git_Clone_%E5%9C%A8_VS_Code/" title="Git Clone 在 VS Code"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git Clone 在 VS Code</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-04_%E4%B8%AD%E5%85%B1%E4%B8%8E%E6%97%A5%E6%9C%AC%E6%AF%94%E8%BE%83/" title="中共与日本比较"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共与日本比较</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-04_%E4%BC%8A%E6%9C%97%E4%BA%92%E8%81%94%E7%BD%91%E9%99%90%E5%88%B6%E6%94%BE%E5%AE%BD/" title="伊朗互联网限制放宽"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">伊朗互联网限制放宽</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-02_China_Debt_Future_Risks/" title="China Debt Future Risks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Debt Future Risks</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="notes"
+        id="heading-4358b5009c67d0e31d7fbf1663fcd3bf" role="tab" data-toggle="collapse" href="#collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+        aria-expanded="false"
+      >
+        notes
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+           role="tabpanel" aria-labelledby="heading-4358b5009c67d0e31d7fbf1663fcd3bf">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/Go%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="map_chart_md"
+        id="heading-8ec8c1394f4d384580e39ae03ad74621" role="tab" data-toggle="collapse" href="#collapse-8ec8c1394f4d384580e39ae03ad74621"
+        aria-expanded="false"
+      >
+        map_chart_md
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8ec8c1394f4d384580e39ae03ad74621"
+           role="tabpanel" aria-labelledby="heading-8ec8c1394f4d384580e39ae03ad74621">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="mds"
+        id="heading-60a114c91c41983174b484e188856fb3" role="tab" data-toggle="collapse" href="#collapse-60a114c91c41983174b484e188856fb3"
+        aria-expanded="false"
+      >
+        mds
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-60a114c91c41983174b484e188856fb3"
+           role="tabpanel" aria-labelledby="heading-60a114c91c41983174b484e188856fb3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/fact_checks/" title="fact_checks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">fact_checks</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/2025-02-24_%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E7%AB%A0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python_notes"
+        id="heading-1e1425d43eeb6f8af603bf147030adca" role="tab" data-toggle="collapse" href="#collapse-1e1425d43eeb6f8af603bf147030adca"
+        aria-expanded="false"
+      >
+        python_notes
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1e1425d43eeb6f8af603bf147030adca"
+           role="tabpanel" aria-labelledby="heading-1e1425d43eeb6f8af603bf147030adca">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/mutable/" title="mutable"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">mutable</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/main_name/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md图片格式转换"
+        id="heading-fbb54e68546e1bb12b12d9089f41da7b" role="tab" data-toggle="collapse" href="#collapse-fbb54e68546e1bb12b12d9089f41da7b"
+        aria-expanded="false"
+      >
+        md图片格式转换
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fbb54e68546e1bb12b12d9089f41da7b"
+           role="tabpanel" aria-labelledby="heading-fbb54e68546e1bb12b12d9089f41da7b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/md%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82-%E6%AD%A3%E5%88%99re/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="os_related"
+        id="heading-97d6ee2c84cbeda2e7720e9133f5ba2c" role="tab" data-toggle="collapse" href="#collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+        aria-expanded="false"
+      >
+        os_related
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+           role="tabpanel" aria-labelledby="heading-97d6ee2c84cbeda2e7720e9133f5ba2c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/thread/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="plt画图学习笔记"
+        id="heading-d061f1cbc7b0720de318fa4b3c3426a1" role="tab" data-toggle="collapse" href="#collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+        aria-expanded="false"
+      >
+        plt画图学习笔记
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+           role="tabpanel" aria-labelledby="heading-d061f1cbc7b0720de318fa4b3c3426a1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="red_pill"
+        id="heading-0b8e50165cdf992b0419fad17c2f7ec0" role="tab" data-toggle="collapse" href="#collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+        aria-expanded="false"
+      >
+        red_pill
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+           role="tabpanel" aria-labelledby="heading-0b8e50165cdf992b0419fad17c2f7ec0">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="tomassi"
+        id="heading-3f6b483246b3b4f3430f7d1e154d50c1" role="tab" data-toggle="collapse" href="#collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+        aria-expanded="false"
+      >
+        tomassi
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+           role="tabpanel" aria-labelledby="heading-3f6b483246b3b4f3430f7d1e154d50c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../red_pill/tomassi/no_full_closure/" title="Women never want full disclosures"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Women never want full disclosures</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

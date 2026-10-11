@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/will.jpg">
+  <link rel="icon" href="../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Markdown + R来源：Markdown写作浅谈 科技写作与Markdown+R科技写作会碰到什么难题？如果你是纯文科生，写的都是豆瓣小酸文或者诗歌之类的，那么，看完上面这一部分就可以打住了。如果你还有写科技论文的需要，则继续往下看。 科技写作与文艺写作的不同主要有：  公式与图表：相信各位写过科学论文的，都会为数学公式与各类图表的输出头疼不已； 格式转换：pdf是通用的，但是有时偏偏需要L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="no_title">
+<meta property="og:url" content="https://williamfunh.github.io/learn_md/md/5/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Markdown + R来源：Markdown写作浅谈 科技写作与Markdown+R科技写作会碰到什么难题？如果你是纯文科生，写的都是豆瓣小酸文或者诗歌之类的，那么，看完上面这一部分就可以打住了。如果你还有写科技论文的需要，则继续往下看。 科技写作与文艺写作的不同主要有：  公式与图表：相信各位写过科学论文的，都会为数学公式与各类图表的输出头疼不已； 格式转换：pdf是通用的，但是有时偏偏需要L">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/p220903450-4.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/p220903450-5.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/p220903450-7.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/rmarkdown.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/md.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/5-1.png">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/5/img/p220903450-9.jpg">
+<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-10T03:05:12.708Z">
+<meta property="article:author" content="William Fang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://williamfunh.github.io/learn_md/md/5/img/p220903450-4.jpg">
+  
+  
+  
+  <title>no_title | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="no_title"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="1970-01-01 03:00" pubdate>
+          1970年1月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">no_title</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Markdown-R"><a href="#Markdown-R" class="headerlink" title="Markdown + R"></a>Markdown + R</h1><p>来源：<a target="_blank" rel="noopener" href="http://www.yangzhiping.com/tech/r-markdown-knitr.html">Markdown写作浅谈</a></p>
+<h2 id="科技写作与Markdown-R"><a href="#科技写作与Markdown-R" class="headerlink" title="科技写作与Markdown+R"></a>科技写作与Markdown+R</h2><h3 id="科技写作会碰到什么难题？"><a href="#科技写作会碰到什么难题？" class="headerlink" title="科技写作会碰到什么难题？"></a>科技写作会碰到什么难题？</h3><p>如果你是纯文科生，写的都是豆瓣小酸文或者诗歌之类的，那么，看完上面这一部分就可以打住了。如果你还有写科技论文的需要，则继续往下看。</p>
+<p>科技写作与文艺写作的不同主要有：</p>
+<ul>
+<li>公式与图表：相信各位写过科学论文的，都会为数学公式与各类图表的输出头疼不已；</li>
+<li>格式转换：pdf是通用的，但是有时偏偏需要LaTeX原始格式或者Word原始格式；</li>
+<li>参考文献：投稿给不同刊物，往往参考文献要根据对方的格式来调整。</li>
+</ul>
+<p>解决这些难题，<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/LaTeX">LaTeX</a>是国际科学界，尤其是偏数理类的学科的主流方案之一。当然，因为中国盗版office的流行，导致国内科技论文Word更盛行，则是另一码事。Word因为近些年在参考文献协作软件、数学公式方面的发力，也逐步成为科技界认同的论文投递标准之一。</p>
+<p>提到LaTeX的人们，常常有两种口气。一种是当做大神来敬仰的，当语言、软件变为传奇，路人皆知它的诞生历史时，于是，众多如你我这类文科生，只有抬头仰望的份了。另一类，则是不屑的口气，LaTeX那么好学，你怎么都学不会！国际期刊都是用这个写的，你别混了。。。</p>
+<p>于是，我等文科生只好在被鄙视的眼光之下，快快走过LaTeX。。。但是，LaTeX真的符合人们写作习惯吗？请记住当时的历史。那时的计算机，所见即所得，并不像今天这么流行。那时的计算机，处理能力也不像今天这么强大。更别提什么脚本语言了。翻出上一份LaTeX文档所用的APA模版，大家就知道它有多么坑爹了。。。</p>
+<p><img src="img/p220903450-4.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>使用Lyx，好看多了。问题是，它有坑吗？你跳过吗？</p>
+<h2 id="Markdown-R如何解决的？"><a href="#Markdown-R如何解决的？" class="headerlink" title="Markdown+R如何解决的？"></a>Markdown+R如何解决的？</h2><p>每位试图解决LaTeX的不便，又试图保留它的优点的人们，都走上了一条不归路。</p>
+<p>直到有一天，极其熟悉LaTeX，也熟悉Markdown的yihui同学，意识到了，LaTeX它可以作为最终格式生成。但是，我们中间的写作过程，完全可以用Markdown这么简单明了的语法来写，我们真正需要的，就是一堆数学公式、图表与参考文献而已。前2者，恰恰是R的强项。后者，则留给开源社区，下一步解决。（可参考<a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/README.html#reference-links">线索1</a>、<a target="_blank" rel="noopener" href="https://github.com/inukshuk/citeproc-ruby">线索2</a>、<a target="_blank" rel="noopener" href="https://github.com/inukshuk/jekyll-scholar">线索 3</a> )</p>
+<p>于是，在他的新作R包<a target="_blank" rel="noopener" href="http://yihui.name/knitr/">knitr</a>中，果断提供了Markdown支持。并说服R社区主流编辑器厂家，开源软件<a target="_blank" rel="noopener" href="http://www.rstudio.com/">RStudio</a> 提供 Markdown支持，从而使得Rmd这种新格式开始流行。我们有幸看到这个重要格式的诞生，国人的贡献如此重要。</p>
+<h2 id="Rmd-简介"><a href="#Rmd-简介" class="headerlink" title="Rmd 简介"></a>Rmd 简介</h2><p>Rmd 格式更详细的描述，读 yihui 的文档：<a target="_blank" rel="noopener" href="https://github.com/yihui/r-ninja/blob/master/11-auto-report.md">自动化报告</a></p>
+<p>在这里，让我简单说明，如何最快上手Rmd格式。</p>
+<h3 id="安装并配置RStudio"><a href="#安装并配置RStudio" class="headerlink" title="安装并配置RStudio"></a>安装并配置RStudio</h3><p>下载 <a target="_blank" rel="noopener" href="http://rstudio.org/">RStudio</a> 之后，打开配置选项，如下图所示：</p>
+<p><img src="img/p220903450-5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>然后，进行如下配置：</p>
+<p><img src="img/p220903450-7.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="新建Rmd文档"><a href="#新建Rmd文档" class="headerlink" title="新建Rmd文档"></a>新建Rmd文档</h3><p>新建一个Rmd文档，如下图所示：</p>
+<p><img src="img/rmarkdown.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>然后，默认会出来一些内容。如果你对Markdown语法有不熟悉的地方，点击MD按钮。写完之后，直接点击： <strong>Knit HTML</strong> 按钮即可发布。MD按钮与Knit Html按钮的位置如下图所示：</p>
+<p><img src="img/md.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>就会预览成功。你也可以点击保存，生成相应的图片、Markdown文档。</p>
+<p>是的，你要的一切图片都有了！这就是 yihui 所推崇的 文学性编程、<a target="_blank" rel="noopener" href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/UseR-2012/InvitedXieAllaire.pdf">可重复研究</a>概念的神奇。</p>
+<p>更重要的是，还保留了对LaTeX的无缝兼容。比如，大家可以敲下这段文字：</p>
+<p><img src="img/5-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中，这一段，</p>
+<div class="code-wrapper"><pre><code class="hljs latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>latex
+f(x;<span class="hljs-keyword">\mu</span>,<span class="hljs-keyword">\sigma</span><span class="hljs-built_in">^</span>2) = <span class="hljs-keyword">\frac</span>&#123;1&#125;&#123;<span class="hljs-keyword">\sigma</span><span class="hljs-keyword">\sqrt</span>&#123;2<span class="hljs-keyword">\pi</span>&#125;&#125; e<span class="hljs-built_in">^</span>&#123; -<span class="hljs-keyword">\frac</span>&#123;1&#125;&#123;2&#125;<span class="hljs-keyword">\left</span>(<span class="hljs-keyword">\frac</span>&#123;x-<span class="hljs-keyword">\mu</span>&#125;&#123;<span class="hljs-keyword">\sigma</span>&#125;<span class="hljs-keyword">\right</span>)<span class="hljs-built_in">^</span>2 &#125;
+<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span></code></pre></div>
+
+<p>就是直接生成LaTeX格式的数学公式！</p>
+<p>没有安装RStudio，或者不熟悉R的朋友，可以在我搭建的一个在线演示APP里面，将上述代码，粘贴上去，然后看看神奇的效果！</p>
+<p>网址是：<a target="_blank" rel="noopener" href="http://r.psyapp.com/apps/markdown/">R Markdown App</a> 效果如下图所示：</p>
+<p><img src="img/p220903450-9.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="这么做，有什么好处呢？"><a href="#这么做，有什么好处呢？" class="headerlink" title="这么做，有什么好处呢？"></a>这么做，有什么好处呢？</h2><p>让我细数一下：</p>
+<h3 id="真正意义上的可重复性研究"><a href="#真正意义上的可重复性研究" class="headerlink" title="真正意义上的可重复性研究"></a>真正意义上的可重复性研究</h3><p>发表论文或者审核同事的报告，有个最麻烦的事情，你不知道他的步骤或者计算是否有误。现在，代码嵌在报告正文中，或者附录在报告末尾。而你，要做的，仅仅是一键生成。。。 这就是真正意义上的可重复性研究！</p>
+<h3 id="更强大的数学与制图能力"><a href="#更强大的数学与制图能力" class="headerlink" title="更强大的数学与制图能力"></a>更强大的数学与制图能力</h3><p>既兼容了LaTeX的既有能力，同时，又广泛借助于R自身强大的作图与统计学习能力。</p>
+<p>更重要的是，未来，并不是非要用R语言作图。yihui 同学在前文中的描述已经极其清楚了。</p>
+<h3 id="当然，还有云计算"><a href="#当然，还有云计算" class="headerlink" title="当然，还有云计算"></a>当然，还有云计算</h3><p>真正意义上的云计算，尤其是类似于我们这样，中小企业、小型实验室实战使用的小型云计算，不同于各类忽悠的云计算。Markdown+R这种方式是最佳方式之一。上述例子中提到的那个APP，就是搭建在云中。同时提供各类REST接口，可以被Ruby程序调用。</p>
+<h2 id="Markdown格式与LaTeX、Word等格式的互转"><a href="#Markdown格式与LaTeX、Word等格式的互转" class="headerlink" title="Markdown格式与LaTeX、Word等格式的互转"></a>Markdown格式与LaTeX、Word等格式的互转</h2><p>点这里：<a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/">Pandoc</a></p>
+<p>还有不少有趣的玩法，如<a target="_blank" rel="noopener" href="https://gist.github.com/2955183">Building a beamer presentation with knitr</a>.</p>
+<h2 id="如何学习Markdown-R？"><a href="#如何学习Markdown-R？" class="headerlink" title="如何学习Markdown+R？"></a>如何学习Markdown+R？</h2><p>好了，回到大家最关心的部分。分成两部分，先是如何学习Markdown，其次是如何学习R。</p>
+<h3 id="Markdown格式说明"><a href="#Markdown格式说明" class="headerlink" title="Markdown格式说明"></a>Markdown格式说明</h3><ul>
+<li>参考：<a target="_blank" rel="noopener" href="http://markdown.tw/">Markdown</a></li>
+<li>更好的学习办法是直接读各类范本文件</li>
+<li>更多资源参考<a target="_blank" rel="noopener" href="http://v2ex.com/go/markdown">V2ex节点</a></li>
+</ul>
+<h3 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h3><ul>
+<li>Mac等平台下推荐<a target="_blank" rel="noopener" href="http://mouapp.com/">Mou</a></li>
+<li>Windows平台推荐<a target="_blank" rel="noopener" href="http://markdownpad.com/">MarkdownPad</a><br>RStudio可作为写作科技论文与R语言编辑器选择，它是跨平台的</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adam-p/markdown-here">markdown-here</a>借助Chrome插件，将gmai写作窗口变为Markdown在线写作窗口</li>
+<li>可以直接在线通过github撰写与提交Markdown文件，github有自动的版本跟踪功能，不用担心写废与找不到以前写的</li>
+</ul>
+<h2 id="Windows下的GitHub特别说明"><a href="#Windows下的GitHub特别说明" class="headerlink" title="Windows下的GitHub特别说明"></a>Windows下的GitHub特别说明</h2><ul>
+<li>如果碰到git、github等与windows不兼容的现象，不建议折腾，而是直接在线提交即可。</li>
+<li>GitHub最近发行了Windows版本，下载地址<a target="_blank" rel="noopener" href="https://github.com/blog/1127-github-for-windows">在这里</a></li>
+<li>我的老文：<a target="_blank" rel="noopener" href="http://www.yangzhiping.com/tech/github.html">如何高效利用github</a></li>
+</ul>
+<h2 id="如何学习R"><a href="#如何学习R" class="headerlink" title="如何学习R"></a>如何学习R</h2><h3 id="Rstudio"><a href="#Rstudio" class="headerlink" title="Rstudio"></a>Rstudio</h3><ul>
+<li>Getting_Started_with_RStudio.pdf</li>
+</ul>
+<h3 id="R语言入门读物"><a href="#R语言入门读物" class="headerlink" title="R语言入门读物"></a>R语言入门读物</h3><ul>
+<li>R for SAS and SPSS Users.pdf ： 适合有SPSS基础的朋友</li>
+<li>Analysis of Questionnaire Data with R ： 适合处理问卷数据的文科生或社会科学类</li>
+<li>更多参考我的豆列：<a target="_blank" rel="noopener" href="http://book.douban.com/doulist/1222833/">技术派心理学</a></li>
+</ul>
+<h2 id="示范"><a href="#示范" class="headerlink" title="示范"></a>示范</h2><h3 id="文艺青年"><a href="#文艺青年" class="headerlink" title="文艺青年"></a>文艺青年</h3><p>文艺青年看这里，</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.douban.com/note/221187015/">為什麼文科生也該用markdown寫作?</a></li>
+<li><a target="_blank" rel="noopener" href="http://jianshu.io/p/qqGjLN">为什么作家应该用 Markdown 保存自己的文稿</a></li>
+</ul>
+<h3 id="科学青年"><a href="#科学青年" class="headerlink" title="科学青年"></a>科学青年</h3><p>可以看这里：<a target="_blank" rel="noopener" href="https://github.com/ouyangzhiping/openscience/blob/master/README.md">如何学习科学：开放科学工具箱</a></p>
+<p>点击 RAW 即可看到原始格式。这是一个长文档的示范。另一个示范是作者写的一个在线DEMO：</p>
+<p><a target="_blank" rel="noopener" href="http://r.psyapp.com/apps/markdown/">云中的社会网络分析+Markdown</a></p>
+<p>以及：<a target="_blank" rel="noopener" href="http://panda0411.com/2012/06/22/markdownr%E7%A7%91%E6%8A%80%E6%96%87%E5%86%99%E4%BD%9C/">Markdown+R科技文写作</a></p>
+<h3 id="技术青年"><a href="#技术青年" class="headerlink" title="技术青年"></a>技术青年</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://yihui.name/knitr/">knitr</a>以及各类Google、维基百科。</li>
+<li>特别是：<a target="_blank" rel="noopener" href="http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown">pandoc-markdown</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.charlietanksley.net/philtex/primarily-pandoc/">Primarily Pandoc: Writing in Markdown instead of LaTeX</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/learn-md/" class="category-chain-item">learn_md</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/learn-md/md/" class="category-chain-item">md</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../../me/notes/Go%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../../me/notes/python_notes/main_name/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="learn_md"
+        id="heading-bd4187be81ff20441731285d8a4f0939" role="tab" data-toggle="collapse" href="#collapse-bd4187be81ff20441731285d8a4f0939"
+        aria-expanded="true"
+      >
+        learn_md
+        <span class="list-group-count">(20)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-bd4187be81ff20441731285d8a4f0939"
+           role="tabpanel" aria-labelledby="heading-bd4187be81ff20441731285d8a4f0939">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="hexo"
+        id="heading-ecf1af8bbe2a3020d96fe7ea971a03ad" role="tab" data-toggle="collapse" href="#collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+        aria-expanded="false"
+      >
+        hexo
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+           role="tabpanel" aria-labelledby="heading-ecf1af8bbe2a3020d96fe7ea971a03ad">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-1%20copy/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-3/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-5/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md"
+        id="heading-793914c9c583d9d86d0f4ed8c521b0c1" role="tab" data-toggle="collapse" href="#collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+        aria-expanded="true"
+      >
+        md
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+           role="tabpanel" aria-labelledby="heading-793914c9c583d9d86d0f4ed8c521b0c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../0/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../3/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="no_title"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="preface"
+        id="heading-63148a20b2cf8b4ded1d483172eb6696" role="tab" data-toggle="collapse" href="#collapse-63148a20b2cf8b4ded1d483172eb6696"
+        aria-expanded="false"
+      >
+        preface
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-63148a20b2cf8b4ded1d483172eb6696"
+           role="tabpanel" aria-labelledby="heading-63148a20b2cf8b4ded1d483172eb6696">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../preface/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/SUMMARY/" title="0_Summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">0_Summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="test"
+        id="heading-098f6bcd4621d373cade4e832627b4f6" role="tab" data-toggle="collapse" href="#collapse-098f6bcd4621d373cade4e832627b4f6"
+        aria-expanded="false"
+      >
+        test
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-098f6bcd4621d373cade4e832627b4f6"
+           role="tabpanel" aria-labelledby="heading-098f6bcd4621d373cade4e832627b4f6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../test/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

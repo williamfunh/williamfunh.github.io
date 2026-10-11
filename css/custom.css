@@ -1,9 +1,9 @@
 /* 强制重置表格显示方式 */
 .markdown-body table {
-  display: table !important;  /* 覆盖block设置 */
+  display: table !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  width: auto !important;    /* 覆盖100%宽度 */
+  width: auto !important;
 }
 
 /* 确保单元格内容居中 */
@@ -12,7 +12,34 @@
   text-align: center !important;
 }
 
-/* 防止表格被包裹元素影响 */
-.markdown-body > table {
-  margin: 1rem auto !important;
+
+.markdown-body h2 {
+    margin: 1.2em auto 1em !important;
+    font-size: 1.8em !important;
+    /* 在h2下方添加一条 2px 的实线边框，颜色由 CSS 变量 --titlebefore-color 决定（可能是主题色）。 */
+    border-bottom: 2px solid var(--titlebefore-color); /* 底部边框线（颜色取自 变量） */
+}
+/* 在 <h2> 前插入一个静态图标（默认不旋转） */
+.markdown-body h2::before {
+    content: '\e689' !important; /* 使用 Unicode 字符（风车图标） */
+    color: var(--titlebefore-color); /* 图标颜色与 <h2> 的底部边框颜色一致（保持视觉统一） */
+    font-family: "iconfont";
+}
+
+
+.markdown-body h3 {
+    font-size: 1.4em !important;
+    line-height: 1.43 !important;
+    /*margin: 1.6em auto 1.2em;*/
+    padding-left: 9px !important;
+    border-left: 5px solid var(--titlebefore-color);
+}
+.markdown-body h4 {
+    margin: 0.4em auto 0.1em !important;
+    font-size: 1.2em !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    display: inline-block !important;
+    border: 1px solid var(--titlebefore-color);
+    border-top: 4px solid var(--titlebefore-color);
 }

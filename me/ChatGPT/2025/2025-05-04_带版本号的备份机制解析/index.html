@@ -1,0 +1,2909 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/will.jpg">
+  <link rel="icon" href="../../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Will:这段代码里面的save_mannually函数设计的备份有何妙处，以及是如何实现的？给我讲解一下import time as timport cv2import osimport argparseimport jsonimport numpy as npimport shutilimport re font &#x3D; cv2.FONT_HERSHEY_SIMPLEXHAVE_NO_I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带版本号的备份机制解析">
+<meta property="og:url" content="https://williamfunh.github.io/me/ChatGPT/2025/2025-05-04_%E5%B8%A6%E7%89%88%E6%9C%AC%E5%8F%B7%E7%9A%84%E5%A4%87%E4%BB%BD%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Will:这段代码里面的save_mannually函数设计的备份有何妙处，以及是如何实现的？给我讲解一下import time as timport cv2import osimport argparseimport jsonimport numpy as npimport shutilimport re font &#x3D; cv2.FONT_HERSHEY_SIMPLEXHAVE_NO_I">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-03T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-04T16:06:42.351Z">
+<meta property="article:author" content="William Fang">
+<meta property="article:tag" content="CS basics">
+<meta property="article:tag" content="Nullmax">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>带版本号的备份机制解析 | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="带版本号的备份机制解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-04 00:00" pubdate>
+          2025年5月4日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">带版本号的备份机制解析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Will"><a href="#Will" class="headerlink" title="Will:"></a>Will:</h2><p>这段代码里面的save_mannually函数设计的备份有何妙处，以及是如何实现的？给我讲解一下<br>import time as t<br>import cv2<br>import os<br>import argparse<br>import json<br>import numpy as np<br>import shutil<br>import re</p>
+<p>font &#x3D; cv2.FONT_HERSHEY_SIMPLEX<br>HAVE_NO_IMG &#x3D; 0<br>CURR_IMG_NOT_EXIST &#x3D; 1<br>NORMAL &#x3D; 2</p>
+<h1 id="创建一个可调整大小的窗口"><a href="#创建一个可调整大小的窗口" class="headerlink" title="创建一个可调整大小的窗口"></a>创建一个可调整大小的窗口</h1><p>window_width, window_height &#x3D; 1900, 1080  # 指定窗口宽和高<br>cv2.namedWindow(“obj”, cv2.WINDOW_NORMAL)<br>cv2.resizeWindow(“obj”, window_width, window_height)</p>
+<h1 id="按键"><a href="#按键" class="headerlink" title="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 按键 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 按键 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</h1><p>key_omit_clip_prev_1 &#x3D; “[“<br>key_omit_clip_next_1 &#x3D; “]”<br>key_omit_clip_prev_2 &#x3D; “;”<br>key_omit_clip_next_2 &#x3D; “‘“</p>
+<h1 id="帧间导航，往前"><a href="#帧间导航，往前" class="headerlink" title="帧间导航，往前"></a>帧间导航，往前</h1><p>key_prev_frame_2 &#x3D; “2”</p>
+<h1 id="帧间导航，往后"><a href="#帧间导航，往后" class="headerlink" title="帧间导航，往后"></a>帧间导航，往后</h1><p>key_next_frame_2 &#x3D; “3”</p>
+<h1 id="QWER"><a href="#QWER" class="headerlink" title="QWER"></a>QWER</h1><p>key_saveMoveTo_nextClip &#x3D; “q”<br>key_set_true_next_1_frame &#x3D; “w”<br>key_set_false_next_1_frame &#x3D; “e”<br>key_set_secene_changed &#x3D; “r”<br>autokey_set_false_next1 &#x3D; “m”</p>
+<h1 id="TFPS"><a href="#TFPS" class="headerlink" title="TFPS"></a>TFPS</h1><p>key_set_curr_and_next_all_true &#x3D; “t”<br>key_set_curr_and_next_all_false &#x3D; “f”<br>key_quit_program &#x3D; “p”<br>key_save_manually &#x3D; “s”</p>
+<h1 id="按键-1"><a href="#按键-1" class="headerlink" title="&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 按键 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 按键 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</h1><p>def args_parse():<br>    parser &#x3D; argparse.ArgumentParser(description&#x3D;”Process some integers.”)<br>    parser.add_argument(<br>        “–ROOTDIR_RESULT”,<br>        type&#x3D;str,<br>        default&#x3D;””,<br>        help&#x3D;”example: –ROOTDIR_RESULT &#x2F;1”,<br>    )<br>    parser.add_argument(<br>        “–ROOTDIR_GTLABEL”,<br>        type&#x3D;str,<br>        default&#x3D;””,<br>        help&#x3D;”example: –ROOTDIR_GTLABEL &#x2F;1”,<br>    )<br>    parser.add_argument(<br>        “–ROOTDIR_FILTERED”,<br>        type&#x3D;str,<br>        default&#x3D;””,<br>        help&#x3D;”example: –ROOTDIR_FILTERED &#x2F;1”,<br>    )<br>    parser.add_argument(<br>        “–AREA”,<br>        type&#x3D;str,<br>        default&#x3D;””,<br>        help&#x3D;”example: –AREA 20241212_Area_JinQiao”,<br>    )<br>    parser.add_argument(“–FREQ”, type&#x3D;str, default&#x3D;””, help&#x3D;”example: –FREQ 10”)<br>    args &#x3D; parser.parse_args()<br>    return args</p>
+<p>def check_index(index, lower_bound, upper_bound):<br>    inBounds &#x3D; True<br>    if index &lt; lower_bound:<br>        index &#x3D; lower_bound<br>        inBounds &#x3D; False<br>    elif index &gt;&#x3D; upper_bound:<br>        index &#x3D; upper_bound - 1<br>        inBounds &#x3D; False</p>
+<div class="code-wrapper"><pre><code class="hljs">return index, inBounds
+</code></pre></div>
+<p>def check_havePrev_getLoadPath(jPath_dst, jPath_src):<br>    pathToLoad &#x3D; jPath_src # default load from src<br>    # check看filtered里面有没有havePrev<br>    if os.path.exists(jPath_dst):<br>        pathToLoad &#x3D; jPath_dst<br>        havePrev &#x3D; True<br>    else:<br>        pathToLoad &#x3D; jPath_src<br>        havePrev &#x3D; False</p>
+<div class="code-wrapper"><pre><code class="hljs"># check if json file exists and empty or not
+if not os.path.exists(pathToLoad):
+    raise FileNotFoundError(f&quot;JSON file not found: &#123;pathToLoad&#125;&quot;)
+if os.path.getsize(pathToLoad) == 0:
+    raise ValueError(f&quot;JSON file is empty: &#123;pathToLoad&#125;&quot;)
+
+# 加载 JSON 数据
+try:
+    with open(pathToLoad, &quot;r&quot;) as f:
+        data = json.load(f)
+except json.JSONDecodeError as e:
+    raise ValueError(f&quot;Error decoding JSON file: &#123;pathToLoad&#125;&quot;) from e
+
+return pathToLoad, havePrev, data
+</code></pre></div>
+<p>class ClipLevel:<br>    def <strong>init</strong>(self, rootDir_gtLabel, rootDir_result, rootDir_filtered, area, car_type, date, freq):<br>        self.idxClip &#x3D; 0<br>        self.fname_currClip &#x3D; None</p>
+<div class="code-wrapper"><pre><code class="hljs">    self.jsonsDir_result = os.path.join(rootDir_result, area, car_type, date)
+    self.jsonsDir_filtered = os.path.join(rootDir_filtered, area,  car_type, date)
+    os.makedirs(self.jsonsDir_filtered,exist_ok=True)
+    if not os.path.exists(self.jsonsDir_result):
+        print(f&quot;Shit! I failed to find: &#123;self.jsonsDir_result&#125;&quot;)
+        exit(0)
+    if not os.path.exists(self.jsonsDir_filtered):
+        print(f&quot;Shit! I failed to find: &#123;self.jsonsDir_filtered&#125;&quot;)
+        exit(0)
+
+    # read .json files only
+    self.jsonFilesList_inResult = [
+        f for f in os.listdir(self.jsonsDir_result) if f.endswith(&quot;.json&quot;)
+    ] # To get the list of all json files
+    self.cntTotalClips = len(self.jsonFilesList_inResult)
+
+
+def update_fname_currClip(self):
+    if 0 &lt;= self.idxClip &lt; self.cntTotalClips:
+        self.fname_currClip = self.jsonFilesList_inResult[self.idxClip]
+        return self.fname_currClip
+    else:
+        raise IndexError(&quot;idxClip out of bounds&quot;)
+</code></pre></div>
+<p>class FrameLevel(ClipLevel):<br>    “””<em>summary</em><br>    This class is used to verify and process image_frames from a given clip.<br>    It handles loading images, displaying them, processing user inputs, and saving results.<br>    “””<br>    def <strong>init</strong>(self, rootDir_gtLabel, rootDir_result, rootDir_filtered, area, car_type, date, freq):<br>        “””<br>        <strong>init</strong> 是类的构造函数，用于初始化类的实例。它的主要职责是设置类的全局属性和初始状态。<br>        作用是：</p>
+<div class="code-wrapper"><pre><code class="hljs">    初始化全局变量：
+    self.jdata、self.time、self.oldPcdList 等变量是类的属性，它们在实例化时被初始化为空值或默认值。
+    设置path：
+    self.jPath_src 和 self.jPath_dst 是基于 self.fname_currClip 构造的path，用于定位 JSON 文件。
+    调用父类的初始化：
+    使用 super().__init__() 调用父类 ClipLevel 的构造函数，确保父类的属性也被正确初始化。
+    &quot;&quot;&quot;
+    super().__init__(rootDir_gtLabel, rootDir_result, rootDir_filtered, area, car_type, date, freq)
+    self.havePrev = False
+    self.area = area
+    self.car_type = car_type
+    self.date = date
+    self.freq = freq
+    self.jdata = None
+    self.time = None
+    self.oldPcdList = []
+    self.newPcdList = []
+    self.whiteBar = None
+    self.idxFrame = 0
+    self.warning = &quot;&quot;
+    self.rootDir_gtLabel = rootDir_gtLabel
+
+
+def initData_currClip(self):
+    &quot;&quot;&quot;
+    每加载一个clip的json时,就要调用这个函数来初始化当前clip的所有数据
+    &quot;&quot;&quot;
+    obj.fname_currClip = obj.update_fname_currClip() # 更新当前clip的文件名
+    # construct paths
+    self.jPath_src = os.path.join(self.jsonsDir_result, self.fname_currClip)
+    self.jPath_dst = os.path.join(self.jsonsDir_filtered, self.fname_currClip)
+    # check havePrev in filtered
+    self.fname_currClip = self.update_fname_currClip()
+    self.time = ( self.fname_currClip.split(&quot;_&quot;)[2] ).split(&quot;.&quot;)[0]
+
+    self.pathToLoad, self.havePrev, self.jdata = check_havePrev_getLoadPath(self.jPath_dst, self.jPath_src)
+
+    self.oldPcdList = self.jdata[&quot;pcd_list&quot;]
+    self.newPcdList = []
+    self.oldPoseInfo = self.jdata[&quot;pose_info&quot;]
+    self.newPoseInfo = &#123;&#125;
+
+    self.idxFrame = 0
+    self.warning = &quot;&quot;
+
+    # 如果 oldPcdList 为空，跳过当前 clip
+    # if not self.oldPcdList:
+    #     print(f&quot;Warning: oldPcdList is empty for clip &#123;self.fname_currClip&#125; Skipping this clip.&quot;)
+    #     return
+
+    jpg_dir = os.path.join(self.rootDir_gtLabel, self.area, &quot;vis&quot;, self.car_type, self.date, self.time)
+    json_dir = os.path.join(self.rootDir_gtLabel, self.area, &quot;label&quot;, self.car_type, self.date, self.time)
+    if not os.path.exists(jpg_dir):
+        print(f&quot;----jpg_dir not exist: &#123;jpg_dir&#125;&quot;)
+        print(f&quot;----clip[&#123;self.time&#125;] has no jpgs, skipping this clip&quot;)
+        # exit(0)
+        return None
+    if not os.path.exists(json_dir):
+        print(f&quot;----json_dir not exist: &#123;json_dir&#125;&quot;)
+        # exit(0)
+        return None
+
+    # if there is a previously saved json
+    if self.havePrev:
+        if &quot;idxFrame_leftLastTime&quot; not in self.jdata:
+            self.idxFrame = 0
+        else:
+            self.idxFrame = self.jdata[&quot;idxFrame_leftLastTime&quot;]
+        self.warning = &quot;Loaded previously saved json&quot;
+        if len(self.oldPcdList) == 0:
+            return None
+        pcd_common_path = os.path.dirname(self.oldPcdList[0])
+        for root,dirs,files in os.walk(jpg_dir):
+            for jpg_path in files:
+                timestamp = os.path.splitext(jpg_path)[0]
+                idx_pcdPath = os.path.join(pcd_common_path,&quot;&#123;&#125;&#123;&#125;&quot;.format(timestamp,&quot;.pcd&quot;))
+                self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_img_path&quot;] = f&quot;&#123;jpg_dir&#125;/&#123;timestamp&#125;.jpg&quot;
+                self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_json_fpath&quot;] = f&quot;&#123;json_dir&#125;/&#123;timestamp&#125;.json&quot;
+                self.newPcdList.append(idx_pcdPath)
+                self.newPoseInfo[idx_pcdPath] = self.oldPoseInfo[idx_pcdPath]
+        
+        print(f&quot;\t\t\tnew: &#123;len(self.newPcdList)&#125; \t old:&#123;len(self.oldPcdList)&#125;&quot;)
+    else:
+        print(f&quot;第一次读取，筛去空图中，稍安勿躁&quot;)
+        # 找到JPG的文件夹
+        # 遍历文件夹中所有的文件，根据文件名找到对应的json
+        pcd_common_path = os.path.dirname(self.oldPcdList[0])
+        for root,dirs,files in os.walk(jpg_dir):
+            for jpg_path in files:
+                timestamp = os.path.splitext(jpg_path)[0]
+                idx_pcdPath = os.path.join(pcd_common_path,&quot;&#123;&#125;&#123;&#125;&quot;.format(timestamp,&quot;.pcd&quot;))
+                self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_img_path&quot;] = f&quot;&#123;jpg_dir&#125;/&#123;timestamp&#125;.jpg&quot;
+                self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_json_fpath&quot;] = f&quot;&#123;json_dir&#125;/&#123;timestamp&#125;.json&quot;
+                self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;reloc&quot;] = True
+                self.newPcdList.append(idx_pcdPath)
+                self.newPoseInfo[idx_pcdPath] = self.oldPoseInfo[idx_pcdPath]
+        
+        # for idx_pcdPath in self.oldPcdList:
+        #     timestamp = self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;timestamp&quot;]
+        #     self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_img_path&quot;] = f&quot;&#123;jpg_dir&#125;/&#123;timestamp&#125;.jpg&quot;
+        #     self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;gt_json_fpath&quot;] = f&quot;&#123;json_dir&#125;/&#123;timestamp&#125;.json&quot;
+        #     if os.path.exists(f&quot;&#123;jpg_dir&#125;/&#123;timestamp&#125;.jpg&quot;) and os.path.exists(f&quot;&#123;json_dir&#125;/&#123;timestamp&#125;.json&quot;):
+        #         self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;reloc&quot;] = True # 初次加载，默认全true，找茬
+        #         # self.jdata[&quot;pose_info&quot;][idx_pcdPath][&quot;Scene_Changed&quot;] = False
+        #         self.newPcdList.append(idx_pcdPath)
+        #         self.newPoseInfo[idx_pcdPath] = self.oldPoseInfo[idx_pcdPath]
+        print(f&quot;\t\tnew: &#123;len(self.newPcdList)&#125; \t old:&#123;len(self.oldPcdList)&#125;&quot;)
+    return True
+
+
+# 原来的show_image函数被拆分：
+def show_image(self):
+    # 没有图片的情况：
+    if len(self.newPcdList) &lt;= 0:
+        self.warning = f&quot;No eligible image in [&#123;self.idxClip+1&#125;]th clip&quot;
+        print(self.warning)
+        self.whiteBar = self.update_whiteBar()
+        # 创建一个空白图像（全白），用于显示在窗口中
+        blank_image = np.ones((900, 1750, 3), dtype=np.uint8) * 255
+        combined_image = np.vstack((self.whiteBar, blank_image))
+        cv2.imshow(&quot;obj&quot;, combined_image)
+        return False
+    # check inBounds
+    self.idxFrame, inBounds = check_index(self.idxFrame, 0, len(self.newPcdList))
+    if not inBounds:
+        self.warning = f&quot;idxFrame out of bounds&quot;
+
+    # 更新 whiteBar
+    self.update_whiteBar()
+
+    # 加载当前帧的图片
+    idx_pcdPath = self.newPcdList[self.idxFrame]
+
+    # 检查 pose_info 是否包含 gt_img_path
+    if idx_pcdPath not in self.jdata[&quot;pose_info&quot;]:
+        print(f&quot;Warning: Key &#39;&#123;idx_pcdPath&#125;&#39; not found in pose_info. Skipping...&quot;)
+        return False
+    # 从&quot;pose_info&quot;中找到了类似“&quot;/prepared-flash/parsed_data/mondeo4/20250407/141701/lidar/pandar128/lidar_motion_compensation/1744006921199000.pcd&quot;”
+    img_path = self.jdata[&quot;pose_info&quot;][idx_pcdPath].get(&quot;gt_img_path&quot;, &quot;&quot;)
+    if not os.path.exists(img_path):
+        return False
+            # img = np.ones((1920, 1080, 3), dtype=np.uint8) * 255  # 默认空白图像
+    else:
+        img = cv2.imread(img_path, cv2.IMREAD_COLOR)
+
+
+    # 如果图片加载成功
+    if img is not None:
+        img = self.show_flag_tf_scenechanged(img, idx_pcdPath)
+        img = np.vstack((self.whiteBar, img))
+        cv2.imshow(&quot;obj&quot;, img)
+        print(f&quot;\t [&#123;self.jdata[&#39;pose_info&#39;][idx_pcdPath][&#39;reloc&#39;]&#125;]  [&#123;self.idxFrame+1&#125;/&#123;len(self.newPcdList)&#125;]  [&#123;self.warning&#125;]&quot;)
+
+    return NORMAL
+
+
+def update_whiteBar(self):
+    self.whiteBar = np.ones((50, 1750, 3), dtype=np.uint8) * 255 # recreate white bar
+    cnt_valid = self.count_valid() # update cnt_valid
+
+    # Initialize the starting position for the text
+    x_start = 0
+    y_position = 35
+    font_scale = 1
+    thickness = 2
+
+    # Add text to the white bar
+    cv2.putText(self.whiteBar, f&quot;[&#123;date&#125;-&#123;self.time&#125;][Clip:&#123;self.idxClip + 1&#125;/&#123;self.cntTotalClips&#125;]  [idx:&#123;self.idxFrame + 1&#125;/&#123;len(self.newPcdList)&#125;]&quot;, (x_start, y_position), font, font_scale, (0, 0, 0), thickness)
+    x_start += 850
+    cv2.putText(self.whiteBar, f&quot;[True:&#123;cnt_valid&#125;]&quot;, (x_start, y_position), font, font_scale, (0, 255, 0), thickness)
+    x_start += 200 # Adjust the position for the next text
+    cv2.putText(self.whiteBar, f&quot;&#123;self.warning&#125;&quot;, (x_start, y_position), font, font_scale, (255, 0, 0), thickness)
+
+    return self.whiteBar
+
+def show_flag_tf_scenechanged(self, img, idx_thisImg):
+    img = cv2.resize(img, (1750, 900), interpolation=cv2.INTER_LINEAR)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+
+
+    reloc_flag = self.jdata[&quot;pose_info&quot;][idx_thisImg][&quot;reloc&quot;] # 当前帧的定位结果(那个大的Ture&amp;False)
+    font_color = (0, 255, 0) if reloc_flag else (0, 0, 255) #  green for True, red for False
+
+    # Define the position for the text and rectangle
+    text_position = (450, 400)
+
+    # Get the text size
+    (text_width, text_height), baseline = cv2.getTextSize(str(reloc_flag), font, 3, 4)
+
+    # Calculate the rectangle position based on the text position
+    rect_top_left = (text_position[0], text_position[1] - text_height - baseline)
+    rect_bottom_right = (text_position[0] + text_width, text_position[1] + baseline)
+
+    # Draw a white rectangle as background
+    cv2.rectangle(img, rect_top_left, rect_bottom_right, (255, 255, 255), thickness=cv2.FILLED)
+
+    # Draw the text on top of the rectangle
+    cv2.putText(img, str(reloc_flag), text_position, font, 3, font_color, 4) # 在图像上显示reloc_flag
+
+    # scene_changed_flag = self.jdata[&quot;pose_info&quot;][idx_thisImg][&quot;Scene_Changed&quot;]
+    # if scene_changed_flag:
+    #     cv2.putText(img, &quot;Scene_Changed&quot;, (750, 100), font, 2, (0, 255, 255), 2)
+
+    return img
+
+def count_valid(self):
+    return sum(
+        self.jdata[&quot;pose_info&quot;][idx_thisImg][&quot;reloc&quot;] for idx_thisImg in self.newPcdList
+    )
+
+
+def save_manually(self):
+    # 确保 jsonsDir_filtered 存在。如不存在，则创建它。
+    os.makedirs(self.jsonsDir_filtered, exist_ok=True)
+    bak_folder = os.path.join(self.jsonsDir_filtered, &quot;bak&quot;)
+    os.makedirs(bak_folder, exist_ok=True)  # 创建备份文件夹
+    # 拼凑出保存当前clip的名字
+    savePath_currClip = os.path.join(self.jsonsDir_filtered, self.fname_currClip)
+    # 拼凑出保存在bak文件夹中的clip的名字
+    def copy_and_rename_json(source_path, destination_dir):
+        # 确保源文件存在
+        if not os.path.exists(source_path):
+            # print(f&quot;源文件 &#123;source_path&#125; 不存在！&quot;)
+            return
+
+        # 创建目标目录（如果不存在）
+        os.makedirs(destination_dir, exist_ok=True)
+
+        # 获取文件名和扩展名
+        source_filename = os.path.basename(source_path)
+        filename, ext = os.path.splitext(source_filename)
+
+        # 目标目录中已存在的文件列表
+        existing_files = os.listdir(destination_dir)
+        version_pattern = re.compile(rf&quot;&#123;filename&#125;_v(\d+)\.json&quot;)
+
+        # 查找已存在的版本号
+        existing_versions = []
+        for file in existing_files:
+            match = version_pattern.match(file)
+            if match:
+                existing_versions.append(int(match.group(1)))
+
+        # 确定新的版本号
+        if not existing_versions:
+            new_version = 0
+        else:
+            new_version = max(existing_versions) + 1
+
+        # 构建新的文件名和目标路径
+        new_filename = f&quot;&#123;filename&#125;_v&#123;new_version&#125;&#123;ext&#125;&quot;
+        destination_path = os.path.join(destination_dir, new_filename)
+
+        # 拷贝文件
+        shutil.copy2(source_path, destination_path)
+        # print(f&quot;文件已拷贝到 &#123;destination_path&#125;&quot;)
+    copy_and_rename_json(savePath_currClip,bak_folder)
+    
+    # 更新jdata
+    self.jdata[&quot;pcd_list&quot;] = self.newPcdList
+    self.jdata[&quot;pose_info&quot;] = self.newPoseInfo
+    self.jdata[&quot;cnt_reloc_vaild&quot;] = self.count_valid()
+    # print(f&quot;self.idxFrame 为&#123;self.idxFrame&#125;&quot;)
+    self.jdata[&quot;idxFrame_leftLastTime&quot;] = self.idxFrame # add/update this pair
+    self.jdata[&quot;frame_num&quot;] = len(self.newPcdList) # add/update this pair
+    self.jdata[&quot;time&quot;] = self.time
+    # 排序 JSON 数据
+    sorted_dict = &#123;
+        key: self.jdata[key]
+        for key in sorted(self.jdata.keys())
+    &#125;
+
+    json.dump(
+        sorted_dict,
+        open(savePath_currClip, &quot;w&quot;),
+        # indent=4, # 格式化输出，缩进 4 个空格，便于阅读。
+        ensure_ascii=False, # 允许非 ASCII 字符（如中文）正常保存。
+    )
+    # self.warning = f&quot;saved, &#123;savePath_currClip&#125;&quot;
+    self.warning = f&quot;saved&quot;
+    print(self.warning)
+
+
+def set_following_xframes_reloc_to_value(self, value_toSet, x_frames):
+    for i in range(x_frames):
+        if self.idxFrame + i &lt; len(self.newPcdList):
+            idx_thisImg = self.newPcdList[self.idxFrame + i]
+            self.jdata[&quot;pose_info&quot;][idx_thisImg][&quot;reloc&quot;] = value_toSet
+    self.warning = f&quot;set last &#123;x_frames&#125; &#123;value_toSet&#125;&quot;
+
+def input_helper(self, step, direction):
+    if direction == &quot;backward&quot;:
+        self.idxFrame -= step
+
+        self.idxFrame, inBounds = check_index(
+            index=self.idxFrame,
+            lower_bound=0,
+            upper_bound=len(self.newPcdList)
+        )
+        if not inBounds:
+            self.warning = f&quot;idxFrame out of bounds&quot;
+        else:
+            self.warning = f&quot;&#123;direction&#125;ed &#123;step&#125; frames&quot;
+    elif direction == &quot;forward&quot;:
+        self.idxFrame += step
+
+        self.idxFrame, inBounds = check_index(
+            index=self.idxFrame,
+            lower_bound=0,
+            upper_bound=len(self.newPcdList),
+        )
+        if not inBounds:
+            self.warning = f&quot;idxFrame out of bounds&quot;
+        else:
+            self.warning = f&quot;&#123;direction&#125;ed &#123;step&#125; frames&quot;
+
+def input(self, key):
+    # backward
+    if key == ord(key_prev_frame_2):
+        self.input_helper(step=20, direction=&quot;backward&quot;)
+    # forward
+    elif key == ord(key_next_frame_2):
+        self.input_helper(step=20, direction=&quot;forward&quot;)
+
+    elif key == ord(key_set_true_next_1_frame):
+        step = 20 # 再只用改这个值就行了
+        self.set_following_xframes_reloc_to_value(value_toSet=True, x_frames=step)
+        self.warning = f&quot;set last &#123;step&#125; True&quot;
+        self.idxFrame += step
+    elif key == ord(key_set_false_next_1_frame):
+        step = 20 # 再只用改这个值就行了
+        self.set_following_xframes_reloc_to_value(value_toSet=False, x_frames=step)
+        self.warning = f&quot;set last &#123;step&#125; False&quot;
+        self.idxFrame += step
+    elif key == ord(autokey_set_false_next1):
+        step = 1
+        self.set_following_xframes_reloc_to_value(value_toSet=False, x_frames=step)
+        self.warning = f&quot;prev imgs are none, auto set to F&quot;
+        self.idxFrame += step
+
+    elif key == ord(key_set_curr_and_next_all_true):
+        self.set_following_xframes_reloc_to_value(value_toSet=True, x_frames=len(self.newPcdList) - self.idxFrame)
+        self.warning = f&quot;set followings all True&quot;
+    elif key == ord(key_set_curr_and_next_all_false):
+        self.set_following_xframes_reloc_to_value(value_toSet=False, x_frames=len(self.newPcdList) - self.idxFrame)
+        self.warning = f&quot;set followings all False&quot;
+
+    elif key == ord(key_save_manually):
+        self.save_manually()
+    else:
+        self.warning = f&quot;Invalid input!!!  Try---QWETF23[]SP&quot;
+</code></pre></div>
+<p>if <strong>name</strong> &#x3D;&#x3D; “<strong>main</strong>“:<br>    args &#x3D; args_parse()<br>    rootDir_gtLabel     &#x3D; args.ROOTDIR_GTLABEL<br>    rootDir_result      &#x3D; args.ROOTDIR_RESULT<br>    rootDir_filtered    &#x3D; args.ROOTDIR_FILTERED<br>    area &#x3D; args.AREA<br>    freq &#x3D; args.FREQ<br>######################变量定义区########################<br>    car_type &#x3D; input(“Please input car_type(Like: mondeo4): “)<br>    yyyy &#x3D; “2025”<br>    # date<br>    user_input &#x3D; input(“Please input mmdd(Like: 0329): “).strip()<br>    if user_input and user_input.isdigit() and len(user_input) &#x3D;&#x3D; 4:<br>        mmdd &#x3D; user_input<br>    else:<br>        print(f”Invalid input, try again”)<br>        exit(0)<br>    date &#x3D; f”{yyyy}{mmdd}”<br>######################变量定义区########################</p>
+<div class="code-wrapper"><pre><code class="hljs">obj = FrameLevel(rootDir_gtLabel, rootDir_result, rootDir_filtered, area, car_type, date, freq)
+</code></pre></div>
+<p>##########verifing<br>    while obj.idxClip &lt; obj.cntTotalClips:<br>        # obj.initData_currClip() # 确保 初始化当前 clip 的数据</p>
+<div class="code-wrapper"><pre><code class="hljs">    if not obj.initData_currClip():  # 如果 newPcdList 为空，说明跳过了当前 clip
+        obj.save_manually()
+        obj.idxClip += 1
+        continue
+
+    print(f&quot;&#123;&#39;=&#39; * 15&#125; [Clip:&#123;obj.idxClip + 1&#125;/&#123;obj.cntTotalClips&#125;] &#123;&#39;=&#39; * 15&#125; havePrev: &#123;obj.havePrev&#125;&quot;) # 每次在进入【单clip校验的loop】前，先要打印出which clip ur
+
+    # 【6. 单clip校验loop】处理currClip内的所有帧
+    while 1:
+        # 【6.1 图像显示】显示当前帧图像和标注状态
+        flag = obj.show_image()
+        key = cv2.waitKey(0)
+        # if not flag and obj.flag_skip_wrong_flag:
+        #     key = ord(autokey_set_false_next1)
+        # else:
+        # # 【6.2 键盘输入处理】等待用户按键输入
+        #     key = cv2.waitKey(0)
+
+        if key == ord(key_quit_program):
+            obj.input(ord(key_save_manually))
+            print(&quot;Saved and quit program&quot;)
+            exit(0)
+        elif key in (ord(key_saveMoveTo_nextClip), 
+                    ord(key_omit_clip_prev_1), 
+                    ord(key_omit_clip_next_1),
+                    ord(key_omit_clip_prev_2), 
+                    ord(key_omit_clip_next_2),):
+            break
+        else:
+            obj.input(key)
+
+    obj.input(ord(key_save_manually)) # save no matter what, then deal with navigating between clips
+
+    # 【9. Clip导航逻辑】 单clip处理完了，现在处理clip间跳转
+    if key in ( ord(key_saveMoveTo_nextClip), ord(key_omit_clip_prev_1), ord(key_omit_clip_next_1), ord(key_omit_clip_prev_2), ord(key_omit_clip_next_2),):
+        step_map = &#123;
+            ord(key_saveMoveTo_nextClip): 1,
+            ord(key_omit_clip_prev_1): -1,
+            ord(key_omit_clip_next_1): 1,
+            ord(key_omit_clip_prev_2): -10,
+            ord(key_omit_clip_next_2): 10,            &#125;
+        step = step_map[key]
+        # minupulate index first 
+        obj.idxClip += step
+        # check inBounds then
+        obj.idxClip, inBounds = check_index(obj.idxClip, 0, obj.cntTotalClips)
+        if not inBounds:
+            print(f&quot;obj.idxClip out of bounds&quot;)
+</code></pre></div>
+<p>#######################verifing#########################</p>
+<h2 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p><code>save_manually</code> 函数本身没有出现在你提供的代码片段中，但从上下文和变量命名来看，它应该是绑定按键 <code>&quot;s&quot;</code> 的函数，用于手动保存当前标注进度。在工业级的数据标注或验证任务中，这种“手动保存”功能非常关键。<strong>它的设计和实现方式体现了一些非常实用、值得借鉴的工程思维：</strong></p>
+<hr>
+<h3 id="🧠-一、设计“妙处”：为何需要手动保存功能？"><a href="#🧠-一、设计“妙处”：为何需要手动保存功能？" class="headerlink" title="🧠 一、设计“妙处”：为何需要手动保存功能？"></a>🧠 一、设计“妙处”：为何需要手动保存功能？</h3><h4 id="1-避免数据丢失风险"><a href="#1-避免数据丢失风险" class="headerlink" title="1. 避免数据丢失风险"></a>1. <strong>避免数据丢失风险</strong></h4><p>数据标注过程中用户可能：</p>
+<ul>
+<li>意外关闭程序</li>
+<li>程序崩溃</li>
+<li>系统异常重启<br>——自动保存不能完全替代手动保存，因为后者给用户<strong>明确的控制权</strong>，可以在完成一部分关键操作后立即备份数据。</li>
+</ul>
+<h4 id="2-允许阶段性检查和断点恢复"><a href="#2-允许阶段性检查和断点恢复" class="headerlink" title="2. 允许阶段性检查和断点恢复"></a>2. <strong>允许阶段性检查和断点恢复</strong></h4><p>用户可以：</p>
+<ul>
+<li>在标注到一个关键帧时 <code>按 S 保存</code></li>
+<li>稍后继续处理，程序还能加载“上一次保存时的状态”并恢复。</li>
+</ul>
+<blockquote>
+<p>类似于游戏的“手动存档”，而不是仅依赖“自动存档”。</p>
+</blockquote>
+<h4 id="3-与多版本-备份机制结合，防止误操作不可逆"><a href="#3-与多版本-备份机制结合，防止误操作不可逆" class="headerlink" title="3. 与多版本&#x2F;备份机制结合，防止误操作不可逆"></a>3. <strong>与多版本&#x2F;备份机制结合，防止误操作不可逆</strong></h4><p>结合 <code>filtered</code> 目录的设计，程序似乎在保存时把原始的 <code>result</code> 中的 JSON 保存为一个“过滤后”的版本。你可以认为：</p>
+<ul>
+<li><code>result/</code> 是原始数据仓库  </li>
+<li><code>filtered/</code> 是你当前版本的工作副本<br>这样你可以回退到原始数据，也能随时保存当前的处理状态，<strong>保证数据可追溯、可重现</strong>。</li>
+</ul>
+<hr>
+<h3 id="🛠-二、实现方式：如何做到的？"><a href="#🛠-二、实现方式：如何做到的？" class="headerlink" title="🛠 二、实现方式：如何做到的？"></a>🛠 二、实现方式：如何做到的？</h3><p>虽然 <code>save_manually</code> 函数代码没贴出来，但从程序逻辑可以大致推断其实现方式如下：</p>
+<h4 id="1-写入-JSON-到-filtered-目录"><a href="#1-写入-JSON-到-filtered-目录" class="headerlink" title="1. 写入 JSON 到 filtered 目录"></a>1. <strong>写入 JSON 到 filtered 目录</strong></h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-variable language_">self</span>.jPath_dst, <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> f:
+    json.dump(<span class="hljs-variable language_">self</span>.jdata, f, indent=<span class="hljs-number">2</span>)</code></pre></div>
+<p>这里 <code>self.jPath_dst</code> 是 <code>filtered</code> 中的路径，确保不会覆盖原始的 <code>result</code> 数据。</p>
+<h4 id="2-记录当前处理到哪一帧"><a href="#2-记录当前处理到哪一帧" class="headerlink" title="2. 记录当前处理到哪一帧"></a>2. <strong>记录当前处理到哪一帧</strong></h4><p>保存时会记录变量：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-variable language_">self</span>.jdata[<span class="hljs-string">&quot;idxFrame_leftLastTime&quot;</span>] = <span class="hljs-variable language_">self</span>.idxFrame</code></pre></div>
+<p>这样下次加载同一个文件时，就能自动跳转到上一次处理中断的位置（极其方便）。</p>
+<h4 id="3-可能配合图像数据和路径的更新"><a href="#3-可能配合图像数据和路径的更新" class="headerlink" title="3. 可能配合图像数据和路径的更新"></a>3. <strong>可能配合图像数据和路径的更新</strong></h4><p>比如在 <code>initData_currClip()</code> 中，程序对 <code>pose_info</code> 中的项增加：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&quot;gt_img_path&quot;</span>, <span class="hljs-string">&quot;gt_json_fpath&quot;</span>, <span class="hljs-string">&quot;reloc&quot;</span></code></pre></div>
+<p>这些字段会在保存时被保留进 JSON 中，确保你后续处理、可视化时能直接使用。</p>
+<hr>
+<h3 id="✅-总结：这个手动保存机制的价值"><a href="#✅-总结：这个手动保存机制的价值" class="headerlink" title="✅ 总结：这个手动保存机制的价值"></a>✅ 总结：这个手动保存机制的价值</h3><table>
+<thead>
+<tr>
+<th>优点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>💾 安全性</td>
+<td>防止程序崩溃、意外退出导致数据丢失</td>
+</tr>
+<tr>
+<td>🔁 可恢复性</td>
+<td>能从上次中断的帧继续处理</td>
+</tr>
+<tr>
+<td>🧪 可验证性</td>
+<td>可将标注结果与原始数据对比</td>
+</tr>
+<tr>
+<td>💼 工程实用性</td>
+<td>支持多人协作或多阶段标注</td>
+</tr>
+</tbody></table>
+<hr>
+<p>如果你能贴出 <code>save_manually</code> 函数的具体实现代码，我可以帮你逐行分析其具体逻辑。</p>
+<p>你希望我进一步帮你写一个优化版的 <code>save_manually</code> 吗？</p>
+<h2 id="Will-1"><a href="#Will-1" class="headerlink" title="Will:"></a>Will:</h2><p>save_manually(self)函数贴出来了啊：<br>    def save_manually(self):<br>        # 确保 jsonsDir_filtered 存在。如不存在，则创建它。<br>        os.makedirs(self.jsonsDir_filtered, exist_ok&#x3D;True)<br>        bak_folder &#x3D; os.path.join(self.jsonsDir_filtered, “bak”)<br>        os.makedirs(bak_folder, exist_ok&#x3D;True)  # 创建备份文件夹<br>        # 拼凑出保存当前clip的名字<br>        savePath_currClip &#x3D; os.path.join(self.jsonsDir_filtered, self.fname_currClip)<br>        # 拼凑出保存在bak文件夹中的clip的名字<br>        def copy_and_rename_json(source_path, destination_dir):<br>            # 确保源文件存在<br>            if not os.path.exists(source_path):<br>                # print(f”源文件 {source_path} 不存在！”)<br>                return</p>
+<div class="code-wrapper"><pre><code class="hljs">        # 创建目标目录（如果不存在）
+        os.makedirs(destination_dir, exist_ok=True)
+
+        # 获取文件名和扩展名
+        source_filename = os.path.basename(source_path)
+        filename, ext = os.path.splitext(source_filename)
+
+        # 目标目录中已存在的文件列表
+        existing_files = os.listdir(destination_dir)
+        version_pattern = re.compile(rf&quot;&#123;filename&#125;_v(\d+)\.json&quot;)
+
+        # 查找已存在的版本号
+        existing_versions = []
+        for file in existing_files:
+            match = version_pattern.match(file)
+            if match:
+                existing_versions.append(int(match.group(1)))
+
+        # 确定新的版本号
+        if not existing_versions:
+            new_version = 0
+        else:
+            new_version = max(existing_versions) + 1
+
+        # 构建新的文件名和目标路径
+        new_filename = f&quot;&#123;filename&#125;_v&#123;new_version&#125;&#123;ext&#125;&quot;
+        destination_path = os.path.join(destination_dir, new_filename)
+
+        # 拷贝文件
+        shutil.copy2(source_path, destination_path)
+        # print(f&quot;文件已拷贝到 &#123;destination_path&#125;&quot;)
+    copy_and_rename_json(savePath_currClip,bak_folder)
+    
+    # 更新jdata
+    self.jdata[&quot;pcd_list&quot;] = self.newPcdList
+    self.jdata[&quot;pose_info&quot;] = self.newPoseInfo
+    self.jdata[&quot;cnt_reloc_vaild&quot;] = self.count_valid()
+    # print(f&quot;self.idxFrame 为&#123;self.idxFrame&#125;&quot;)
+    self.jdata[&quot;idxFrame_leftLastTime&quot;] = self.idxFrame # add/update this pair
+    self.jdata[&quot;frame_num&quot;] = len(self.newPcdList) # add/update this pair
+    self.jdata[&quot;time&quot;] = self.time
+    # 排序 JSON 数据
+    sorted_dict = &#123;
+        key: self.jdata[key]
+        for key in sorted(self.jdata.keys())
+    &#125;
+
+    json.dump(
+        sorted_dict,
+        open(savePath_currClip, &quot;w&quot;),
+        # indent=4, # 格式化输出，缩进 4 个空格，便于阅读。
+        ensure_ascii=False, # 允许非 ASCII 字符（如中文）正常保存。
+    )
+    # self.warning = f&quot;saved, &#123;savePath_currClip&#125;&quot;
+    self.warning = f&quot;saved&quot;
+    print(self.warning)
+</code></pre></div>
+<h2 id="ChatGPT-1"><a href="#ChatGPT-1" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p>你这段 <code>save_manually(self)</code> 的代码逻辑上整体还算清晰，但可以指出几个潜在问题和改进建议，尤其是涉及健壮性、效率和风格规范方面：</p>
+<hr>
+<h3 id="✅-总体流程："><a href="#✅-总体流程：" class="headerlink" title="✅ 总体流程："></a>✅ 总体流程：</h3><ol>
+<li>确保目标保存路径存在。</li>
+<li>将当前 JSON 文件复制到备份目录（带版本号）。</li>
+<li>更新内存中的 <code>self.jdata</code> 数据。</li>
+<li>对键排序后写入新的 JSON 文件。</li>
+<li>更新状态提示。</li>
+</ol>
+<hr>
+<h3 id="⚠️-问题点-建议："><a href="#⚠️-问题点-建议：" class="headerlink" title="⚠️ 问题点 &amp; 建议："></a>⚠️ 问题点 &amp; 建议：</h3><h4 id="1-copy-and-rename-json-是嵌套函数"><a href="#1-copy-and-rename-json-是嵌套函数" class="headerlink" title="1. copy_and_rename_json 是嵌套函数"></a>1. <strong><code>copy_and_rename_json</code> 是嵌套函数</strong></h4><p>你定义了 <code>copy_and_rename_json</code> 函数在 <code>save_manually</code> 内部，如果你后续还想在别的地方调用这个备份逻辑，就重复定义了。建议 <strong>抽出去作为类的方法</strong> 或者独立函数。</p>
+<h4 id="2-正则模式写死-json-后缀"><a href="#2-正则模式写死-json-后缀" class="headerlink" title="2. 正则模式写死 .json 后缀"></a>2. <strong>正则模式写死 <code>.json</code> 后缀</strong></h4><div class="code-wrapper"><pre><code class="hljs python">version_pattern = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">rf&quot;<span class="hljs-subst">&#123;filename&#125;</span>_v(\d+)\.json&quot;</span>)</code></pre></div>
+<p>这行是强依赖 <code>.json</code> 后缀。如果未来换格式（比如 <code>.jsonl</code>），会失效。你可以这样更通用点：</p>
+<div class="code-wrapper"><pre><code class="hljs python">version_pattern = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">rf&quot;<span class="hljs-subst">&#123;re.escape(filename)&#125;</span>_v(\d+)<span class="hljs-subst">&#123;re.escape(ext)&#125;</span>&quot;</span>)</code></pre></div>
+
+<h4 id="3-版本号初始为-0，第一次备份是-v0"><a href="#3-版本号初始为-0，第一次备份是-v0" class="headerlink" title="3. 版本号初始为 0，第一次备份是 _v0"></a>3. <strong>版本号初始为 0，第一次备份是 <code>_v0</code></strong></h4><p>逻辑没错，但语义上可能更自然从 1 开始，尤其是 <code>_v0</code> 容易让人以为是“未初始化”的状态。你可以用：</p>
+<div class="code-wrapper"><pre><code class="hljs python">new_version = <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> existing_versions <span class="hljs-keyword">else</span> <span class="hljs-built_in">max</span>(existing_versions) + <span class="hljs-number">1</span></code></pre></div>
+
+<h4 id="4-文件打开时没用-with-open"><a href="#4-文件打开时没用-with-open" class="headerlink" title="4. 文件打开时没用 with open(...)"></a>4. <strong>文件打开时没用 <code>with open(...)</code></strong></h4><p>这不一定马上出错，但 <code>json.dump()</code> 时最好明确使用 <code>with</code> 语句来确保写入成功、文件关闭，防止某些环境下文件描述符泄漏：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(savePath_currClip, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:
+    json.dump(sorted_dict, f, ensure_ascii=<span class="hljs-literal">False</span>)</code></pre></div>
+
+<h4 id="5-没有捕获异常"><a href="#5-没有捕获异常" class="headerlink" title="5. 没有捕获异常"></a>5. <strong>没有捕获异常</strong></h4><p>你整个函数里完全没有任何 try-catch，如果碰上比如权限问题、磁盘满了、JSON 写入失败等等，就会直接崩。建议对主要的 IO 操作加基本的异常处理，比如：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(savePath_currClip, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:
+        json.dump(sorted_dict, f, ensure_ascii=<span class="hljs-literal">False</span>)
+<span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;[ERROR] 保存 JSON 文件失败：<span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)
+    <span class="hljs-keyword">return</span></code></pre></div>
+
+<h4 id="6-是否考虑线程安全？"><a href="#6-是否考虑线程安全？" class="headerlink" title="6. 是否考虑线程安全？"></a>6. <strong>是否考虑线程安全？</strong></h4><p>如果你这个函数可能会被 UI 线程或并发线程调用（例如用户点击“保存”按钮），那就该考虑加锁机制，比如用 <code>threading.Lock()</code>，否则可能会出现竞争写文件的情况。</p>
+<hr>
+<h3 id="✅-小建议"><a href="#✅-小建议" class="headerlink" title="✅ 小建议"></a>✅ 小建议</h3><ul>
+<li><code>print(self.warning)</code> 虽然方便调试，但如果你用了 GUI，建议改成一个统一的 log 函数或状态栏显示。</li>
+<li>可以在保存成功后，增加保存时间戳进 <code>self.jdata</code>，有利于后续调试&#x2F;回滚。</li>
+</ul>
+<hr>
+<h3 id="总结一句话："><a href="#总结一句话：" class="headerlink" title="总结一句话："></a>总结一句话：</h3><p>你这个 <code>save_manually()</code> 的功能已经是合格的工具函数，但在健壮性（异常处理）、可维护性（函数封装）和风格一致性方面还有提升空间。</p>
+<p>你是打算让它后续在 GUI 中响应用户操作，还是批量运行处理多个 clip 呢？</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../../categories/me/" class="category-chain-item">me</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/" class="category-chain-item">ChatGPT</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/2025/" class="category-chain-item">2025</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/CS-basics/" class="print-no-link">#CS basics</a>
+      
+        <a href="../../../../tags/Nullmax/" class="print-no-link">#Nullmax</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../2025-05-04_baby%E7%9C%8B%E8%84%B8%E5%AE%9E%E9%AA%8C/" title="baby看脸实验">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">baby看脸实验</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格">
+                        <span class="hidden-mobile">Tiergarten 天际线与建筑风格</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="me"
+        id="heading-ab86a1e1ef70dff97959067b723c5c24" role="tab" data-toggle="collapse" href="#collapse-ab86a1e1ef70dff97959067b723c5c24"
+        aria-expanded="true"
+      >
+        me
+        <span class="list-group-count">(140)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ab86a1e1ef70dff97959067b723c5c24"
+           role="tabpanel" aria-labelledby="heading-ab86a1e1ef70dff97959067b723c5c24">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ChatGPT"
+        id="heading-62239e6c0f995ae1fdc00d18b7905eac" role="tab" data-toggle="collapse" href="#collapse-62239e6c0f995ae1fdc00d18b7905eac"
+        aria-expanded="true"
+      >
+        ChatGPT
+        <span class="list-group-count">(130)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-62239e6c0f995ae1fdc00d18b7905eac"
+           role="tabpanel" aria-labelledby="heading-62239e6c0f995ae1fdc00d18b7905eac">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2023"
+        id="heading-5531a5834816222280f20d1ef9e95f69" role="tab" data-toggle="collapse" href="#collapse-5531a5834816222280f20d1ef9e95f69"
+        aria-expanded="false"
+      >
+        2023
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5531a5834816222280f20d1ef9e95f69"
+           role="tabpanel" aria-labelledby="heading-5531a5834816222280f20d1ef9e95f69">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2023/2023-12-20_%E8%BF%91%E4%B9%89%E8%A1%A8%E8%BE%BE/" title="近义表达"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">近义表达</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-03_Conflicted_about_Love/" title="Conflicted about Love"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Conflicted about Love</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-01_Tutor/" title="Eng Tutor"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Eng Tutor</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2024"
+        id="heading-07811dc6c422334ce36a09ff5cd6fe71" role="tab" data-toggle="collapse" href="#collapse-07811dc6c422334ce36a09ff5cd6fe71"
+        aria-expanded="false"
+      >
+        2024
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-07811dc6c422334ce36a09ff5cd6fe71"
+           role="tabpanel" aria-labelledby="heading-07811dc6c422334ce36a09ff5cd6fe71">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2024/2024-12-31_%E5%9B%BD%E5%AE%B6%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86/" title="国家评估标准"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">国家评估标准</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-31_%E4%B8%80%E5%88%87%E7%9A%86%E6%95%B0/" title="一切皆数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一切皆数</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-30_%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8E%A7%E5%88%B6/" title="互联网与信息控制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">互联网与信息控制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-28_Bakit_fluent_ang_Pilipino_sa_Ingles/" title="Bakit fluent ang Pilipino sa Ingles"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bakit fluent ang Pilipino sa Ingles</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-26_%E9%92%B1%E5%AD%A6%E6%A3%AE%E5%9B%9E%E5%9B%BD%E5%8E%9F%E5%9B%A0/" title="钱学森回国原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">钱学森回国原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-24_%E8%A2%81%E4%B8%96%E5%87%AF%E7%A7%B0%E5%B8%9D%E5%8E%9F%E5%9B%A0/" title="袁世凯称帝原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">袁世凯称帝原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-22_%E9%87%8D%E7%94%B7%E8%BD%BB%E5%A5%B3%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="重男轻女的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">重男轻女的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-18_%E7%BA%A6%E7%BF%B0%E9%80%8A%E8%AE%BF%E4%B9%8C%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/" title="约翰逊访乌原因分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">约翰逊访乌原因分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-12_%E8%B5%84%E4%BA%A7%E8%BD%AC%E7%A7%BB%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/" title="资产转移与风险管理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">资产转移与风险管理</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-12_Qing_Dynasty_Patriotism_Explained/" title="Qing Dynasty Patriotism Explained"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Qing Dynasty Patriotism Explained</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-12_China_Real_Estate_Ponzi/" title="China Real Estate Ponzi"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Real Estate Ponzi</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-11_TAFE%E7%95%99%E5%AD%A6%E8%A7%84%E5%88%92%E5%BB%BA%E8%AE%AE/" title="TAFE留学规划建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TAFE留学规划建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-06_Civilization_vs_Barbarism/" title="Civilization vs Barbarism"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Civilization vs Barbarism</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-12-04_%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E9%9D%99%E6%80%81%E6%93%8D%E4%BD%9C/" title="类与对象静态操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">类与对象静态操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-11-19_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E4%B8%8E%E6%A3%B1%E9%95%9C%E8%AE%A1%E5%88%92/" title="中共宣传与棱镜计划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传与棱镜计划</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-11-17_%E5%B9%B4%E8%BD%BB%E4%BA%BA%E8%A7%89%E9%86%92%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="年轻人觉醒的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">年轻人觉醒的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-11-11_%E8%83%A1%E4%BD%9B%E7%A0%94%E7%A9%B6%E6%89%80%E6%A6%82%E8%BF%B0/" title="胡佛研究所概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">胡佛研究所概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-11-09_%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/" title="毕业论文"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">毕业论文</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-11-05_Java_EE_%E8%A7%A3%E9%87%8A/" title="Java EE 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-10-18_depression/" title="depression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">depression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-08-27_US_Internet_Freedom_vs_China/" title="US Internet Freedom vs China"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">US Internet Freedom vs China</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-08-26_Whats_the_Catch_Meaning/" title="Whats the Catch Meaning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Whats the Catch Meaning</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-08-26_%E4%B8%9C%E6%AC%A7%E8%89%B2%E6%83%85%E8%A1%8C%E4%B8%9A%E8%A7%A3%E6%9E%90/" title="东欧色情行业解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">东欧色情行业解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-08-26_Shameless_US_Viewership_Stats/" title="Shameless US Viewership Stats"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shameless US Viewership Stats</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-06-18_Fake_News_Detection_Project/" title="Fake News Detection Project"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fake News Detection Project</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2024/2024-01-24_Wholesaler_and_Related_Terms/" title="Wholesaler and Related Terms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Wholesaler and Related Terms</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2025"
+        id="heading-312351bff07989769097660a56395065" role="tab" data-toggle="collapse" href="#collapse-312351bff07989769097660a56395065"
+        aria-expanded="true"
+      >
+        2025
+        <span class="list-group-count">(101)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-312351bff07989769097660a56395065"
+           role="tabpanel" aria-labelledby="heading-312351bff07989769097660a56395065">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../2025-06-27_git_commit_push/" title="git_commit_push"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git_commit_push</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-24_Telegram%20%E6%A0%B8%E5%BF%83%E5%9B%A2%E9%98%9F%E6%95%88%E7%8E%87/" title="Telegram 核心团队效率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Telegram 核心团队效率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-23_%E5%8D%B0%E9%92%B1%E4%B8%8E%E8%B4%A7%E5%B8%81%E4%BB%B7%E5%80%BC/" title="印钱与货币价值"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">印钱与货币价值</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-22_%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E9%87%8D%E5%91%BD%E5%90%8D/" title="批量文件重命名"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">批量文件重命名</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-21_Typst%20%E4%BC%98%E5%8A%BF%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="Typst 优势与改进"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typst 优势与改进</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-21_%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="关键词提取方法总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">关键词提取方法总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-21_module_tempfile/" title="module tempfile"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module tempfile</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-21_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E4%B8%8E%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6/" title="文件处理与临时文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">文件处理与临时文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-26_windows_users/" title="windows user accounts"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">windows user accounts</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-20_module_os/" title="module os"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module os</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-19_GitHub%20Pages%20%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF/" title="GitHub Pages 部署错误"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">GitHub Pages 部署错误</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-17_%E5%86%85%E5%AE%B9%E5%AE%A1%E6%9F%A5%E8%A7%84%E9%81%BF%E6%96%B9%E6%A1%88/" title="内容审查规避方案"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">内容审查规避方案</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-13_%E5%BE%AE%E4%BF%A1PDF%E5%AE%A1%E6%9F%A5%E6%9C%BA%E5%88%B6/" title="微信PDF审查机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信PDF审查机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-11_pleasure%E7%9A%84%E5%BC%82%E5%90%8C/" title="pleasure的异同"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">pleasure的异同</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-11_quickly%20detached/" title="quickly detached"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">quickly detached</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fe提问关系确认心理解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-08_Hexo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub%20Pages/" title="Hexo部署到GitHub Pages"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo部署到GitHub Pages</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-06_%E6%83%85%E6%84%9F%E6%8C%BD%E5%9B%9E%E5%BB%BA%E8%AE%AE/" title="情感挽回建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">情感挽回建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">日本摩托车旅游推荐</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">西藏1959年起义失败分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-03_%E5%A4%84%E7%94%B7%E5%A4%84%E5%A5%B3%E6%83%85%E7%BB%93%E5%88%86%E6%9E%90/" title="处男处女情结分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">处男处女情结分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-01_%E4%B8%AD%E8%A5%BF%E4%B8%A4%E6%80%A7%E6%96%87%E5%8C%96%E5%B7%AE%E5%BC%82/" title="中西两性文化差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中西两性文化差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-06-01_%E4%BF%A1%E6%81%AF%E7%9B%91%E6%8E%A7%E4%B8%8E%E9%9A%90%E7%A7%81/" title="信息监控与隐私"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">信息监控与隐私</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-31_%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83/" title="配置Anaconda环境"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">配置Anaconda环境</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-29_Obsidian%20%E5%85%8D%E8%B4%B9%E4%B8%8E%E5%A2%9E%E5%80%BC%E6%9C%8D%E5%8A%A1/" title="Obsidian 免费与增值服务"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Obsidian 免费与增值服务</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-29_Typora%20preferences%20location/" title="Typora preferences location"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typora preferences location</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-27_AI%E8%B0%83%E8%AF%95Java%20Web%E9%A1%B9%E7%9B%AE/" title="AI调试Java Web项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AI调试Java Web项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-26_%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%94%99%E8%AF%AF%E4%BF%AE%E5%A4%8D/" title="用户配置文件错误修复"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">用户配置文件错误修复</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-23_%E4%BD%95%E8%B0%93%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE/" title="何谓均方误差"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">何谓均方误差</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-18_%E4%B8%AD%E5%9B%BD%E9%9A%90%E7%A7%81%E6%B3%84%E9%9C%B2%E7%8E%B0%E7%8A%B6/" title="中国隐私泄露现状"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国隐私泄露现状</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-16_TP%20TN%20FP%20FN%20%E8%A7%A3%E9%87%8A/" title="TP TN FP FN 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TP TN FP FN 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-13_RP%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%9E%90/" title="RP主义解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP主义解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-13_RP%E7%B2%BE%E9%AB%93%E5%88%86%E6%9E%90/" title="RP精髓分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP精髓分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-12_%E7%81%B5%E9%AD%82%E4%BC%B4%E4%BE%A3%E7%A5%9E%E8%AF%9D%E8%A7%A3%E6%9E%90/" title="灵魂伴侣神话解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">灵魂伴侣神话解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-10_Output%20initialization%20summary/" title="Output initialization summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Output initialization summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-10_zhai%E7%9B%B4%E6%92%AD%E6%A6%82%E6%8B%AC/" title="zhai直播概括"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">zhai直播概括</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-09_%E6%96%B0%E6%95%99%E4%BF%A1%E4%BB%B0%E5%9B%BD%E5%AE%B6%E6%A6%82%E8%A7%88/" title="新教信仰国家概览"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">新教信仰国家概览</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-08_Java%20EE%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Java EE 快速入门"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 快速入门</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-04_Guinea%20pig%20vs%20%E5%87%BA%E5%A4%B4%E9%B8%9F/" title="Guinea pig vs 出头鸟"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Guinea pig vs 出头鸟</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-04_%E4%B8%AD%E5%9B%BD%E6%B0%91%E8%88%AA%E6%99%AE%E5%8F%8A%E5%8E%86%E7%A8%8B/" title="中国民航普及历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国民航普及历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-04_baby%E7%9C%8B%E8%84%B8%E5%AE%9E%E9%AA%8C/" title="baby看脸实验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">baby看脸实验</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="带版本号的备份机制解析"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">带版本号的备份机制解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Tiergarten 天际线与建筑风格</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-03_Gmail%E6%B3%A8%E5%86%8CMeeff%E8%A2%AB%E5%B0%81%E7%A6%81/" title="Gmail注册Meeff被封禁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Gmail注册Meeff被封禁</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-03_%E4%BA%BA%E7%B1%BB%E5%8F%91%E6%83%85%E6%9C%9F%E8%BF%9B%E5%8C%96%E5%88%86%E6%9E%90/" title="人类发情期进化分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类发情期进化分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bore词义解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Selfish Gene Markdown Options</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-02_%E6%B1%9F%E8%A5%BF%E5%BD%A9%E7%A4%BC%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="江西彩礼现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">江西彩礼现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-02_%E6%80%A7%E5%88%AB%E5%A4%B1%E8%A1%A1%E4%B8%8E%E4%B8%A4%E6%80%A7%E5%85%B3%E7%B3%BB/" title="性别失衡与两性关系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">性别失衡与两性关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-05-01_%E5%90%84%E5%8D%8E%E8%AF%AD%E5%9C%B0%E5%8C%BAon%E5%8A%B3%E5%8A%A8%E8%8A%82_%E5%8A%B3%E5%B7%A5%E8%8A%82/" title="各华语地区on劳动节 劳工节"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">各华语地区on劳动节 劳工节</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-04-30_Cultural%20Cigarette%20Asking%20Norms/" title="Cultural Cigarette Asking Norms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Cultural Cigarette Asking Norms</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-04-30_%E8%B7%A8%E6%96%87%E5%8C%96%E7%A4%BE%E4%BA%A4%E9%80%82%E5%BA%94/" title="跨文化社交适应"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">跨文化社交适应</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-04-22_vague/" title="vague"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vague</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-04-21_John_Ruwitch/" title="John Ruwitch"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">John Ruwitch</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-04-12_Python%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E4%BC%98%E5%8C%96/" title="Python 原型与优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python 原型与优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-31_%E8%84%9A%E6%9C%AC%20%E7%A8%8B%E5%BA%8F%20%E8%BD%AF%E4%BB%B6%20%E5%8C%BA%E5%88%AB/" title="脚本 程序 软件 区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">脚本 程序 软件 区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-29_Reconstruction%20of%20Chinese%20Sites/" title="Reconstruction of Chinese Sites"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Reconstruction of Chinese Sites</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-27_Calisthenics%E4%B8%8E%E5%BE%92%E6%89%8B%E5%81%A5%E8%BA%AB/" title="Calisthenics与徒手健身"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Calisthenics与徒手健身</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-27_Shanghai%20Hangout%20Suggestions/" title="Shanghai Hangout Suggestions"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shanghai Hangout Suggestions</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-24_%E5%91%A8%E5%85%AC%E8%A7%A3%E6%A2%A6%E8%A7%A3%E6%9E%90/" title="周公解梦解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">周公解梦解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-24_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%AA%8C%E6%94%B6%E6%A8%A1%E5%9E%8B/" title="自动化数据验收模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">自动化数据验收模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-20_Ubuntu%20vs%20Windows%20for%20Dev/" title="Ubuntu vs Windows for Dev"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Ubuntu vs Windows for Dev</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-16_AW/" title="AW"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AW</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-08_%E6%A2%A6%E5%A2%83%E8%A7%A3%E8%AF%BB%E4%B8%8E%E6%84%9F%E6%83%85%E5%88%86%E6%9E%90/" title="梦境解读与感情分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">梦境解读与感情分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-07_%E4%B8%AD%E5%85%B1%E5%9B%BD%E7%A4%BE%E4%BA%A4%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="中共国社交现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国社交现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-05_all_mind_games/" title="all mind games"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">all mind games</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-03-05_%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub/" title="上传项目到GitHub"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">上传项目到GitHub</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-27_De-brainwashing_Journey/" title="De-brainwashing Journey"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">De-brainwashing Journey</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-27_Perfectionism_vs_Action/" title="Perfectionism vs Action"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Perfectionism vs Action</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-26_Dagupan_Baguio_Valenzuela_Overview/" title="Dagupan Baguio Valenzuela Overview"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dagupan Baguio Valenzuela Overview</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-26_%E6%99%BA%E8%83%BD%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/" title="智能垃圾分类项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">智能垃圾分类项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-25_%E7%88%B6%E6%AF%8D%E6%8E%A7%E5%88%B6%E6%AC%B2%E8%A7%A3%E6%9E%90/" title="父母控制欲解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">父母控制欲解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-22_SSN%E5%B7%A5%E4%BD%9C%E8%B5%84%E6%A0%BC%E8%A7%A3%E6%9E%90/" title="SSN工作资格解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SSN工作资格解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-22_Trump%E4%B8%8E%E5%BB%BA%E5%9B%BD%E5%85%88%E8%B4%A4/" title="Trump与建国先贤"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Trump与建国先贤</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-21_DeepSeek%E4%B8%8E%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" title="DeepSeek与知识蒸馏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DeepSeek与知识蒸馏</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-21_Improving_Poetic_Expression/" title="Improving Poetic Expression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Improving Poetic Expression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-20_%E6%96%A4%E6%96%A4%E8%AE%A1%E8%BE%83%E4%B8%8E%E7%9D%9A%E7%9C%A6%E5%BF%85%E6%8A%A5%E5%8C%BA%E5%88%AB/" title="斤斤计较与睚眦必报区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">斤斤计较与睚眦必报区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-19_%E5%AE%9E%E4%B9%A0%E7%AE%80%E5%8E%86%E4%B8%8E%E5%AF%BC%E5%B8%88%E6%B2%9F%E9%80%9A/" title="实习简历与导师沟通"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">实习简历与导师沟通</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-10_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%9B%A0/" title="中共国数据泄露原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国数据泄露原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-09_Albert%E6%84%9F%E8%B0%A2%E4%B8%8E%E5%90%AF%E5%8F%91/" title="Albert感谢与启发"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Albert感谢与启发</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-07_%E7%A4%BE%E4%BA%A4%E8%A7%82%E5%BF%B5%E4%B8%8E%E6%80%9D%E7%BB%B4%E5%B7%AE%E5%BC%82/" title="社交观念与思维差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">社交观念与思维差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-05_%E5%B0%8F%E7%B2%89%E7%BA%A2%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E5%BE%81/" title="小粉红定义与特征"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">小粉红定义与特征</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%9C%AC%E7%A7%91%E7%8E%87/" title="中共国本科率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国本科率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-04_HTTP_vs_HTTPS%E5%8C%BA%E5%88%AB/" title="HTTP vs HTTPS区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTTP vs HTTPS区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E6%B4%97%E8%84%91%E6%9C%BA%E5%88%B6/" title="中共宣传洗脑机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传洗脑机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-04_%E5%8F%B0%E6%B9%BE%E6%B0%91%E4%B8%BB%E5%8C%96%E5%8E%86%E7%A8%8B/" title="台湾民主化历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">台湾民主化历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-02-04_%E4%B8%AD%E5%85%B1%E9%AB%98%E5%B1%82%E7%BA%A2%E4%BA%8C%E4%BB%A3/" title="中共高层红二代"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共高层红二代</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-26_%E7%9C%BC%E8%A7%92%E8%86%9C%E7%A7%BB%E6%A4%8D%E5%8C%B9%E9%85%8D/" title="眼角膜移植匹配"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">眼角膜移植匹配</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-25_%E4%B8%87%E6%9C%89%E5%BC%95%E5%8A%9B%E4%B8%8E%E8%BD%A8%E9%81%93%E7%A8%B3%E5%AE%9A/" title="万有引力与轨道稳定"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">万有引力与轨道稳定</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-22_%E6%88%B7%E7%B1%8D%E5%88%B6%E5%BA%A6%E7%9A%84%E5%85%A8%E7%90%83%E5%B7%AE%E5%BC%82/" title="户籍制度的全球差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">户籍制度的全球差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-22_%E7%94%9F%E9%BA%A6%E4%BA%8B%E4%BB%B6%E6%A6%82%E8%BF%B0/" title="生麦事件概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">生麦事件概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-21_%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" title="网页设计技术分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网页设计技术分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-21_Unconditional_vs_Conditional_Surrender/" title="Unconditional vs Conditional Surrender"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unconditional vs Conditional Surrender</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-20_%E4%BA%BA%E7%B1%BB%E6%98%8E%E6%96%87%E5%8E%86%E5%8F%B2%E5%8F%AA%E6%9C%89%E5%87%A0%E5%8D%83%E5%B9%B4/" title="人类明文历史只有几千年"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类明文历史只有几千年</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-13_Buddhism_and_Meat_Consumption/" title="Buddhism and Meat Consumption"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Buddhism and Meat Consumption</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-10_%E5%9B%9B%E4%B9%A6%E4%BA%94%E7%BB%8F%E6%A6%82%E8%BF%B0/" title="四书五经概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">四书五经概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-09_Flexbox%E5%B8%83%E5%B1%80%E8%A7%A3%E6%9E%90/" title="Flexbox布局解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Flexbox布局解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-08_Git_Clone_%E5%9C%A8_VS_Code/" title="Git Clone 在 VS Code"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git Clone 在 VS Code</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-04_%E4%B8%AD%E5%85%B1%E4%B8%8E%E6%97%A5%E6%9C%AC%E6%AF%94%E8%BE%83/" title="中共与日本比较"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共与日本比较</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-04_%E4%BC%8A%E6%9C%97%E4%BA%92%E8%81%94%E7%BD%91%E9%99%90%E5%88%B6%E6%94%BE%E5%AE%BD/" title="伊朗互联网限制放宽"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">伊朗互联网限制放宽</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2025-01-02_China_Debt_Future_Risks/" title="China Debt Future Risks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Debt Future Risks</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="notes"
+        id="heading-4358b5009c67d0e31d7fbf1663fcd3bf" role="tab" data-toggle="collapse" href="#collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+        aria-expanded="false"
+      >
+        notes
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+           role="tabpanel" aria-labelledby="heading-4358b5009c67d0e31d7fbf1663fcd3bf">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/Go%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="map_chart_md"
+        id="heading-8ec8c1394f4d384580e39ae03ad74621" role="tab" data-toggle="collapse" href="#collapse-8ec8c1394f4d384580e39ae03ad74621"
+        aria-expanded="false"
+      >
+        map_chart_md
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8ec8c1394f4d384580e39ae03ad74621"
+           role="tabpanel" aria-labelledby="heading-8ec8c1394f4d384580e39ae03ad74621">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="mds"
+        id="heading-60a114c91c41983174b484e188856fb3" role="tab" data-toggle="collapse" href="#collapse-60a114c91c41983174b484e188856fb3"
+        aria-expanded="false"
+      >
+        mds
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-60a114c91c41983174b484e188856fb3"
+           role="tabpanel" aria-labelledby="heading-60a114c91c41983174b484e188856fb3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/fact_checks/" title="fact_checks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">fact_checks</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/2025-02-24_%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E7%AB%A0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python_notes"
+        id="heading-1e1425d43eeb6f8af603bf147030adca" role="tab" data-toggle="collapse" href="#collapse-1e1425d43eeb6f8af603bf147030adca"
+        aria-expanded="false"
+      >
+        python_notes
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1e1425d43eeb6f8af603bf147030adca"
+           role="tabpanel" aria-labelledby="heading-1e1425d43eeb6f8af603bf147030adca">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/mutable/" title="mutable"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">mutable</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/main_name/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md图片格式转换"
+        id="heading-fbb54e68546e1bb12b12d9089f41da7b" role="tab" data-toggle="collapse" href="#collapse-fbb54e68546e1bb12b12d9089f41da7b"
+        aria-expanded="false"
+      >
+        md图片格式转换
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fbb54e68546e1bb12b12d9089f41da7b"
+           role="tabpanel" aria-labelledby="heading-fbb54e68546e1bb12b12d9089f41da7b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/md%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82-%E6%AD%A3%E5%88%99re/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="os_related"
+        id="heading-97d6ee2c84cbeda2e7720e9133f5ba2c" role="tab" data-toggle="collapse" href="#collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+        aria-expanded="false"
+      >
+        os_related
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+           role="tabpanel" aria-labelledby="heading-97d6ee2c84cbeda2e7720e9133f5ba2c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/thread/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="plt画图学习笔记"
+        id="heading-d061f1cbc7b0720de318fa4b3c3426a1" role="tab" data-toggle="collapse" href="#collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+        aria-expanded="false"
+      >
+        plt画图学习笔记
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+           role="tabpanel" aria-labelledby="heading-d061f1cbc7b0720de318fa4b3c3426a1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="red_pill"
+        id="heading-0b8e50165cdf992b0419fad17c2f7ec0" role="tab" data-toggle="collapse" href="#collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+        aria-expanded="false"
+      >
+        red_pill
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+           role="tabpanel" aria-labelledby="heading-0b8e50165cdf992b0419fad17c2f7ec0">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="tomassi"
+        id="heading-3f6b483246b3b4f3430f7d1e154d50c1" role="tab" data-toggle="collapse" href="#collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+        aria-expanded="false"
+      >
+        tomassi
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+           role="tabpanel" aria-labelledby="heading-3f6b483246b3b4f3430f7d1e154d50c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../red_pill/tomassi/no_full_closure/" title="Women never want full disclosures"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Women never want full disclosures</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

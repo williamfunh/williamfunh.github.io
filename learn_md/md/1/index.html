@@ -1,0 +1,989 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/will.jpg">
+  <link rel="icon" href="../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Markdown 编辑器推荐在线版1. dillinger漂亮强大，支持md, html, pdf 文件导出。支持dropbox, onedrive，google drive, github. 来自国外，可能不够稳定。  2. StackEdit输出美观大方，可本地保存，还有拼写检查，但是对中文支持不好，可以从截图中看到，中文全部被标记为拼写错误，而且源代码中汉字的字间距太大。  3. MaHua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="no_title">
+<meta property="og:url" content="https://williamfunh.github.io/learn_md/md/1/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Markdown 编辑器推荐在线版1. dillinger漂亮强大，支持md, html, pdf 文件导出。支持dropbox, onedrive，google drive, github. 来自国外，可能不够稳定。  2. StackEdit输出美观大方，可本地保存，还有拼写检查，但是对中文支持不好，可以从截图中看到，中文全部被标记为拼写错误，而且源代码中汉字的字间距太大。  3. MaHua">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_1.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/49100-225d27ba754c8e0b.png">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_2.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_3.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_4.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/53675ce57a699.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/536845a2317ec_middle.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_11.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_13.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/53675ec8c78fb.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_16.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/b7efdf7578296403387c3df7abc03df82f424_mw_800_wm_1_wmp_3.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_18.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/5674c13d7279d.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_6.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_7.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_5.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_8.jpg">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_9.png">
+<meta property="og:image" content="https://williamfunh.github.io/learn_md/md/1/img/53675d4fdb9ed_middle.jpg">
+<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-10T03:05:12.707Z">
+<meta property="article:author" content="William Fang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://williamfunh.github.io/learn_md/md/1/img/4319_1.jpg">
+  
+  
+  
+  <title>no_title | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="no_title"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="1970-01-01 03:00" pubdate>
+          1970年1月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          950 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">no_title</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Markdown-编辑器推荐"><a href="#Markdown-编辑器推荐" class="headerlink" title="Markdown 编辑器推荐"></a>Markdown 编辑器推荐</h1><h2 id="在线版"><a href="#在线版" class="headerlink" title="在线版"></a>在线版</h2><h3 id="1-dillinger"><a href="#1-dillinger" class="headerlink" title="1. dillinger"></a>1. <a target="_blank" rel="noopener" href="http://dillinger.io/">dillinger</a></h3><p>漂亮强大，支持md, html, pdf 文件导出。支持dropbox, onedrive，google drive, github. 来自国外，可能不够稳定。</p>
+<p><img src="img/4319_1.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-StackEdit"><a href="#2-StackEdit" class="headerlink" title="2. StackEdit"></a>2. <a target="_blank" rel="noopener" href="https://stackedit.io/">StackEdit</a></h3><p>输出美观大方，可本地保存，还有拼写检查，但是对中文支持不好，可以从截图中看到，中文全部被标记为拼写错误，而且源代码中汉字的字间距太大。</p>
+<p><img src="img/49100-225d27ba754c8e0b.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-MaHua"><a href="#3-MaHua" class="headerlink" title="3. MaHua"></a>3. <a target="_blank" rel="noopener" href="http://mahua.jser.me/">MaHua</a></h3><p>小众软件推荐，界面有些简陋。</p>
+<p><img src="img/4319_2.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-简书"><a href="#4-简书" class="headerlink" title="4. 简书"></a>4. <a target="_blank" rel="noopener" href="http://www.jianshu.com/">简书</a></h3><p>一个很不错的博客平台，每几秒钟便会自动存入一个备份。可以直接从本地拖入照片生成链接，一直在不断优化。作为一个博客平台，需要注册账号后方能进行写作。</p>
+<p><img src="img/4319_3.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-马克飞象"><a href="#5-马克飞象" class="headerlink" title="5. 马克飞象"></a>5. <a target="_blank" rel="noopener" href="https://maxiang.io/">马克飞象</a></h3><p>因为印象笔记不支持Markdown，而这款可以直接把文本存到印象笔记的编辑器对于重度印象笔记用户是个不错的选择。付费软件，可以免费试用。</p>
+<p><img src="img/4319_4.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><h3 id="1-MarkdownPad"><a href="#1-MarkdownPad" class="headerlink" title="1. MarkdownPad"></a>1. <a target="_blank" rel="noopener" href="http://markdownpad.com/">MarkdownPad</a></h3><p>用户可以通过键盘快捷键和工具栏按钮来使用或者移除 Markdown 格式。MarkdownPad左右栏的分割方式令用户可以实时看到 HTML 格式的 Markdown 文档。</p>
+<p><img src="img/53675ce57a699.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-MarkPad"><a href="#2-MarkPad" class="headerlink" title="2. MarkPad"></a>2. <a target="_blank" rel="noopener" href="http://code52.org/DownmarkerWPF/">MarkPad</a></h3><p>MarkPad 是款开源的 Markdown 编辑器，与 Window 8 风格和谐友好的界面，可以直接在你的博客或者 GitHub 中打开、保存文档，直接将图片粘贴到 Markdown 文档中。</p>
+<p><img src="img/536845a2317ec_middle.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-Smark"><a href="#3-Smark" class="headerlink" title="3. Smark"></a>3. <a target="_blank" rel="noopener" href="http://git.oschina.net/elerao/Smark">Smark</a></h3><p>开源软件。</p>
+<p><img src="img/4319_11.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-Miu"><a href="#4-Miu" class="headerlink" title="4. Miu"></a>4. <a target="_blank" rel="noopener" href="http://www.appinn.com/miu-markdown-editor/">Miu</a></h3><p>一款模仿mou 的windows平台markdown编辑器，小众推荐，必属精品，官网无法打开，好在小众提供了百度云下载。界面美观，功能不够成熟</p>
+<p><img src="img/4319_13.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="OSX"><a href="#OSX" class="headerlink" title="OSX"></a>OSX</h2><h3 id="1-Mou"><a href="#1-Mou" class="headerlink" title="1. Mou"></a>1. <a target="_blank" rel="noopener" href="http://25.io/mou/">Mou</a></h3><p>Mou 是 Mac下杰出的 Markdown 编辑器，提供语法高亮、在线预览、同步滚动、全屏模式，支持自定保存、自动匹配，允许自定义主题，支持 CSS，HTML 和 PDF 导出等。</p>
+<p><img src="img/53675ec8c78fb.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-MacDown"><a href="#2-MacDown" class="headerlink" title="2. MacDown"></a>2. <a target="_blank" rel="noopener" href="http://macdown.uranusjr.com/">MacDown</a></h3><p>开源且免费。</p>
+<p><img src="img/4319_16.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-Ulysses"><a href="#3-Ulysses" class="headerlink" title="3. Ulysses"></a>3. <a target="_blank" rel="noopener" href="http://www.ulyssesapp.com/">Ulysses</a></h3><p>支持OS X , iPad，售价 283元。堪称markdown编辑器中的佼佼者。</p>
+<p><img src="img/b7efdf7578296403387c3df7abc03df82f424_mw_800_wm_1_wmp_3.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-iA-Writer"><a href="#4-iA-Writer" class="headerlink" title="4. iA Writer"></a>4. <a target="_blank" rel="noopener" href="https://ia.net/writer/ios">iA Writer</a></h3><p>支持OS X , iOS 及Android，未优化中文显示，售价68，pro版本128元。</p>
+<p><img src="img/4319_18.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-MWeb"><a href="#5-MWeb" class="headerlink" title="5. MWeb"></a>5. <a target="_blank" rel="noopener" href="http://zh.mweb.im/">MWeb</a></h3><p>专业的 Markdown 编辑器。UI漂亮，主题可选。支持markdown扩展语法，支持打字机滚动模式，支持发布到wp、blogger、tumblr等多个博客。</p>
+<p><img src="img/5674c13d7279d.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h2><h3 id="1-Cmd-Markdown"><a href="#1-Cmd-Markdown" class="headerlink" title="1. Cmd Markdown"></a>1. <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor">Cmd Markdown</a></h3><p>作业部落出品，也是一款不错的工具和博客平台兼顾的产品。全平台且提供web版。</p>
+<p><img src="img/4319_6.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-小书匠编辑器"><a href="#2-小书匠编辑器" class="headerlink" title="2. 小书匠编辑器"></a>2. <a target="_blank" rel="noopener" href="http://soft.xiaoshujiang.com/">小书匠编辑器</a></h3><p>全平台覆盖并且有web版。</p>
+<p><img src="img/4319_7.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-FarBox"><a href="#3-FarBox" class="headerlink" title="3. FarBox"></a>3. <a target="_blank" rel="noopener" href="https://www.farbox.com/">FarBox</a></h3><p>一个支持Markdown写作语法的博客平台，让用户通过Dropbox（现在默认是自己的同步服务器）直接建立个人网站。FarBox编辑器免费，支持多平台（无web版，Linux版停止维护），个人认为是Windows平台最优雅的编辑器。多说一句，Farbox服务可以免费试用，在本地编辑器内写作自动同步发布在个人博客，对像笔者这样希望有个人博客但却不愿折腾的小白来说，是个不错的选择。</p>
+<p><img src="img/4319_5.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-Sublime-Text-2"><a href="#4-Sublime-Text-2" class="headerlink" title="4. Sublime Text 2"></a>4. <a target="_blank" rel="noopener" href="http://www.sublimetext.com/">Sublime Text 2</a></h3><p>界面简约大方，定位专业。价格70美元，但是如果你能忍受时不时弹出的注册提醒，完全可以免费使用。唯一美中不足的是markdown并非其原生功能，需要安装插件。</p>
+<p><img src="img/4319_8.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5-Atom"><a href="#5-Atom" class="headerlink" title="5. Atom"></a>5. <a target="_blank" rel="noopener" href="https://atom.io/">Atom</a></h3><p>github出的编辑器，功能十分强大，除了编写代码之外还可以做为markdown编辑器，并且原生支持markdown预览，按<code>ctrl+shift+m</code>弹出。</p>
+<p><img src="img/4319_9.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-ReText"><a href="#6-ReText" class="headerlink" title="6. ReText"></a>6. <a target="_blank" rel="noopener" href="http://sourceforge.net/p/retext/home/ReText/">ReText</a></h3><p>用python开发的，所以跨平台。ReText 是一个使用 Markdown 语法和 reStructuredText (reST) 结构的文本编辑器，编辑的内容支持导出到 PDF、ODT 和 HTML 以及纯文本，支持即时预览、网页生成以及 HTML 语法高亮、全屏模式，可导出文件到 Google Docs 等。</p>
+<p><img src="img/53675d4fdb9ed_middle.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>部分内容来自<a target="_blank" rel="noopener" href="http://www.williamlong.info/archives/4319.html">月光博客 - 好用的Markdown编辑器一览</a>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/learn-md/" class="category-chain-item">learn_md</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/learn-md/md/" class="category-chain-item">md</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../0/" title="no_title">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">no_title</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../hexo/hexo-tutor-6/" title="no_title">
+                        <span class="hidden-mobile">no_title</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="learn_md"
+        id="heading-bd4187be81ff20441731285d8a4f0939" role="tab" data-toggle="collapse" href="#collapse-bd4187be81ff20441731285d8a4f0939"
+        aria-expanded="true"
+      >
+        learn_md
+        <span class="list-group-count">(20)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-bd4187be81ff20441731285d8a4f0939"
+           role="tabpanel" aria-labelledby="heading-bd4187be81ff20441731285d8a4f0939">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="hexo"
+        id="heading-ecf1af8bbe2a3020d96fe7ea971a03ad" role="tab" data-toggle="collapse" href="#collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+        aria-expanded="false"
+      >
+        hexo
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+           role="tabpanel" aria-labelledby="heading-ecf1af8bbe2a3020d96fe7ea971a03ad">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-1%20copy/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-3/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-5/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../hexo/hexo-tutor-6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md"
+        id="heading-793914c9c583d9d86d0f4ed8c521b0c1" role="tab" data-toggle="collapse" href="#collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+        aria-expanded="true"
+      >
+        md
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+           role="tabpanel" aria-labelledby="heading-793914c9c583d9d86d0f4ed8c521b0c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../0/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="no_title"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../3/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../5/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="preface"
+        id="heading-63148a20b2cf8b4ded1d483172eb6696" role="tab" data-toggle="collapse" href="#collapse-63148a20b2cf8b4ded1d483172eb6696"
+        aria-expanded="false"
+      >
+        preface
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-63148a20b2cf8b4ded1d483172eb6696"
+           role="tabpanel" aria-labelledby="heading-63148a20b2cf8b4ded1d483172eb6696">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../preface/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/SUMMARY/" title="0_Summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">0_Summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="test"
+        id="heading-098f6bcd4621d373cade4e832627b4f6" role="tab" data-toggle="collapse" href="#collapse-098f6bcd4621d373cade4e832627b4f6"
+        aria-expanded="false"
+      >
+        test
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-098f6bcd4621d373cade4e832627b4f6"
+           role="tabpanel" aria-labelledby="heading-098f6bcd4621d373cade4e832627b4f6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../test/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/will.jpg">
+  <link rel="icon" href="../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hexo 入门指南（三） - 文章 &amp; 草稿文章命令行中输入： $ hexo new &quot;new article&quot;  之后在source&#x2F;_posts目录下面，多了一个new-article.md的文件。 打开之后我们会看到： title: new article date: 2014-11-01 20:10:33 tags: ---  metadata + conten">
+<meta property="og:type" content="article">
+<meta property="og:title" content="no_title">
+<meta property="og:url" content="https://williamfunh.github.io/learn_md/hexo/hexo-tutor-3/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Hexo 入门指南（三） - 文章 &amp; 草稿文章命令行中输入： $ hexo new &quot;new article&quot;  之后在source&#x2F;_posts目录下面，多了一个new-article.md的文件。 打开之后我们会看到： title: new article date: 2014-11-01 20:10:33 tags: ---  metadata + conten">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-10T03:05:12.707Z">
+<meta property="article:author" content="William Fang">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>no_title | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="no_title"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="1970-01-01 03:00" pubdate>
+          1970年1月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          542 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">no_title</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Hexo-入门指南（三）-文章-草稿"><a href="#Hexo-入门指南（三）-文章-草稿" class="headerlink" title="Hexo 入门指南（三） - 文章 &amp; 草稿"></a>Hexo 入门指南（三） - 文章 &amp; 草稿</h1><h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><p>命令行中输入：</p>
+<div class="code-wrapper"><pre><code class="hljs actionscript">$ hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;new article&quot;</span></code></pre></div>
+
+<p>之后在<code>source/_posts</code>目录下面，多了一个<code>new-article.md</code>的文件。</p>
+<p>打开之后我们会看到：</p>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">new</span> <span class="hljs-string">article</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2014-11-01 20:10:33</span>
+<span class="hljs-attr">tags:</span>
+<span class="hljs-meta">---</span></code></pre></div>
+
+<p>metadata + content &#x3D; md文件所有内容</p>
+<p>文件的开头是属性，采用统一的<code>yaml</code>格式meta，用三条短横线分隔。下面是文章正文content。</p>
+<p>文章的正文支持markdown格式，建议你先学习一下它的语法。markdown不像html似的一大堆标签(简化的<code>html</code>)，很简单，只有几个符号。</p>
+<p>新建、删除或修改文章后，不需要重启hexo server，刷新一下即可预览。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>文章可以拥有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Setting</td>
+<td>Description</td>
+<td>Default</td>
+</tr>
+<tr>
+<td>layout</td>
+<td>Layout</td>
+<td>post或page</td>
+</tr>
+<tr>
+<td>title</td>
+<td>文章的标题</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>创建日期</td>
+<td>文件的创建日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>修改日期</td>
+<td>文件的修改日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>是否开启评论</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>url中的名字</td>
+<td>文件名</td>
+</tr>
+</tbody></table>
+<p>动态博客中通过发布文章页面设置的各种属性，在hexo里要这样设置。</p>
+<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>例如：</p>
+<div class="code-wrapper"><pre><code class="hljs subunit">categories:
+- 日记
+<span class="hljs-keyword">tags:</span>
+- Hexo
+- node.js</code></pre></div>
+
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>同wordpress一样，<span id="more"></span>之上的内容为摘要。</p>
+<h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2><p>如果你修改了layout，在scaffolds文件夹里一定要有名字对应的模版文件，否则会采用默认模版。</p>
+<h2 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h2><p>在配置文件中的new_post_name项可以设置文件名，默认为:title，也就是你在命令行输入的名字。</p>
+<p>文件名可以为下面几个变量和字符串常量的任意组合：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Variable</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>:title</td>
+<td>Escaped title (lower case and replace spaces with dash)</td>
+</tr>
+<tr>
+<td>:year</td>
+<td>Created year (4-digit)</td>
+</tr>
+<tr>
+<td>:month</td>
+<td>Created month (2-digit)</td>
+</tr>
+<tr>
+<td>:i_month</td>
+<td>Created month (Without leading zeros)</td>
+</tr>
+<tr>
+<td>:day</td>
+<td>Created day (2-digit)</td>
+</tr>
+<tr>
+<td>:i_day</td>
+<td>Created day (Without leading zeros)</td>
+</tr>
+</tbody></table>
+<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>草稿相当于很多博客都有的“私密文章”功能。</p>
+<div class="code-wrapper"><pre><code class="hljs actionscript">$ hexo <span class="hljs-keyword">new</span> draft <span class="hljs-string">&quot;new draft&quot;</span></code></pre></div>
+
+<p>会在<code>source/_drafts</code>目录下生成一个<code>new-draft.md</code>文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。</p>
+<p>如果你希望强行预览草稿，更改配置文件：</p>
+<div class="code-wrapper"><pre><code class="hljs nix"><span class="hljs-params">render_drafts:</span> <span class="hljs-literal">true</span></code></pre></div>
+
+<p>或者，如下方式启动server：</p>
+<div class="code-wrapper"><pre><code class="hljs pgsql">$ hexo <span class="hljs-keyword">server</span> <span class="hljs-comment">--drafts</span></code></pre></div>
+
+<p>下面这条命令可以把草稿变成文章，或者页面：</p>
+<div class="code-wrapper"><pre><code class="hljs xml">$ hexo publish [layout] <span class="hljs-tag">&lt;<span class="hljs-name">filename</span>&gt;</span></code></pre></div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/learn-md/" class="category-chain-item">learn_md</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/learn-md/hexo/" class="category-chain-item">hexo</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../hexo-tutor-1/" title="no_title">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">no_title</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../hexo-tutor-4/" title="no_title">
+                        <span class="hidden-mobile">no_title</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="learn_md"
+        id="heading-bd4187be81ff20441731285d8a4f0939" role="tab" data-toggle="collapse" href="#collapse-bd4187be81ff20441731285d8a4f0939"
+        aria-expanded="true"
+      >
+        learn_md
+        <span class="list-group-count">(20)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-bd4187be81ff20441731285d8a4f0939"
+           role="tabpanel" aria-labelledby="heading-bd4187be81ff20441731285d8a4f0939">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="hexo"
+        id="heading-ecf1af8bbe2a3020d96fe7ea971a03ad" role="tab" data-toggle="collapse" href="#collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+        aria-expanded="true"
+      >
+        hexo
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ecf1af8bbe2a3020d96fe7ea971a03ad"
+           role="tabpanel" aria-labelledby="heading-ecf1af8bbe2a3020d96fe7ea971a03ad">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../hexo-tutor-1%20copy/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="no_title"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-5/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../hexo-tutor-6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md"
+        id="heading-793914c9c583d9d86d0f4ed8c521b0c1" role="tab" data-toggle="collapse" href="#collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+        aria-expanded="false"
+      >
+        md
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-793914c9c583d9d86d0f4ed8c521b0c1"
+           role="tabpanel" aria-labelledby="heading-793914c9c583d9d86d0f4ed8c521b0c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../md/0/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/2/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/3/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/4/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/6/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/7/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../md/5/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="preface"
+        id="heading-63148a20b2cf8b4ded1d483172eb6696" role="tab" data-toggle="collapse" href="#collapse-63148a20b2cf8b4ded1d483172eb6696"
+        aria-expanded="false"
+      >
+        preface
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-63148a20b2cf8b4ded1d483172eb6696"
+           role="tabpanel" aria-labelledby="heading-63148a20b2cf8b4ded1d483172eb6696">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../preface/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/SUMMARY/" title="0_Summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">0_Summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../preface/hexo-tutor-1/" title="no_title"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">no_title</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="test"
+        id="heading-098f6bcd4621d373cade4e832627b4f6" role="tab" data-toggle="collapse" href="#collapse-098f6bcd4621d373cade4e832627b4f6"
+        aria-expanded="false"
+      >
+        test
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-098f6bcd4621d373cade4e832627b4f6"
+           role="tabpanel" aria-labelledby="heading-098f6bcd4621d373cade4e832627b4f6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../test/test/" title="testststs"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">testststs</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

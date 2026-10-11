@@ -1,0 +1,2251 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../../img/will.jpg">
+  <link rel="icon" href="../../../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Matplotlib Pyplot❮ PreviousNext ❯ Most of the Matplotlib utilities &#x3D;&#x3D;lies under&#x3D;&#x3D; the pyplot submodule, and are usually imported under the plt alias: import matplotlib.pyplot as pl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Willy&#39;s blog">
+<meta property="og:url" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Matplotlib Pyplot❮ PreviousNext ❯ Most of the Matplotlib utilities &#x3D;&#x3D;lies under&#x3D;&#x3D; the pyplot submodule, and are usually imported under the plt alias: import matplotlib.pyplot as pl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_4_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_6_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_8_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_10_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_13_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_15_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_17_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_19_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_24_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_27_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_30_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_33_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_37_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_39_1.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_42_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_45_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_48_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_50_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_52_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_55_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_58_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_61_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_64_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_67_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_69_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_72_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_74_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_76_1.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_77_1.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_79_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_81_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_83_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_85_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_87_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_89_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_91_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_93_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_96_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_98_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_100_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_102_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_104_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_106_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_108_1.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_110_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_112_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_114_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_116_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/img_matplotlib_histogram1.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_120_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_122_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_124_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/img_matplotlib_pie_angles.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_126_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_128_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_130_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_132_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_134_0.png">
+<meta property="og:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_136_0.png">
+<meta property="article:published_time" content="1970-01-01T00:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-10T02:36:31.181Z">
+<meta property="article:author" content="William Fang">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://williamfunh.github.io/me/notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/assets/output_4_0.png">
+  
+  
+  
+  <title>Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../../js/utils.js" ></script>
+  <script  src="../../../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="1970-01-01 03:00" pubdate>
+          1970年1月1日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Matplotlib-Pyplot"><a href="#Matplotlib-Pyplot" class="headerlink" title="Matplotlib Pyplot"></a><a target="_blank" rel="noopener" href="https://www.w3schools.com/python/matplotlib_pyplot.asp">Matplotlib Pyplot</a></h1><p><a target="_blank" rel="noopener" href="https://www.w3schools.com/python/matplotlib_getting_started.asp">❮ Previous</a><a target="_blank" rel="noopener" href="https://www.w3schools.com/python/matplotlib_plotting.asp">Next ❯</a></p>
+<p>Most of the Matplotlib utilities &#x3D;&#x3D;lies under&#x3D;&#x3D; the <code>pyplot</code> submodule, and are usually imported under the <code>plt</code> alias:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</code></pre></div>
+
+
+<blockquote>
+<p>Draw a line in a diagram from position (0,0) to position (6,250):</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+xpoints = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">6</span>])
+ypoints = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">250</span>])
+
+plt.plot(xpoints, ypoints)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_4_0.png" srcset="/img/loading.gif" lazyload alt="output_4_0"></p>
+<h1 id="plt中文乱码"><a href="#plt中文乱码" class="headerlink" title="plt中文乱码"></a>plt中文乱码</h1><h2 id="解决plt的中文乱码问题"><a href="#解决plt的中文乱码问题" class="headerlink" title="解决plt的中文乱码问题"></a>解决plt的中文乱码问题</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>] <span class="hljs-comment"># 步骤一（替换sans-serif字体）</span>
+plt.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="hljs-literal">False</span>   <span class="hljs-comment"># 步骤二（解决坐标轴负数的负号显示问题）</span></code></pre></div>
+
+
+
+
+<h1 id="Plotting"><a href="#Plotting" class="headerlink" title="Plotting"></a>Plotting</h1><h2 id="Plotting-x-and-y-points"><a href="#Plotting-x-and-y-points" class="headerlink" title="Plotting x and y points"></a>Plotting x and y points</h2><h3 id="dawdawdwa"><a href="#dawdawdwa" class="headerlink" title="dawdawdwa"></a>dawdawdwa</h3><p>The <code>plot()</code> function is used to draw points (markers) in a diagram.</p>
+<p>By default, the <code>plot()</code> function draws a line from point to point.</p>
+<p>The function takes parameters for specifying points in the diagram.</p>
+<p>Parameter 1 is an array containing &#x3D;&#x3D;the points on the <strong>x-axis</strong>&#x3D;&#x3D;.</p>
+<p>Parameter 2 is an array containing &#x3D;&#x3D;the points on the <strong>y-axis</strong>&#x3D;&#x3D;.</p>
+<p>If we need to plot a line from (1, 3) to (8, 10), we have to pass two arrays [1, 8] and [3, 10] to the plot function.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><blockquote>
+<p>Draw &#x3D;&#x3D;a line&#x3D;&#x3D; in a diagram from position (1, 3) to position (8, 10):</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+xpoints = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">8</span>])
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">10</span>])
+
+plt.plot(xpoints, ypoints)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_6_0.png" srcset="/img/loading.gif" lazyload alt="output_6_0"></p>
+<h2 id="Plotting-Without-Line"><a href="#Plotting-Without-Line" class="headerlink" title="Plotting Without Line"></a>Plotting Without Line</h2><blockquote>
+<p>Draw &#x3D;&#x3D;two points&#x3D;&#x3D; in the diagram, one at position (1, 3) and one in position (8, 10):</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+xpoints = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">8</span>])
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">10</span>])
+
+plt.plot(xpoints, ypoints, <span class="hljs-string">&#x27;o&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_8_0.png" srcset="/img/loading.gif" lazyload alt="output_8_0"></p>
+<h2 id="Multiple-Points"><a href="#Multiple-Points" class="headerlink" title="Multiple Points"></a>Multiple Points</h2><p>You can plot as many points as you like, just make sure you have the &#x3D;&#x3D;same number of points&#x3D;&#x3D; in both axis.</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+xpoints = np.array([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>])
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(xpoints, ypoints)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_10_0.png" srcset="/img/loading.gif" lazyload alt="output_10_0"></p>
+<h2 id="Default-X-Points"><a href="#Default-X-Points" class="headerlink" title="Default X-Points"></a>Default X-Points</h2><p>If we don’t specify the points on the x-axis, they will get the default values 0, 1, 2, 3 etc., depending on the length of the y-points.</p>
+<p>So, if we take the same example as above, and leave out the x-points, the diagram will look like this:</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><blockquote>
+<p>Plotting without x-points:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>])
+
+plt.plot(ypoints)
+plt.show()</code></pre></div>
+
+
+<p><img src="assets/output_13_0.png" srcset="/img/loading.gif" lazyload alt="output_13_0"></p>
+<p>The <strong>x-points</strong> in the example above are [0, 1, 2, 3, 4, 5].</p>
+<h1 id="Markers"><a href="#Markers" class="headerlink" title="Markers"></a>Markers</h1><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h3><p>Mark each point with a circle:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;o&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_15_0.png" srcset="/img/loading.gif" lazyload alt="output_15_0"></p>
+<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example"></a>Example</h3><p>Mark each point with a star:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;*&#x27;</span>)
+plt.show()</code></pre></div>
+
+
+<p><img src="assets/output_17_0.png" srcset="/img/loading.gif" lazyload alt="output_17_0"></p>
+<h2 id="Marker-Reference"><a href="#Marker-Reference" class="headerlink" title="Marker Reference"></a>Marker Reference</h2><table>
+<thead>
+<tr>
+<th align="left">Marker</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">‘o’</td>
+<td align="left">Circle</td>
+</tr>
+<tr>
+<td align="left">‘*’</td>
+<td align="left">Star</td>
+</tr>
+<tr>
+<td align="left">‘.’</td>
+<td align="left">Point</td>
+</tr>
+<tr>
+<td align="left">‘,’</td>
+<td align="left">Pixel</td>
+</tr>
+<tr>
+<td align="left">‘x’</td>
+<td align="left">X</td>
+</tr>
+<tr>
+<td align="left">‘X’</td>
+<td align="left">X (filled)</td>
+</tr>
+<tr>
+<td align="left">‘+’</td>
+<td align="left">Plus</td>
+</tr>
+<tr>
+<td align="left">‘P’</td>
+<td align="left">Plus (filled)</td>
+</tr>
+<tr>
+<td align="left">‘s’</td>
+<td align="left">Square</td>
+</tr>
+<tr>
+<td align="left">‘D’</td>
+<td align="left">Diamond</td>
+</tr>
+<tr>
+<td align="left">‘d’</td>
+<td align="left">Diamond (thin)</td>
+</tr>
+<tr>
+<td align="left">‘p’</td>
+<td align="left">Pentagon</td>
+</tr>
+<tr>
+<td align="left">‘H’</td>
+<td align="left">Hexagon</td>
+</tr>
+<tr>
+<td align="left">‘h’</td>
+<td align="left">Hexagon</td>
+</tr>
+<tr>
+<td align="left">‘v’</td>
+<td align="left">Triangle Down</td>
+</tr>
+<tr>
+<td align="left">‘^’</td>
+<td align="left">Triangle Up</td>
+</tr>
+<tr>
+<td align="left">‘&lt;’</td>
+<td align="left">Triangle Left</td>
+</tr>
+<tr>
+<td align="left">‘&gt;’</td>
+<td align="left">Triangle Right</td>
+</tr>
+<tr>
+<td align="left">‘1’</td>
+<td align="left">Tri Down</td>
+</tr>
+<tr>
+<td align="left">‘2’</td>
+<td align="left">Tri Up</td>
+</tr>
+<tr>
+<td align="left">‘3’</td>
+<td align="left">Tri Left</td>
+</tr>
+<tr>
+<td align="left">‘4’</td>
+<td align="left">Tri Right</td>
+</tr>
+<tr>
+<td align="left">‘|’</td>
+<td align="left">Vline</td>
+</tr>
+<tr>
+<td align="left">‘_’</td>
+<td align="left">Hline</td>
+</tr>
+</tbody></table>
+<h2 id="Format-Strings-fmt"><a href="#Format-Strings-fmt" class="headerlink" title="Format Strings fmt"></a>Format Strings <code>fmt</code></h2><p>You can also use the <em>shortcut string notation</em> parameter to specify the marker.</p>
+<p>This parameter is also called <code>fmt</code>, and is written with this syntax:</p>
+<p><code>marker|line|color</code></p>
+<p>Example：</p>
+<blockquote>
+<p>Mark each point with a circle:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, <span class="hljs-string">&#x27;o:r&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_19_0.png" srcset="/img/loading.gif" lazyload alt="output_19_0"></p>
+<p>The <code>marker</code> value can be anything from the Marker Reference above.</p>
+<p>The <code>line</code> value can be one of the following:</p>
+<h2 id="Line-Reference"><a href="#Line-Reference" class="headerlink" title="Line Reference"></a>Line Reference</h2><table>
+<thead>
+<tr>
+<th align="left">Line Syntax</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">‘-‘</td>
+<td align="left">Solid lines实线</td>
+</tr>
+<tr>
+<td align="left">‘:’</td>
+<td align="left">Dotted line</td>
+</tr>
+<tr>
+<td align="left">‘–’</td>
+<td align="left">Dashed line</td>
+</tr>
+<tr>
+<td align="left">‘-.’</td>
+<td align="left">Dashed&#x2F;dotted line</td>
+</tr>
+</tbody></table>
+<h2 id="Color-Reference"><a href="#Color-Reference" class="headerlink" title="Color Reference"></a>Color Reference</h2><table>
+<thead>
+<tr>
+<th align="left">Color Syntax</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">‘r’</td>
+<td align="left">Red</td>
+</tr>
+<tr>
+<td align="left">‘g’</td>
+<td align="left">Green</td>
+</tr>
+<tr>
+<td align="left">‘b’</td>
+<td align="left">Blue</td>
+</tr>
+<tr>
+<td align="left">‘c’</td>
+<td align="left">Cyan</td>
+</tr>
+<tr>
+<td align="left">‘m’</td>
+<td align="left">Magenta</td>
+</tr>
+<tr>
+<td align="left">‘y’</td>
+<td align="left">Yellow</td>
+</tr>
+<tr>
+<td align="left">‘k’</td>
+<td align="left">Black</td>
+</tr>
+<tr>
+<td align="left">‘w’</td>
+<td align="left">White</td>
+</tr>
+</tbody></table>
+<h2 id="Marker-Size"><a href="#Marker-Size" class="headerlink" title="Marker Size"></a>Marker Size</h2><p>keyword argument <code>markersize</code> or the shorter version, <code>ms</code> to set the size of the markers:</p>
+<p>Example</p>
+<blockquote>
+<p>Set the size of the markers to 50:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;o&#x27;</span>, ms = <span class="hljs-number">50</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_24_0.png" srcset="/img/loading.gif" lazyload alt="output_24_0"></p>
+<h2 id="Marker-Color"><a href="#Marker-Color" class="headerlink" title="Marker Color"></a>Marker Color</h2><p>keyword argument <code>markeredgecolor</code> or the shorter <code>mec</code> to set the color of the <em>edge</em> of the markers:</p>
+<p>Example</p>
+<blockquote>
+<p>Set the &#x3D;&#x3D;EDGE color&#x3D;&#x3D; to red:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;o&#x27;</span>, ms = <span class="hljs-number">20</span>, mec = <span class="hljs-string">&#x27;r&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_27_0.png" srcset="/img/loading.gif" lazyload alt="output_27_0"></p>
+<h3 id="Marker-face-color-mfc"><a href="#Marker-face-color-mfc" class="headerlink" title="Marker face color(mfc)"></a>Marker face color(mfc)</h3><p>keyword argument <code>markerfacecolor</code> or the shorter <code>mfc</code> to set the color inside the edge of the markers:</p>
+<p>Example</p>
+<blockquote>
+<p>Set the &#x3D;&#x3D;FACE color&#x3D;&#x3D; to red:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;*&#x27;</span>, ms = <span class="hljs-number">20</span>, mfc = <span class="hljs-string">&#x27;r&#x27;</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_30_0.png" srcset="/img/loading.gif" lazyload alt="output_30_0"></p>
+<h3 id="Entire-Marker"><a href="#Entire-Marker" class="headerlink" title="Entire Marker"></a>Entire Marker</h3><p>Use <em>both</em> the <code>mec</code> and <code>mfc</code> arguments to color the entire marker:</p>
+<p>Example</p>
+<blockquote>
+<p>Set the color of &#x3D;&#x3D;both the <em>edge</em> and the <em>face</em>&#x3D;&#x3D; to red:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, marker = <span class="hljs-string">&#x27;o&#x27;</span>, ms = <span class="hljs-number">20</span>, mec = <span class="hljs-string">&#x27;r&#x27;</span>, mfc = <span class="hljs-string">&#x27;r&#x27;</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_33_0.png" srcset="/img/loading.gif" lazyload alt="output_33_0"></p>
+<h3 id="多种color可选"><a href="#多种color可选" class="headerlink" title="多种color可选"></a>多种color可选</h3><p><a target="_blank" rel="noopener" href="https://www.w3schools.com/colors/colors_hexadecimal.asp">Hexadecimal color values</a>:</p>
+<p>Or any of the <a target="_blank" rel="noopener" href="https://www.w3schools.com/colors/colors_names.asp">140 supported color names</a>.</p>
+<h1 id="Line"><a href="#Line" class="headerlink" title="Line"></a>Line</h1><h2 id="Linestyle"><a href="#Linestyle" class="headerlink" title="Linestyle"></a>Linestyle</h2><p><code>linestyle</code>, or shorter <code>ls</code>, to change the style of the plotted line:</p>
+<p>Example</p>
+<blockquote>
+<p>Use a dotted line:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, linestyle = <span class="hljs-string">&#x27;dotted&#x27;</span>) <span class="hljs-comment"># ls = &#x27;:&#x27;</span>
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_37_0.png" srcset="/img/loading.gif" lazyload alt="output_37_0"></p>
+<blockquote>
+<p>dashed line:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python">plt.plot(ypoints, linestyle = <span class="hljs-string">&#x27;dashed&#x27;</span>) <span class="hljs-comment"># ls = &#x27;--&#x27;</span></code></pre></div>
+
+
+
+
+<p>[&lt;matplotlib.lines.Line2D at 0x24919a0f860&gt;]</p>
+<p><img src="assets/output_39_1.png" srcset="/img/loading.gif" lazyload alt="output_39_1"></p>
+<h3 id="Shorter-Syntax"><a href="#Shorter-Syntax" class="headerlink" title="Shorter Syntax"></a>Shorter Syntax</h3><p>The line style can be written in a shorter syntax:</p>
+<p><code>linestyle</code> can be written as <code>ls</code>.</p>
+<p><code>dotted</code> can be written as <code>:</code>.</p>
+<p><code>dashed</code> can be written as <code>--</code>.</p>
+<h3 id="Line-Styles"><a href="#Line-Styles" class="headerlink" title="Line Styles"></a>Line Styles</h3><table>
+<thead>
+<tr>
+<th align="center">Style</th>
+<th align="center">Or</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘solid’ (default)</td>
+<td align="center">‘-‘</td>
+</tr>
+<tr>
+<td align="center">‘dotted’</td>
+<td align="center">‘:’</td>
+</tr>
+<tr>
+<td align="center">‘dashed’</td>
+<td align="center">‘–’</td>
+</tr>
+<tr>
+<td align="center">‘dashdot’</td>
+<td align="center">‘-.’</td>
+</tr>
+<tr>
+<td align="center">‘None’</td>
+<td align="center">‘’or ‘’</td>
+</tr>
+</tbody></table>
+<h2 id="Line-Color"><a href="#Line-Color" class="headerlink" title="Line Color"></a>Line Color</h2><p>the keyword argument <code>color</code> or the shorter <code>c</code> to set the color of the line:</p>
+<p>Example</p>
+<blockquote>
+<p>Set the line color to red:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, color = <span class="hljs-string">&#x27;g&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_42_0.png" srcset="/img/loading.gif" lazyload alt="output_42_0"></p>
+<h2 id="Line-Width"><a href="#Line-Width" class="headerlink" title="Line Width"></a>Line Width</h2><p><code>linewidth</code> or the shorter <code>lw</code> to change the width of the line.</p>
+<p>Example</p>
+<blockquote>
+<p>Plot with a 20.5pt wide line:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+ypoints = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.plot(ypoints, linewidth = <span class="hljs-string">&#x27;20.5&#x27;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_45_0.png" srcset="/img/loading.gif" lazyload alt="output_45_0"></p>
+<h2 id="Multiple-Lines"><a href="#Multiple-Lines" class="headerlink" title="&#x3D;&#x3D;Multiple Lines&#x3D;&#x3D;"></a>&#x3D;&#x3D;Multiple Lines&#x3D;&#x3D;</h2><p>You can plot as many lines as you like by simply adding more <code>plt.plot()</code> functions:</p>
+<blockquote>
+<p>Draw two lines by specifying a <code>plt.plot()</code> function for each line:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y1 = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+y2 = np.array([<span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>])
+
+plt.plot(y1)
+plt.plot(y2)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_48_0.png" srcset="/img/loading.gif" lazyload alt="output_48_0"></p>
+<p>You can also plot many lines by adding the points for the x- and y-axis for each line in the same <code>plt.plot()</code> function.</p>
+<p>(In the examples above we only specified the points on the y-axis, meaning that the points on the x-axis got the the default values (0, 1, 2, 3).)</p>
+<p>The x- and y- values come in pairs:</p>
+<blockquote>
+<p>Draw two lines by specifiyng the x- and y-point values for both lines:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x1 = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y1 = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+x2 = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y2 = np.array([<span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>])
+
+plt.plot(x1, y1, x2, y2)
+plt.show()</code></pre></div>
+<p><img src="assets/output_50_0.png" srcset="/img/loading.gif" lazyload alt="output_50_0"></p>
+<h1 id="Labels-and-Title"><a href="#Labels-and-Title" class="headerlink" title="Labels and Title"></a>Labels and Title</h1><h2 id="Create-Labels-for-a-Plot"><a href="#Create-Labels-for-a-Plot" class="headerlink" title="Create &#x3D;&#x3D;Labels&#x3D;&#x3D; for a Plot"></a>Create &#x3D;&#x3D;Labels&#x3D;&#x3D; for a Plot</h2><p><code>xlabel()</code> and <code>ylabel()</code> functions to <u>set a label for the x&amp;y-axis</u>.</p>
+<blockquote>
+<p>Add labels to the x- and y-axis:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([<span class="hljs-number">80</span>,   <span class="hljs-number">85</span>,  <span class="hljs-number">90</span>,  <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.plot(x, y)
+
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.show()</code></pre></div>
+<p><img src="assets/output_52_0.png" srcset="/img/loading.gif" lazyload alt="output_52_0"></p>
+<h2 id="Create-a-Title-for-a-Plot"><a href="#Create-a-Title-for-a-Plot" class="headerlink" title="Create a &#x3D;&#x3D;Title&#x3D;&#x3D; for a Plot"></a>Create a &#x3D;&#x3D;Title&#x3D;&#x3D; for a Plot</h2><p>use the <code>title()</code> function to <u>set a title for the plot</u>.</p>
+<blockquote>
+<p>Add a plot title and labels for the x- and y-axis:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([<span class="hljs-number">80</span>, <span class="hljs-number">85</span>, <span class="hljs-number">90</span>, <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.plot(x, y)
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.show()</code></pre></div>
+<p><img src="assets/output_55_0.png" srcset="/img/loading.gif" lazyload alt="output_55_0"></p>
+<h2 id="Set-Font-Properties-for-Title-and-Labels"><a href="#Set-Font-Properties-for-Title-and-Labels" class="headerlink" title="Set &#x3D;&#x3D;Font Properties&#x3D;&#x3D; for Title and Labels"></a>Set &#x3D;&#x3D;Font Properties&#x3D;&#x3D; for Title and Labels</h2><p>use the <code>fontdict</code> parameter in <code>xlabel()</code>, <code>ylabel()</code>, and <code>title()</code> to set font properties for the title and labels.</p>
+<blockquote>
+<p>Set font properties for the title and labels:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([ <span class="hljs-number">80</span>,  <span class="hljs-number">85</span>,  <span class="hljs-number">90</span>,  <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+font1 = &#123;<span class="hljs-string">&#x27;family&#x27;</span>:<span class="hljs-string">&#x27;serif&#x27;</span>,<span class="hljs-string">&#x27;color&#x27;</span>:   <span class="hljs-string">&#x27;blue&#x27;</span>,<span class="hljs-string">&#x27;size&#x27;</span>:<span class="hljs-number">20</span>&#125;
+font2 = &#123;<span class="hljs-string">&#x27;family&#x27;</span>:<span class="hljs-string">&#x27;serif&#x27;</span>,<span class="hljs-string">&#x27;color&#x27;</span>:<span class="hljs-string">&#x27;darkred&#x27;</span>,<span class="hljs-string">&#x27;size&#x27;</span>:<span class="hljs-number">15</span>&#125;
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>,  fontdict = font1)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>, 	fontdict = font2)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>, 	fontdict = font2)
+
+plt.plot(x, y)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_58_0.png" srcset="/img/loading.gif" lazyload alt="output_58_0.png"></p>
+<h2 id="Position-the-Title"><a href="#Position-the-Title" class="headerlink" title="&#x3D;&#x3D;Position&#x3D;&#x3D; the Title"></a>&#x3D;&#x3D;Position&#x3D;&#x3D; the Title</h2><p> <code>loc</code> parameter in <code>title()</code> to position the title.</p>
+<p>Legal values are: ‘left’, ‘right’, and ‘center’.  Default value is ‘center’.</p>
+<blockquote>
+<p>Position the title to the left:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([ <span class="hljs-number">80</span>,  <span class="hljs-number">85</span>,  <span class="hljs-number">90</span>,  <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>, loc = <span class="hljs-string">&#x27;left&#x27;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.plot(x, y)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_61_0.png" srcset="/img/loading.gif" lazyload alt="output_61_0.png"></p>
+<h1 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h1><h2 id="Add-Grid-Lines-to-a-Plot"><a href="#Add-Grid-Lines-to-a-Plot" class="headerlink" title="Add Grid Lines to a Plot"></a>Add Grid Lines to a Plot</h2><p> <code>grid()</code> function to add grid lines to the plot.</p>
+<blockquote>
+<p>Add grid lines to the plot:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([ <span class="hljs-number">80</span>,  <span class="hljs-number">85</span>,  <span class="hljs-number">90</span>,  <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.plot(x, y)
+
+plt.grid()
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_64_0.png" srcset="/img/loading.gif" lazyload alt="output_64_0.png"></p>
+<h2 id="Specify-Which-Grid-Lines-to-Display"><a href="#Specify-Which-Grid-Lines-to-Display" class="headerlink" title="Specify Which Grid Lines to Display"></a>Specify Which Grid Lines to Display</h2><p><code>axis</code> parameter in the <code>grid()</code> function to specify which grid lines to display.</p>
+<p>Legal values are: ‘x’, ‘y’, and ‘both’. Default value is ‘both’.</p>
+<blockquote>
+<p>Display only grid lines for the x-axis:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([<span class="hljs-number">80</span>, <span class="hljs-number">85</span>, <span class="hljs-number">90</span>, <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.plot(x, y)
+
+plt.grid(axis = <span class="hljs-string">&#x27;x&#x27;</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_67_0.png" srcset="/img/loading.gif" lazyload alt="output_67_0.png"></p>
+<blockquote>
+<p>Display only grid lines for the y-axis:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python">plt.grid(axis = <span class="hljs-string">&#x27;y&#x27;</span>)</code></pre></div>
+
+
+
+<p><img src="assets/output_69_0.png" srcset="/img/loading.gif" lazyload alt="output_69_0.png"></p>
+<h2 id="Set-Line-Properties-for-the-Grid"><a href="#Set-Line-Properties-for-the-Grid" class="headerlink" title="Set Line Properties for the Grid"></a>Set Line Properties for the Grid</h2><p>You can also set the line properties of the grid, like this: grid(color &#x3D; ‘<em>color</em>‘, linestyle &#x3D; ‘<em>linestyle</em>‘, linewidth &#x3D; <em>number</em>).</p>
+<blockquote>
+<p>Set the line properties of the grid:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+x = np.array([<span class="hljs-number">80</span>, <span class="hljs-number">85</span>, <span class="hljs-number">90</span>, <span class="hljs-number">95</span>, <span class="hljs-number">100</span>, <span class="hljs-number">105</span>, <span class="hljs-number">110</span>, <span class="hljs-number">115</span>, <span class="hljs-number">120</span>, <span class="hljs-number">125</span>])
+y = np.array([<span class="hljs-number">240</span>, <span class="hljs-number">250</span>, <span class="hljs-number">260</span>, <span class="hljs-number">270</span>, <span class="hljs-number">280</span>, <span class="hljs-number">290</span>, <span class="hljs-number">300</span>, <span class="hljs-number">310</span>, <span class="hljs-number">320</span>, <span class="hljs-number">330</span>])
+
+plt.title(<span class="hljs-string">&quot;Sports Watch Data&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;Average Pulse&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;Calorie Burnage&quot;</span>)
+
+plt.plot(x, y)
+
+plt.grid(color = <span class="hljs-string">&#x27;green&#x27;</span>, linestyle = <span class="hljs-string">&#x27;--&#x27;</span>, linewidth = <span class="hljs-number">0.5</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_72_0.png" srcset="/img/loading.gif" lazyload alt="output_72_0.png"></p>
+<h1 id="Subplot"><a href="#Subplot" class="headerlink" title="Subplot"></a>Subplot</h1><h2 id="Display-Multiple-Plots"><a href="#Display-Multiple-Plots" class="headerlink" title="Display &#x3D;&#x3D;Multiple Plots&#x3D;&#x3D;"></a>Display &#x3D;&#x3D;Multiple Plots&#x3D;&#x3D;</h2><p>With the <code>subplot()</code> function you can <u>draw multiple plots in one figure</u>:</p>
+<blockquote>
+<p>Draw 2 plots:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#plot 1:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+plt.plot(x,y)
+
+<span class="hljs-comment">#plot 2:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+plt.plot(x,y)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_74_0.png" srcset="/img/loading.gif" lazyload alt="output_74_0.png"></p>
+<h2 id="The-subplot-Function"><a href="#The-subplot-Function" class="headerlink" title="The subplot() Function"></a>The subplot() Function</h2><p>The <code>subplot()</code> function takes three arguments that describes the layout of the figure.</p>
+<p>The layout is organized in rows and columns, which are represented by the <em>first</em> and <em>second</em> argument.</p>
+<p>The third argument represents the index of the current plot.</p>
+<div class="code-wrapper"><pre><code class="hljs python">plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+<span class="hljs-comment">#the figure has 1 row, 2 columns, and this plot is the first plot.</span></code></pre></div>
+
+
+
+
+<p>&lt;Axes: &gt;</p>
+<p><img src="assets/output_76_1.png" srcset="/img/loading.gif" lazyload alt="output_76_1.png"></p>
+<div class="code-wrapper"><pre><code class="hljs python">plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+<span class="hljs-comment">#the figure has 1 row, 2 columns, and this plot is the second plot.</span></code></pre></div>
+
+
+
+
+<p>&lt;Axes: &gt;</p>
+<p><img src="assets/output_77_1.png" srcset="/img/loading.gif" lazyload alt="output_77_1.png"></p>
+<p>So, if we want a figure with 2 rows an 1 column (meaning that the two plots will be displayed on top of each other instead of side-by-side), we can write the syntax like this:</p>
+<blockquote>
+<p>Draw 2 plots on top of each other:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#plot 1:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)
+plt.plot(x,y)
+
+<span class="hljs-comment">#plot 2:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+plt.plot(x,y)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_79_0.png" srcset="/img/loading.gif" lazyload alt="output_79_0.png"></p>
+<p>You can draw as many plots you like on one figure, just descibe the number of rows, columns, and the index of the plot.</p>
+<blockquote>
+<p>Draw 6 plots:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>)
+plt.plot(x,y)
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>)
+plt.plot(x,y)
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
+plt.plot(x,y)
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+plt.plot(x,y)
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>)
+plt.plot(x,y)
+
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>)
+plt.plot(x,y)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_81_0.png" srcset="/img/loading.gif" lazyload alt="output_81_0.png"></p>
+<h2 id="Title"><a href="#Title" class="headerlink" title="Title"></a>Title</h2><p>You can add a title to each plot with the <code>title()</code> function:</p>
+<blockquote>
+<p>2 plots, with titles:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#plot 1:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+plt.plot(x,y)
+plt.title(<span class="hljs-string">&quot;SALES&quot;</span>)
+
+<span class="hljs-comment">#plot 2:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+plt.plot(x,y)
+plt.title(<span class="hljs-string">&quot;INCOME&quot;</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_83_0.png" srcset="/img/loading.gif" lazyload alt="output_83_0.png"></p>
+<h2 id="Super-Title"><a href="#Super-Title" class="headerlink" title="Super Title"></a>Super Title</h2><p>You can <u>add a title to the entire figure</u> with the <code>suptitle()</code> function:</p>
+<blockquote>
+<p>Add a title for the entire figure:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#plot 1:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+plt.plot(x,y)
+plt.title(<span class="hljs-string">&quot;SALES&quot;</span>)
+
+<span class="hljs-comment">#plot 2:</span>
+x = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])
+y = np.array([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>])
+
+plt.subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+plt.plot(x,y)
+plt.title(<span class="hljs-string">&quot;INCOME&quot;</span>)
+
+plt.suptitle(<span class="hljs-string">&quot;MY SHOP&quot;</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_85_0.png" srcset="/img/loading.gif" lazyload alt="output_85_0.png"></p>
+<h1 id="Scatter"><a href="#Scatter" class="headerlink" title="Scatter"></a>Scatter</h1><h2 id="Creating-Scatter-Plots"><a href="#Creating-Scatter-Plots" class="headerlink" title="Creating Scatter Plots"></a>Creating Scatter Plots</h2><p><code>scatter()</code> function to draw a scatter plot散点图.</p>
+<p>The <code>scatter()</code> function plots one dot for each observation. It needs two arrays of the same length, one for the values of the x-axis, and one for values on the y-axis:</p>
+<blockquote>
+<p>A simple scatter plot:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([ <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">7</span>,  <span class="hljs-number">2</span>,<span class="hljs-number">17</span>,  <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>, <span class="hljs-number">9</span>, <span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+
+plt.scatter(x, y)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_87_0.png" srcset="/img/loading.gif" lazyload alt="output_87_0.png"></p>
+<p>The observation in the example above is the result of 13 cars passing by.</p>
+<p>The X-axis shows   how old the car is.</p>
+<p>The Y-axis shows   the speed of the car when it passes.</p>
+<p>Are there any relationships between the observations?</p>
+<p>It seems that the newer the car, the faster it drives, but that could be a coincidence, after all we only registered 13 cars.</p>
+<hr>
+<h2 id="Compare-Plots"><a href="#Compare-Plots" class="headerlink" title="Compare Plots"></a>Compare Plots</h2><p>In the example above, there seems to be a relationship between speed and age, but what if we plot the observations from another day as well? Will the scatter plot tell us something else?</p>
+<p>Draw two plots on the same figure:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#day one, the age and speed of 13 cars:</span>
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+plt.scatter(x, y)
+
+<span class="hljs-comment">#day two, the age and speed of 15 cars:</span>
+x = np.array([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">8</span>,<span class="hljs-number">1</span>,<span class="hljs-number">15</span>,<span class="hljs-number">8</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">7</span>,<span class="hljs-number">3</span>,<span class="hljs-number">11</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">14</span>,<span class="hljs-number">12</span>])
+y = np.array([<span class="hljs-number">100</span>,<span class="hljs-number">105</span>,<span class="hljs-number">84</span>,<span class="hljs-number">105</span>,<span class="hljs-number">90</span>,<span class="hljs-number">99</span>,<span class="hljs-number">90</span>,<span class="hljs-number">95</span>,<span class="hljs-number">94</span>,<span class="hljs-number">100</span>,<span class="hljs-number">79</span>,<span class="hljs-number">112</span>,<span class="hljs-number">91</span>,<span class="hljs-number">80</span>,<span class="hljs-number">85</span>])
+plt.scatter(x, y)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_89_0.png" srcset="/img/loading.gif" lazyload alt="output_89_0.png"></p>
+<p><strong>Note:</strong> The two plots are plotted with two different colors, by default blue and orange, you will learn how to change colors later in this chapter.</p>
+<p>By comparing the two plots, I think it is safe to say that they both gives us the same conclusion: the newer the car, the faster it drives.</p>
+<hr>
+<hr>
+<h2 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h2><p>You can set your own color for each scatter plot with the <code>color</code> or the <code>c</code> argument:</p>
+<blockquote>
+<p>Set your own color of the markers:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+plt.scatter(x, y, color = <span class="hljs-string">&#x27;hotpink&#x27;</span>)
+
+x = np.array([<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">8</span>,<span class="hljs-number">1</span>,<span class="hljs-number">15</span>,<span class="hljs-number">8</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">7</span>,<span class="hljs-number">3</span>,<span class="hljs-number">11</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">14</span>,<span class="hljs-number">12</span>])
+y = np.array([<span class="hljs-number">100</span>,<span class="hljs-number">105</span>,<span class="hljs-number">84</span>,<span class="hljs-number">105</span>,<span class="hljs-number">90</span>,<span class="hljs-number">99</span>,<span class="hljs-number">90</span>,<span class="hljs-number">95</span>,<span class="hljs-number">94</span>,<span class="hljs-number">100</span>,<span class="hljs-number">79</span>,<span class="hljs-number">112</span>,<span class="hljs-number">91</span>,<span class="hljs-number">80</span>,<span class="hljs-number">85</span>])
+plt.scatter(x, y, color = <span class="hljs-string">&#x27;#88c999&#x27;</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_91_0.png" srcset="/img/loading.gif" lazyload alt="output_91_0.png"></p>
+<h2 id="Color-Each-Dot"><a href="#Color-Each-Dot" class="headerlink" title="Color Each Dot"></a>Color Each Dot</h2><p>You can even set a specific color for each dot by using an array of colors as value for the <code>c</code> argument:</p>
+<p><strong>Note:</strong> You <em>cannot</em> use the <code>color</code> argument for this, only the <code>c</code> argument.</p>
+<blockquote>
+<p>Set your own color of the markers:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+colors = np.array([<span class="hljs-string">&quot;red&quot;</span>,<span class="hljs-string">&quot;green&quot;</span>,<span class="hljs-string">&quot;blue&quot;</span>,<span class="hljs-string">&quot;yellow&quot;</span>,<span class="hljs-string">&quot;pink&quot;</span>,<span class="hljs-string">&quot;black&quot;</span>,<span class="hljs-string">&quot;orange&quot;</span>,<span class="hljs-string">&quot;purple&quot;</span>,<span class="hljs-string">&quot;beige&quot;</span>,<span class="hljs-string">&quot;brown&quot;</span>,<span class="hljs-string">&quot;gray&quot;</span>,<span class="hljs-string">&quot;cyan&quot;</span>,<span class="hljs-string">&quot;magenta&quot;</span>])
+
+plt.scatter(x, y, c=colors)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_93_0.png" srcset="/img/loading.gif" lazyload alt="output_93_0.png"></p>
+<h2 id="ColorMap"><a href="#ColorMap" class="headerlink" title="ColorMap"></a>ColorMap</h2><p>The Matplotlib module has a number of available colormaps.</p>
+<p>A colormap is like a list of colors, where each color has a value that ranges from 0 to 100.</p>
+<p>Here is an example of a colormap:</p>
+<p>This colormap is called ‘viridis’ and as you can see it ranges from 0, which is a purple color, up to 100, which is a yellow color.</p>
+<h3 id="How-to-Use-the-ColorMap"><a href="#How-to-Use-the-ColorMap" class="headerlink" title="How to Use the ColorMap"></a>How to Use the ColorMap</h3><p>You can specify the colormap with the keyword argument <code>cmap</code> with the value of the colormap, in this case <code>&#39;viridis&#39;</code> which is one of the built-in colormaps available in Matplotlib.</p>
+<p>In addition you have to create an array with values (from 0 to 100), one value for each point in the scatter plot:</p>
+<h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example"></a>Example</h3><p>Create a color array, and specify a colormap in the scatter plot:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+colors = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">45</span>, <span class="hljs-number">50</span>, <span class="hljs-number">55</span>, <span class="hljs-number">60</span>, <span class="hljs-number">70</span>, <span class="hljs-number">80</span>, <span class="hljs-number">90</span>, <span class="hljs-number">100</span>])
+
+plt.scatter(x, y, c=colors, cmap=<span class="hljs-string">&#x27;viridis&#x27;</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_96_0.png" srcset="/img/loading.gif" lazyload alt="output_96_0.png"></p>
+<p>You can include the colormap in the drawing by including the <code>plt.colorbar()</code> statement:</p>
+<blockquote>
+<p>Include the actual colormap:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+colors = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">45</span>, <span class="hljs-number">50</span>, <span class="hljs-number">55</span>, <span class="hljs-number">60</span>, <span class="hljs-number">70</span>, <span class="hljs-number">80</span>, <span class="hljs-number">90</span>, <span class="hljs-number">100</span>])
+
+plt.scatter(x, y, c=colors, cmap=<span class="hljs-string">&#x27;viridis&#x27;</span>)
+
+plt.colorbar()
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_98_0.png" srcset="/img/loading.gif" lazyload alt="output_98_0.png"></p>
+<h3 id="Available-ColorMaps"><a href="#Available-ColorMaps" class="headerlink" title="Available ColorMaps"></a>Available ColorMaps</h3><p>You can choose any of the built-in colormaps:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Reverse</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Accent</td>
+<td align="left">Accent_r</td>
+</tr>
+<tr>
+<td align="left">Blues</td>
+<td align="left">Blues_r</td>
+</tr>
+<tr>
+<td align="left">BrBG</td>
+<td align="left">BrBG_r</td>
+</tr>
+<tr>
+<td align="left">BuGn</td>
+<td align="left">BuGn_r</td>
+</tr>
+<tr>
+<td align="left">BuPu</td>
+<td align="left">BuPu_r</td>
+</tr>
+<tr>
+<td align="left">CMRmap</td>
+<td align="left">CMRmap_r</td>
+</tr>
+<tr>
+<td align="left">Dark2</td>
+<td align="left">Dark2_r</td>
+</tr>
+<tr>
+<td align="left">GnBu</td>
+<td align="left">GnBu_r</td>
+</tr>
+<tr>
+<td align="left">Greens</td>
+<td align="left">Greens_r</td>
+</tr>
+<tr>
+<td align="left">Greys</td>
+<td align="left">Greys_r</td>
+</tr>
+<tr>
+<td align="left">OrRd</td>
+<td align="left">OrRd_r</td>
+</tr>
+<tr>
+<td align="left">Oranges</td>
+<td align="left">Oranges_r</td>
+</tr>
+<tr>
+<td align="left">PRGn</td>
+<td align="left">PRGn_r</td>
+</tr>
+<tr>
+<td align="left">Paired</td>
+<td align="left">Paired_r</td>
+</tr>
+<tr>
+<td align="left">Pastel1</td>
+<td align="left">Pastel1_r</td>
+</tr>
+<tr>
+<td align="left">Pastel2</td>
+<td align="left">Pastel2_r</td>
+</tr>
+<tr>
+<td align="left">PiYG</td>
+<td align="left">PiYG_r</td>
+</tr>
+<tr>
+<td align="left">PuBu</td>
+<td align="left">PuBu_r</td>
+</tr>
+<tr>
+<td align="left">PuBuGn</td>
+<td align="left">PuBuGn_r</td>
+</tr>
+<tr>
+<td align="left">PuOr</td>
+<td align="left">PuOr_r</td>
+</tr>
+<tr>
+<td align="left">PuRd</td>
+<td align="left">PuRd_r</td>
+</tr>
+<tr>
+<td align="left">Purples</td>
+<td align="left">Purples_r</td>
+</tr>
+<tr>
+<td align="left">RdBu</td>
+<td align="left">RdBu_r</td>
+</tr>
+<tr>
+<td align="left">RdGy</td>
+<td align="left">RdGy_r</td>
+</tr>
+<tr>
+<td align="left">RdPu</td>
+<td align="left">RdPu_r</td>
+</tr>
+<tr>
+<td align="left">RdYlBu</td>
+<td align="left">RdYlBu_r</td>
+</tr>
+<tr>
+<td align="left">RdYlGn</td>
+<td align="left">RdYlGn_r</td>
+</tr>
+<tr>
+<td align="left">Reds</td>
+<td align="left">Reds_r</td>
+</tr>
+<tr>
+<td align="left">Set1</td>
+<td align="left">Set1_r</td>
+</tr>
+<tr>
+<td align="left">Set2</td>
+<td align="left">Set2_r</td>
+</tr>
+<tr>
+<td align="left">Set3</td>
+<td align="left">Set3_r</td>
+</tr>
+<tr>
+<td align="left">Spectral</td>
+<td align="left">Spectral_r</td>
+</tr>
+<tr>
+<td align="left">Wistia</td>
+<td align="left">Wistia_r</td>
+</tr>
+<tr>
+<td align="left">YlGn</td>
+<td align="left">YlGn_r</td>
+</tr>
+<tr>
+<td align="left">YlGnBu</td>
+<td align="left">YlGnBu_r</td>
+</tr>
+<tr>
+<td align="left">YlOrBr</td>
+<td align="left">YlOrBr_r</td>
+</tr>
+<tr>
+<td align="left">YlOrRd</td>
+<td align="left">YlOrRd_r</td>
+</tr>
+<tr>
+<td align="left">afmhot</td>
+<td align="left">afmhot_r</td>
+</tr>
+<tr>
+<td align="left">autumn</td>
+<td align="left">autumn_r</td>
+</tr>
+<tr>
+<td align="left">binary</td>
+<td align="left">binary_r</td>
+</tr>
+<tr>
+<td align="left">bone</td>
+<td align="left">bone_r</td>
+</tr>
+<tr>
+<td align="left">brg</td>
+<td align="left">brg_r</td>
+</tr>
+<tr>
+<td align="left">bwr</td>
+<td align="left">bwr_r</td>
+</tr>
+<tr>
+<td align="left">cividis</td>
+<td align="left">cividis_r</td>
+</tr>
+<tr>
+<td align="left">cool</td>
+<td align="left">cool_r</td>
+</tr>
+<tr>
+<td align="left">coolwarm</td>
+<td align="left">coolwarm_r</td>
+</tr>
+<tr>
+<td align="left">copper</td>
+<td align="left">copper_r</td>
+</tr>
+<tr>
+<td align="left">cubehelix</td>
+<td align="left">cubehelix_r</td>
+</tr>
+<tr>
+<td align="left">flag</td>
+<td align="left">flag_r</td>
+</tr>
+<tr>
+<td align="left">gist_earth</td>
+<td align="left">gist_earth_r</td>
+</tr>
+<tr>
+<td align="left">gist_gray</td>
+<td align="left">gist_gray_r</td>
+</tr>
+<tr>
+<td align="left">gist_heat</td>
+<td align="left">gist_heat_r</td>
+</tr>
+<tr>
+<td align="left">gist_ncar</td>
+<td align="left">gist_ncar_r</td>
+</tr>
+<tr>
+<td align="left">gist_rainbow</td>
+<td align="left">gist_rainbow_r</td>
+</tr>
+<tr>
+<td align="left">gist_stern</td>
+<td align="left">gist_stern_r</td>
+</tr>
+<tr>
+<td align="left">gist_yarg</td>
+<td align="left">gist_yarg_r</td>
+</tr>
+<tr>
+<td align="left">gnuplot</td>
+<td align="left">gnuplot_r</td>
+</tr>
+<tr>
+<td align="left">gnuplot2</td>
+<td align="left">gnuplot2_r</td>
+</tr>
+<tr>
+<td align="left">gray</td>
+<td align="left">gray_r</td>
+</tr>
+<tr>
+<td align="left">hot</td>
+<td align="left">hot_r</td>
+</tr>
+<tr>
+<td align="left">hsv</td>
+<td align="left">hsv_r</td>
+</tr>
+<tr>
+<td align="left">inferno</td>
+<td align="left">inferno_r</td>
+</tr>
+<tr>
+<td align="left">jet</td>
+<td align="left">jet_r</td>
+</tr>
+<tr>
+<td align="left">magma</td>
+<td align="left">magma_r</td>
+</tr>
+<tr>
+<td align="left">nipy_spectral</td>
+<td align="left">nipy_spectral_r</td>
+</tr>
+<tr>
+<td align="left">ocean</td>
+<td align="left">ocean_r</td>
+</tr>
+<tr>
+<td align="left">pink</td>
+<td align="left">pink_r</td>
+</tr>
+<tr>
+<td align="left">plasma</td>
+<td align="left">plasma_r</td>
+</tr>
+<tr>
+<td align="left">prism</td>
+<td align="left">prism_r</td>
+</tr>
+<tr>
+<td align="left">rainbow</td>
+<td align="left">rainbow_r</td>
+</tr>
+<tr>
+<td align="left">seismic</td>
+<td align="left">seismic_r</td>
+</tr>
+<tr>
+<td align="left">spring</td>
+<td align="left">spring_r</td>
+</tr>
+<tr>
+<td align="left">summer</td>
+<td align="left">summer_r</td>
+</tr>
+<tr>
+<td align="left">tab10</td>
+<td align="left">tab10_r</td>
+</tr>
+<tr>
+<td align="left">tab20</td>
+<td align="left">tab20_r</td>
+</tr>
+<tr>
+<td align="left">tab20b</td>
+<td align="left">tab20b_r</td>
+</tr>
+<tr>
+<td align="left">tab20c</td>
+<td align="left">tab20c_r</td>
+</tr>
+<tr>
+<td align="left">terrain</td>
+<td align="left">terrain_r</td>
+</tr>
+<tr>
+<td align="left">twilight</td>
+<td align="left">twilight_r</td>
+</tr>
+<tr>
+<td align="left">twilight_shifted</td>
+<td align="left">twilight_shifted_r</td>
+</tr>
+<tr>
+<td align="left">viridis</td>
+<td align="left">viridis_r</td>
+</tr>
+<tr>
+<td align="left">winter</td>
+<td align="left">winter_r</td>
+</tr>
+</tbody></table>
+<h2 id="Size"><a href="#Size" class="headerlink" title="Size"></a>Size</h2><p>You can change the size of the dots with the <code>s</code> argument.</p>
+<p>Just like colors, make sure the array for sizes has the same length as the arrays for the x- and y-axis:</p>
+<blockquote>
+<p>Set your own size for the markers:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+sizes = np.array([<span class="hljs-number">20</span>,<span class="hljs-number">50</span>,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">500</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">60</span>,<span class="hljs-number">90</span>,<span class="hljs-number">10</span>,<span class="hljs-number">300</span>,<span class="hljs-number">600</span>,<span class="hljs-number">800</span>,<span class="hljs-number">75</span>])
+
+plt.scatter(x, y, s=sizes)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_100_0.png" srcset="/img/loading.gif" lazyload alt="output_100_0.png"></p>
+<h2 id="Alpha"><a href="#Alpha" class="headerlink" title="Alpha"></a>Alpha</h2><p><code>alpha</code> argument：<u>adjust the transparency透明度 of the dots</u></p>
+<p>Just like colors, make sure the array for sizes has the same length as the arrays for the x- and y-axis:</p>
+<blockquote>
+<p>Set your own size for the markers:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">17</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>])
+y = np.array([<span class="hljs-number">99</span>,<span class="hljs-number">86</span>,<span class="hljs-number">87</span>,<span class="hljs-number">88</span>,<span class="hljs-number">111</span>,<span class="hljs-number">86</span>,<span class="hljs-number">103</span>,<span class="hljs-number">87</span>,<span class="hljs-number">94</span>,<span class="hljs-number">78</span>,<span class="hljs-number">77</span>,<span class="hljs-number">85</span>,<span class="hljs-number">86</span>])
+sizes = np.array([<span class="hljs-number">20</span>,<span class="hljs-number">50</span>,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">500</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">60</span>,<span class="hljs-number">90</span>,<span class="hljs-number">10</span>,<span class="hljs-number">300</span>,<span class="hljs-number">600</span>,<span class="hljs-number">800</span>,<span class="hljs-number">75</span>])
+
+plt.scatter(x, y, s=sizes, alpha=<span class="hljs-number">0.5</span>)
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_102_0.png" srcset="/img/loading.gif" lazyload alt="output_102_0.png"></p>
+<h2 id="Combine-Color-Size-and-Alpha"><a href="#Combine-Color-Size-and-Alpha" class="headerlink" title="Combine Color Size and Alpha"></a>Combine Color Size and Alpha</h2><p>You can combine a colormap with different sizes of the dots. This is best visualized if the dots are transparent:</p>
+<blockquote>
+<p>Create random arrays with 100 values for x-points, y-points, colors and sizes:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.random.randint(<span class="hljs-number">100</span>, size=(<span class="hljs-number">100</span>))
+y = np.random.randint(<span class="hljs-number">100</span>, size=(<span class="hljs-number">100</span>))
+colors = np.random.randint(<span class="hljs-number">100</span>, size=(<span class="hljs-number">100</span>))
+sizes = <span class="hljs-number">10</span> * np.random.randint(<span class="hljs-number">100</span>, size=(<span class="hljs-number">100</span>))
+
+plt.scatter(x, y, c=colors, s=sizes, alpha=<span class="hljs-number">0.5</span>, cmap=<span class="hljs-string">&#x27;nipy_spectral&#x27;</span>)
+
+plt.colorbar()
+
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_104_0.png" srcset="/img/loading.gif" lazyload alt="output_104_0.png"></p>
+<h1 id="Bars"><a href="#Bars" class="headerlink" title="Bars"></a>Bars</h1><h2 id="Creating-Bars"><a href="#Creating-Bars" class="headerlink" title="Creating Bars"></a>Creating Bars</h2><p><code>bar()</code> function to draw bar graphs:</p>
+<blockquote>
+<p>Draw 4 bars:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.bar(x,y)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_106_0.png" srcset="/img/loading.gif" lazyload alt="output_106_0.png"></p>
+<p>The <code>bar()</code> function takes arguments that describes the layout of the bars.</p>
+<p>The categories and their values represented by the <em>first</em> and <em>second</em> argument as arrays.</p>
+<div class="code-wrapper"><pre><code class="hljs python">x = [<span class="hljs-string">&quot;APPLES&quot;</span>, <span class="hljs-string">&quot;BANANAS&quot;</span>]
+y = [<span class="hljs-number">400</span>, <span class="hljs-number">350</span>]
+plt.bar(x, y)</code></pre></div>
+
+
+
+<p>&lt;BarContainer object of 2 artists&gt;</p>
+<p><img src="assets/output_108_1.png" srcset="/img/loading.gif" lazyload alt="output_108_1.png"></p>
+<h2 id="Horizontal-Bars"><a href="#Horizontal-Bars" class="headerlink" title="Horizontal Bars"></a>Horizontal Bars</h2><p>If you want the bars to be displayed horizontally instead of vertically, use the <code>barh()</code> function:</p>
+<blockquote>
+<p>Draw 4 horizontal bars:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>])
+y = np.array([<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>])
+
+plt.barh(x, y)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_110_0.png" srcset="/img/loading.gif" lazyload alt="output_110_0.png"></p>
+<h2 id="Bar-Color"><a href="#Bar-Color" class="headerlink" title="Bar Color"></a>Bar Color</h2><p>The <code>bar()</code> and <code>barh()</code> take the keyword argument <code>color</code> to set the color of the bars:</p>
+<blockquote>
+<p>Draw 4 red bars:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>])
+y = np.array([  <span class="hljs-number">3</span>,   <span class="hljs-number">8</span>,   <span class="hljs-number">1</span>,  <span class="hljs-number">10</span>])
+
+plt.bar(x, y, color = <span class="hljs-string">&quot;red&quot;</span>)
+plt.show()</code></pre></div>
+
+<p><img src="assets/output_112_0.png" srcset="/img/loading.gif" lazyload alt="output_112_0.png"></p>
+<h3 id="Color"><a href="#Color" class="headerlink" title="Color"></a>Color</h3><h2 id="Bar-Width"><a href="#Bar-Width" class="headerlink" title="Bar Width"></a>Bar Width</h2><p>The <code>bar()</code> takes the keyword argument <code>width</code> to set the width of the bars:</p>
+<blockquote>
+<p>Draw 4 very thin bars:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>])
+y = np.array([  <span class="hljs-number">3</span>,   <span class="hljs-number">8</span>,   <span class="hljs-number">1</span>,  <span class="hljs-number">10</span>])
+
+plt.bar(x, y, width = <span class="hljs-number">0.1</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_114_0.png" srcset="/img/loading.gif" lazyload alt="output_114_0.png"></p>
+<p>The default width value is 0.8</p>
+<p><strong>Note:</strong> For horizontal bars, use <code>height</code> instead of <code>width</code>.</p>
+<hr>
+<h2 id="Bar-Height"><a href="#Bar-Height" class="headerlink" title="Bar Height"></a>Bar Height</h2><p>The <code>barh()</code> takes the keyword argument <code>height</code> to set the height of the bars:</p>
+<blockquote>
+<p>Draw 4 very thin bars:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.array([<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;D&quot;</span>])
+y = np.array([  <span class="hljs-number">3</span>,   <span class="hljs-number">8</span>,   <span class="hljs-number">1</span>,  <span class="hljs-number">10</span>])
+
+plt.barh(x, y, height = <span class="hljs-number">0.1</span>)
+plt.show()</code></pre></div>
+
+
+<p><img src="assets/output_116_0.png" srcset="/img/loading.gif" lazyload alt="output_116_0.png"></p>
+<p>The default height value is 0.8</p>
+<h1 id="Histograms"><a href="#Histograms" class="headerlink" title="Histograms"></a>Histograms</h1><p>A histogram is a graph showing <em>frequency</em> distributions.</p>
+<p>It is a graph showing the number of observations within each given interval.</p>
+<p>Example: Say you ask for the height of 250 people, you might end up with a histogram like this:</p>
+<p><img src="assets/img_matplotlib_histogram1.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>You can read from the histogram that there are approximately:</p>
+<p>2 people from 140 to 145cm<br>5 people from 145 to 150cm<br>15 people from 151 to 156cm<br>31 people from 157 to 162cm<br>46 people from 163 to 168cm<br>53 people from 168 to 173cm<br>45 people from 173 to 178cm<br>28 people from 179 to 184cm<br>21 people from 185 to 190cm<br>4 people from 190 to 195cm</p>
+<h2 id="Create-Histogram"><a href="#Create-Histogram" class="headerlink" title="Create Histogram"></a>Create Histogram</h2><p>In Matplotlib, we use the <code>hist()</code> function to create histograms.</p>
+<p>The <code>hist()</code> function will use an array of numbers to create a histogram, the array is sent into the function as an argument.</p>
+<p>For simplicity we use NumPy to randomly generate an array with 250 values, where the values will concentrate around 170, and the standard deviation is 10. Learn more about <a target="_blank" rel="noopener" href="https://www.w3schools.com/python/python_ml_normal_data_distribution.asp">Normal Data Distribution</a> in our <a target="_blank" rel="noopener" href="https://www.w3schools.com/python/python_ml_getting_started.asp">Machine Learning Tutorial</a>.</p>
+<blockquote>
+<p>A Normal Data Distribution by NumPy:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.random.normal(<span class="hljs-number">170</span>, <span class="hljs-number">10</span>, <span class="hljs-number">250</span>)
+
+<span class="hljs-built_in">print</span>(x)</code></pre></div>
+
+<p>[176.07440608 172.01006917 160.33463641 166.19198488 168.34007953<br> 157.12409516 180.07345543 163.98168391 177.49102859 168.83781554<br> 160.23680348 172.66108039 179.7008668  173.80038765 173.38860957<br> 140.8837059  173.19154047 177.05120626 158.92813117 175.4845506<br> 159.64864189 174.18927098 166.58327326 168.40083559 175.785282<br> 161.52806898 166.65088615 167.01058519 173.57752255 175.6782007<br> 170.1059708  176.41119328 174.52029543 180.3439865  179.71325601<br> 158.73904879 190.78382985 161.11830966 172.55294707 174.25665213<br> 147.54747204 169.76446559 158.22176648 165.85436595 161.53815151<br> 165.57363723 172.23089702 175.25056623 165.04923288 183.86227502<br> 176.4641356  170.70321856 166.65875217 165.14993688 179.83363851<br> 185.85711666 163.91739985 164.60209425 161.86804571 167.5078819<br> 183.43675017 179.72768205 163.06344833 164.71613826 156.38475198<br> 166.75301784 167.85876326 157.24494982 159.65968712 182.65332952<br> 177.71306381 194.76760051 189.57694036 157.48483909 160.18802261<br> 154.57015799 162.8984571  191.12394018 173.31110057 163.12816555<br> 166.07872969 188.96290318 164.37371287 180.59198095 174.53476701<br> 152.65622339 169.93760094 175.8896562  183.0132484  171.04818534<br> 157.24307608 168.010057   173.3253396  180.62287795 183.32111881<br> 167.15135074 163.17328584 150.28996767 183.09626572 186.74413273<br> 182.39908311 172.14264589 156.43721095 186.29955292 181.52652687<br> 170.52975481 167.2953943  179.40962805 176.0648708  168.40435035<br> 163.94134927 164.73516531 166.96628634 181.94590716 155.76050798<br> 177.07978667 166.60533388 173.70752937 171.62653761 176.73547801<br> 183.12089891 179.28244144 173.19597411 176.4679308  169.96165142<br> 166.53705896 166.57639365 163.40804905 172.88422438 176.15376157<br> 170.78879189 167.65861771 180.48584683 179.8787392  167.17238059<br> 180.32017194 167.30519077 158.39000282 159.02216863 190.91551868<br> 157.84810768 183.6494004  173.99355617 162.45379588 179.3505413<br> 180.48444272 158.85203923 157.61641887 170.2613876  175.76232643<br> 178.83701197 168.46680169 163.03546972 166.64508992 162.45945456<br> 169.11169657 183.87813257 168.0604379  165.87657172 157.59129741<br> 182.77776933 168.83699188 180.08076648 172.39691156 171.82444415<br> 181.83703187 168.46442522 159.19388078 175.51933489 169.38170951<br> 170.19395802 166.18599937 179.90216934 172.62450028 143.98896774<br> 167.61948619 179.39693927 162.84774913 173.45748101 169.36105972<br> 169.72476215 159.24378691 176.35740642 180.03299715 184.16253165<br> 167.57165848 179.70878019 157.62938501 172.07722976 163.36262597<br> 143.90539886 168.12016516 163.63976902 167.62543514 151.35318708<br> 180.77770422 175.68128329 148.26697276 172.79473452 184.74017839<br> 175.54273138 160.49749002 155.7930308  170.26395385 167.09568473<br> 150.97897683 150.55073359 140.6857916  170.35334351 177.96513896<br> 168.29490516 165.98878372 175.3064893  168.14773085 172.10515805<br> 166.03007753 169.72418155 199.0842814  150.83692605 179.34021726<br> 166.67511978 155.3682409  155.40329412 179.71921264 160.26275421<br> 171.35768913 166.05042742 148.0878891  161.65690966 186.79382267<br> 166.0069849  177.71530602 187.66855962 152.23462631 165.82266094<br> 177.63679507 171.03454086 168.4053633  181.79712737 159.42260623<br> 170.25416478 175.2158772  179.16567883 166.75679733 175.74787396<br> 153.07227709 157.71677272 166.08660994 173.71225648 158.30496121]</p>
+<p>The <code>hist()</code> function will read the array and produce a histogram:</p>
+<blockquote>
+<p>A simple histogram:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+x = np.random.normal(<span class="hljs-number">170</span>, <span class="hljs-number">10</span>, <span class="hljs-number">250</span>)
+
+plt.hist(x)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_120_0.png" srcset="/img/loading.gif" lazyload alt="output_120_0.png"></p>
+<h1 id="Pie"><a href="#Pie" class="headerlink" title="Pie"></a>Pie</h1><h2 id="Creating-Pie-Charts"><a href="#Creating-Pie-Charts" class="headerlink" title="Creating Pie Charts"></a>Creating Pie Charts</h2><p><code>pie()</code> function to draw pie charts:</p>
+<blockquote>
+<p>A simple pie chart:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+
+plt.pie(y)
+plt.show()</code></pre></div>
+<p><img src="assets/output_122_0.png" srcset="/img/loading.gif" lazyload alt="output_122_0.png"></p>
+<p>As you can see the pie chart draws one piece (called a wedge) for each value in the array (in this case [35, 25, 25, 15]).</p>
+<p>By default the plotting of the first wedge starts from the x-axis and moves <em>counterclockwise</em>:</p>
+<p><strong>Note:</strong> The size of each wedge is determined by comparing the value with all the other values, by using this formula:</p>
+<p>The value divided by the sum of all values: <code>x/sum(x)</code></p>
+<hr>
+<hr>
+<h2 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h2><p>Add labels to the pie chart with the <code>labels</code> parameter.</p>
+<p>The <code>labels</code> parameter must be an array with one label for each wedge:</p>
+<blockquote>
+<p>A simple pie chart:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+
+plt.pie(y, labels = mylabels)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_124_0.png" srcset="/img/loading.gif" lazyload alt="output_124_0.png"></p>
+<h2 id="Start-Angle"><a href="#Start-Angle" class="headerlink" title="Start Angle"></a>Start Angle</h2><p>As mentioned the default start angle is at the x-axis, but you can change the start angle by specifying a <code>startangle</code> parameter.</p>
+<p>The <code>startangle</code> parameter is defined with an angle in degrees, default angle is 0:</p>
+<p><img src="assets/img_matplotlib_pie_angles.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<blockquote>
+<p>Start the first wedge at 90 degrees:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+
+plt.pie(y, labels = mylabels, startangle = <span class="hljs-number">90</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_126_0.png" srcset="/img/loading.gif" lazyload alt="output_126_0.png"></p>
+<h2 id="Explode"><a href="#Explode" class="headerlink" title="Explode"></a>Explode</h2><p>Maybe you want one of the wedges to stand out? The <code>explode</code> parameter allows you to do that.</p>
+<p>The <code>explode</code> parameter, if specified, and not <code>None</code>, must be an array with one value for each wedge.</p>
+<p>Each value represents how far from the center each wedge is displayed:</p>
+<blockquote>
+<p>Pull the “Apples” wedge 0.2 from the center of the pie:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+myexplode = [<span class="hljs-number">0.2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+
+plt.pie(y, labels = mylabels, explode = myexplode)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_128_0.png" srcset="/img/loading.gif" lazyload alt="output_128_0.png"></p>
+<h2 id="Shadow"><a href="#Shadow" class="headerlink" title="Shadow"></a>Shadow</h2><p>Add a shadow to the pie chart by setting the <code>shadows</code> parameter to <code>True</code>:</p>
+<blockquote>
+<p>Add a shadow:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+myexplode = [<span class="hljs-number">0.2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+
+plt.pie(y, labels = mylabels, explode = myexplode, shadow = <span class="hljs-literal">True</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_130_0.png" srcset="/img/loading.gif" lazyload alt="output_130_0.png"></p>
+<h2 id="Colors-1"><a href="#Colors-1" class="headerlink" title="Colors"></a>Colors</h2><p>You can set the color of each wedge with the <code>colors</code> parameter.</p>
+<p>The <code>colors</code> parameter, if specified, must be an array with one value for each wedge:</p>
+<blockquote>
+<p>Specify a new color for each wedge:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+mycolors = [<span class="hljs-string">&quot;black&quot;</span>, <span class="hljs-string">&quot;hotpink&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;#4CAF50&quot;</span>]
+
+plt.pie(y, labels = mylabels, colors = mycolors)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_132_0.png" srcset="/img/loading.gif" lazyload alt="output_132_0.png"></p>
+<h2 id="Legend"><a href="#Legend" class="headerlink" title="Legend"></a>Legend</h2><p>To add a list of explanation for each wedge, use the <code>legend()</code> function:</p>
+<blockquote>
+<p>Add a legend:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+
+plt.pie(y, labels = mylabels)
+plt.legend()
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_134_0.png" srcset="/img/loading.gif" lazyload alt="output_134_0.png"></p>
+<h3 id="Legend-With-Header"><a href="#Legend-With-Header" class="headerlink" title="Legend With Header"></a>Legend With Header</h3><p>To add a header to the legend, add the <code>title</code> parameter to the <code>legend</code> function.</p>
+<blockquote>
+<p>Add a legend with a header:</p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+y = np.array([<span class="hljs-number">35</span>, <span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15</span>])
+mylabels = [<span class="hljs-string">&quot;Apples&quot;</span>, <span class="hljs-string">&quot;Bananas&quot;</span>, <span class="hljs-string">&quot;Cherries&quot;</span>, <span class="hljs-string">&quot;Dates&quot;</span>]
+
+plt.pie(y, labels = mylabels)
+plt.legend(title = <span class="hljs-string">&quot;Four Fruits:&quot;</span>)
+plt.show()</code></pre></div>
+
+
+
+<p><img src="assets/output_136_0.png" srcset="/img/loading.gif" lazyload alt="output_136_0.png"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../../../categories/me/" class="category-chain-item">me</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../../categories/me/notes/" class="category-chain-item">notes</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../../categories/me/notes/python-notes/" class="category-chain-item">python_notes</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../../categories/me/notes/python-notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">plt画图学习笔记</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../os_related/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../../js/events.js" ></script>
+<script  src="../../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

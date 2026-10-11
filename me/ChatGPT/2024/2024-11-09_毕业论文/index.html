@@ -1,0 +1,3757 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/will.jpg">
+  <link rel="icon" href="../../../../img/will.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="William Fang">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Will: 我现在面临本科毕业，我需要写一篇毕业论文，我是软件工程的，但我现在对毕业论文还没有任何头绪，不知道该写什么论文，不知道该做什么，老师们说我需要现在就开始写开题报告了，我其实有一点点头绪，就是我发现现在网络上的简体中文网络里面有特别多的假信息，无论是在任何简中社交媒体平台，特别是中共掌控的媒体平台。我想写一个类似于fake news detecting的东西来帮助我们进行fact-che">
+<meta property="og:type" content="article">
+<meta property="og:title" content="毕业论文">
+<meta property="og:url" content="https://williamfunh.github.io/me/ChatGPT/2024/2024-11-09_%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87/">
+<meta property="og:site_name" content="Willy&#39;s blog">
+<meta property="og:description" content="Will: 我现在面临本科毕业，我需要写一篇毕业论文，我是软件工程的，但我现在对毕业论文还没有任何头绪，不知道该写什么论文，不知道该做什么，老师们说我需要现在就开始写开题报告了，我其实有一点点头绪，就是我发现现在网络上的简体中文网络里面有特别多的假信息，无论是在任何简中社交媒体平台，特别是中共掌控的媒体平台。我想写一个类似于fake news detecting的东西来帮助我们进行fact-che">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-08T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-07-03T12:36:16.515Z">
+<meta property="article:author" content="William Fang">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>毕业论文 | Willy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="../../../../css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"williamfunh.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"|","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"python"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2025-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>Willy&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/banner.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="毕业论文"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-09 00:00" pubdate>
+          2024年11月9日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          130 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">毕业论文</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Will"><a href="#Will" class="headerlink" title="Will:"></a>Will:</h2><p> 我现在面临本科毕业，我需要写一篇毕业论文，我是软件工程的，但我现在对毕业论文还没有任何头绪，不知道该写什么论文，不知道该做什么，老师们说我需要现在就开始写开题报告了，我其实有一点点头绪，就是我发现现在网络上的简体中文网络里面有特别多的假信息，无论是在任何简中社交媒体平台，特别是中共掌控的媒体平台。我想写一个类似于fake news detecting的东西来帮助我们进行fact-check。但是我具体不知道如何入手</p>
+<h2 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 用户即将面临本科毕业，专业为软件工程，目前正在为毕业论文寻找选题。用户考虑到简体中文网络中的虚假信息泛滥现象，特别是在中共掌控的媒体平台上，初步有意愿研究“假新闻检测（fake news detecting）”相关主题，并希望开发一种帮助进行事实核查（fact-checking）的工具。用户目前对如何入手和具体实现还没有明确思路。</p>
+<h2 id="ChatGPT-1"><a href="#ChatGPT-1" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> Model set context updated.</p>
+<h2 id="ChatGPT-2"><a href="#ChatGPT-2" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 选择假新闻检测作为毕业论文的主题非常有意义，尤其是在当前信息污染严重的环境下。你可以从以下几个方面来理清思路，并逐步开展研究和写作：</p>
+<h3 id="1-明确研究方向和目标"><a href="#1-明确研究方向和目标" class="headerlink" title="1. 明确研究方向和目标"></a>1. <strong>明确研究方向和目标</strong></h3><p>你可以考虑以下几个具体方向：</p>
+<ul>
+<li><strong>基于机器学习的假新闻检测</strong>：利用机器学习模型对新闻文本进行分类，判断其是否为虚假信息。</li>
+<li><strong>基于自然语言处理（NLP）的分析</strong>：利用文本分析技术，从语言特征、情感分析等方面识别假新闻。</li>
+<li><strong>事实核查工具开发</strong>：创建一个基于API和爬虫的工具，自动从可信数据源中查找信息并与目标文本对比。</li>
+</ul>
+<h3 id="2-进行文献综述"><a href="#2-进行文献综述" class="headerlink" title="2. 进行文献综述"></a>2. <strong>进行文献综述</strong></h3><p>你需要先进行文献综述，了解现有的假新闻检测方法和模型，比如：</p>
+<ul>
+<li>传统的文本分类方法：Naive Bayes、SVM。</li>
+<li>深度学习方法：LSTM、Transformer、BERT等预训练模型。</li>
+<li>基于图神经网络（GNN）的检测方法：适用于识别社交网络上的虚假信息传播模式。</li>
+</ul>
+<h3 id="3-确定你的数据来源"><a href="#3-确定你的数据来源" class="headerlink" title="3. 确定你的数据来源"></a>3. <strong>确定你的数据来源</strong></h3><p>假新闻检测模型的效果很大程度上依赖于训练数据集。以下是几种可能的数据来源：</p>
+<ul>
+<li><strong>英文假新闻数据集</strong>：Kaggle上有多个公开的Fake News Detection数据集。</li>
+<li><strong>中文数据集</strong>：由于简体中文环境下的虚假信息较多，你可以考虑自己构建数据集，或者使用爬虫从微博、微信等社交平台收集数据并标注。</li>
+<li><strong>可信数据源</strong>：如维基百科、BBC、路透社，作为事实核查时的数据源。</li>
+</ul>
+<h3 id="4-技术选型和开发工具"><a href="#4-技术选型和开发工具" class="headerlink" title="4. 技术选型和开发工具"></a>4. <strong>技术选型和开发工具</strong></h3><p>你可以选择以下技术工具：</p>
+<ul>
+<li><strong>编程语言</strong>：Python（丰富的NLP库）或Java（与现有知识结合）。</li>
+<li><strong>框架和库</strong>：NLTK、spaCy、Hugging Face的Transformers、Scikit-learn。</li>
+<li><strong>深度学习框架</strong>：PyTorch或TensorFlow。</li>
+</ul>
+<h3 id="5-项目设计和实验方案"><a href="#5-项目设计和实验方案" class="headerlink" title="5. 项目设计和实验方案"></a>5. <strong>项目设计和实验方案</strong></h3><ul>
+<li><strong>模型训练和验证</strong>：使用数据集进行模型训练，并评估模型的准确性、精度和召回率等指标。</li>
+<li><strong>用户界面开发</strong>：如果计划开发工具，可以考虑使用Flask或Django来创建Web界面，方便用户输入待检测文本。</li>
+<li><strong>实验和性能优化</strong>：通过调整模型参数、数据预处理方式来提升检测效果。</li>
+</ul>
+<h3 id="6-撰写开题报告"><a href="#6-撰写开题报告" class="headerlink" title="6. 撰写开题报告"></a>6. <strong>撰写开题报告</strong></h3><p>开题报告一般包括以下内容：</p>
+<ul>
+<li><strong>研究背景和意义</strong>：描述简体中文网络中假新闻的危害，以及现有检测方法的不足。</li>
+<li><strong>研究现状</strong>：通过文献综述介绍当前国内外研究进展。</li>
+<li><strong>研究内容和方法</strong>：详细说明你的研究方法和技术路线。</li>
+<li><strong>研究计划和预期成果</strong>：制定时间表，并预测可能的结果和应用场景。</li>
+</ul>
+<h3 id="7-可行性分析"><a href="#7-可行性分析" class="headerlink" title="7. 可行性分析"></a>7. <strong>可行性分析</strong></h3><ul>
+<li><strong>难点</strong>：标注中文数据集的工作量较大；中文文本的复杂性也会增加模型的难度。</li>
+<li><strong>优势</strong>：如果做得好，你的研究将有较强的社会意义和应用价值，并且可以作为一个有趣的项目展示给未来的雇主。</li>
+</ul>
+<p>如果你觉得这个主题可行，可以进一步细化研究问题和技术路线。我也可以为你提供具体技术实现上的帮助，包括模型选择、数据处理、代码编写等。</p>
+<h2 id="Will-1"><a href="#Will-1" class="headerlink" title="Will:"></a>Will:</h2><p> 你能帮我查一下这篇论文的出处在哪里吗？：<br>        本项目旨在开发一个基于机器学习的虚假新闻智能检测系统，通过构建新闻文本的 BoW 词袋模型，并训练朴素贝叶斯和Xgboost两种模型，经性能优化，虚假新闻检测准确率达到 97%，实现了利用先进的自然语言处理技术对新闻文本进行智能检测。<br>df &#x3D; pd.read_csv(‘.&#x2F;WELFake_Dataset.csv’)</p>
+<h1 id="去除字段缺失的样本"><a href="#去除字段缺失的样本" class="headerlink" title="去除字段缺失的样本"></a>去除字段缺失的样本</h1><p>df.dropna(subset &#x3D; [‘text’, ‘title’], inplace &#x3D; True)</p>
+<h1 id="将标题与正文内容进行拼接"><a href="#将标题与正文内容进行拼接" class="headerlink" title="将标题与正文内容进行拼接"></a>将标题与正文内容进行拼接</h1><p>df[“title_text”] &#x3D; df[“title”] + df[“text”]</p>
+<p>df.info()</p>
+<p>df.head()<br>df[‘label’].value_counts(normalize&#x3D;True).rename({1: ‘真实新闻’, 0: ‘虚假新闻’})</p>
+<p>plt.figure(figsize &#x3D; (10,6))</p>
+<p>sns.countplot(x &#x3D; df[‘label’], palette &#x3D; ‘Set1’, alpha &#x3D; 0.8)</p>
+<p>plt.title(‘虚假新闻样本类别分布直方图 - 0 &#x2F;虚假新闻 - 1 真实新闻’, fontsize&#x3D;15)</p>
+<p>plt.show()<br>plt.figure(figsize &#x3D; (16,8))</p>
+<p>bins &#x3D; np.linspace(0, 10000, 100)</p>
+<p>plt.hist(df[df[“label”]&#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”虚假新闻”, color&#x3D;”#FF5733”)</p>
+<p>plt.hist(df[df[“label”]&#x3D;&#x3D; 1][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”真实新闻”, color&#x3D;”#33FFB8”)</p>
+<p>plt.legend(loc&#x3D;”upper left”)</p>
+<p>plt.title(‘真实新闻&#x2F;虚假新闻的长度分布’, fontsize&#x3D;15)</p>
+<p>plt.show()<br>fake_texts &#x3D; ‘ ‘.join(text for text in fake_news)</p>
+<p>wordcloud &#x3D; WordCloud(</p>
+<div class="code-wrapper"><pre><code class="hljs">background_color=&#39;white&#39;, 
+
+max_words=300,
+
+width=600, 
+
+height=300,
+</code></pre></div>
+<p>).generate(fake_texts)</p>
+<p>plt.figure(figsize&#x3D;(18, 6))</p>
+<p>plt.imshow(wordcloud, interpolation&#x3D;’bilinear’)</p>
+<p>plt.axis(“off”)</p>
+<p>plt.title(‘虚假新闻的词云可视化’, fontsize&#x3D;20)</p>
+<p>plt.show()<br>count_vectorizer &#x3D; CountVectorizer(stop_words&#x3D;’english’, max_features&#x3D;10000, min_df&#x3D;10)</p>
+<p>count_vectorizer.fit(X_train)</p>
+<p>count_train &#x3D; count_vectorizer.transform(X_train)</p>
+<p>count_valid &#x3D; count_vectorizer.transform(X_valid)</p>
+<p>count_test &#x3D; count_vectorizer.transform(X_test)</p>
+<h1 id="保存-BoW-模型"><a href="#保存-BoW-模型" class="headerlink" title="保存 BoW 模型"></a>保存 BoW 模型</h1><p>with open(‘.&#x2F;saved_model&#x2F;count_vectorizer.pickle’,’wb’) as f:</p>
+<div class="code-wrapper"><pre><code class="hljs">pickle.dump(count_vectorizer, f)
+</code></pre></div>
+<p>from sklearn.naive_bayes import MultinomialNB</p>
+<p>nb_classifier &#x3D; MultinomialNB()</p>
+<p>nb_classifier.fit(count_train, y_train)</p>
+<p>nb_pred &#x3D; nb_classifier.predict(count_test)<br>print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<p>xgb_params &#x3D; {</p>
+<div class="code-wrapper"><pre><code class="hljs">&#39;eta&#39;: 0.1,
+
+&#39;colsample_bytree&#39;: 0.4,
+
+&#39;max_depth&#39;: 8,
+
+&#39;lambda&#39;: 2.0,
+
+&#39;eval_metric&#39;: &#39;auc&#39;,
+
+&#39;objective&#39;: &#39;binary:logistic&#39;,
+
+&#39;nthread&#39;: -1,
+
+&#39;booster&#39;: &#39;gbtree&#39;
+</code></pre></div>
+<p>}</p>
+<p>dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)</p>
+<p>dvalid &#x3D; xgb.DMatrix(count_valid, y_valid, feature_names&#x3D;feature_names)</p>
+<p>watchlist &#x3D; [(dtrain, ‘train’), (dvalid, ‘valid’)]</p>
+<p>xgb_model &#x3D; xgb.train(dict(xgb_params),</p>
+<div class="code-wrapper"><pre><code class="hljs">                  dtrain,
+
+                  evals=watchlist,
+
+                  verbose_eval=50,
+
+                  early_stopping_rounds=100,
+
+                  num_boost_round=4000)
+</code></pre></div>
+<p>data &#x3D; scores[:40][::-1]</p>
+<h1 id="解包数据"><a href="#解包数据" class="headerlink" title="解包数据"></a>解包数据</h1><p>labels, values &#x3D; zip(*data)</p>
+<h1 id="创建图形和轴对象"><a href="#创建图形和轴对象" class="headerlink" title="创建图形和轴对象"></a>创建图形和轴对象</h1><p>fig, ax &#x3D; plt.subplots(figsize&#x3D;(10, 10))</p>
+<h1 id="绘制柱状图"><a href="#绘制柱状图" class="headerlink" title="绘制柱状图"></a>绘制柱状图</h1><p>bars &#x3D; ax.barh(labels, values)</p>
+<h1 id="添加标题和标签"><a href="#添加标题和标签" class="headerlink" title="添加标题和标签"></a>添加标题和标签</h1><p>ax.set_title(‘特征词重要程度分布’, fontsize&#x3D;16)</p>
+<p>ax.set_xlabel(‘Words’)</p>
+<p>ax.set_ylabel(‘Frequency’)</p>
+<h1 id="显示图表"><a href="#显示图表" class="headerlink" title="显示图表"></a>显示图表</h1><p>plt.xticks(rotation&#x3D;45, ha&#x3D;’right’)  # 旋转 x 轴标签以适应</p>
+<p>plt.tight_layout()  # 自动调整子图参数，使之填充整个图像区域</p>
+<p>plt.show()</p>
+<h1 id="predict-test"><a href="#predict-test" class="headerlink" title="predict test"></a>predict test</h1><p>dtest &#x3D; xgb.DMatrix(count_test, feature_names&#x3D;feature_names)</p>
+<p>xgb_pred &#x3D; xgb_model.predict(dtest)</p>
+<p>xgb_pred &#x3D; (xgb_pred &gt; 0.5).astype(int)</p>
+<p>print(classification_report(y_test, xgb_pred))<br>plt.figure(figsize &#x3D; (8,6))</p>
+<p>sns.heatmap(confusion_matrix(y_test, xgb_pred), annot&#x3D;True, </p>
+<div class="code-wrapper"><pre><code class="hljs">        fmt=&#39;&#39;, cmap=&#39;Blues&#39;)
+</code></pre></div>
+<p>plt.xlabel(‘Predicted Labels’)</p>
+<p>plt.ylabel(‘Real Labels’)</p>
+<p>plt.show()</p>
+<h2 id="ChatGPT-3"><a href="#ChatGPT-3" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: code]</p>
+<h2 id="ChatGPT-4"><a href="#ChatGPT-4" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: code]</p>
+<h2 id="ChatGPT-5"><a href="#ChatGPT-5" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: code]</p>
+<h2 id="ChatGPT-6"><a href="#ChatGPT-6" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: tether_quote]</p>
+<h2 id="ChatGPT-7"><a href="#ChatGPT-7" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: tether_quote]</p>
+<h2 id="ChatGPT-8"><a href="#ChatGPT-8" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> [未知消息类型: tether_quote]</p>
+<h2 id="ChatGPT-9"><a href="#ChatGPT-9" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> Based on your request, the project and code snippet you shared appear to closely resemble the approach detailed in the paper titled “Development of Fake News Model using Machine Learning through Natural Language Processing” by Sajjad Ahmed, Knut Hinkelmann, and Flavio Corradini. This paper, published on arXiv (ID: 2201.07489), discusses a fake news detection system using machine learning models like Naïve Bayes and other classifiers, with a focus on text classification techniques using Natural Language Processing (NLP). The approach involves building feature extraction models, similar to your use of CountVectorizer and BoW (Bag of Words), and employing classification models for detection【15】.</p>
+<p>The dataset you mentioned, <code>WELFake_Dataset.csv</code>, may also align with common public datasets used in research papers like the one cited. For more detailed comparisons and to explore the full methodology, you can refer to the paper here: <a target="_blank" rel="noopener" href="https://ar5iv.org/abs/2201.07489">arXiv 2201.07489</a>.</p>
+<h2 id="Will-2"><a href="#Will-2" class="headerlink" title="Will:"></a>Will:</h2><p> 哪里有问题：<br>import pandas as pd</p>
+<p>import seaborn as sns</p>
+<p>import os</p>
+<p>import gc</p>
+<p>import numpy as np</p>
+<p>import matplotlib as mpl</p>
+<p>import matplotlib.pyplot as plt</p>
+<p>import pickle</p>
+<p>np.random.seed(7)</p>
+<p>import seaborn as sns</p>
+<p>from sklearn.preprocessing import StandardScaler</p>
+<p>from sklearn.model_selection import train_test_split</p>
+<p>from sklearn.metrics import auc, roc_curve</p>
+<p>from sklearn.metrics import accuracy_score, precision_score, recall_score</p>
+<p>from sklearn import metrics</p>
+<p>from sklearn import confusion_matrix, classification_report</p>
+<p>from sklearn.feature_extraction.text import CountVectorizer</p>
+<p>from sklearn.feature_extraction.text import TfidfVectorizer</p>
+<p>from sklearn.model_selection import train_test_split</p>
+<p>from wordcloud import WordCloud</p>
+<p>import xgboost as xgb</p>
+<p>import warnings</p>
+<p>warnings.filterwarnings(‘ignore’)</p>
+<h1 id="利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接"><a href="#利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接" class="headerlink" title="利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接"></a>利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接</h1><p>df &#x3D; pd.read_csv(‘news.csv’)</p>
+<h1 id="去除字段缺失的样本-1"><a href="#去除字段缺失的样本-1" class="headerlink" title="去除字段缺失的样本"></a>去除字段缺失的样本</h1><p>df.dropna(subset &#x3D; [‘text’, ‘title’], inplace &#x3D; True)</p>
+<h1 id="将标题与正文内容进行拼接-1"><a href="#将标题与正文内容进行拼接-1" class="headerlink" title="将标题与正文内容进行拼接"></a>将标题与正文内容进行拼接</h1><p>df[“title_text”] &#x3D; df[“title”] + df[“text”]</p>
+<p>df.info()</p>
+<p>df.head()</p>
+<p>df[‘label’].value_counts(normalize&#x3D;True).rename({1: ‘真实新闻’, 0: ‘虚假新闻’})</p>
+<p>plt.figure(figsize &#x3D; (10,6))</p>
+<p>sns.countplot(x &#x3D; df[‘label’], palette &#x3D; ‘Set1’, alpha &#x3D; 0.8)</p>
+<p>plt.title(‘虚假新闻样本类别分布直方图 - 0 &#x2F;虚假新闻 - 1 真实新闻’, fontsize&#x3D;15)</p>
+<p>plt.show()</p>
+<p>plt.figure(figsize &#x3D; (16,8))</p>
+<p>bins &#x3D; np.linspace(0, 10000, 100)</p>
+<p>plt.hist(df[df[“label”]&#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”虚假新闻”, color&#x3D;”#FF5733”)</p>
+<p>plt.hist(df[df[“label”]&#x3D;&#x3D; 1][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”真实新闻”, color&#x3D;”#33FFB8”)</p>
+<p>plt.legend(loc&#x3D;”upper left”)</p>
+<p>plt.title(‘真实新闻&#x2F;虚假新闻的长度分布’, fontsize&#x3D;15)</p>
+<p>plt.show()</p>
+<p>fake_texts &#x3D; ‘ ‘.join(text for text in fake_news)</p>
+<p>wordcloud &#x3D; WordCloud(</p>
+<div class="code-wrapper"><pre><code class="hljs">background_color=&#39;white&#39;, 
+
+max_words=300,
+
+width=600, 
+
+height=300,
+</code></pre></div>
+<p>).generate(fake_texts)</p>
+<p>plt.figure(figsize&#x3D;(18, 6))</p>
+<p>plt.imshow(wordcloud, interpolation&#x3D;’bilinear’)</p>
+<p>plt.axis(“off”)</p>
+<p>plt.title(‘虚假新闻的词云可视化’, fontsize&#x3D;20)</p>
+<p>plt.show()</p>
+<p>count_vectorizer &#x3D; CountVectorizer(stop_words&#x3D;’english’, max_features&#x3D;10000, min_df&#x3D;10)</p>
+<p>count_vectorizer.fit(X_train)</p>
+<p>count_train &#x3D; count_vectorizer.transform(X_train)</p>
+<p>count_valid &#x3D; count_vectorizer.transform(X_valid)</p>
+<p>count_test &#x3D; count_vectorizer.transform(X_test)</p>
+<h1 id="保存-BoW-模型-1"><a href="#保存-BoW-模型-1" class="headerlink" title="保存 BoW 模型"></a>保存 BoW 模型</h1><p>with open(‘.&#x2F;saved_model&#x2F;count_vectorizer.pickle’,’wb’) as f:</p>
+<div class="code-wrapper"><pre><code class="hljs">pickle.dump(count_vectorizer, f)
+</code></pre></div>
+<p>from sklearn.naive_bayes import MultinomialNB</p>
+<p>nb_classifier &#x3D; MultinomialNB()</p>
+<p>nb_classifier.fit(count_train, y_train)</p>
+<p>nb_pred &#x3D; nb_classifier.predict(count_test)</p>
+<p>print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<p>xgb_params &#x3D; {</p>
+<div class="code-wrapper"><pre><code class="hljs">&#39;eta&#39;: 0.1,
+
+&#39;colsample_bytree&#39;: 0.4,
+
+&#39;max_depth&#39;: 8,
+
+&#39;lambda&#39;: 2.0,
+
+&#39;eval_metric&#39;: &#39;auc&#39;,
+
+&#39;objective&#39;: &#39;binary:logistic&#39;,
+
+&#39;nthread&#39;: -1,
+
+&#39;booster&#39;: &#39;gbtree&#39;
+</code></pre></div>
+<p>}</p>
+<p>dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)</p>
+<p>dvalid &#x3D; xgb.DMatrix(count_valid, y_valid, feature_names&#x3D;feature_names)</p>
+<p>watchlist &#x3D; [(dtrain, ‘train’), (dvalid, ‘valid’)]</p>
+<p>xgb_model &#x3D; xgb.train(dict(xgb_params),</p>
+<div class="code-wrapper"><pre><code class="hljs">                  dtrain,
+
+                  evals=watchlist,
+
+                  verbose_eval=50,
+
+                  early_stopping_rounds=100,
+
+                  num_boost_round=4000)
+</code></pre></div>
+<p>data &#x3D; scores[:40][::-1]</p>
+<h1 id="解包数据-1"><a href="#解包数据-1" class="headerlink" title="解包数据"></a>解包数据</h1><p>labels, values &#x3D; zip(*data)</p>
+<h1 id="创建图形和轴对象-1"><a href="#创建图形和轴对象-1" class="headerlink" title="创建图形和轴对象"></a>创建图形和轴对象</h1><p>fig, ax &#x3D; plt.subplots(figsize&#x3D;(10, 10))</p>
+<h1 id="绘制柱状图-1"><a href="#绘制柱状图-1" class="headerlink" title="绘制柱状图"></a>绘制柱状图</h1><p>bars &#x3D; ax.barh(labels, values)</p>
+<h1 id="添加标题和标签-1"><a href="#添加标题和标签-1" class="headerlink" title="添加标题和标签"></a>添加标题和标签</h1><p>ax.set_title(‘特征词重要程度分布’, fontsize&#x3D;16)</p>
+<p>ax.set_xlabel(‘Words’)</p>
+<p>ax.set_ylabel(‘Frequency’)</p>
+<h1 id="显示图表-1"><a href="#显示图表-1" class="headerlink" title="显示图表"></a>显示图表</h1><p>plt.xticks(rotation&#x3D;45, ha&#x3D;’right’)  # 旋转 x 轴标签以适应</p>
+<p>plt.tight_layout()  # 自动调整子图参数，使之填充整个图像区域</p>
+<p>plt.show()</p>
+<h1 id="predict-test-1"><a href="#predict-test-1" class="headerlink" title="predict test"></a>predict test</h1><p>dtest &#x3D; xgb.DMatrix(count_test, feature_names&#x3D;feature_names)</p>
+<p>xgb_pred &#x3D; xgb_model.predict(dtest)</p>
+<p>xgb_pred &#x3D; (xgb_pred &gt; 0.5).astype(int)</p>
+<p>print(classification_report(y_test, xgb_pred))</p>
+<p>plt.figure(figsize &#x3D; (8,6))</p>
+<p>sns.heatmap(confusion_matrix(y_test, xgb_pred), annot&#x3D;True, </p>
+<div class="code-wrapper"><pre><code class="hljs">        fmt=&#39;&#39;, cmap=&#39;Blues&#39;)
+</code></pre></div>
+<p>plt.xlabel(‘Predicted Labels’)</p>
+<p>plt.ylabel(‘Real Labels’)</p>
+<p>plt.show()</p>
+<h2 id="ChatGPT-10"><a href="#ChatGPT-10" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 在你的代码中，我注意到了几个潜在的问题和错误。让我逐一分析并指出可能的原因：</p>
+<h3 id="1-重复导入模块"><a href="#1-重复导入模块" class="headerlink" title="1. 重复导入模块"></a>1. <strong>重复导入模块</strong></h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split</code></pre></div>
+<p>你在代码开始部分和后面重复导入了 <code>seaborn</code> 和 <code>train_test_split</code>。这不会导致程序报错，但会降低代码可读性。建议清理重复的导入。</p>
+<h3 id="2-未定义的变量：fake-news"><a href="#2-未定义的变量：fake-news" class="headerlink" title="2. 未定义的变量：fake_news"></a>2. <strong>未定义的变量：<code>fake_news</code></strong></h3><div class="code-wrapper"><pre><code class="hljs python">fake_texts = <span class="hljs-string">&#x27; &#x27;</span>.join(text <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> fake_news)</code></pre></div>
+<p>这里的 <code>fake_news</code> 没有在代码之前被定义，导致程序报错 <strong><code>NameError: name &#39;fake_news&#39; is not defined</code></strong>。</p>
+<p><strong>解决方法</strong>：你可能想使用包含 <code>label=0</code> (虚假新闻) 的文本数据，可以替换为：</p>
+<div class="code-wrapper"><pre><code class="hljs python">fake_news = df[df[<span class="hljs-string">&#x27;label&#x27;</span>] == <span class="hljs-number">0</span>][<span class="hljs-string">&#x27;title_text&#x27;</span>]
+fake_texts = <span class="hljs-string">&#x27; &#x27;</span>.join(text <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> fake_news)</code></pre></div>
+
+<h3 id="3-未定义的训练和测试数据：X-train-X-valid-X-test-y-train-y-valid-y-test"><a href="#3-未定义的训练和测试数据：X-train-X-valid-X-test-y-train-y-valid-y-test" class="headerlink" title="3. 未定义的训练和测试数据：X_train, X_valid, X_test, y_train, y_valid, y_test"></a>3. <strong>未定义的训练和测试数据：<code>X_train</code>, <code>X_valid</code>, <code>X_test</code>, <code>y_train</code>, <code>y_valid</code>, <code>y_test</code></strong></h3><div class="code-wrapper"><pre><code class="hljs python">count_vectorizer.fit(X_train)</code></pre></div>
+<p>你在调用 <code>CountVectorizer</code> 时使用了 <code>X_train</code>，但之前没有定义这些变量。你需要在数据分割之前定义它们，例如：</p>
+<div class="code-wrapper"><pre><code class="hljs python">X = df[<span class="hljs-string">&#x27;title_text&#x27;</span>]
+y = df[<span class="hljs-string">&#x27;label&#x27;</span>]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)</code></pre></div>
+
+<p>如果你还需要验证集，可以这样：</p>
+<div class="code-wrapper"><pre><code class="hljs python">X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)</code></pre></div>
+
+<h3 id="4-未定义的变量：feature-names"><a href="#4-未定义的变量：feature-names" class="headerlink" title="4. 未定义的变量：feature_names"></a>4. <strong>未定义的变量：<code>feature_names</code></strong></h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;===&gt; feature count: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">len</span>(feature_names)))</code></pre></div>
+<p>这里的 <code>feature_names</code> 也没有定义。你应该从 <code>CountVectorizer</code> 中获取特征名称：</p>
+<div class="code-wrapper"><pre><code class="hljs python">feature_names = count_vectorizer.get_feature_names_out()</code></pre></div>
+
+<h3 id="5-绘制直方图时使用的-body-len-列不存在"><a href="#5-绘制直方图时使用的-body-len-列不存在" class="headerlink" title="5. 绘制直方图时使用的 body_len 列不存在"></a>5. <strong>绘制直方图时使用的 <code>body_len</code> 列不存在</strong></h3><div class="code-wrapper"><pre><code class="hljs python">plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>]== <span class="hljs-number">0</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;虚假新闻&quot;</span>, color=<span class="hljs-string">&quot;#FF5733&quot;</span>)</code></pre></div>
+<p>数据集中没有 <code>body_len</code> 列，可能是你希望计算文本长度。可以在之前计算并添加一列：</p>
+<div class="code-wrapper"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;body_len&#x27;</span>] = df[<span class="hljs-string">&#x27;title_text&#x27;</span>].apply(<span class="hljs-built_in">len</span>)</code></pre></div>
+
+<h3 id="6-XGBoost-中未定义的-scores-变量"><a href="#6-XGBoost-中未定义的-scores-变量" class="headerlink" title="6. XGBoost 中未定义的 scores 变量"></a>6. <strong>XGBoost 中未定义的 <code>scores</code> 变量</strong></h3><div class="code-wrapper"><pre><code class="hljs python">data = scores[:<span class="hljs-number">40</span>][::-<span class="hljs-number">1</span>]</code></pre></div>
+<p>这里的 <code>scores</code> 没有在之前定义，导致 <strong><code>NameError: name &#39;scores&#39; is not defined</code></strong>。<code>scores</code> 可能是你希望存储特征重要性的列表。</p>
+<p>可以替换为：</p>
+<div class="code-wrapper"><pre><code class="hljs python">scores = xgb_model.get_score(importance_type=<span class="hljs-string">&#x27;weight&#x27;</span>)
+data = <span class="hljs-built_in">list</span>(scores.items())[:<span class="hljs-number">40</span>][::-<span class="hljs-number">1</span>]</code></pre></div>
+
+<h3 id="7-混淆矩阵绘制时格式设置错误"><a href="#7-混淆矩阵绘制时格式设置错误" class="headerlink" title="7. 混淆矩阵绘制时格式设置错误"></a>7. <strong>混淆矩阵绘制时格式设置错误</strong></h3><div class="code-wrapper"><pre><code class="hljs python">sns.heatmap(confusion_matrix(y_test, xgb_pred), annot=<span class="hljs-literal">True</span>, fmt=<span class="hljs-string">&#x27;&#x27;</span>, cmap=<span class="hljs-string">&#x27;Blues&#x27;</span>)</code></pre></div>
+<p><code>fmt=&#39;&#39;</code> 会导致 <strong><code>ValueError: Unknown format code &#39;&#39; for object of type &#39;int&#39;</code></strong>。应该改为：</p>
+<div class="code-wrapper"><pre><code class="hljs python">sns.heatmap(confusion_matrix(y_test, xgb_pred), annot=<span class="hljs-literal">True</span>, fmt=<span class="hljs-string">&#x27;d&#x27;</span>, cmap=<span class="hljs-string">&#x27;Blues&#x27;</span>)</code></pre></div>
+
+<h3 id="8-保存模型时路径错误"><a href="#8-保存模型时路径错误" class="headerlink" title="8. 保存模型时路径错误"></a>8. <strong>保存模型时路径错误</strong></h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./saved_model/count_vectorizer.pickle&#x27;</span>,<span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:</code></pre></div>
+<p>如果路径 <code>./saved_model/</code> 不存在，程序会报错。确保目录存在：</p>
+<div class="code-wrapper"><pre><code class="hljs python">os.makedirs(<span class="hljs-string">&#x27;./saved_model&#x27;</span>, exist_ok=<span class="hljs-literal">True</span>)</code></pre></div>
+
+<h3 id="9-XGBoost-模型中的-feature-names-报错"><a href="#9-XGBoost-模型中的-feature-names-报错" class="headerlink" title="9. XGBoost 模型中的 feature_names 报错"></a>9. <strong>XGBoost 模型中的 <code>feature_names</code> 报错</strong></h3><div class="code-wrapper"><pre><code class="hljs python">dtest = xgb.DMatrix(count_test, feature_names=feature_names)</code></pre></div>
+<p>XGBoost 最新版本已不再支持 <code>feature_names</code> 参数。删除该参数即可：</p>
+<div class="code-wrapper"><pre><code class="hljs python">dtest = xgb.DMatrix(count_test)</code></pre></div>
+
+<h3 id="10-性能警告：random-state-和-n-jobs"><a href="#10-性能警告：random-state-和-n-jobs" class="headerlink" title="10. 性能警告：random_state 和 n_jobs"></a>10. <strong>性能警告：<code>random_state</code> 和 <code>n_jobs</code></strong></h3><p>为保证模型结果一致，建议为所有随机操作设置 <code>random_state</code>，并在模型训练时增加 <code>n_jobs=-1</code> 来利用多核 CPU 提升性能：</p>
+<div class="code-wrapper"><pre><code class="hljs python">xgb_params = &#123;
+    <span class="hljs-string">&#x27;eta&#x27;</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-string">&#x27;colsample_bytree&#x27;</span>: <span class="hljs-number">0.4</span>,
+    <span class="hljs-string">&#x27;max_depth&#x27;</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-string">&#x27;lambda&#x27;</span>: <span class="hljs-number">2.0</span>,
+    <span class="hljs-string">&#x27;eval_metric&#x27;</span>: <span class="hljs-string">&#x27;auc&#x27;</span>,
+    <span class="hljs-string">&#x27;objective&#x27;</span>: <span class="hljs-string">&#x27;binary:logistic&#x27;</span>,
+    <span class="hljs-string">&#x27;nthread&#x27;</span>: -<span class="hljs-number">1</span>,
+    <span class="hljs-string">&#x27;booster&#x27;</span>: <span class="hljs-string">&#x27;gbtree&#x27;</span>,
+    <span class="hljs-string">&#x27;random_state&#x27;</span>: <span class="hljs-number">42</span>
+&#125;</code></pre></div>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上问题是导致代码报错或行为异常的主要原因。修复后，你可以尝试重新运行代码，并检查输出是否符合预期。如果还有其他报错或问题，随时告诉我！</p>
+<h2 id="Will-3"><a href="#Will-3" class="headerlink" title="Will:"></a>Will:</h2><p> PS D:\coding\code\Python\fake_news_detection&gt; &amp; C:&#x2F;ProgramData&#x2F;anaconda3&#x2F;python.exe d:&#x2F;coding&#x2F;code&#x2F;Python&#x2F;fake_news_detection&#x2F;fake.py</p>
+<p>Traceback (most recent call last):</p>
+<p>  File “d:\coding\code\Python\fake_news_detection\fake.py”, line 18, in <module></p>
+<div class="code-wrapper"><pre><code class="hljs">from sklearn import confusion_matrix, classification_report
+</code></pre></div>
+<p>ImportError: cannot import name ‘confusion_matrix’ from ‘sklearn’ (C:\ProgramData\anaconda3\Lib\site-packages\sklearn_<em>init</em>_.py)</p>
+<h2 id="ChatGPT-11"><a href="#ChatGPT-11" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 你的报错信息是：</p>
+<div class="code-wrapper"><pre><code class="hljs plaintext">ImportError: cannot import name &#x27;confusion_matrix&#x27; from &#x27;sklearn&#x27;</code></pre></div>
+
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>这个报错是由于错误地从 <code>sklearn</code> 导入 <code>confusion_matrix</code> 和 <code>classification_report</code>。实际上，它们应该从 <code>sklearn.metrics</code> 模块导入，而不是直接从 <code>sklearn</code> 导入。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>将这一行：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn <span class="hljs-keyword">import</span> confusion_matrix, classification_report</code></pre></div>
+<p>修改为：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix, classification_report</code></pre></div>
+
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>在 <code>scikit-learn</code> 中，<code>confusion_matrix</code> 和 <code>classification_report</code> 位于 <code>metrics</code> 子模块。直接从 <code>sklearn</code> 导入这些函数会导致 <code>ImportError</code>。</p>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p>如果修改后仍有问题，可能是因为 <code>scikit-learn</code> 的版本不兼容。你可以检查版本并更新：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">pip show scikit-learn</code></pre></div>
+
+<p>如果版本过低（例如小于 <code>0.24</code>），请更新：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">pip install --upgrade scikit-learn</code></pre></div>
+
+<h3 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h3><p>在 Python 中也可以检查版本：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sklearn
+<span class="hljs-built_in">print</span>(sklearn.__version__)</code></pre></div>
+
+<p>更新后重新运行脚本，看看问题是否解决。如果还有其他报错，请继续反馈。</p>
+<h2 id="Will-4"><a href="#Will-4" class="headerlink" title="Will:"></a>Will:</h2><p> PS D:\coding\code\Python\fake_news_detection&gt; &amp; C:&#x2F;ProgramData&#x2F;anaconda3&#x2F;python.exe d:&#x2F;coding&#x2F;code&#x2F;Python&#x2F;fake_news_detection&#x2F;fake.py</p>
+<p>Traceback (most recent call last):</p>
+<p>  File “d:\coding\code\Python\fake_news_detection\fake.py”, line 22, in <module></p>
+<div class="code-wrapper"><pre><code class="hljs">from wordcloud import WordCloud
+</code></pre></div>
+<p>ModuleNotFoundError: No module named ‘wordcloud’</p>
+<h2 id="ChatGPT-12"><a href="#ChatGPT-12" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 报错信息是：</p>
+<div class="code-wrapper"><pre><code class="hljs plaintext">ModuleNotFoundError: No module named &#x27;wordcloud&#x27;</code></pre></div>
+
+<h3 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="问题分析"></a>问题分析</h3><p>这是因为你的 Python 环境中没有安装 <code>wordcloud</code> 库。该库用于生成词云图，在 <code>fake.py</code> 脚本中被调用。</p>
+<h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><p>请在 Anaconda 的终端或者 CMD 中运行以下命令来安装 <code>wordcloud</code> 库：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">pip install wordcloud</code></pre></div>
+
+<p>或者，如果你使用的是 Anaconda 环境，可以使用：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">conda install -c conda-forge wordcloud</code></pre></div>
+
+<h3 id="检查安装是否成功"><a href="#检查安装是否成功" class="headerlink" title="检查安装是否成功"></a>检查安装是否成功</h3><p>安装完成后，打开 Python Shell 或者在脚本中添加以下代码测试是否安装成功：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> wordcloud
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WordCloud library is successfully installed.&quot;</span>)</code></pre></div>
+
+<p>如果仍然出现 <code>ModuleNotFoundError</code>，可能是因为你的 Python 环境有多个版本，你可以确认使用的是正确的环境。例如，你当前的 Python 路径是：</p>
+<div class="code-wrapper"><pre><code class="hljs plaintext">C:/ProgramData/anaconda3/python.exe</code></pre></div>
+
+<p>确保安装命令是在这个环境下执行的，或者使用以下命令查看环境列表并切换：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">conda info --envs
+conda activate your_environment_name</code></pre></div>
+
+<h3 id="最后确认版本"><a href="#最后确认版本" class="headerlink" title="最后确认版本"></a>最后确认版本</h3><div class="code-wrapper"><pre><code class="hljs bash">pip show wordcloud</code></pre></div>
+
+<p>这样可以确认版本是否正确安装。如果还有问题，继续反馈给我。</p>
+<h2 id="Will-5"><a href="#Will-5" class="headerlink" title="Will:"></a>Will:</h2><p> PS D:\coding\code\Python\fake_news_detection&gt; &amp; C:&#x2F;ProgramData&#x2F;anaconda3&#x2F;python.exe d:&#x2F;coding&#x2F;code&#x2F;Python&#x2F;fake_news_detection&#x2F;fake.py</p>
+<p>Traceback (most recent call last):</p>
+<p>  File “d:\coding\code\Python\fake_news_detection\fake.py”, line 24, in <module></p>
+<div class="code-wrapper"><pre><code class="hljs">import xgboost as xgb
+</code></pre></div>
+<p>ModuleNotFoundError: No module named ‘xgboost’</p>
+<h2 id="ChatGPT-13"><a href="#ChatGPT-13" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 你的报错信息是：</p>
+<div class="code-wrapper"><pre><code class="hljs plaintext">ModuleNotFoundError: No module named &#x27;xgboost&#x27;</code></pre></div>
+
+<h3 id="问题分析-2"><a href="#问题分析-2" class="headerlink" title="问题分析"></a>问题分析</h3><p>这是因为你的 Python 环境中没有安装 <code>xgboost</code> 库，这是一个用于梯度提升决策树算法的机器学习库，在你的 <code>fake.py</code> 脚本中被调用。</p>
+<h3 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h3><p>请使用以下命令来安装 <code>xgboost</code> 库：</p>
+<h4 id="使用-pip-安装"><a href="#使用-pip-安装" class="headerlink" title="使用 pip 安装"></a>使用 <code>pip</code> 安装</h4><div class="code-wrapper"><pre><code class="hljs bash">pip install xgboost</code></pre></div>
+
+<h4 id="使用-conda-安装"><a href="#使用-conda-安装" class="headerlink" title="使用 conda 安装"></a>使用 <code>conda</code> 安装</h4><p>如果你使用的是 Anaconda 环境，推荐使用 <code>conda</code> 安装：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">conda install -c conda-forge xgboost</code></pre></div>
+
+<h3 id="检查安装是否成功-1"><a href="#检查安装是否成功-1" class="headerlink" title="检查安装是否成功"></a>检查安装是否成功</h3><p>安装完成后，测试是否成功：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> xgboost
+<span class="hljs-built_in">print</span>(xgboost.__version__)</code></pre></div>
+
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li><p><strong>环境冲突</strong>：如果你安装了多个 Python 环境，可能是在错误的环境中安装了库。请确保在 <code>C:/ProgramData/anaconda3/</code> 环境下执行安装命令。可以用以下命令查看当前环境：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">conda info --envs
+conda activate base  <span class="hljs-comment"># 或者替换为你的环境名称</span></code></pre></div>
+</li>
+<li><p><strong>安装速度慢</strong>：国内使用 <code>pip</code> 或 <code>conda</code> 下载速度可能较慢，建议使用国内镜像源。例如：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">pip install xgboost -i https://pypi.tuna.tsinghua.edu.cn/simple</code></pre></div></li>
+</ol>
+<h3 id="确认版本"><a href="#确认版本" class="headerlink" title="确认版本"></a>确认版本</h3><p>确保版本安装正确：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">pip show xgboost</code></pre></div>
+
+<p>如果还有其他报错，请继续反馈。</p>
+<h2 id="Will-6"><a href="#Will-6" class="headerlink" title="Will:"></a>Will:</h2><hr>
+<p>KeyError                                  Traceback (most recent call last)</p>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3805, in Index.get_loc(self, key)</p>
+<p>   3804 try:</p>
+<p>-&gt; 3805     return self._engine.get_loc(casted_key)</p>
+<p>   3806 except KeyError as err:</p>
+<p>File index.pyx:167, in pandas._libs.index.IndexEngine.get_loc()</p>
+<p>File index.pyx:196, in pandas._libs.index.IndexEngine.get_loc()</p>
+<p>File pandas\_libs\hashtable_class_helper.pxi:7081, in pandas._libs.hashtable.PyObjectHashTable.get_item()</p>
+<p>File pandas\_libs\hashtable_class_helper.pxi:7089, in pandas._libs.hashtable.PyObjectHashTable.get_item()</p>
+<p>KeyError: ‘body_len’</p>
+<p>The above exception was the direct cause of the following exception:</p>
+<p>KeyError                                  Traceback (most recent call last)</p>
+<p>Cell In[5], line 4</p>
+<div class="code-wrapper"><pre><code class="hljs">  1 plt.figure(figsize = (16,8))
+
+  3 bins = np.linspace(0, 10000, 100)
+</code></pre></div>
+<p>—-&gt; 4 plt.hist(df[df[“label”]&#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”fake”, color&#x3D;”#FF5733”)</p>
+<div class="code-wrapper"><pre><code class="hljs">  5 plt.hist(df[df[&quot;label&quot;]== 1][&quot;body_len&quot;], bins, alpha=0.5, label=&quot;true&quot;, color=&quot;#33FFB8&quot;)
+
+  6 plt.legend(loc=&quot;upper left&quot;)
+</code></pre></div>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\frame.py:4102, in DataFrame.<strong>getitem</strong>(self, key)</p>
+<p>   4100 if self.columns.nlevels &gt; 1:</p>
+<p>   4101     return self._getitem_multilevel(key)</p>
+<p>-&gt; 4102 indexer &#x3D; self.columns.get_loc(key)</p>
+<p>   4103 if is_integer(indexer):</p>
+<p>   4104     indexer &#x3D; [indexer]</p>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3812, in Index.get_loc(self, key)</p>
+<p>   3807     if isinstance(casted_key, slice) or (</p>
+<p>   3808         isinstance(casted_key, abc.Iterable)</p>
+<p>   3809         and any(isinstance(x, slice) for x in casted_key)</p>
+<p>   3810     ):</p>
+<p>   3811         raise InvalidIndexError(key)</p>
+<p>-&gt; 3812     raise KeyError(key) from err</p>
+<p>   3813 except TypeError:</p>
+<p>   3814     # If we have a listlike key, _check_indexing_error will raise</p>
+<p>   3815     #  InvalidIndexError. Otherwise we fall through and re-raise</p>
+<p>   3816     #  the TypeError.</p>
+<p>   3817     self._check_indexing_error(key)</p>
+<p>KeyError: ‘body_len’</p>
+<h2 id="ChatGPT-14"><a href="#ChatGPT-14" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h3><p>报错信息为：</p>
+<div class="code-wrapper"><pre><code class="hljs plaintext">KeyError: &#x27;body_len&#x27;</code></pre></div>
+
+<p>这是因为你的 DataFrame <code>df</code> 中没有名为 <code>&#39;body_len&#39;</code> 的列。</p>
+<h3 id="可能原因"><a href="#可能原因" class="headerlink" title="可能原因"></a>可能原因</h3><ol>
+<li><strong>没有计算 <code>&#39;body_len&#39;</code></strong>：在代码中，你并没有定义或计算这列数据。</li>
+<li><strong>数据集格式问题</strong>：你的 <code>news.csv</code> 文件可能没有包含 <code>&#39;body_len&#39;</code> 这个字段。</li>
+</ol>
+<h3 id="解决方法-3"><a href="#解决方法-3" class="headerlink" title="解决方法"></a>解决方法</h3><p>在绘制长度分布的直方图之前，首先需要计算 <code>&#39;body_len&#39;</code>，即新闻文本的长度。你可以在绘制直方图之前添加以下代码：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 计算新闻文本的长度，并添加到 DataFrame 中</span>
+df[<span class="hljs-string">&#x27;body_len&#x27;</span>] = df[<span class="hljs-string">&#x27;title_text&#x27;</span>].apply(<span class="hljs-built_in">len</span>)</code></pre></div>
+
+<h3 id="更新后的绘图代码"><a href="#更新后的绘图代码" class="headerlink" title="更新后的绘图代码"></a>更新后的绘图代码</h3><div class="code-wrapper"><pre><code class="hljs python">plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">8</span>))
+
+bins = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10000</span>, <span class="hljs-number">100</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">0</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;虚假新闻&quot;</span>, color=<span class="hljs-string">&quot;#FF5733&quot;</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">1</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;真实新闻&quot;</span>, color=<span class="hljs-string">&quot;#33FFB8&quot;</span>)
+plt.legend(loc=<span class="hljs-string">&quot;upper left&quot;</span>)
+plt.title(<span class="hljs-string">&#x27;真实新闻/虚假新闻的长度分布&#x27;</span>, fontsize=<span class="hljs-number">15</span>)
+plt.show()</code></pre></div>
+
+<h3 id="进一步检查"><a href="#进一步检查" class="headerlink" title="进一步检查"></a>进一步检查</h3><p>为了确保列名正确，请打印 <code>df</code> 的列名：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(df.columns)</code></pre></div>
+
+<p>如果仍然报错，请检查数据集 <code>news.csv</code> 中是否包含你预期的列，并确认拼接后的 <code>title_text</code> 列是否正常创建。</p>
+<h2 id="Will-7"><a href="#Will-7" class="headerlink" title="Will:"></a>Will:</h2><p> src code:<br>print(df.columns)</p>
+<p>plt.figure(figsize&#x3D;(16, 8))</p>
+<p>bins &#x3D; np.linspace(0, 10000, 100)<br>plt.hist(df[df[“label”] &#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”虚假新闻”, color&#x3D;”#FF5733”)<br>plt.hist(df[df[“label”] &#x3D;&#x3D; 1][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”真实新闻”, color&#x3D;”#33FFB8”)<br>plt.legend(loc&#x3D;”upper left”)<br>plt.title(‘真实新闻&#x2F;虚假新闻的长度分布’, fontsize&#x3D;15)<br>plt.show()</p>
+<h2 id="error"><a href="#error" class="headerlink" title="error:"></a>error:</h2><p>KeyError                                  Traceback (most recent call last)</p>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3805, in Index.get_loc(self, key)</p>
+<p>   3804 try:</p>
+<p>-&gt; 3805     return self._engine.get_loc(casted_key)</p>
+<p>   3806 except KeyError as err:</p>
+<p>File index.pyx:167, in pandas._libs.index.IndexEngine.get_loc()</p>
+<p>File index.pyx:196, in pandas._libs.index.IndexEngine.get_loc()</p>
+<p>File pandas\_libs\hashtable_class_helper.pxi:7081, in pandas._libs.hashtable.PyObjectHashTable.get_item()</p>
+<p>File pandas\_libs\hashtable_class_helper.pxi:7089, in pandas._libs.hashtable.PyObjectHashTable.get_item()</p>
+<p>KeyError: ‘body_len’</p>
+<p>The above exception was the direct cause of the following exception:</p>
+<p>KeyError                                  Traceback (most recent call last)</p>
+<p>Cell In[8], line 6</p>
+<div class="code-wrapper"><pre><code class="hljs">  3 plt.figure(figsize=(16, 8))
+
+  5 bins = np.linspace(0, 10000, 100)
+</code></pre></div>
+<p>—-&gt; 6 plt.hist(df[df[“label”] &#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”虚假新闻”, color&#x3D;”#FF5733”)</p>
+<div class="code-wrapper"><pre><code class="hljs">  7 plt.hist(df[df[&quot;label&quot;] == 1][&quot;body_len&quot;], bins, alpha=0.5, label=&quot;真实新闻&quot;, color=&quot;#33FFB8&quot;)
+
+  8 plt.legend(loc=&quot;upper left&quot;)
+</code></pre></div>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\frame.py:4102, in DataFrame.<strong>getitem</strong>(self, key)</p>
+<p>   4100 if self.columns.nlevels &gt; 1:</p>
+<p>   4101     return self._getitem_multilevel(key)</p>
+<p>-&gt; 4102 indexer &#x3D; self.columns.get_loc(key)</p>
+<p>   4103 if is_integer(indexer):</p>
+<p>   4104     indexer &#x3D; [indexer]</p>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3812, in Index.get_loc(self, key)</p>
+<p>   3807     if isinstance(casted_key, slice) or (</p>
+<p>   3808         isinstance(casted_key, abc.Iterable)</p>
+<p>   3809         and any(isinstance(x, slice) for x in casted_key)</p>
+<p>   3810     ):</p>
+<p>   3811         raise InvalidIndexError(key)</p>
+<p>-&gt; 3812     raise KeyError(key) from err</p>
+<p>   3813 except TypeError:</p>
+<p>   3814     # If we have a listlike key, _check_indexing_error will raise</p>
+<p>   3815     #  InvalidIndexError. Otherwise we fall through and re-raise</p>
+<p>   3816     #  the TypeError.</p>
+<p>   3817     self._check_indexing_error(key)</p>
+<p>KeyError: ‘body_len’</p>
+<h2 id="ChatGPT-15"><a href="#ChatGPT-15" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="错误分析-1"><a href="#错误分析-1" class="headerlink" title="错误分析"></a>错误分析</h3><p>你的报错是 <code>KeyError: &#39;body_len&#39;</code>，说明在你的 DataFrame <code>df</code> 中并没有 <code>&#39;body_len&#39;</code> 这一列。</p>
+<p><strong>调试步骤：</strong></p>
+<ol>
+<li><strong>查看列名</strong>：你可以通过 <code>print(df.columns)</code> 来查看所有的列名。</li>
+<li><strong>检查拼接后的数据列</strong>：由于你在代码中已经将 <code>title</code> 和 <code>text</code> 拼接为 <code>title_text</code>，可能没有直接计算新闻文本的长度。</li>
+</ol>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>在绘制长度分布图之前，首先需要计算 <code>&#39;body_len&#39;</code> 列。请在绘图代码之前添加以下行：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 计算拼接后的文本长度</span>
+df[<span class="hljs-string">&#x27;body_len&#x27;</span>] = df[<span class="hljs-string">&#x27;title_text&#x27;</span>].apply(<span class="hljs-built_in">len</span>)</code></pre></div>
+
+<p>然后，你的绘图代码可以保持不变：</p>
+<div class="code-wrapper"><pre><code class="hljs python">plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">8</span>))
+
+bins = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">10000</span>, <span class="hljs-number">100</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">0</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;虚假新闻&quot;</span>, color=<span class="hljs-string">&quot;#FF5733&quot;</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">1</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;真实新闻&quot;</span>, color=<span class="hljs-string">&quot;#33FFB8&quot;</span>)
+plt.legend(loc=<span class="hljs-string">&quot;upper left&quot;</span>)
+plt.title(<span class="hljs-string">&#x27;真实新闻/虚假新闻的长度分布&#x27;</span>, fontsize=<span class="hljs-number">15</span>)
+plt.show()</code></pre></div>
+
+<h3 id="进一步检查-1"><a href="#进一步检查-1" class="headerlink" title="进一步检查"></a>进一步检查</h3><p>打印 <code>df</code> 的前几行，确保 <code>&#39;body_len&#39;</code> 列正确添加：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(df.head())</code></pre></div>
+
+<p>如果没有报错，说明问题已经解决。如果报错依然存在，请提供 <code>print(df.columns)</code> 的输出结果，我可以进一步帮助你分析问题。</p>
+<h2 id="Will-8"><a href="#Will-8" class="headerlink" title="Will:"></a>Will:</h2><p> print(df.columns)</p>
+<h1 id="计算拼接后的文本长度"><a href="#计算拼接后的文本长度" class="headerlink" title="计算拼接后的文本长度"></a>计算拼接后的文本长度</h1><p>df[‘body_len’] &#x3D; df[‘title_text’].apply(len)</p>
+<p>plt.figure(figsize&#x3D;(16, 8))</p>
+<p>bins &#x3D; np.linspace(0, 10000, 100)<br>plt.hist(df[df[“label”] &#x3D;&#x3D; 0][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”fake”, color&#x3D;”#FF5733”)<br>plt.hist(df[df[“label”] &#x3D;&#x3D; 1][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”true”, color&#x3D;”#33FFB8”)<br>plt.legend(loc&#x3D;”upper left”)<br>plt.title(‘length distrubution of true&#x2F;fake’, fontsize&#x3D;15)<br>plt.show()</p>
+<p>现在没有报错了，但是画出的图片里面没有任何图像</p>
+<h2 id="ChatGPT-16"><a href="#ChatGPT-16" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 如果绘图没有报错但图像中没有任何显示内容，可能是由于以下几个原因：</p>
+<h3 id="1-数据集中-body-len-列为-0-或者全为-NaN"><a href="#1-数据集中-body-len-列为-0-或者全为-NaN" class="headerlink" title="1. 数据集中 &#39;body_len&#39; 列为 0 或者全为 NaN"></a>1. 数据集中 <code>&#39;body_len&#39;</code> 列为 0 或者全为 NaN</h3><p>检查一下 <code>&#39;body_len&#39;</code> 列的统计信息，确认是否所有值都为 0：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(df[<span class="hljs-string">&#x27;body_len&#x27;</span>].describe())</code></pre></div>
+
+<h3 id="2-数据过滤问题"><a href="#2-数据过滤问题" class="headerlink" title="2. 数据过滤问题"></a>2. 数据过滤问题</h3><p>你绘制的是 <code>label</code> 为 0 和 1 的数据。请确保你的数据集中确实包含这两类标签：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(df[<span class="hljs-string">&#x27;label&#x27;</span>].value_counts())</code></pre></div>
+
+<p>如果输出中显示某一类标签的计数为 0，说明没有该类别的数据，自然绘图时就会出现空图像的情况。</p>
+<h3 id="3-数据过于稀疏"><a href="#3-数据过于稀疏" class="headerlink" title="3. 数据过于稀疏"></a>3. 数据过于稀疏</h3><p>如果文本长度都非常短，图像可能无法显示。尝试减少最大值区间，例如将 <code>bins</code> 范围从 <code>0</code> 到 <code>2000</code>：</p>
+<div class="code-wrapper"><pre><code class="hljs python">bins = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2000</span>, <span class="hljs-number">50</span>)</code></pre></div>
+
+<h3 id="4-检查绘图是否被覆盖"><a href="#4-检查绘图是否被覆盖" class="headerlink" title="4. 检查绘图是否被覆盖"></a>4. 检查绘图是否被覆盖</h3><p>可能绘图被覆盖，尝试在显示图像前调用 <code>plt.clf()</code> 清除上一次绘图内容：</p>
+<div class="code-wrapper"><pre><code class="hljs python">plt.clf()
+plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">8</span>))
+
+bins = np.linspace(<span class="hljs-number">0</span>, <span class="hljs-number">2000</span>, <span class="hljs-number">50</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">0</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;fake&quot;</span>, color=<span class="hljs-string">&quot;#FF5733&quot;</span>)
+plt.hist(df[df[<span class="hljs-string">&quot;label&quot;</span>] == <span class="hljs-number">1</span>][<span class="hljs-string">&quot;body_len&quot;</span>], bins, alpha=<span class="hljs-number">0.5</span>, label=<span class="hljs-string">&quot;true&quot;</span>, color=<span class="hljs-string">&quot;#33FFB8&quot;</span>)
+plt.legend(loc=<span class="hljs-string">&quot;upper left&quot;</span>)
+plt.title(<span class="hljs-string">&#x27;Length Distribution of True/Fake News&#x27;</span>, fontsize=<span class="hljs-number">15</span>)
+plt.show()</code></pre></div>
+
+<h3 id="5-输出检查"><a href="#5-输出检查" class="headerlink" title="5. 输出检查"></a>5. 输出检查</h3><p>确认在 <code>plt.show()</code> 前没有调用 <code>plt.close()</code> 或者 <code>plt.figure()</code>。这些方法可能会导致绘图未显示。</p>
+<p>尝试这些步骤后，如果问题仍未解决，请分享 <code>df[&#39;body_len&#39;].describe()</code> 和 <code>df[&#39;label&#39;].value_counts()</code> 的输出结果，以便进一步分析。</p>
+<h2 id="Will-9"><a href="#Will-9" class="headerlink" title="Will:"></a>Will:</h2><p> import pandas as pd</p>
+<p>import seaborn as sns</p>
+<p>import os</p>
+<p>import gc</p>
+<p>import numpy as np</p>
+<p>import matplotlib as mpl</p>
+<p>import matplotlib.pyplot as plt</p>
+<p>import pickle</p>
+<p>np.random.seed(7)</p>
+<p>import seaborn as sns</p>
+<p>from sklearn.preprocessing import StandardScaler</p>
+<p>from sklearn.model_selection import train_test_split</p>
+<p>from sklearn.metrics import auc, roc_curve</p>
+<p>from sklearn.metrics import accuracy_score, precision_score, recall_score</p>
+<p>from sklearn import metrics</p>
+<p>from sklearn.metrics import confusion_matrix, classification_report</p>
+<p>from sklearn.feature_extraction.text import CountVectorizer</p>
+<p>from sklearn.feature_extraction.text import TfidfVectorizer</p>
+<p>from sklearn.model_selection import train_test_split</p>
+<p>from wordcloud import WordCloud</p>
+<p>import xgboost as xgb</p>
+<p>import warnings</p>
+<p>warnings.filterwarnings(‘ignore’)</p>
+<p>os.system(‘cls’)</p>
+<h1 id="利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接-1"><a href="#利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接-1" class="headerlink" title="利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接"></a>利用pandas读取虚假新闻数据集，并去除字段缺失的样本，将title和text拼接</h1><p>df &#x3D; pd.read_csv(‘news.csv’)</p>
+<h1 id="去除字段缺失的样本-2"><a href="#去除字段缺失的样本-2" class="headerlink" title="去除字段缺失的样本"></a>去除字段缺失的样本</h1><p>df.dropna(subset &#x3D; [‘text’, ‘title’], inplace &#x3D; True)</p>
+<h1 id="将标题与正文内容进行拼接-2"><a href="#将标题与正文内容进行拼接-2" class="headerlink" title="将标题与正文内容进行拼接"></a>将标题与正文内容进行拼接</h1><p>df[“title_text”] &#x3D; df[“title”] + df[“text”]</p>
+<p>df.info()</p>
+<p>df.head()</p>
+<p>df[‘label’].value_counts(normalize&#x3D;True).rename({1: ‘true’, 0: ‘fake’})</p>
+<p>plt.figure(figsize &#x3D; (10,6))</p>
+<p>sns.countplot(x &#x3D; df[‘label’], palette &#x3D; ‘Set1’, alpha &#x3D; 0.8)</p>
+<p>plt.title(‘Histogram of the distribution of fake news sample categories - 0 &#x2F;fake news - 1 true news’, fontsize&#x3D;15)</p>
+<p>plt.show()</p>
+<h1 id="print-df-columns"><a href="#print-df-columns" class="headerlink" title="print(df.columns)"></a>print(df.columns)</h1><h1 id="计算拼接后的文本长度-1"><a href="#计算拼接后的文本长度-1" class="headerlink" title="计算拼接后的文本长度"></a>计算拼接后的文本长度</h1><p>df[‘body_len’] &#x3D; df[‘title_text’].apply(len)</p>
+<p>plt.figure(figsize&#x3D;(16, 8))</p>
+<p>bins &#x3D; np.linspace(0, 10000, 100)</p>
+<p>plt.hist(df[df[“label”] &#x3D;&#x3D; “FAKE”][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”fake”, color&#x3D;”#FF5733”)</p>
+<p>plt.hist(df[df[“label”] &#x3D;&#x3D; “TRUE”][“body_len”], bins, alpha&#x3D;0.5, label&#x3D;”true”, color&#x3D;”#33FFB8”)</p>
+<p>plt.legend(loc&#x3D;”upper left”)</p>
+<p>plt.title(‘length distrubution of true&#x2F;fake’, fontsize&#x3D;15)</p>
+<p>plt.show()</p>
+<p>fake_texts &#x3D; ‘ ‘.join(text for text in fake_news)</p>
+<p>wordcloud &#x3D; WordCloud(</p>
+<div class="code-wrapper"><pre><code class="hljs">background_color=&#39;white&#39;, 
+
+max_words=300,
+
+width=600, 
+
+height=300,
+</code></pre></div>
+<p>).generate(fake_texts)</p>
+<p>plt.figure(figsize&#x3D;(18, 6))</p>
+<p>plt.imshow(wordcloud, interpolation&#x3D;’bilinear’)</p>
+<p>plt.axis(“off”)</p>
+<p>plt.title(‘虚假新闻的词云可视化’, fontsize&#x3D;20)</p>
+<p>plt.show()</p>
+<p>count_vectorizer &#x3D; CountVectorizer(stop_words&#x3D;’english’, max_features&#x3D;10000, min_df&#x3D;10)</p>
+<p>count_vectorizer.fit(X_train)</p>
+<p>count_train &#x3D; count_vectorizer.transform(X_train)</p>
+<p>count_valid &#x3D; count_vectorizer.transform(X_valid)</p>
+<p>count_test &#x3D; count_vectorizer.transform(X_test)</p>
+<h1 id="保存-BoW-模型-2"><a href="#保存-BoW-模型-2" class="headerlink" title="保存 BoW 模型"></a>保存 BoW 模型</h1><p>with open(‘.&#x2F;saved_model&#x2F;count_vectorizer.pickle’,’wb’) as f:</p>
+<div class="code-wrapper"><pre><code class="hljs">pickle.dump(count_vectorizer, f)
+</code></pre></div>
+<p>from sklearn.naive_bayes import MultinomialNB</p>
+<p>nb_classifier &#x3D; MultinomialNB()</p>
+<p>nb_classifier.fit(count_train, y_train)</p>
+<p>nb_pred &#x3D; nb_classifier.predict(count_test)</p>
+<p>print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<p>xgb_params &#x3D; {</p>
+<div class="code-wrapper"><pre><code class="hljs">&#39;eta&#39;: 0.1,
+
+&#39;colsample_bytree&#39;: 0.4,
+
+&#39;max_depth&#39;: 8,
+
+&#39;lambda&#39;: 2.0,
+
+&#39;eval_metric&#39;: &#39;auc&#39;,
+
+&#39;objective&#39;: &#39;binary:logistic&#39;,
+
+&#39;nthread&#39;: -1,
+
+&#39;booster&#39;: &#39;gbtree&#39;
+</code></pre></div>
+<p>}</p>
+<p>dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)</p>
+<p>dvalid &#x3D; xgb.DMatrix(count_valid, y_valid, feature_names&#x3D;feature_names)</p>
+<p>watchlist &#x3D; [(dtrain, ‘train’), (dvalid, ‘valid’)]</p>
+<p>xgb_model &#x3D; xgb.train(dict(xgb_params),</p>
+<div class="code-wrapper"><pre><code class="hljs">                  dtrain,
+
+                  evals=watchlist,
+
+                  verbose_eval=50,
+
+                  early_stopping_rounds=100,
+
+                  num_boost_round=4000)
+</code></pre></div>
+<p>data &#x3D; scores[:40][::-1]</p>
+<h1 id="解包数据-2"><a href="#解包数据-2" class="headerlink" title="解包数据"></a>解包数据</h1><p>labels, values &#x3D; zip(*data)</p>
+<h1 id="创建图形和轴对象-2"><a href="#创建图形和轴对象-2" class="headerlink" title="创建图形和轴对象"></a>创建图形和轴对象</h1><p>fig, ax &#x3D; plt.subplots(figsize&#x3D;(10, 10))</p>
+<h1 id="绘制柱状图-2"><a href="#绘制柱状图-2" class="headerlink" title="绘制柱状图"></a>绘制柱状图</h1><p>bars &#x3D; ax.barh(labels, values)</p>
+<h1 id="添加标题和标签-2"><a href="#添加标题和标签-2" class="headerlink" title="添加标题和标签"></a>添加标题和标签</h1><p>ax.set_title(‘特征词重要程度分布’, fontsize&#x3D;16)</p>
+<p>ax.set_xlabel(‘Words’)</p>
+<p>ax.set_ylabel(‘Frequency’)</p>
+<h1 id="显示图表-2"><a href="#显示图表-2" class="headerlink" title="显示图表"></a>显示图表</h1><p>plt.xticks(rotation&#x3D;45, ha&#x3D;’right’)  # 旋转 x 轴标签以适应</p>
+<p>plt.tight_layout()  # 自动调整子图参数，使之填充整个图像区域</p>
+<p>plt.show()</p>
+<h1 id="predict-test-2"><a href="#predict-test-2" class="headerlink" title="predict test"></a>predict test</h1><p>dtest &#x3D; xgb.DMatrix(count_test, feature_names&#x3D;feature_names)</p>
+<p>xgb_pred &#x3D; xgb_model.predict(dtest)</p>
+<p>xgb_pred &#x3D; (xgb_pred &gt; 0.5).astype(int)</p>
+<p>print(classification_report(y_test, xgb_pred))</p>
+<p>plt.figure(figsize &#x3D; (8,6))</p>
+<p>sns.heatmap(confusion_matrix(y_test, xgb_pred), annot&#x3D;True, </p>
+<div class="code-wrapper"><pre><code class="hljs">        fmt=&#39;&#39;, cmap=&#39;Blues&#39;)
+</code></pre></div>
+<p>plt.xlabel(‘Predicted Labels’)</p>
+<p>plt.ylabel(‘Real Labels’)</p>
+<p>plt.show()</p>
+<p>报错：<br>&lt;class ‘pandas.core.frame.DataFrame’&gt;</p>
+<p>RangeIndex: 6335 entries, 0 to 6334</p>
+<p>Data columns (total 5 columns):</p>
+<h1 id="Column-Non-Null-Count-Dtype"><a href="#Column-Non-Null-Count-Dtype" class="headerlink" title="Column      Non-Null Count  Dtype"></a>Column      Non-Null Count  Dtype</h1><hr>
+<p> 0   Unnamed: 0  6335 non-null   int64 </p>
+<p> 1   title       6335 non-null   object</p>
+<p> 2   text        6335 non-null   object</p>
+<p> 3   label       6335 non-null   object</p>
+<p> 4   title_text  6335 non-null   object</p>
+<p>dtypes: int64(1), object(4)</p>
+<p>memory usage: 247.6+ KB</p>
+<p>Traceback (most recent call last):</p>
+<p>  File “d:\coding\code\Python\fake_news_detection\fake.py”, line 77, in <module></p>
+<div class="code-wrapper"><pre><code class="hljs">fake_texts = &#39; &#39;.join(text for text in fake_news)
+
+                                       ^^^^^^^^^
+</code></pre></div>
+<p>NameError: name ‘fake_news’ is not defined</p>
+<h2 id="ChatGPT-17"><a href="#ChatGPT-17" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="问题分析-3"><a href="#问题分析-3" class="headerlink" title="问题分析"></a>问题分析</h3><p>从错误日志来看，代码报错在这部分：</p>
+<div class="code-wrapper"><pre><code class="hljs python">fake_texts = <span class="hljs-string">&#x27; &#x27;</span>.join(text <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> fake_news)</code></pre></div>
+
+<p>报错信息为：</p>
+<div class="code-wrapper"><pre><code class="hljs xquery">NameError:<span class="hljs-built_in"> name</span> <span class="hljs-string">&#x27;fake_news&#x27;</span> <span class="hljs-literal">is</span><span class="hljs-built_in"> not</span> defined</code></pre></div>
+
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>报错原因是 <code>fake_news</code> 变量没有定义。你可能是想使用所有虚假新闻文本进行词云可视化，但 <code>fake_news</code> 在你的代码中没有被赋值。可以通过以下修改来修复问题：</p>
+<h4 id="修改-1：定义-fake-news-变量"><a href="#修改-1：定义-fake-news-变量" class="headerlink" title="修改 1：定义 fake_news 变量"></a>修改 1：定义 <code>fake_news</code> 变量</h4><p>在 <code>fake_texts</code> 之前，筛选出标签为 <code>&#39;FAKE&#39;</code> 的新闻文本：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 筛选出标签为 &#x27;FAKE&#x27; 的新闻文本，并拼接成一个字符串</span>
+fake_news = df[df[<span class="hljs-string">&#x27;label&#x27;</span>] == <span class="hljs-string">&#x27;FAKE&#x27;</span>][<span class="hljs-string">&#x27;title_text&#x27;</span>]
+fake_texts = <span class="hljs-string">&#x27; &#x27;</span>.join(text <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> fake_news)</code></pre></div>
+
+<h4 id="修改-2：如果-label-列使用的是数值标签"><a href="#修改-2：如果-label-列使用的是数值标签" class="headerlink" title="修改 2：如果 label 列使用的是数值标签"></a>修改 2：如果 <code>label</code> 列使用的是数值标签</h4><p>如果你的数据集中 <code>label</code> 列使用的是 0 和 1（而不是 <code>&#39;FAKE&#39;</code> 和 <code>&#39;TRUE&#39;</code>），则修改为：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 标签为 0 表示虚假新闻</span>
+fake_news = df[df[<span class="hljs-string">&#x27;label&#x27;</span>] == <span class="hljs-number">0</span>][<span class="hljs-string">&#x27;title_text&#x27;</span>]
+fake_texts = <span class="hljs-string">&#x27; &#x27;</span>.join(text <span class="hljs-keyword">for</span> text <span class="hljs-keyword">in</span> fake_news)</code></pre></div>
+
+<h4 id="检查标签格式"><a href="#检查标签格式" class="headerlink" title="检查标签格式"></a>检查标签格式</h4><p>可以先打印一下 <code>label</code> 列的唯一值，以确保标签格式正确：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(df[<span class="hljs-string">&#x27;label&#x27;</span>].unique())</code></pre></div>
+
+<h3 id="额外建议"><a href="#额外建议" class="headerlink" title="额外建议"></a>额外建议</h3><p>在进行词云绘制时，确保文本数据不是空字符串，否则词云可能无法正确显示。此外，可以添加一些文本预处理，例如去掉标点符号和特殊字符。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re
+
+<span class="hljs-comment"># 简单文本预处理：移除特殊字符</span>
+fake_texts = re.sub(<span class="hljs-string">r&#x27;\W+&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, fake_texts)</code></pre></div>
+
+<h3 id="完整的词云绘制代码"><a href="#完整的词云绘制代码" class="headerlink" title="完整的词云绘制代码"></a>完整的词云绘制代码</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> wordcloud <span class="hljs-keyword">import</span> WordCloud
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># 生成词云</span>
+wordcloud = WordCloud(
+    background_color=<span class="hljs-string">&#x27;white&#x27;</span>, 
+    max_words=<span class="hljs-number">300</span>,
+    width=<span class="hljs-number">600</span>, 
+    height=<span class="hljs-number">300</span>,
+).generate(fake_texts)
+
+<span class="hljs-comment"># 显示词云图</span>
+plt.figure(figsize=(<span class="hljs-number">18</span>, <span class="hljs-number">6</span>))
+plt.imshow(wordcloud, interpolation=<span class="hljs-string">&#x27;bilinear&#x27;</span>)
+plt.axis(<span class="hljs-string">&quot;off&quot;</span>)
+plt.title(<span class="hljs-string">&#x27;虚假新闻的词云可视化&#x27;</span>, fontsize=<span class="hljs-number">20</span>)
+plt.show()</code></pre></div>
+
+<h3 id="检查结果"><a href="#检查结果" class="headerlink" title="检查结果"></a>检查结果</h3><p>运行修改后的代码，并检查图像是否正常显示。如果仍有问题，请确认 <code>fake_texts</code> 不为空，并打印检查：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(fake_texts[:<span class="hljs-number">100</span>])  <span class="hljs-comment"># 打印前 100 个字符</span></code></pre></div>
+
+<p>这应该能解决你的问题。如果还有其他报错，请继续分享详细日志。</p>
+<h2 id="Will-10"><a href="#Will-10" class="headerlink" title="Will:"></a>Will:</h2><p> count_vectorizer &#x3D; CountVectorizer(stop_words&#x3D;’english’, max_features&#x3D;10000, min_df&#x3D;10)<br>count_vectorizer.fit(X_train)</p>
+<p>count_train &#x3D; count_vectorizer.transform(X_train)<br>count_valid &#x3D; count_vectorizer.transform(X_valid)<br>count_test &#x3D; count_vectorizer.transform(X_test)</p>
+<h1 id="保存-BoW-模型-3"><a href="#保存-BoW-模型-3" class="headerlink" title="保存 BoW 模型"></a>保存 BoW 模型</h1><p>with open(‘.&#x2F;saved_model&#x2F;count_vectorizer.pickle’,’wb’) as f:<br>    pickle.dump(count_vectorizer, f)</p>
+<hr>
+<p>NameError                                 Traceback (most recent call last)</p>
+<p>Cell In[5], line 2</p>
+<div class="code-wrapper"><pre><code class="hljs">  1 count_vectorizer = CountVectorizer(stop_words=&#39;english&#39;, max_features=10000, min_df=10)
+</code></pre></div>
+<p>—-&gt; 2 count_vectorizer.fit(X_train)</p>
+<div class="code-wrapper"><pre><code class="hljs">  4 count_train = count_vectorizer.transform(X_train)
+
+  5 count_valid = count_vectorizer.transform(X_valid)
+</code></pre></div>
+<p>NameError: name ‘X_train’ is not defined</p>
+<h2 id="ChatGPT-18"><a href="#ChatGPT-18" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="问题分析-4"><a href="#问题分析-4" class="headerlink" title="问题分析"></a>问题分析</h3><p>你的代码报错了：</p>
+<div class="code-wrapper"><pre><code class="hljs xquery">NameError:<span class="hljs-built_in"> name</span> <span class="hljs-string">&#x27;X_train&#x27;</span> <span class="hljs-literal">is</span><span class="hljs-built_in"> not</span> defined</code></pre></div>
+
+<p>这表明你在使用 <code>X_train</code>、<code>X_valid</code> 和 <code>X_test</code> 变量时，它们并没有定义或赋值。</p>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>在执行 <code>count_vectorizer.fit()</code> 之前，你需要先将数据集划分为训练集、验证集和测试集。你可以使用 <code>train_test_split</code> 来划分这些数据。</p>
+<h4 id="修改步骤"><a href="#修改步骤" class="headerlink" title="修改步骤"></a>修改步骤</h4><ol>
+<li><p><strong>将数据集划分为训练集、验证集和测试集</strong></p>
+<p>假设你已经有了一个包含文本数据的 <code>X</code> 和标签 <code>y</code>，你可以通过以下代码来划分数据集：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 假设 df[&#x27;title_text&#x27;] 是文本数据，df[&#x27;label&#x27;] 是标签</span>
+X = df[<span class="hljs-string">&#x27;title_text&#x27;</span>]
+y = df[<span class="hljs-string">&#x27;label&#x27;</span>]
+
+<span class="hljs-comment"># 划分训练集和测试集（80%训练集，20%测试集）</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)
+
+<span class="hljs-comment"># 进一步划分验证集（10%验证集，80%训练集）</span>
+X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">42</span>)</code></pre></div>
+</li>
+<li><p><strong>使用 <code>CountVectorizer</code> 转换文本数据</strong></p>
+<p>现在，你可以对 <code>X_train</code>、<code>X_valid</code> 和 <code>X_test</code> 使用 <code>CountVectorizer</code>：</p>
+<div class="code-wrapper"><pre><code class="hljs python">count_vectorizer = CountVectorizer(stop_words=<span class="hljs-string">&#x27;english&#x27;</span>, max_features=<span class="hljs-number">10000</span>, min_df=<span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># 拟合训练集</span>
+count_vectorizer.fit(X_train)
+
+<span class="hljs-comment"># 转换训练集、验证集和测试集</span>
+count_train = count_vectorizer.transform(X_train)
+count_valid = count_vectorizer.transform(X_valid)
+count_test = count_vectorizer.transform(X_test)</code></pre></div>
+</li>
+<li><p><strong>保存模型</strong></p>
+<p>你可以将 <code>CountVectorizer</code> 模型保存到文件，以便以后加载：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./saved_model/count_vectorizer.pickle&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    pickle.dump(count_vectorizer, f)</code></pre></div></li>
+</ol>
+<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><ul>
+<li><code>train_test_split</code> 是一个很常用的工具，用来将数据集分割成训练集和测试集。在上面的代码中，我还进一步将训练集分割为训练集和验证集（验证集用于调整超参数，测试集用于评估最终模型的性能）。</li>
+<li><code>CountVectorizer</code> 是一个常用的文本处理工具，它将文本转换为词频矩阵，供机器学习模型使用。</li>
+</ul>
+<h3 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h3><p>请确保在使用 <code>CountVectorizer</code> 时，<code>X_train</code>、<code>X_valid</code> 和 <code>X_test</code> 已经正确地赋值。如果 <code>X</code> 和 <code>y</code> 没有定义，或者你使用的数据框结构与我的假设不同，你可能需要相应调整代码。</p>
+<h3 id="完整代码示例"><a href="#完整代码示例" class="headerlink" title="完整代码示例"></a>完整代码示例</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+<span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer
+<span class="hljs-keyword">import</span> pickle
+
+<span class="hljs-comment"># 假设 df 是你加载的数据集</span>
+X = df[<span class="hljs-string">&#x27;title_text&#x27;</span>]
+y = df[<span class="hljs-string">&#x27;label&#x27;</span>]
+
+<span class="hljs-comment"># 划分训练集、验证集和测试集</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)
+X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=<span class="hljs-number">0.1</span>, random_state=<span class="hljs-number">42</span>)
+
+<span class="hljs-comment"># 创建 CountVectorizer 实例</span>
+count_vectorizer = CountVectorizer(stop_words=<span class="hljs-string">&#x27;english&#x27;</span>, max_features=<span class="hljs-number">10000</span>, min_df=<span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># 拟合训练集并转换数据</span>
+count_vectorizer.fit(X_train)
+count_train = count_vectorizer.transform(X_train)
+count_valid = count_vectorizer.transform(X_valid)
+count_test = count_vectorizer.transform(X_test)
+
+<span class="hljs-comment"># 保存 CountVectorizer 模型</span>
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./saved_model/count_vectorizer.pickle&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    pickle.dump(count_vectorizer, f)</code></pre></div>
+
+<p>运行时，如果没有其他错误，应该就可以顺利地进行数据转换并保存模型了。</p>
+<h2 id="ChatGPT-19"><a href="#ChatGPT-19" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> The error you’re encountering is due to the fact that <code>X_train</code>, <code>X_valid</code>, and <code>X_test</code> are not defined in your code before you attempt to use them. These variables are meant to hold the training, validation, and test datasets, respectively, but they need to be created first.</p>
+<p>Here’s how to fix it:</p>
+<h3 id="Step-1-Split-Your-Data"><a href="#Step-1-Split-Your-Data" class="headerlink" title="Step 1: Split Your Data"></a>Step 1: Split Your Data</h3><p>First, you need to split your dataset into training, validation, and test sets. Typically, this is done using <code>train_test_split</code> from <code>sklearn</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+
+<span class="hljs-comment"># Assuming you have a DataFrame df with &#x27;title_text&#x27; and &#x27;label&#x27; columns</span>
+X = df[<span class="hljs-string">&#x27;title_text&#x27;</span>]  <span class="hljs-comment"># Features (the text data)</span>
+y = df[<span class="hljs-string">&#x27;label&#x27;</span>]  <span class="hljs-comment"># Labels (the target variable)</span>
+
+<span class="hljs-comment"># Split the data: 80% training, 10% validation, 10% testing</span>
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span>)
+
+<span class="hljs-comment"># Further split the temporary data into validation and test sets</span>
+X_valid, X_test, y_valid, y_test = train_test_split(X_temp, y_temp, test_size=<span class="hljs-number">0.5</span>, random_state=<span class="hljs-number">42</span>)</code></pre></div>
+
+<h3 id="Step-2-Apply-CountVectorizer-to-Your-Data"><a href="#Step-2-Apply-CountVectorizer-to-Your-Data" class="headerlink" title="Step 2: Apply CountVectorizer to Your Data"></a>Step 2: Apply <code>CountVectorizer</code> to Your Data</h3><p>After splitting your data, you can use the <code>CountVectorizer</code> to convert the text data into a bag-of-words (BoW) representation. This can be done as follows:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer
+
+<span class="hljs-comment"># Initialize the CountVectorizer</span>
+count_vectorizer = CountVectorizer(stop_words=<span class="hljs-string">&#x27;english&#x27;</span>, max_features=<span class="hljs-number">10000</span>, min_df=<span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># Fit and transform the training data</span>
+count_train = count_vectorizer.fit_transform(X_train)
+
+<span class="hljs-comment"># Transform the validation and test data</span>
+count_valid = count_vectorizer.transform(X_valid)
+count_test = count_vectorizer.transform(X_test)
+
+<span class="hljs-comment"># Save the CountVectorizer model</span>
+<span class="hljs-keyword">import</span> pickle
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./saved_model/count_vectorizer.pickle&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    pickle.dump(count_vectorizer, f)</code></pre></div>
+
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation:"></a>Explanation:</h3><ul>
+<li><code>train_test_split</code> splits your data into training, validation, and test sets. The training data is used to fit the model, while the validation data is used for tuning parameters, and the test data is used for final evaluation.</li>
+<li><code>CountVectorizer</code> is used to convert the text data (<code>title_text</code>) into numerical features that can be fed into machine learning models. You specify <code>stop_words=&#39;english&#39;</code> to remove common English words and <code>max_features=10000</code> to limit the vocabulary size.</li>
+<li>Finally, you save the trained <code>CountVectorizer</code> using <code>pickle</code> so that it can be reused later.</li>
+</ul>
+<p>This should resolve the <code>NameError</code> and allow you to move forward with your analysis.</p>
+<h2 id="ChatGPT-20"><a href="#ChatGPT-20" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> The error <code>NameError: name &#39;X_train&#39; is not defined</code> occurs because the variable <code>X_train</code> has not been defined before being used in the code for training the <code>CountVectorizer</code>. To resolve this, you need to split your data into training, validation, and test sets, and then assign the text data to <code>X_train</code>, <code>X_valid</code>, and <code>X_test</code>.</p>
+<p>Here’s how you can fix the issue:</p>
+<h3 id="1-Define-X-train-X-valid-and-X-test"><a href="#1-Define-X-train-X-valid-and-X-test" class="headerlink" title="1. Define X_train, X_valid, and X_test"></a>1. Define <code>X_train</code>, <code>X_valid</code>, and <code>X_test</code></h3><p>Assuming your dataset is stored in <code>df[&#39;title_text&#39;]</code> and the corresponding labels are in <code>df[&#39;label&#39;]</code>, you can use <code>train_test_split</code> to split the data into training, validation, and test sets.</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split
+
+<span class="hljs-comment"># Split the dataset into training, validation, and test sets</span>
+X = df[<span class="hljs-string">&#x27;title_text&#x27;</span>]  <span class="hljs-comment"># Text data</span>
+y = df[<span class="hljs-string">&#x27;label&#x27;</span>]  <span class="hljs-comment"># Labels</span>
+
+<span class="hljs-comment"># Split into 80% training and 20% testing (further split testing into validation)</span>
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">7</span>)
+X_valid, X_test, y_valid, y_test = train_test_split(X_temp, y_temp, test_size=<span class="hljs-number">0.5</span>, random_state=<span class="hljs-number">7</span>)
+
+<span class="hljs-comment"># Check the sizes of the splits</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Training data: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(X_train)&#125;</span> samples&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Validation data: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(X_valid)&#125;</span> samples&quot;</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Test data: <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(X_test)&#125;</span> samples&quot;</span>)</code></pre></div>
+
+<h3 id="2-Fit-the-CountVectorizer"><a href="#2-Fit-the-CountVectorizer" class="headerlink" title="2. Fit the CountVectorizer"></a>2. Fit the <code>CountVectorizer</code></h3><p>Now, you can use the <code>CountVectorizer</code> as follows:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.feature_extraction.text <span class="hljs-keyword">import</span> CountVectorizer
+
+<span class="hljs-comment"># Initialize CountVectorizer with desired parameters</span>
+count_vectorizer = CountVectorizer(stop_words=<span class="hljs-string">&#x27;english&#x27;</span>, max_features=<span class="hljs-number">10000</span>, min_df=<span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># Fit the vectorizer on the training data</span>
+count_vectorizer.fit(X_train)
+
+<span class="hljs-comment"># Transform the text data into feature vectors for training, validation, and test sets</span>
+count_train = count_vectorizer.transform(X_train)
+count_valid = count_vectorizer.transform(X_valid)
+count_test = count_vectorizer.transform(X_test)
+
+<span class="hljs-comment"># Save the CountVectorizer model</span>
+<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./saved_model/count_vectorizer.pickle&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:
+    pickle.dump(count_vectorizer, f)</code></pre></div>
+
+<h3 id="Explanation-1"><a href="#Explanation-1" class="headerlink" title="Explanation:"></a>Explanation:</h3><ol>
+<li><strong>Splitting the Data</strong>: <code>train_test_split</code> is used to divide your dataset into training, validation, and test sets. <code>X_train</code> will be used to train the model, <code>X_valid</code> will be used for hyperparameter tuning, and <code>X_test</code> will be used to evaluate the model’s performance.</li>
+<li><strong><code>CountVectorizer</code></strong>: It transforms the text data into a matrix of token counts. The parameter <code>max_features=10000</code> limits the number of features to the top 10,000 words, and <code>min_df=10</code> ensures that only words that appear in at least 10 documents are considered.</li>
+<li><strong>Saving the Model</strong>: The trained <code>CountVectorizer</code> is saved using <code>pickle.dump</code> for later use, ensuring the model can be reused without needing to retrain it.</li>
+</ol>
+<p>This should resolve the <code>NameError</code> and allow your code to run properly.</p>
+<h2 id="Will-11"><a href="#Will-11" class="headerlink" title="Will:"></a>Will:</h2><p> print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<p>xgb_params &#x3D; {<br>    ‘eta’: 0.1,<br>    ‘colsample_bytree’: 0.4,<br>    ‘max_depth’: 8,<br>    ‘lambda’: 2.0,<br>    ‘eval_metric’: ‘auc’,<br>    ‘objective’: ‘binary:logistic’,<br>    ‘nthread’: -1,<br>    ‘booster’: ‘gbtree’<br>}</p>
+<p>dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)<br>dvalid &#x3D; xgb.DMatrix(count_valid, y_valid, feature_names&#x3D;feature_names)</p>
+<p>watchlist &#x3D; [(dtrain, ‘train’), (dvalid, ‘valid’)]</p>
+<p>xgb_model &#x3D; xgb.train(dict(xgb_params),<br>                      dtrain,<br>                      evals&#x3D;watchlist,<br>                      verbose_eval&#x3D;50,<br>                      early_stopping_rounds&#x3D;100,<br>                      num_boost_round&#x3D;4000)</p>
+<p>报错了：—————————————————————————</p>
+<p>NameError                                 Traceback (most recent call last)</p>
+<p>Cell In[7], line 1</p>
+<p>—-&gt; 1 print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<div class="code-wrapper"><pre><code class="hljs">  3 xgb_params = &#123;
+
+  4     &#39;eta&#39;: 0.1,
+
+  5     &#39;colsample_bytree&#39;: 0.4,
+</code></pre></div>
+<p>   (…)</p>
+<div class="code-wrapper"><pre><code class="hljs"> 11     &#39;booster&#39;: &#39;gbtree&#39;
+
+ 12 &#125;
+
+ 14 dtrain = xgb.DMatrix(count_train, y_train, feature_names=feature_names)
+</code></pre></div>
+<p>NameError: name ‘feature_names’ is not defined</p>
+<h2 id="ChatGPT-21"><a href="#ChatGPT-21" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> The error occurs because the variable <code>feature_names</code> is not defined before being used in the code. The <code>feature_names</code> variable should contain the list of features (i.e., the words in your vectorized text data) that you want to pass to the <code>xgb.DMatrix</code> constructor.</p>
+<p>To fix this, you need to extract the feature names from your <code>CountVectorizer</code> after fitting it. Here’s how you can do that:</p>
+<h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix:"></a>Fix:</h3><ol>
+<li><p><strong>Extract Feature Names</strong>: After fitting the <code>CountVectorizer</code> on the training data, you can access the <code>get_feature_names_out()</code> method to retrieve the feature names (the words).</p>
+</li>
+<li><p><strong>Use <code>feature_names</code> in <code>xgb.DMatrix</code></strong>: Once you have the feature names, you can pass them to <code>xgb.DMatrix</code>.</p>
+</li>
+</ol>
+<p>Here’s the modified code:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Get the feature names from the fitted CountVectorizer</span>
+feature_names = count_vectorizer.get_feature_names_out()
+
+<span class="hljs-comment"># Print the number of features</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;===&gt; feature count: &#123;&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(<span class="hljs-built_in">len</span>(feature_names)))
+
+<span class="hljs-comment"># Define XGBoost parameters</span>
+xgb_params = &#123;
+    <span class="hljs-string">&#x27;eta&#x27;</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-string">&#x27;colsample_bytree&#x27;</span>: <span class="hljs-number">0.4</span>,
+    <span class="hljs-string">&#x27;max_depth&#x27;</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-string">&#x27;lambda&#x27;</span>: <span class="hljs-number">2.0</span>,
+    <span class="hljs-string">&#x27;eval_metric&#x27;</span>: <span class="hljs-string">&#x27;auc&#x27;</span>,
+    <span class="hljs-string">&#x27;objective&#x27;</span>: <span class="hljs-string">&#x27;binary:logistic&#x27;</span>,
+    <span class="hljs-string">&#x27;nthread&#x27;</span>: -<span class="hljs-number">1</span>,
+    <span class="hljs-string">&#x27;booster&#x27;</span>: <span class="hljs-string">&#x27;gbtree&#x27;</span>
+&#125;
+
+<span class="hljs-comment"># Prepare DMatrix for XGBoost</span>
+dtrain = xgb.DMatrix(count_train, y_train, feature_names=feature_names)
+dvalid = xgb.DMatrix(count_valid, y_valid, feature_names=feature_names)
+
+<span class="hljs-comment"># Set up the watchlist for evaluation</span>
+watchlist = [(dtrain, <span class="hljs-string">&#x27;train&#x27;</span>), (dvalid, <span class="hljs-string">&#x27;valid&#x27;</span>)]
+
+<span class="hljs-comment"># Train the XGBoost model</span>
+xgb_model = xgb.train(
+    <span class="hljs-built_in">dict</span>(xgb_params),
+    dtrain,
+    evals=watchlist,
+    verbose_eval=<span class="hljs-number">50</span>,
+    early_stopping_rounds=<span class="hljs-number">100</span>,
+    num_boost_round=<span class="hljs-number">4000</span>
+)</code></pre></div>
+
+<h3 id="Key-Changes"><a href="#Key-Changes" class="headerlink" title="Key Changes:"></a>Key Changes:</h3><ul>
+<li><strong><code>feature_names = count_vectorizer.get_feature_names_out()</code></strong>: This line retrieves the feature names from the fitted <code>CountVectorizer</code>. The <code>get_feature_names_out()</code> method gives a list of the words used in your <code>count_train</code> data.</li>
+<li><strong><code>xgb.DMatrix(..., feature_names=feature_names)</code></strong>: This passes the <code>feature_names</code> to <code>xgb.DMatrix</code>, which helps XGBoost recognize the features in the dataset.</li>
+</ul>
+<p>This should resolve the <code>NameError</code> and allow the code to run properly.</p>
+<h2 id="Will-12"><a href="#Will-12" class="headerlink" title="Will:"></a>Will:</h2><h1 id="Get-the-feature-names-from-the-fitted-CountVectorizer"><a href="#Get-the-feature-names-from-the-fitted-CountVectorizer" class="headerlink" title="Get the feature names from the fitted CountVectorizer"></a>Get the feature names from the fitted CountVectorizer</h1><p>feature_names &#x3D; count_vectorizer.get_feature_names_out()</p>
+<h1 id="Print-the-number-of-features"><a href="#Print-the-number-of-features" class="headerlink" title="Print the number of features"></a>Print the number of features</h1><p>print(‘&#x3D;&#x3D;&#x3D;&gt; feature count: {}’.format(len(feature_names)))</p>
+<h1 id="Define-XGBoost-parameters"><a href="#Define-XGBoost-parameters" class="headerlink" title="Define XGBoost parameters"></a>Define XGBoost parameters</h1><p>xgb_params &#x3D; {<br>    ‘eta’: 0.1,<br>    ‘colsample_bytree’: 0.4,<br>    ‘max_depth’: 8,<br>    ‘lambda’: 2.0,<br>    ‘eval_metric’: ‘auc’,<br>    ‘objective’: ‘binary:logistic’,<br>    ‘nthread’: -1,<br>    ‘booster’: ‘gbtree’<br>}</p>
+<h1 id="Prepare-DMatrix-for-XGBoost"><a href="#Prepare-DMatrix-for-XGBoost" class="headerlink" title="Prepare DMatrix for XGBoost"></a>Prepare DMatrix for XGBoost</h1><p>dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)<br>dvalid &#x3D; xgb.DMatrix(count_valid, y_valid, feature_names&#x3D;feature_names)</p>
+<h1 id="Set-up-the-watchlist-for-evaluation"><a href="#Set-up-the-watchlist-for-evaluation" class="headerlink" title="Set up the watchlist for evaluation"></a>Set up the watchlist for evaluation</h1><p>watchlist &#x3D; [(dtrain, ‘train’), (dvalid, ‘valid’)]</p>
+<h1 id="Train-the-XGBoost-model"><a href="#Train-the-XGBoost-model" class="headerlink" title="Train the XGBoost model"></a>Train the XGBoost model</h1><p>xgb_model &#x3D; xgb.train(<br>    dict(xgb_params),<br>    dtrain,<br>    evals&#x3D;watchlist,<br>    verbose_eval&#x3D;50,<br>    early_stopping_rounds&#x3D;100,<br>    num_boost_round&#x3D;4000<br>)</p>
+<h2 id="报错：-feature-count-10000"><a href="#报错：-feature-count-10000" class="headerlink" title="报错：&#x3D;&#x3D;&#x3D;&gt; feature count: 10000"></a>报错：<br>&#x3D;&#x3D;&#x3D;&gt; feature count: 10000</h2><p>ValueError                                Traceback (most recent call last)</p>
+<p>Cell In[10], line 20</p>
+<div class="code-wrapper"><pre><code class="hljs">  8 xgb_params = &#123;
+
+  9     &#39;eta&#39;: 0.1,
+
+ 10     &#39;colsample_bytree&#39;: 0.4,
+</code></pre></div>
+<p>   (…)</p>
+<div class="code-wrapper"><pre><code class="hljs"> 16     &#39;booster&#39;: &#39;gbtree&#39;
+
+ 17 &#125;
+
+ 19 # Prepare DMatrix for XGBoost
+</code></pre></div>
+<p>—&gt; 20 dtrain &#x3D; xgb.DMatrix(count_train, y_train, feature_names&#x3D;feature_names)</p>
+<div class="code-wrapper"><pre><code class="hljs"> 21 dvalid = xgb.DMatrix(count_valid, y_valid, feature_names=feature_names)
+
+ 23 # Set up the watchlist for evaluation
+</code></pre></div>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py:726, in require_keyword_args.<locals>.throw_if.<locals>.inner_f(*args, **kwargs)</p>
+<div class="code-wrapper"><pre><code class="hljs">724 for k, arg in zip(sig.parameters, args):
+
+725     kwargs[k] = arg
+</code></pre></div>
+<p>–&gt; 726 return func(**kwargs)</p>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py:890, in DMatrix.<strong>init</strong>(self, data, label, weight, base_margin, missing, silent, feature_names, feature_types, nthread, group, qid, label_lower_bound, label_upper_bound, feature_weights, enable_categorical, data_split_mode)</p>
+<div class="code-wrapper"><pre><code class="hljs">887 assert handle is not None
+
+888 self.handle = handle
+</code></pre></div>
+<p>–&gt; 890 self.set_info(</p>
+<div class="code-wrapper"><pre><code class="hljs">891     label=label,
+
+892     weight=weight,
+
+893     base_margin=base_margin,
+
+894     group=group,
+
+895     qid=qid,
+
+896     label_lower_bound=label_lower_bound,
+
+897     label_upper_bound=label_upper_bound,
+
+898     feature_weights=feature_weights,
+
+899 )
+
+901 if feature_names is not None:
+
+902     self.feature_names = feature_names
+</code></pre></div>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py:726, in require_keyword_args.<locals>.throw_if.<locals>.inner_f(*args, **kwargs)</p>
+<div class="code-wrapper"><pre><code class="hljs">724 for k, arg in zip(sig.parameters, args):
+
+725     kwargs[k] = arg
+</code></pre></div>
+<p>–&gt; 726 return func(**kwargs)</p>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py:954, in DMatrix.set_info(self, label, weight, base_margin, group, qid, label_lower_bound, label_upper_bound, feature_names, feature_types, feature_weights)</p>
+<div class="code-wrapper"><pre><code class="hljs">951 from .data import dispatch_meta_backend
+
+953 if label is not None:
+</code></pre></div>
+<p>–&gt; 954     self.set_label(label)</p>
+<div class="code-wrapper"><pre><code class="hljs">955 if weight is not None:
+
+956     self.set_weight(weight)
+</code></pre></div>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\core.py:1092, in DMatrix.set_label(self, label)</p>
+<p>   1083 “””Set label of dmatrix</p>
+<p>   1084 </p>
+<p>   1085 Parameters</p>
+<p>   (…)</p>
+<p>   1088     The label information to be set into DMatrix</p>
+<p>   1089 “””</p>
+<p>   1090 from .data import dispatch_meta_backend</p>
+<p>-&gt; 1092 dispatch_meta_backend(self, label, “label”, “float”)</p>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py:1334, in dispatch_meta_backend(matrix, data, name, dtype)</p>
+<p>   1332     return</p>
+<p>   1333 if _is_pandas_series(data):</p>
+<p>-&gt; 1334     _meta_from_pandas_series(data, name, dtype, handle)</p>
+<p>   1335     return</p>
+<p>   1336 if _is_dlpack(data):</p>
+<p>File ~\AppData\Roaming\Python\Python312\site-packages\xgboost\data.py:674, in _meta_from_pandas_series(data, name, dtype, handle)</p>
+<div class="code-wrapper"><pre><code class="hljs">672     data = pandas_pa_type(data)
+
+673 else:
+</code></pre></div>
+<p>–&gt; 674     data &#x3D; data.to_numpy(np.float32, na_value&#x3D;np.nan)</p>
+<div class="code-wrapper"><pre><code class="hljs">676 if is_pd_sparse_dtype(getattr(data, &quot;dtype&quot;, data)):
+
+677     data = data.to_dense()  # type: ignore
+</code></pre></div>
+<p>File C:\ProgramData\anaconda3\Lib\site-packages\pandas\core\base.py:662, in IndexOpsMixin.to_numpy(self, dtype, copy, na_value, **kwargs)</p>
+<div class="code-wrapper"><pre><code class="hljs">658         values = values.copy()
+
+660     values[np.asanyarray(isna(self))] = na_value
+</code></pre></div>
+<p>–&gt; 662 result &#x3D; np.asarray(values, dtype&#x3D;dtype)</p>
+<div class="code-wrapper"><pre><code class="hljs">664 if (copy and not fillna) or (not copy and using_copy_on_write()):
+
+665     if np.shares_memory(self._values[:2], result[:2]):
+
+666         # Take slices to improve performance of check
+</code></pre></div>
+<p>ValueError: could not convert string to float: ‘FAKE’ </p>
+<h2 id="ChatGPT-22"><a href="#ChatGPT-22" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> The error you are encountering, <code>ValueError: could not convert string to float: &#39;FAKE&#39;</code>, occurs because the labels (<code>y_train</code> and <code>y_valid</code>) in your dataset contain strings (like ‘FAKE’ and possibly ‘REAL’) that are not numerical, while XGBoost expects numerical labels for classification tasks.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>You need to convert your labels into numerical format before feeding them into XGBoost. Here’s how you can handle this:</p>
+<ol>
+<li><p><strong>Convert String Labels to Numeric Labels</strong>: You can map ‘FAKE’ to 0 and ‘REAL’ to 1 (or vice versa) using a dictionary or <code>LabelEncoder</code> from <code>sklearn</code>.</p>
+</li>
+<li><p><strong>Update the Code to Convert Labels</strong>:<br>You can use the <code>LabelEncoder</code> to convert categorical labels (‘FAKE’ and ‘REAL’) into numeric labels (0 and 1).</p>
+</li>
+</ol>
+<h3 id="Example-Code"><a href="#Example-Code" class="headerlink" title="Example Code:"></a>Example Code:</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> LabelEncoder
+
+<span class="hljs-comment"># Convert labels from string to numeric</span>
+label_encoder = LabelEncoder()
+
+<span class="hljs-comment"># Assuming y_train and y_valid contain &#x27;FAKE&#x27; and &#x27;REAL&#x27; labels</span>
+y_train = label_encoder.fit_transform(y_train)
+y_valid = label_encoder.transform(y_valid)
+
+<span class="hljs-comment"># Now proceed with your XGBoost training</span>
+dtrain = xgb.DMatrix(count_train, label=y_train, feature_names=feature_names)
+dvalid = xgb.DMatrix(count_valid, label=y_valid, feature_names=feature_names)
+
+watchlist = [(dtrain, <span class="hljs-string">&#x27;train&#x27;</span>), (dvalid, <span class="hljs-string">&#x27;valid&#x27;</span>)]
+
+xgb_model = xgb.train(
+    <span class="hljs-built_in">dict</span>(xgb_params),
+    dtrain,
+    evals=watchlist,
+    verbose_eval=<span class="hljs-number">50</span>,
+    early_stopping_rounds=<span class="hljs-number">100</span>,
+    num_boost_round=<span class="hljs-number">4000</span>
+)</code></pre></div>
+
+<h3 id="Explanation-2"><a href="#Explanation-2" class="headerlink" title="Explanation:"></a>Explanation:</h3><ul>
+<li><strong><code>LabelEncoder</code></strong>: This tool automatically converts the categorical labels (‘FAKE’ and ‘REAL’) into numeric labels (0 and 1).</li>
+<li><strong><code>fit_transform</code></strong>: Used on <code>y_train</code> to fit the encoder and transform the training labels into numeric form.</li>
+<li><strong><code>transform</code></strong>: Used on <code>y_valid</code> to ensure the validation labels are also transformed using the same encoding.</li>
+</ul>
+<p>By making this change, you will resolve the <code>ValueError</code>, as the labels will now be in a format that XGBoost can work with.</p>
+<h2 id="Will-13"><a href="#Will-13" class="headerlink" title="Will:"></a>Will:</h2><p> 我想写一个关于“fake news detecting”的开题报告，我这个开题报告的“研究意义”该怎么写呢？我这个课题的“基本内容”应该涵盖哪些东西呢，我这个课题的重点和难点分别在哪？ 我的“论文提纲”该如何写？参考文献？研究进度？</p>
+<h2 id="ChatGPT-23"><a href="#ChatGPT-23" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> The user is working on a thesis related to “fake news detection.”</p>
+<h2 id="ChatGPT-24"><a href="#ChatGPT-24" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> Model set context updated.</p>
+<h2 id="ChatGPT-25"><a href="#ChatGPT-25" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="1-研究意义-Research-Significance"><a href="#1-研究意义-Research-Significance" class="headerlink" title="1. 研究意义 (Research Significance)"></a>1. 研究意义 (Research Significance)</h3><p>在如今的信息时代，假新闻（fake news）成为了全球社会面临的一大挑战。它不仅影响公众的判断力，还可能对社会秩序、国家安全和民主治理造成深远影响。尤其是在互联网和社交媒体的普及下，信息传播速度极快，假新闻的传播也变得更加广泛且难以控制。因此，假新闻的检测与防范成为了信息社会中的重要课题。</p>
+<p>开展“假新闻检测”的研究具有以下几方面的意义：</p>
+<ul>
+<li><strong>社会影响</strong>：假新闻可能引发社会不安、激化群体对立，甚至导致暴力事件的发生。通过技术手段检测和遏制假新闻的传播，有助于维护社会和谐与稳定。</li>
+<li><strong>技术创新</strong>：随着自然语言处理（NLP）、机器学习和深度学习等技术的发展，利用这些技术识别假新闻已经成为可能。研究假新闻检测的算法与模型，有助于推动相关领域的技术进步。</li>
+<li><strong>现实需求</strong>：假新闻的检测不仅对普通民众、新闻媒体至关重要，还对政府部门、公共机构等具有实际应用价值，能够有效减少信息欺诈和舆论误导。</li>
+</ul>
+<h3 id="2-基本内容-Basic-Content"><a href="#2-基本内容-Basic-Content" class="headerlink" title="2. 基本内容 (Basic Content)"></a>2. 基本内容 (Basic Content)</h3><ul>
+<li><strong>数据收集与预处理</strong>：收集与处理关于假新闻和真实新闻的数据集。数据预处理包括文本清洗、去除停用词、词形还原等操作。</li>
+<li><strong>特征提取与选择</strong>：采用特征提取技术（如TF-IDF、词袋模型等）将文本数据转化为可供机器学习模型使用的数值型特征。分析哪些特征对分类任务最有意义。</li>
+<li><strong>模型建立与训练</strong>：选择适合的机器学习模型（如XGBoost、SVM、深度学习模型等），并对其进行训练。采用交叉验证等技术优化模型的表现。</li>
+<li><strong>假新闻检测与评估</strong>：通过评估指标（如准确率、召回率、F1分数、ROC曲线等）对模型进行评估，比较不同模型的性能。</li>
+<li><strong>实际应用与优化</strong>：将所开发的模型进行实际测试，优化算法的效率和准确性，使其适应大规模的数据环境。</li>
+</ul>
+<h3 id="3-课题的重点和难点-Key-Points-and-Difficulties"><a href="#3-课题的重点和难点-Key-Points-and-Difficulties" class="headerlink" title="3. 课题的重点和难点 (Key Points and Difficulties)"></a>3. 课题的重点和难点 (Key Points and Difficulties)</h3><p><strong>重点</strong>：</p>
+<ul>
+<li><strong>特征选择与建模</strong>：如何从海量文本数据中提取有价值的特征，并选择最合适的机器学习模型进行假新闻的识别。</li>
+<li><strong>数据集与标注的质量</strong>：高质量的标签数据是模型训练的基础，因此数据集的标注是否准确，如何处理数据不平衡等问题至关重要。</li>
+<li><strong>模型性能优化</strong>：如何平衡模型的准确率与召回率，避免过拟合或欠拟合，并且能够在实际应用中高效运行。</li>
+</ul>
+<p><strong>难点</strong>：</p>
+<ul>
+<li><strong>假新闻与真实新闻的区别</strong>：假新闻通常具有高隐蔽性，其语言风格、表达方式可能与真实新闻相似，导致分类任务极具挑战性。</li>
+<li><strong>大规模数据处理</strong>：在处理大规模新闻数据时，如何高效地存储、处理与分析数据，以及如何应对数据量对计算资源的压力。</li>
+<li><strong>模型泛化能力</strong>：如何保证模型在不同数据集和实际应用场景中的良好表现，避免模型只对训练集有较好的预测能力。</li>
+</ul>
+<h3 id="4-论文提纲-Thesis-Outline"><a href="#4-论文提纲-Thesis-Outline" class="headerlink" title="4. 论文提纲 (Thesis Outline)"></a>4. 论文提纲 (Thesis Outline)</h3><ol>
+<li><p><strong>引言</strong>  </p>
+<ul>
+<li>研究背景与问题定义  </li>
+<li>研究目的与意义  </li>
+<li>研究方法概述</li>
+</ul>
+</li>
+<li><p><strong>文献综述</strong>  </p>
+<ul>
+<li>假新闻的定义与特点  </li>
+<li>假新闻检测技术的发展与现状  </li>
+<li>相关领域的研究成果与不足</li>
+</ul>
+</li>
+<li><p><strong>数据与方法</strong>  </p>
+<ul>
+<li>数据集的选择与预处理  </li>
+<li>特征提取方法  </li>
+<li>模型选择与构建</li>
+</ul>
+</li>
+<li><p><strong>实验与结果分析</strong>  </p>
+<ul>
+<li>实验设计与设置  </li>
+<li>模型训练与评估  </li>
+<li>实验结果与讨论</li>
+</ul>
+</li>
+<li><p><strong>结论与展望</strong>  </p>
+<ul>
+<li>研究总结  </li>
+<li>研究的局限性  </li>
+<li>未来的研究方向与应用前景</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-参考文献-References"><a href="#5-参考文献-References" class="headerlink" title="5. 参考文献 (References)"></a>5. 参考文献 (References)</h3><ul>
+<li><strong>自动化新闻检测</strong>：论文中可以引用一些关于假新闻检测的经典研究，如使用深度学习模型进行假新闻检测的研究、假新闻数据集的构建等。</li>
+<li><strong>自然语言处理与机器学习</strong>：相关的NLP和机器学习的经典教材与研究文章，如《Speech and Language Processing》、深度学习与强化学习的相关文献。</li>
+</ul>
+<h3 id="6-研究进度-Research-Schedule"><a href="#6-研究进度-Research-Schedule" class="headerlink" title="6. 研究进度 (Research Schedule)"></a>6. 研究进度 (Research Schedule)</h3><table>
+<thead>
+<tr>
+<th>时间段</th>
+<th>任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>第1-2个月</strong></td>
+<td>完成文献综述与数据收集，进行数据预处理与特征工程</td>
+</tr>
+<tr>
+<td><strong>第3-4个月</strong></td>
+<td>开发并训练假新闻检测模型，进行初步实验与评估</td>
+</tr>
+<tr>
+<td><strong>第5个月</strong></td>
+<td>完善模型，进行进一步的优化与测试</td>
+</tr>
+<tr>
+<td><strong>第6个月</strong></td>
+<td>撰写论文，分析实验结果，最终定稿并准备答辩</td>
+</tr>
+</tbody></table>
+<p>这些步骤为你提供了一个清晰的课题结构和时间规划，帮助你有条不紊地推进你的假新闻检测研究项目。</p>
+<h2 id="Will-14"><a href="#Will-14" class="headerlink" title="Will:"></a>Will:</h2><p> 我这个选题会不会太宽泛了？</p>
+<h2 id="ChatGPT-26"><a href="#ChatGPT-26" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 是的，从目前的研究计划和内容来看，“假新闻检测”作为选题确实有些宽泛，尤其是考虑到以下几个因素：</p>
+<h3 id="1-问题领域广泛"><a href="#1-问题领域广泛" class="headerlink" title="1. 问题领域广泛"></a>1. <strong>问题领域广泛</strong></h3><p>假新闻（fake news）涉及很多方面，不仅限于社交媒体平台上的虚假内容，还有政治新闻、医疗健康信息、经济和金融报道等不同类别。而且假新闻检测的研究涵盖了多个技术领域，包括自然语言处理（NLP）、机器学习、深度学习、数据挖掘等。这些内容如果全部深入探讨，很容易导致研究范围过于分散，难以聚焦。</p>
+<h3 id="2-已有研究较多"><a href="#2-已有研究较多" class="headerlink" title="2. 已有研究较多"></a>2. <strong>已有研究较多</strong></h3><p>假新闻检测已经是一个热门研究领域，尤其是在美国大选和全球疫情等重大事件的推动下，研究文献非常丰富。很多学者已经提出了基于不同算法和模型的解决方案，如果不进行具体细分，你的研究容易缺乏创新性和独特性，难以突出亮点。</p>
+<h3 id="3-数据收集和标注困难"><a href="#3-数据收集和标注困难" class="headerlink" title="3. 数据收集和标注困难"></a>3. <strong>数据收集和标注困难</strong></h3><p>由于涉及的新闻类型多样化，收集并标注一个高质量、广泛覆盖的数据集会非常困难。如果研究范围过大，数据需求也会相应增加，从而增加了研究难度。此外，处理多种类型的新闻文本（如社交媒体、博客、正式新闻报道等）也需要不同的预处理方法和模型调整。</p>
+<h3 id="建议：缩小选题范围"><a href="#建议：缩小选题范围" class="headerlink" title="建议：缩小选题范围"></a><strong>建议：缩小选题范围</strong></h3><p>为了避免选题过于宽泛，可以考虑以下几种具体的细化方向：</p>
+<h4 id="1-聚焦特定领域的假新闻检测"><a href="#1-聚焦特定领域的假新闻检测" class="headerlink" title="1. 聚焦特定领域的假新闻检测"></a>1. <strong>聚焦特定领域的假新闻检测</strong></h4><ul>
+<li>选择某个特定的新闻领域，如<strong>政治新闻假新闻检测</strong>、<strong>健康和疫情相关假新闻检测</strong>、<strong>经济金融假新闻检测</strong>。</li>
+<li>这样可以更好地定义研究的范围和目标，且数据集也会更具针对性。</li>
+</ul>
+<h4 id="2-创新技术方法"><a href="#2-创新技术方法" class="headerlink" title="2. 创新技术方法"></a>2. <strong>创新技术方法</strong></h4><ul>
+<li>专注于<strong>深度学习方法</strong>（如Transformer、BERT等模型）在假新闻检测中的应用，或探讨<strong>多模态假新闻检测</strong>（结合文本、图像、视频等多种特征）。</li>
+<li>探索<strong>跨语言假新闻检测</strong>，研究如何在不同语言之间识别假新闻，尤其是在多语言平台上假新闻的传播和检测问题。</li>
+</ul>
+<h4 id="3-针对特定数据平台"><a href="#3-针对特定数据平台" class="headerlink" title="3. 针对特定数据平台"></a>3. <strong>针对特定数据平台</strong></h4><ul>
+<li>可以选择聚焦于<strong>社交媒体平台</strong>上的假新闻检测，例如Twitter或微信上的虚假信息。这类研究不仅有较强的应用价值，而且可以结合社交网络分析、情感分析等方法。</li>
+</ul>
+<h4 id="4-侧重假新闻传播分析"><a href="#4-侧重假新闻传播分析" class="headerlink" title="4. 侧重假新闻传播分析"></a>4. <strong>侧重假新闻传播分析</strong></h4><ul>
+<li>研究假新闻的<strong>传播机制</strong>和影响因素，探讨假新闻如何通过社交网络传播，识别其中的关键传播节点和影响力人物。</li>
+</ul>
+<h3 id="调整后的论文题目示例"><a href="#调整后的论文题目示例" class="headerlink" title="调整后的论文题目示例"></a><strong>调整后的论文题目示例</strong></h3><ul>
+<li>《基于BERT模型的健康新闻假新闻检测研究》</li>
+<li>《面向社交媒体的多模态假新闻检测方法》</li>
+<li>《跨语言平台的假新闻检测与传播机制研究》</li>
+<li>《基于Transformer的政治新闻假新闻识别与溯源分析》</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>缩小选题范围不仅有助于提高研究的深度和创新性，还可以使项目的实验和模型开发更加可行。这样可以在有限的时间内完成高质量的研究，并且在答辩和评审中也更容易得到认可。</p>
+<h2 id="Will-15"><a href="#Will-15" class="headerlink" title="Will:"></a>Will:</h2><p> 基于BERT模型健康和疫情新闻相关假新闻检测研究，这个选题适合我本科毕业论文的工作量吗？</p>
+<h2 id="ChatGPT-27"><a href="#ChatGPT-27" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> **选题“基于BERT模型的健康和疫情新闻相关假新闻检测研究”**对于本科毕业论文来说，<strong>工作量适中且具有实际意义</strong>。这个选题具有以下几个特点，符合本科毕业论文的要求：</p>
+<h3 id="1-选题有明确的研究方向"><a href="#1-选题有明确的研究方向" class="headerlink" title="1. 选题有明确的研究方向"></a>1. <strong>选题有明确的研究方向</strong></h3><ul>
+<li>聚焦于<strong>健康和疫情相关假新闻</strong>，相比于广泛的“假新闻检测”主题更加具体，研究范围更加明确。</li>
+<li>疫情和健康类假新闻有较大的社会危害性，因此具有较强的实际应用价值和社会意义。结合实际案例（如COVID-19期间的虚假信息传播）来验证模型的效果，能够增加论文的实用性和说服力。</li>
+</ul>
+<h3 id="2-BERT模型应用较为合适"><a href="#2-BERT模型应用较为合适" class="headerlink" title="2. BERT模型应用较为合适"></a>2. <strong>BERT模型应用较为合适</strong></h3><ul>
+<li>BERT（Bidirectional Encoder Representations from Transformers）是目前主流的预训练语言模型之一，广泛应用于文本分类任务，包括假新闻检测。基于BERT模型，你可以使用预训练模型进行微调（fine-tuning），减少了自己从零开始训练模型的工作量。</li>
+<li><strong>技术难度适中</strong>：你可以利用开源的BERT预训练模型（如Hugging Face的Transformers库），只需要少量代码实现和训练，即可得到较好的性能。对于本科阶段来说，这是一个<strong>较为理想的实现难度</strong>。</li>
+</ul>
+<h3 id="3-数据集获取较为可行"><a href="#3-数据集获取较为可行" class="headerlink" title="3. 数据集获取较为可行"></a>3. <strong>数据集获取较为可行</strong></h3><ul>
+<li>关于健康和疫情相关的新闻数据集，你可以考虑使用现有的开源数据集，如COVID-19期间收集的虚假新闻数据集（如 <strong>FakeCovid</strong> 数据集），或者从新闻网站、社交媒体（如Twitter、Reddit）上爬取相关数据。</li>
+<li>数据预处理和标注的工作量适中，本科生可以通过文本清洗、去重、标注等方式进行合理处理。</li>
+</ul>
+<h3 id="4-实验设计和分析难度适中"><a href="#4-实验设计和分析难度适中" class="headerlink" title="4. 实验设计和分析难度适中"></a>4. <strong>实验设计和分析难度适中</strong></h3><ul>
+<li>你可以设计一系列的实验，对比基于BERT模型与其他传统文本分类模型（如Logistic Regression、SVM、Random Forest）的检测效果，来展示模型的优势。</li>
+<li>可以结合混淆矩阵（confusion matrix）、准确率（accuracy）、AUC-ROC曲线等指标，对模型的检测效果进行评估和分析。</li>
+<li>此外，你还可以探讨BERT模型在不同超参数设置下的性能表现，分析不同参数对结果的影响。</li>
+</ul>
+<h3 id="5-工作量分析"><a href="#5-工作量分析" class="headerlink" title="5. 工作量分析"></a>5. <strong>工作量分析</strong></h3><p>本科毕业论文通常需要投入<strong>3-4个月</strong>的时间，完成包括选题、文献调研、数据准备、模型构建、实验验证和论文写作在内的所有工作。你的选题工作量分析如下：</p>
+<ul>
+<li><strong>文献调研（1-2周）：</strong> 查阅健康、疫情相关假新闻检测和BERT模型应用的文献，了解已有研究的进展。</li>
+<li><strong>数据准备（2-3周）：</strong> 收集和清洗数据，完成数据标注和预处理。</li>
+<li><strong>模型设计与实现（3-4周）：</strong> 使用BERT模型进行微调，搭建分类模型，并完成实验设计。</li>
+<li><strong>实验与结果分析（2-3周）：</strong> 训练模型并测试，对比不同方法的效果，进行结果分析和讨论。</li>
+<li><strong>论文写作（3-4周）：</strong> 整理研究内容，撰写论文，进行修改和完善。</li>
+</ul>
+<p>整体工作量对于本科毕业论文来说是<strong>合理可控的</strong>，同时也有足够的创新性和技术深度。</p>
+<h3 id="建议与优化"><a href="#建议与优化" class="headerlink" title="建议与优化"></a><strong>建议与优化</strong></h3><ul>
+<li>可以考虑将研究范围进一步聚焦于某类疫情假新闻（如COVID-19疫苗谣言检测），这会让选题更加精细化，且实验设计更加聚焦。</li>
+<li>可以结合一些新的BERT变体模型（如RoBERTa、DistilBERT、ALBERT）做对比分析，增加实验的多样性和研究亮点。</li>
+</ul>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>“基于BERT模型的健康和疫情新闻相关假新闻检测研究”<strong>适合本科毕业论文的工作量</strong>，而且研究内容明确、方向具体，具备较好的创新性和应用价值。选题合理，有挑战性但难度可控，是一个适合本科生完成的课题。</p>
+<h2 id="Will-16"><a href="#Will-16" class="headerlink" title="Will:"></a>Will:</h2><p> 我这个课题需要实现的目标及预期效果是什么？</p>
+<h2 id="ChatGPT-28"><a href="#ChatGPT-28" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><h3 id="课题需要实现的目标："><a href="#课题需要实现的目标：" class="headerlink" title="课题需要实现的目标："></a><strong>课题需要实现的目标：</strong></h3><ol>
+<li><p><strong>准确检测健康与疫情相关的假新闻</strong></p>
+<ul>
+<li>利用BERT模型对健康和疫情新闻进行分类，准确区分真实新闻与虚假新闻。</li>
+<li>模型应具备较高的<strong>准确率</strong>、<strong>召回率</strong>以及<strong>F1分数</strong>，能够有效识别误导性、虚假的信息。</li>
+</ul>
+</li>
+<li><p><strong>构建一个可行的假新闻检测工具</strong></p>
+<ul>
+<li>开发一个假新闻检测工具或API，能自动化地分析输入的文本，并给出真假新闻的预测结果。</li>
+<li>该工具可以集成到社交媒体平台、新闻网站或健康信息门户，以帮助用户快速识别不实信息。</li>
+</ul>
+</li>
+<li><p><strong>提升模型的泛化能力</strong></p>
+<ul>
+<li>通过收集不同来源的健康和疫情新闻数据，并对模型进行微调（fine-tuning），确保模型能够应对不同类型和不同语言风格的文本数据。</li>
+<li>研究并减少模型对特定类型文本（如特定情感、误导性标题）的误判，提高其<strong>鲁棒性</strong>。</li>
+</ul>
+</li>
+<li><p><strong>对比分析BERT与其他分类模型的效果</strong></p>
+<ul>
+<li>使用传统机器学习方法（如SVM、Logistic Regression）和深度学习方法（如LSTM、GRU）作为基线模型，与BERT进行对比分析。</li>
+<li>通过实验验证BERT模型在假新闻检测任务上的优势，分析其在处理长文本和复杂语言结构时的表现。</li>
+</ul>
+</li>
+</ol>
+<h3 id="课题的预期效果："><a href="#课题的预期效果：" class="headerlink" title="课题的预期效果："></a><strong>课题的预期效果：</strong></h3><ol>
+<li><p><strong>检测模型性能良好</strong></p>
+<ul>
+<li>模型的AUC-ROC曲线评分应在0.85以上，能够较为准确地区分真实新闻与假新闻。</li>
+<li>期望在实验验证中，BERT模型的<strong>检测准确率</strong>较传统机器学习模型有显著提升（至少5%以上）。</li>
+</ul>
+</li>
+<li><p><strong>开发出具有实用性的检测系统</strong></p>
+<ul>
+<li>能够开发出一个原型系统（如Web应用或API服务），能够实时处理用户输入的新闻文本，并提供真假检测结果。</li>
+<li>系统应具有良好的用户界面和体验，输出解释性强的检测结果，帮助用户理解判断依据。</li>
+</ul>
+</li>
+<li><p><strong>提出有效的数据处理和模型优化方案</strong></p>
+<ul>
+<li>提出并验证一套有效的数据清洗和预处理流程，能够去除噪声、平衡数据集，提高模型效果。</li>
+<li>分析并提出BERT模型的调参优化策略（如学习率调整、训练轮数、批次大小选择等），确保模型的稳定性和高效性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a><strong>总结</strong></h3><p>你的课题“基于BERT模型健康和疫情新闻相关假新闻检测研究”预期能够：</p>
+<ul>
+<li>准确识别疫情期间广泛传播的虚假信息。</li>
+<li>提供一个实用的检测工具或API原型，具有一定的商业化或社会公益价值。</li>
+<li>验证并展示BERT在文本分类任务上的优势，为后续研究提供有价值的数据和方法参考。</li>
+</ul>
+<p>这个选题的<strong>目标明确且具有实用性</strong>，预期效果合理可行，符合本科毕业论文的要求和预期工作量。</p>
+<h2 id="Will-17"><a href="#Will-17" class="headerlink" title="Will:"></a>Will:</h2><p> 一句话，不分点</p>
+<h2 id="ChatGPT-29"><a href="#ChatGPT-29" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 本课题旨在利用BERT模型对健康与疫情新闻进行假新闻检测，通过建立高效的文本分类模型，实现精准识别虚假信息，开发实用的检测工具，提升社会公众对健康资讯的信任与理解，进而减少误导性信息对社会的负面影响。</p>
+<h2 id="Will-18"><a href="#Will-18" class="headerlink" title="Will:"></a>Will:</h2><p> 现在我的毕业论文提出确定了：基于BERT模型的健康和疫情新闻相关假新闻检测研究<br>我现在需要写一个具体一点的“论文提纲”该怎么写？ 就是具体该如何实现的那种。</p>
+<h2 id="ChatGPT-30"><a href="#ChatGPT-30" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 根据你的选题“基于BERT模型的健康和疫情新闻相关假新闻检测研究”，下面是一个详细的论文提纲，帮助你具体化如何实现你的研究目标：</p>
+<h3 id="论文提纲"><a href="#论文提纲" class="headerlink" title="论文提纲"></a>论文提纲</h3><p><strong>一、引言</strong></p>
+<ul>
+<li><strong>背景与意义</strong>：介绍假新闻在健康和疫情领域的严重性，特别是在新冠疫情期间，虚假健康信息的传播对社会和个人健康的影响。</li>
+<li><strong>研究目的与意义</strong>：阐述使用BERT模型进行假新闻检测的优势，提出本研究的创新点和社会应用价值。</li>
+</ul>
+<p><strong>二、相关工作综述</strong></p>
+<ul>
+<li><strong>假新闻检测技术研究</strong>：总结假新闻检测的传统方法（如基于规则的系统、机器学习方法等）及其局限性。</li>
+<li><strong>BERT模型在自然语言处理中的应用</strong>：详细介绍BERT模型的基本原理，及其在文本分类、情感分析和假新闻检测中的应用研究。</li>
+<li><strong>健康与疫情领域假新闻检测的研究现状</strong>：回顾目前健康和疫情新闻的假新闻检测工作，尤其是在数据集、模型选择等方面的挑战。</li>
+</ul>
+<p><strong>三、研究方法</strong></p>
+<ul>
+<li><strong>数据收集与预处理</strong>：介绍数据集的选择（例如，收集健康和疫情新闻数据），并进行文本清洗、标注和分词等预处理工作。</li>
+<li><strong>BERT模型的应用与调整</strong>：详细说明BERT模型在假新闻检测中的实现过程，包括BERT的选择、训练和微调。解释如何根据健康和疫情新闻的特征进行模型优化。</li>
+<li><strong>特征选择与模型训练</strong>：探讨如何利用BERT提取的特征进行假新闻分类，选择合适的分类器（例如，Logistic Regression、SVM等），以及模型训练和验证的具体步骤。</li>
+</ul>
+<p><strong>四、实验设计</strong></p>
+<ul>
+<li><strong>实验环境与工具</strong>：列出实验所用的硬件、软件环境（如Python、TensorFlow、PyTorch等）及相关库。</li>
+<li><strong>实验数据与评价指标</strong>：介绍用于评估模型性能的指标（如准确率、召回率、F1值等），并讨论数据集的划分方式（训练集、验证集、测试集）。</li>
+<li><strong>实验过程</strong>：描述实验步骤，包括数据的加载、预处理，BERT模型的加载与训练，假新闻的分类与检测过程。</li>
+</ul>
+<p><strong>五、实验结果与分析</strong></p>
+<ul>
+<li><strong>模型评估与比较</strong>：展示基于BERT模型的实验结果，分析与其他方法（如传统机器学习方法）的对比，强调BERT模型在假新闻检测中的优势。</li>
+<li><strong>误差分析</strong>：探讨模型在某些情况下识别不准确的原因，分析可能存在的偏差或局限性。</li>
+</ul>
+<p><strong>六、讨论与总结</strong></p>
+<ul>
+<li><strong>结果总结</strong>：总结实验的主要发现，BERT模型在假新闻检测中的效果。</li>
+<li><strong>研究的局限性与未来方向</strong>：指出本研究的不足之处，例如数据集的局限性、模型优化的不足等，并提出未来可以改进的方向。</li>
+<li><strong>实际应用</strong>：探讨该研究成果在实际应用中的潜力，例如新闻平台的假新闻自动检测、社交媒体内容的审核等。</li>
+</ul>
+<p><strong>七、参考文献</strong></p>
+<ul>
+<li><strong>引用相关领域的学术论文、书籍、技术报告等</strong>，例如关于BERT模型、假新闻检测、健康信息等领域的重要文献。</li>
+</ul>
+<h3 id="研究方法及实现"><a href="#研究方法及实现" class="headerlink" title="研究方法及实现"></a>研究方法及实现</h3><ol>
+<li><p><strong>数据收集与预处理</strong>：选择公开的健康和疫情新闻数据集，如“Fake News Dataset”或“COVID-19 Fake News Dataset”。对数据进行清洗、去除停用词、分词等预处理，确保数据质量。</p>
+</li>
+<li><p><strong>BERT模型的使用</strong>：</p>
+<ul>
+<li>使用预训练的BERT模型（例如BERT-Base）进行微调。通过输入健康和疫情新闻的文本，将其转化为BERT的输入格式，利用模型进行特征提取。</li>
+<li>针对你的任务进行微调，使用标签数据（如真假新闻标签）来训练模型。</li>
+</ul>
+</li>
+<li><p><strong>模型优化</strong>：</p>
+<ul>
+<li>通过交叉验证、超参数调整等方式优化模型。可以考虑使用学习率调整、梯度裁剪等技术来提升训练效果。</li>
+</ul>
+</li>
+<li><p><strong>假新闻检测系统开发</strong>：</p>
+<ul>
+<li>基于训练好的BERT模型，开发一个简单的假新闻检测系统，输入新闻文本，输出真假判断结果。</li>
+</ul>
+</li>
+<li><p><strong>评估与分析</strong>：</p>
+<ul>
+<li>使用分类性能指标（如准确率、精确度、召回率、F1分数）评估模型的效果。</li>
+<li>根据不同类型的新闻（如医疗、健康、疫情相关）进行细致的分析，评估模型的适应性与准确性。</li>
+</ul>
+</li>
+</ol>
+<p>通过上述步骤，你能够有条不紊地完成你的论文工作，并确保能够在规定时间内实现高效的假新闻检测模型。</p>
+<h2 id="Will-19"><a href="#Will-19" class="headerlink" title="Will:"></a>Will:</h2><p> 我这篇论文的研究方向该如何写？</p>
+<h2 id="ChatGPT-31"><a href="#ChatGPT-31" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 你可以从以下几个方面来写你的论文“研究方向”部分：</p>
+<h3 id="1-假新闻检测的研究背景"><a href="#1-假新闻检测的研究背景" class="headerlink" title="1. 假新闻检测的研究背景"></a>1. <strong>假新闻检测的研究背景</strong></h3><ul>
+<li>假新闻，尤其是在健康和疫情领域，已经成为全球范围内的一大社会问题。尤其是疫情期间，虚假健康信息的传播可能引起恐慌、误导大众，甚至影响公众健康。假新闻检测的研究在近年来得到了越来越多的关注，尤其是利用先进的机器学习技术进行自动化假新闻分类。</li>
+</ul>
+<h3 id="2-基于BERT的假新闻检测"><a href="#2-基于BERT的假新闻检测" class="headerlink" title="2. 基于BERT的假新闻检测"></a>2. <strong>基于BERT的假新闻检测</strong></h3><ul>
+<li>BERT（Bidirectional Encoder Representations from Transformers）是当前自然语言处理（NLP）领域的最前沿技术，广泛应用于文本分类任务中。与传统的模型相比，BERT能够通过预训练的语言模型捕捉上下文的深层语义信息，因此在假新闻检测任务中具有较大的优势。</li>
+</ul>
+<h3 id="3-健康和疫情领域的特殊挑战"><a href="#3-健康和疫情领域的特殊挑战" class="headerlink" title="3. 健康和疫情领域的特殊挑战"></a>3. <strong>健康和疫情领域的特殊挑战</strong></h3><ul>
+<li>假新闻检测的研究大多集中在新闻文本的真实性辨别上，而针对健康和疫情相关的新闻，由于其内容的专业性和时效性，检测任务的难度更大。特别是在疫情高峰时期，信息的多样性和传播速度要求检测模型具备更高的准确性与实时性。因此，如何根据健康和疫情领域的特定特点，优化BERT模型，以适应这一特定领域的假新闻检测，成为本研究的关键方向。</li>
+</ul>
+<h3 id="4-研究方向"><a href="#4-研究方向" class="headerlink" title="4. 研究方向"></a>4. <strong>研究方向</strong></h3><ul>
+<li>本论文主要研究基于BERT模型的健康与疫情新闻假新闻检测。具体而言，研究方向集中在以下几个方面：<ol>
+<li><strong>数据集的构建与预处理</strong>：收集并整理健康、疫情领域的新闻数据，并进行有效的标注和预处理，确保数据的质量。</li>
+<li><strong>BERT模型的微调与优化</strong>：基于BERT模型的结构，通过微调技术使其能够更好地适应健康和疫情新闻的特点，并使用该模型进行假新闻的识别与分类。</li>
+<li><strong>模型的评估与分析</strong>：通过多种评估指标（如准确率、召回率、F1分数等）评估模型在假新闻检测中的表现，分析模型的优缺点，并提出可能的改进方向。</li>
+<li><strong>实际应用</strong>：研究该模型在实际新闻平台中的应用，探讨如何部署到实时的新闻信息流中，提高假新闻识别的效率。</li>
+</ol>
+</li>
+</ul>
+<p>通过聚焦于这几个方面，论文能够深入探讨BERT模型在健康与疫情新闻假新闻检测中的应用，解决现有技术中的一些关键问题，并为未来相关领域的研究提供参考和实践指导。</p>
+<h2 id="Will-20"><a href="#Will-20" class="headerlink" title="Will:"></a>Will:</h2><p> 关键词</p>
+<h2 id="ChatGPT-32"><a href="#ChatGPT-32" class="headerlink" title="ChatGPT:"></a>ChatGPT:</h2><p> 根据你的论文主题“基于BERT模型的健康和疫情新闻相关假新闻检测研究”，你可以选择以下几个关键词：</p>
+<ol>
+<li><strong>假新闻检测</strong>（Fake News Detection）：研究新闻内容的真实性，特别是如何通过技术手段辨别虚假信息。</li>
+<li><strong>BERT模型</strong>（BERT Model）：一种基于Transformer架构的预训练语言模型，用于处理文本数据，特别擅长捕捉上下文信息。</li>
+<li><strong>健康新闻</strong>（Health News）：关于医学、健康、疾病预防等方面的新闻，假新闻在这个领域有时会造成严重的后果。</li>
+<li><strong>疫情新闻</strong>（Pandemic News）：与传染病（如COVID-19）相关的新闻，这类新闻在疫情期间容易被误传或扭曲。</li>
+<li><strong>自然语言处理（NLP）</strong>：用于理解和处理人类语言的技术，BERT属于这一领域的核心技术之一。</li>
+<li><strong>文本分类</strong>（Text Classification）：将文本数据划分为不同类别的任务，假新闻检测即为文本分类的一种应用。</li>
+<li><strong>机器学习</strong>（Machine Learning）：通过训练数据学习并自动完成任务的技术，BERT模型本质上是一个深度学习方法。</li>
+<li><strong>深度学习</strong>（Deep Learning）：使用深层神经网络的机器学习技术，BERT和其他相关模型属于这一范畴。</li>
+</ol>
+<p>这些关键词能够概括你的研究方向，帮助你在论文中形成清晰的框架，也能便于在文献搜索时找到相关资料。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../../categories/me/" class="category-chain-item">me</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/" class="category-chain-item">ChatGPT</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../../categories/me/ChatGPT/2024/" class="category-chain-item">2024</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/AI/" class="print-no-link">#AI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../2024-11-11_%E8%83%A1%E4%BD%9B%E7%A0%94%E7%A9%B6%E6%89%80%E6%A6%82%E8%BF%B0/" title="胡佛研究所概述">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">胡佛研究所概述</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../2024-11-05_Java_EE_%E8%A7%A3%E9%87%8A/" title="Java EE 解释">
+                        <span class="hidden-mobile">Java EE 解释</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-left: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="me"
+        id="heading-ab86a1e1ef70dff97959067b723c5c24" role="tab" data-toggle="collapse" href="#collapse-ab86a1e1ef70dff97959067b723c5c24"
+        aria-expanded="true"
+      >
+        me
+        <span class="list-group-count">(140)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-ab86a1e1ef70dff97959067b723c5c24"
+           role="tabpanel" aria-labelledby="heading-ab86a1e1ef70dff97959067b723c5c24">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ChatGPT"
+        id="heading-62239e6c0f995ae1fdc00d18b7905eac" role="tab" data-toggle="collapse" href="#collapse-62239e6c0f995ae1fdc00d18b7905eac"
+        aria-expanded="true"
+      >
+        ChatGPT
+        <span class="list-group-count">(130)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-62239e6c0f995ae1fdc00d18b7905eac"
+           role="tabpanel" aria-labelledby="heading-62239e6c0f995ae1fdc00d18b7905eac">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2023"
+        id="heading-5531a5834816222280f20d1ef9e95f69" role="tab" data-toggle="collapse" href="#collapse-5531a5834816222280f20d1ef9e95f69"
+        aria-expanded="false"
+      >
+        2023
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-5531a5834816222280f20d1ef9e95f69"
+           role="tabpanel" aria-labelledby="heading-5531a5834816222280f20d1ef9e95f69">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2023/2023-12-20_%E8%BF%91%E4%B9%89%E8%A1%A8%E8%BE%BE/" title="近义表达"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">近义表达</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-03_Conflicted_about_Love/" title="Conflicted about Love"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Conflicted about Love</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2023/2023-12-01_Tutor/" title="Eng Tutor"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Eng Tutor</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2024"
+        id="heading-07811dc6c422334ce36a09ff5cd6fe71" role="tab" data-toggle="collapse" href="#collapse-07811dc6c422334ce36a09ff5cd6fe71"
+        aria-expanded="true"
+      >
+        2024
+        <span class="list-group-count">(26)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-07811dc6c422334ce36a09ff5cd6fe71"
+           role="tabpanel" aria-labelledby="heading-07811dc6c422334ce36a09ff5cd6fe71">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../2024-12-31_%E5%9B%BD%E5%AE%B6%E8%AF%84%E4%BC%B0%E6%A0%87%E5%87%86/" title="国家评估标准"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">国家评估标准</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-31_%E4%B8%80%E5%88%87%E7%9A%86%E6%95%B0/" title="一切皆数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一切皆数</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-30_%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8E%A7%E5%88%B6/" title="互联网与信息控制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">互联网与信息控制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-28_Bakit_fluent_ang_Pilipino_sa_Ingles/" title="Bakit fluent ang Pilipino sa Ingles"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bakit fluent ang Pilipino sa Ingles</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-26_%E9%92%B1%E5%AD%A6%E6%A3%AE%E5%9B%9E%E5%9B%BD%E5%8E%9F%E5%9B%A0/" title="钱学森回国原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">钱学森回国原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-24_%E8%A2%81%E4%B8%96%E5%87%AF%E7%A7%B0%E5%B8%9D%E5%8E%9F%E5%9B%A0/" title="袁世凯称帝原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">袁世凯称帝原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-22_%E9%87%8D%E7%94%B7%E8%BD%BB%E5%A5%B3%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="重男轻女的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">重男轻女的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-18_%E7%BA%A6%E7%BF%B0%E9%80%8A%E8%AE%BF%E4%B9%8C%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/" title="约翰逊访乌原因分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">约翰逊访乌原因分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_%E8%B5%84%E4%BA%A7%E8%BD%AC%E7%A7%BB%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/" title="资产转移与风险管理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">资产转移与风险管理</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_Qing_Dynasty_Patriotism_Explained/" title="Qing Dynasty Patriotism Explained"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Qing Dynasty Patriotism Explained</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-12_China_Real_Estate_Ponzi/" title="China Real Estate Ponzi"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Real Estate Ponzi</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-11_TAFE%E7%95%99%E5%AD%A6%E8%A7%84%E5%88%92%E5%BB%BA%E8%AE%AE/" title="TAFE留学规划建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TAFE留学规划建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-06_Civilization_vs_Barbarism/" title="Civilization vs Barbarism"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Civilization vs Barbarism</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-12-04_%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E9%9D%99%E6%80%81%E6%93%8D%E4%BD%9C/" title="类与对象静态操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">类与对象静态操作</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-19_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E4%B8%8E%E6%A3%B1%E9%95%9C%E8%AE%A1%E5%88%92/" title="中共宣传与棱镜计划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传与棱镜计划</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-17_%E5%B9%B4%E8%BD%BB%E4%BA%BA%E8%A7%89%E9%86%92%E7%9A%84%E5%8E%9F%E5%9B%A0/" title="年轻人觉醒的原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">年轻人觉醒的原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-11_%E8%83%A1%E4%BD%9B%E7%A0%94%E7%A9%B6%E6%89%80%E6%A6%82%E8%BF%B0/" title="胡佛研究所概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">胡佛研究所概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="" title="毕业论文"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">毕业论文</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-11-05_Java_EE_%E8%A7%A3%E9%87%8A/" title="Java EE 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-10-18_depression/" title="depression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">depression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-27_US_Internet_Freedom_vs_China/" title="US Internet Freedom vs China"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">US Internet Freedom vs China</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_Whats_the_Catch_Meaning/" title="Whats the Catch Meaning"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Whats the Catch Meaning</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_%E4%B8%9C%E6%AC%A7%E8%89%B2%E6%83%85%E8%A1%8C%E4%B8%9A%E8%A7%A3%E6%9E%90/" title="东欧色情行业解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">东欧色情行业解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-08-26_Shameless_US_Viewership_Stats/" title="Shameless US Viewership Stats"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shameless US Viewership Stats</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-06-18_Fake_News_Detection_Project/" title="Fake News Detection Project"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fake News Detection Project</span>
+        </a>
+      
+    
+      
+      
+        <a href="../2024-01-24_Wholesaler_and_Related_Terms/" title="Wholesaler and Related Terms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Wholesaler and Related Terms</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="2025"
+        id="heading-312351bff07989769097660a56395065" role="tab" data-toggle="collapse" href="#collapse-312351bff07989769097660a56395065"
+        aria-expanded="false"
+      >
+        2025
+        <span class="list-group-count">(101)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-312351bff07989769097660a56395065"
+           role="tabpanel" aria-labelledby="heading-312351bff07989769097660a56395065">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../2025/2025-06-27_git_commit_push/" title="git_commit_push"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">git_commit_push</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-24_Telegram%20%E6%A0%B8%E5%BF%83%E5%9B%A2%E9%98%9F%E6%95%88%E7%8E%87/" title="Telegram 核心团队效率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Telegram 核心团队效率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-23_%E5%8D%B0%E9%92%B1%E4%B8%8E%E8%B4%A7%E5%B8%81%E4%BB%B7%E5%80%BC/" title="印钱与货币价值"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">印钱与货币价值</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-22_%E6%89%B9%E9%87%8F%E6%96%87%E4%BB%B6%E9%87%8D%E5%91%BD%E5%90%8D/" title="批量文件重命名"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">批量文件重命名</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_Typst%20%E4%BC%98%E5%8A%BF%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="Typst 优势与改进"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typst 优势与改进</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_%E5%85%B3%E9%94%AE%E8%AF%8D%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" title="关键词提取方法总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">关键词提取方法总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_module_tempfile/" title="module tempfile"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module tempfile</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-21_%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E4%B8%8E%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6/" title="文件处理与临时文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">文件处理与临时文件</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-26_windows_users/" title="windows user accounts"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">windows user accounts</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-20_module_os/" title="module os"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">module os</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-19_GitHub%20Pages%20%E9%83%A8%E7%BD%B2%E9%94%99%E8%AF%AF/" title="GitHub Pages 部署错误"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">GitHub Pages 部署错误</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-17_%E5%86%85%E5%AE%B9%E5%AE%A1%E6%9F%A5%E8%A7%84%E9%81%BF%E6%96%B9%E6%A1%88/" title="内容审查规避方案"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">内容审查规避方案</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-13_%E5%BE%AE%E4%BF%A1PDF%E5%AE%A1%E6%9F%A5%E6%9C%BA%E5%88%B6/" title="微信PDF审查机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信PDF审查机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_pleasure%E7%9A%84%E5%BC%82%E5%90%8C/" title="pleasure的异同"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">pleasure的异同</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_quickly%20detached/" title="quickly detached"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">quickly detached</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-11_Fe%E6%8F%90%E9%97%AE%E5%85%B3%E7%B3%BB%E7%A1%AE%E8%AE%A4%E5%BF%83%E7%90%86%E8%A7%A3%E6%9E%90/" title="Fe提问关系确认心理解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Fe提问关系确认心理解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-08_Hexo%E9%83%A8%E7%BD%B2%E5%88%B0GitHub%20Pages/" title="Hexo部署到GitHub Pages"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo部署到GitHub Pages</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-06_%E6%83%85%E6%84%9F%E6%8C%BD%E5%9B%9E%E5%BB%BA%E8%AE%AE/" title="情感挽回建议"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">情感挽回建议</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-05_%E6%97%A5%E6%9C%AC%E6%91%A9%E6%89%98%E8%BD%A6%E6%97%85%E6%B8%B8%E6%8E%A8%E8%8D%90/" title="日本摩托车旅游推荐"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">日本摩托车旅游推荐</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-05_%E8%A5%BF%E8%97%8F1959%E5%B9%B4%E8%B5%B7%E4%B9%89%E5%A4%B1%E8%B4%A5%E5%88%86%E6%9E%90/" title="西藏1959年起义失败分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">西藏1959年起义失败分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-03_%E5%A4%84%E7%94%B7%E5%A4%84%E5%A5%B3%E6%83%85%E7%BB%93%E5%88%86%E6%9E%90/" title="处男处女情结分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">处男处女情结分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-01_%E4%B8%AD%E8%A5%BF%E4%B8%A4%E6%80%A7%E6%96%87%E5%8C%96%E5%B7%AE%E5%BC%82/" title="中西两性文化差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中西两性文化差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-06-01_%E4%BF%A1%E6%81%AF%E7%9B%91%E6%8E%A7%E4%B8%8E%E9%9A%90%E7%A7%81/" title="信息监控与隐私"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">信息监控与隐私</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-31_%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83/" title="配置Anaconda环境"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">配置Anaconda环境</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-29_Obsidian%20%E5%85%8D%E8%B4%B9%E4%B8%8E%E5%A2%9E%E5%80%BC%E6%9C%8D%E5%8A%A1/" title="Obsidian 免费与增值服务"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Obsidian 免费与增值服务</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-29_Typora%20preferences%20location/" title="Typora preferences location"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Typora preferences location</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-27_AI%E8%B0%83%E8%AF%95Java%20Web%E9%A1%B9%E7%9B%AE/" title="AI调试Java Web项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AI调试Java Web项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-26_%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%94%99%E8%AF%AF%E4%BF%AE%E5%A4%8D/" title="用户配置文件错误修复"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">用户配置文件错误修复</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-23_%E4%BD%95%E8%B0%93%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE/" title="何谓均方误差"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">何谓均方误差</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-18_%E4%B8%AD%E5%9B%BD%E9%9A%90%E7%A7%81%E6%B3%84%E9%9C%B2%E7%8E%B0%E7%8A%B6/" title="中国隐私泄露现状"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国隐私泄露现状</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-16_TP%20TN%20FP%20FN%20%E8%A7%A3%E9%87%8A/" title="TP TN FP FN 解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">TP TN FP FN 解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-13_RP%E4%B8%BB%E4%B9%89%E8%A7%A3%E6%9E%90/" title="RP主义解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP主义解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-13_RP%E7%B2%BE%E9%AB%93%E5%88%86%E6%9E%90/" title="RP精髓分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">RP精髓分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-12_%E7%81%B5%E9%AD%82%E4%BC%B4%E4%BE%A3%E7%A5%9E%E8%AF%9D%E8%A7%A3%E6%9E%90/" title="灵魂伴侣神话解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">灵魂伴侣神话解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-10_Output%20initialization%20summary/" title="Output initialization summary"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Output initialization summary</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-10_zhai%E7%9B%B4%E6%92%AD%E6%A6%82%E6%8B%AC/" title="zhai直播概括"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">zhai直播概括</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-09_%E6%96%B0%E6%95%99%E4%BF%A1%E4%BB%B0%E5%9B%BD%E5%AE%B6%E6%A6%82%E8%A7%88/" title="新教信仰国家概览"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">新教信仰国家概览</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-08_Java%20EE%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Java EE 快速入门"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Java EE 快速入门</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_Guinea%20pig%20vs%20%E5%87%BA%E5%A4%B4%E9%B8%9F/" title="Guinea pig vs 出头鸟"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Guinea pig vs 出头鸟</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_%E4%B8%AD%E5%9B%BD%E6%B0%91%E8%88%AA%E6%99%AE%E5%8F%8A%E5%8E%86%E7%A8%8B/" title="中国民航普及历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中国民航普及历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_baby%E7%9C%8B%E8%84%B8%E5%AE%9E%E9%AA%8C/" title="baby看脸实验"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">baby看脸实验</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-04_%E5%B8%A6%E7%89%88%E6%9C%AC%E5%8F%B7%E7%9A%84%E5%A4%87%E4%BB%BD%E6%9C%BA%E5%88%B6%E8%A7%A3%E6%9E%90/" title="带版本号的备份机制解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">带版本号的备份机制解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_Tiergarten%20%E5%A4%A9%E9%99%85%E7%BA%BF%E4%B8%8E%E5%BB%BA%E7%AD%91%E9%A3%8E%E6%A0%BC/" title="Tiergarten 天际线与建筑风格"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Tiergarten 天际线与建筑风格</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_Gmail%E6%B3%A8%E5%86%8CMeeff%E8%A2%AB%E5%B0%81%E7%A6%81/" title="Gmail注册Meeff被封禁"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Gmail注册Meeff被封禁</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-03_%E4%BA%BA%E7%B1%BB%E5%8F%91%E6%83%85%E6%9C%9F%E8%BF%9B%E5%8C%96%E5%88%86%E6%9E%90/" title="人类发情期进化分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类发情期进化分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_Bore%E8%AF%8D%E4%B9%89%E8%A7%A3%E9%87%8A/" title="Bore词义解释"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Bore词义解释</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_Selfish%20Gene%20Markdown%20Options/" title="Selfish Gene Markdown Options"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Selfish Gene Markdown Options</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_%E6%B1%9F%E8%A5%BF%E5%BD%A9%E7%A4%BC%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="江西彩礼现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">江西彩礼现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-02_%E6%80%A7%E5%88%AB%E5%A4%B1%E8%A1%A1%E4%B8%8E%E4%B8%A4%E6%80%A7%E5%85%B3%E7%B3%BB/" title="性别失衡与两性关系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">性别失衡与两性关系</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-05-01_%E5%90%84%E5%8D%8E%E8%AF%AD%E5%9C%B0%E5%8C%BAon%E5%8A%B3%E5%8A%A8%E8%8A%82_%E5%8A%B3%E5%B7%A5%E8%8A%82/" title="各华语地区on劳动节 劳工节"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">各华语地区on劳动节 劳工节</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-30_Cultural%20Cigarette%20Asking%20Norms/" title="Cultural Cigarette Asking Norms"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Cultural Cigarette Asking Norms</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-30_%E8%B7%A8%E6%96%87%E5%8C%96%E7%A4%BE%E4%BA%A4%E9%80%82%E5%BA%94/" title="跨文化社交适应"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">跨文化社交适应</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-22_vague/" title="vague"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">vague</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-21_John_Ruwitch/" title="John Ruwitch"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">John Ruwitch</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-04-12_Python%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E4%BC%98%E5%8C%96/" title="Python 原型与优化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python 原型与优化</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-31_%E8%84%9A%E6%9C%AC%20%E7%A8%8B%E5%BA%8F%20%E8%BD%AF%E4%BB%B6%20%E5%8C%BA%E5%88%AB/" title="脚本 程序 软件 区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">脚本 程序 软件 区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-29_Reconstruction%20of%20Chinese%20Sites/" title="Reconstruction of Chinese Sites"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Reconstruction of Chinese Sites</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-27_Calisthenics%E4%B8%8E%E5%BE%92%E6%89%8B%E5%81%A5%E8%BA%AB/" title="Calisthenics与徒手健身"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Calisthenics与徒手健身</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-27_Shanghai%20Hangout%20Suggestions/" title="Shanghai Hangout Suggestions"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Shanghai Hangout Suggestions</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-24_%E5%91%A8%E5%85%AC%E8%A7%A3%E6%A2%A6%E8%A7%A3%E6%9E%90/" title="周公解梦解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">周公解梦解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-24_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%AA%8C%E6%94%B6%E6%A8%A1%E5%9E%8B/" title="自动化数据验收模型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">自动化数据验收模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-20_Ubuntu%20vs%20Windows%20for%20Dev/" title="Ubuntu vs Windows for Dev"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Ubuntu vs Windows for Dev</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-16_AW/" title="AW"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">AW</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-08_%E6%A2%A6%E5%A2%83%E8%A7%A3%E8%AF%BB%E4%B8%8E%E6%84%9F%E6%83%85%E5%88%86%E6%9E%90/" title="梦境解读与感情分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">梦境解读与感情分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-07_%E4%B8%AD%E5%85%B1%E5%9B%BD%E7%A4%BE%E4%BA%A4%E7%8E%B0%E8%B1%A1%E5%88%86%E6%9E%90/" title="中共国社交现象分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国社交现象分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-05_all_mind_games/" title="all mind games"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">all mind games</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-03-05_%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub/" title="上传项目到GitHub"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">上传项目到GitHub</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-27_De-brainwashing_Journey/" title="De-brainwashing Journey"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">De-brainwashing Journey</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-27_Perfectionism_vs_Action/" title="Perfectionism vs Action"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Perfectionism vs Action</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-26_Dagupan_Baguio_Valenzuela_Overview/" title="Dagupan Baguio Valenzuela Overview"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Dagupan Baguio Valenzuela Overview</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-26_%E6%99%BA%E8%83%BD%E5%9E%83%E5%9C%BE%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE/" title="智能垃圾分类项目"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">智能垃圾分类项目</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-25_%E7%88%B6%E6%AF%8D%E6%8E%A7%E5%88%B6%E6%AC%B2%E8%A7%A3%E6%9E%90/" title="父母控制欲解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">父母控制欲解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-22_SSN%E5%B7%A5%E4%BD%9C%E8%B5%84%E6%A0%BC%E8%A7%A3%E6%9E%90/" title="SSN工作资格解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SSN工作资格解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-22_Trump%E4%B8%8E%E5%BB%BA%E5%9B%BD%E5%85%88%E8%B4%A4/" title="Trump与建国先贤"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Trump与建国先贤</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-21_DeepSeek%E4%B8%8E%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" title="DeepSeek与知识蒸馏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">DeepSeek与知识蒸馏</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-21_Improving_Poetic_Expression/" title="Improving Poetic Expression"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Improving Poetic Expression</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-20_%E6%96%A4%E6%96%A4%E8%AE%A1%E8%BE%83%E4%B8%8E%E7%9D%9A%E7%9C%A6%E5%BF%85%E6%8A%A5%E5%8C%BA%E5%88%AB/" title="斤斤计较与睚眦必报区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">斤斤计较与睚眦必报区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-19_%E5%AE%9E%E4%B9%A0%E7%AE%80%E5%8E%86%E4%B8%8E%E5%AF%BC%E5%B8%88%E6%B2%9F%E9%80%9A/" title="实习简历与导师沟通"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">实习简历与导师沟通</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-10_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E5%8E%9F%E5%9B%A0/" title="中共国数据泄露原因"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国数据泄露原因</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-09_Albert%E6%84%9F%E8%B0%A2%E4%B8%8E%E5%90%AF%E5%8F%91/" title="Albert感谢与启发"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Albert感谢与启发</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-07_%E7%A4%BE%E4%BA%A4%E8%A7%82%E5%BF%B5%E4%B8%8E%E6%80%9D%E7%BB%B4%E5%B7%AE%E5%BC%82/" title="社交观念与思维差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">社交观念与思维差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-05_%E5%B0%8F%E7%B2%89%E7%BA%A2%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E5%BE%81/" title="小粉红定义与特征"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">小粉红定义与特征</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E5%9B%BD%E6%9C%AC%E7%A7%91%E7%8E%87/" title="中共国本科率"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共国本科率</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_HTTP_vs_HTTPS%E5%8C%BA%E5%88%AB/" title="HTTP vs HTTPS区别"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">HTTP vs HTTPS区别</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E5%AE%A3%E4%BC%A0%E6%B4%97%E8%84%91%E6%9C%BA%E5%88%B6/" title="中共宣传洗脑机制"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共宣传洗脑机制</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E5%8F%B0%E6%B9%BE%E6%B0%91%E4%B8%BB%E5%8C%96%E5%8E%86%E7%A8%8B/" title="台湾民主化历程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">台湾民主化历程</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-02-04_%E4%B8%AD%E5%85%B1%E9%AB%98%E5%B1%82%E7%BA%A2%E4%BA%8C%E4%BB%A3/" title="中共高层红二代"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共高层红二代</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-26_%E7%9C%BC%E8%A7%92%E8%86%9C%E7%A7%BB%E6%A4%8D%E5%8C%B9%E9%85%8D/" title="眼角膜移植匹配"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">眼角膜移植匹配</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-25_%E4%B8%87%E6%9C%89%E5%BC%95%E5%8A%9B%E4%B8%8E%E8%BD%A8%E9%81%93%E7%A8%B3%E5%AE%9A/" title="万有引力与轨道稳定"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">万有引力与轨道稳定</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-22_%E6%88%B7%E7%B1%8D%E5%88%B6%E5%BA%A6%E7%9A%84%E5%85%A8%E7%90%83%E5%B7%AE%E5%BC%82/" title="户籍制度的全球差异"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">户籍制度的全球差异</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-22_%E7%94%9F%E9%BA%A6%E4%BA%8B%E4%BB%B6%E6%A6%82%E8%BF%B0/" title="生麦事件概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">生麦事件概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-21_%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/" title="网页设计技术分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">网页设计技术分析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-21_Unconditional_vs_Conditional_Surrender/" title="Unconditional vs Conditional Surrender"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Unconditional vs Conditional Surrender</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-20_%E4%BA%BA%E7%B1%BB%E6%98%8E%E6%96%87%E5%8E%86%E5%8F%B2%E5%8F%AA%E6%9C%89%E5%87%A0%E5%8D%83%E5%B9%B4/" title="人类明文历史只有几千年"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">人类明文历史只有几千年</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-13_Buddhism_and_Meat_Consumption/" title="Buddhism and Meat Consumption"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Buddhism and Meat Consumption</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-10_%E5%9B%9B%E4%B9%A6%E4%BA%94%E7%BB%8F%E6%A6%82%E8%BF%B0/" title="四书五经概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">四书五经概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-09_Flexbox%E5%B8%83%E5%B1%80%E8%A7%A3%E6%9E%90/" title="Flexbox布局解析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Flexbox布局解析</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-08_Git_Clone_%E5%9C%A8_VS_Code/" title="Git Clone 在 VS Code"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Git Clone 在 VS Code</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-04_%E4%B8%AD%E5%85%B1%E4%B8%8E%E6%97%A5%E6%9C%AC%E6%AF%94%E8%BE%83/" title="中共与日本比较"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">中共与日本比较</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-04_%E4%BC%8A%E6%9C%97%E4%BA%92%E8%81%94%E7%BD%91%E9%99%90%E5%88%B6%E6%94%BE%E5%AE%BD/" title="伊朗互联网限制放宽"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">伊朗互联网限制放宽</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../2025/2025-01-02_China_Debt_Future_Risks/" title="China Debt Future Risks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">China Debt Future Risks</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="notes"
+        id="heading-4358b5009c67d0e31d7fbf1663fcd3bf" role="tab" data-toggle="collapse" href="#collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+        aria-expanded="false"
+      >
+        notes
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-4358b5009c67d0e31d7fbf1663fcd3bf"
+           role="tabpanel" aria-labelledby="heading-4358b5009c67d0e31d7fbf1663fcd3bf">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/Go%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="map_chart_md"
+        id="heading-8ec8c1394f4d384580e39ae03ad74621" role="tab" data-toggle="collapse" href="#collapse-8ec8c1394f4d384580e39ae03ad74621"
+        aria-expanded="false"
+      >
+        map_chart_md
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8ec8c1394f4d384580e39ae03ad74621"
+           role="tabpanel" aria-labelledby="heading-8ec8c1394f4d384580e39ae03ad74621">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="mds"
+        id="heading-60a114c91c41983174b484e188856fb3" role="tab" data-toggle="collapse" href="#collapse-60a114c91c41983174b484e188856fb3"
+        aria-expanded="false"
+      >
+        mds
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-60a114c91c41983174b484e188856fb3"
+           role="tabpanel" aria-labelledby="heading-60a114c91c41983174b484e188856fb3">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/fact_checks/" title="fact_checks"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">fact_checks</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/map_chart_md/mds/2025-02-24_%E5%B9%B3%E5%87%A1%E7%9A%84%E4%B8%96%E7%95%8C%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%94%E7%AB%A0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python_notes"
+        id="heading-1e1425d43eeb6f8af603bf147030adca" role="tab" data-toggle="collapse" href="#collapse-1e1425d43eeb6f8af603bf147030adca"
+        aria-expanded="false"
+      >
+        python_notes
+        <span class="list-group-count">(6)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-1e1425d43eeb6f8af603bf147030adca"
+           role="tabpanel" aria-labelledby="heading-1e1425d43eeb6f8af603bf147030adca">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/mutable/" title="mutable"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">mutable</span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/main_name/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="md图片格式转换"
+        id="heading-fbb54e68546e1bb12b12d9089f41da7b" role="tab" data-toggle="collapse" href="#collapse-fbb54e68546e1bb12b12d9089f41da7b"
+        aria-expanded="false"
+      >
+        md图片格式转换
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-fbb54e68546e1bb12b12d9089f41da7b"
+           role="tabpanel" aria-labelledby="heading-fbb54e68546e1bb12b12d9089f41da7b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/md%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82-%E6%AD%A3%E5%88%99re/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="os_related"
+        id="heading-97d6ee2c84cbeda2e7720e9133f5ba2c" role="tab" data-toggle="collapse" href="#collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+        aria-expanded="false"
+      >
+        os_related
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-97d6ee2c84cbeda2e7720e9133f5ba2c"
+           role="tabpanel" aria-labelledby="heading-97d6ee2c84cbeda2e7720e9133f5ba2c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/thread/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+      
+      
+        <a href="../../../notes/python_notes/os_related/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="plt画图学习笔记"
+        id="heading-d061f1cbc7b0720de318fa4b3c3426a1" role="tab" data-toggle="collapse" href="#collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+        aria-expanded="false"
+      >
+        plt画图学习笔记
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-d061f1cbc7b0720de318fa4b3c3426a1"
+           role="tabpanel" aria-labelledby="heading-d061f1cbc7b0720de318fa4b3c3426a1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../notes/python_notes/plt%E7%94%BB%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/plt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title=""
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post"></span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="red_pill"
+        id="heading-0b8e50165cdf992b0419fad17c2f7ec0" role="tab" data-toggle="collapse" href="#collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+        aria-expanded="false"
+      >
+        red_pill
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0b8e50165cdf992b0419fad17c2f7ec0"
+           role="tabpanel" aria-labelledby="heading-0b8e50165cdf992b0419fad17c2f7ec0">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="tomassi"
+        id="heading-3f6b483246b3b4f3430f7d1e154d50c1" role="tab" data-toggle="collapse" href="#collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+        aria-expanded="false"
+      >
+        tomassi
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-3f6b483246b3b4f3430f7d1e154d50c1"
+           role="tabpanel" aria-labelledby="heading-3f6b483246b3b4f3430f7d1e154d50c1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="../../../red_pill/tomassi/no_full_closure/" title="Women never want full disclosures"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Women never want full disclosures</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>    <i class="iconfont icon-love"></i>    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="../../../../js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
